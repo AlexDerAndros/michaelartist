@@ -12,13 +12,13 @@
    font-weight: bold;
    margin: 0.5vh 10vh;
    position: fixed;
-   font-size: 3.5vh;
+   font-size: 3.8vh;
    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   background-clip: text;
   color: transparent;
   }
   .title:hover {
-    font-size: 3.8vh;
+    font-size: 4vh;
   }
   .header {
     background-color: black;
@@ -60,7 +60,7 @@
     position: fixed;
    width: 40%;
    height: 40vh;
-   margin: 6vh 0.5vh ; 
+   margin: 6vh 0vh ; 
    transition: ease-in 0.3s;
   }
   a {
@@ -73,5 +73,12 @@
   ul { 
     list-style: none;
     font-size: 3vh;
+  }
+  .unten {
+    width: 100%;
+    height: 10vh;
+    background-color: #cbcbcb69;
+    margin:122vh 0;
+    
   }
 }

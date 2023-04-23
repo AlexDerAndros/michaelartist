@@ -5,6 +5,8 @@ export default function App() {
   return (
     <main>
     <Header/>
+    <Main/>
+    <Bottom/>
     </main>
   );
   // Aktualisierung einer React App: 1.npm run build 2.firebase deploy
@@ -17,7 +19,7 @@ function Header() {
     <Hamburger/>
       <div className='title' >
       <a href='https://michael-ntrikos.art'>
-      Artist Michael Ntrikos 
+      Artist Michael Ntrikos
       </a>
       </div>
     </div>
@@ -40,7 +42,8 @@ function Hamburger() {
   <div className='content'>
     <div style={{color:'white'}}>
    <ul>
-    <li> <a href='./App.js'>Home</a></li>
+    <li> <a href='https://michael-ntrikos.art'>Home</a></li>
+   <li><a href='#'>Bildgalerie</a> </li>
    </ul>
     </div>
   </div>
@@ -61,7 +64,7 @@ function Main() {
 function Bottom() {
 return (
  <div className='unten'>
- 
+  
 
  </div>
 );
