@@ -12,19 +12,19 @@
    font-weight: bold;
    margin: 0.5vh 10vh;
    position: fixed;
-   font-size: 3vh;
+   font-size: 3.5vh;
    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   background-clip: text;
-  -webkit-background-clip: text;
   color: transparent;
   }
   .title:hover {
-    font-size: 3.4vh;
+    font-size: 3.8vh;
   }
   .header {
     background-color: black;
     width: 100%;
-    height: 6vh;
+    height: 7vh;
+    position: fixed;
   }
   .linie1 {
     background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -32,7 +32,7 @@
     height: 1vh;
     position: fixed;
     border-radius: 10%;
-    margin:0.1vh 0.5vh;
+    margin:0.1vh 1vh;
   }
   .linie2 {
     background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -40,7 +40,7 @@
     height: 1vh;
     position: fixed;
     border-radius: 10%;
-    margin:2.1vh 0.5vh;
+    margin:2.1vh 1vh;
   }
   .linie3 {
     background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -48,7 +48,7 @@
     height: 1vh;
     position: fixed;
     border-radius: 10%;
-    margin:4.1vh 0.5vh;
+    margin:4.1vh 1vh;
   }
   .click {
     width: 10vh;
@@ -60,7 +60,7 @@
     position: fixed;
    width: 40%;
    height: 40vh;
-   margin: 6vh 0 ; 
+   margin: 6vh 0.5vh ; 
    transition: ease-in 0.3s;
   }
   a {
@@ -69,5 +69,9 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+  }
+  ul { 
+    list-style: none;
+    font-size: 3vh;
   }
 }

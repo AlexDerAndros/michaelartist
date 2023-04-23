@@ -39,7 +39,9 @@ function Hamburger() {
  { click && (
   <div className='content'>
     <div style={{color:'white'}}>
-     hallo
+   <ul>
+    <li> <a href='./App.js'>Home</a></li>
+   </ul>
     </div>
   </div>
  )}
