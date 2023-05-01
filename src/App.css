@@ -27,7 +27,7 @@
     height: 7vh;
     position: fixed;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex: 123px;
   }
   .ham {
@@ -87,5 +87,33 @@
     background-color: #cbcbcb69;
     margin:100vh 0;
     position: fixed;
+  }
+  .Mitte {
+    margin: 20vh 5vh;
+    background: #cbcbcb69 ;
+    width: 200vh;
+    height: 50vh;
+    padding: 1vh;
+    border-radius: 4%;
+  }
+  .info1 {
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    background-clip: text;
+    color: transparent;
+    font-weight:bold ;
+    font-size: 4.5vh;
+
+  }
+  .img1 {
+    width: 5vh;
+    height: 5vh;
+    margin:0.2vh 60vh;
+    position: fixed;
+  }
+  .img2 {
+    width: 5vh;
+    height: 5vh;
+    position: fixed;
+    margin: 0.2vh 70vh;
   }
 }

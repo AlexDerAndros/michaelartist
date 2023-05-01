@@ -22,6 +22,16 @@ function Header() {
       Artist Michael Ntrikos
       </a>
       </div>
+      <div className='foto1'>
+        <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
+          <img className='img1' src='./tiktok.jpeg'/>
+        </a>
+      </div>
+      <div className='foto2'>
+        <a href='https://www.instagram.com/michael.ntr/?igshid=YmMyMTA2M2Y%3D'>
+         <img className='img2' src='./instagram.jpeg'/>
+        </a>
+      </div>
     </div>
   );
 }
@@ -53,9 +63,9 @@ function Hamburger() {
 }
 function Main() {
  return (
-  <div className='Mitte'>
+<div className='Mitte'>
  <div className='info1'> 
- I'm an artist
+  Welcome to my website!
 </div>
 
   </div>
