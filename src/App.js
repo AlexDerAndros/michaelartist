@@ -15,8 +15,8 @@ export default function App() {
 }
 function Header() {
   return (
-    <div className='header'>
-    <Hamburger/>
+   <div className='header'>
+     <Hamburger/>
       <div className='title' >
       <a href='https://michael-ntrikos.art'>
       Artist Michael Ntrikos
