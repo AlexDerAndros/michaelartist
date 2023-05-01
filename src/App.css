@@ -2,8 +2,8 @@
   main {
     background-image: url('./michaelBackground.png');
     width: 100%;
-    height:110svh;
-   zoom: 78%;
+    height:100vh;
+   zoom: 75%;
    font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
    display: flex;
    flex-direction: row;
@@ -85,7 +85,7 @@
     width: 100%;
     height: 10vh;
     background-color: #cbcbcb69;
-    margin:100vh 0;
+    margin:90vh 0;
     position: fixed;
   }
   .Mitte {
@@ -107,13 +107,13 @@
   .img1 {
     width: 5vh;
     height: 5vh;
-    margin:0.2vh 60vh;
+    margin:0.2vh 50vh;
     position: fixed;
   }
   .img2 {
     width: 5vh;
     height: 5vh;
     position: fixed;
-    margin: 0.2vh 70vh;
+    margin: 0.2vh 60vh;
   }
 }
