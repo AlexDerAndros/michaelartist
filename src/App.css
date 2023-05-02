@@ -1,4 +1,4 @@
-@media only screen and (max-width:460px) {
+
   main {
     background-image: url('./michaelBackground.png');
     width: 100%;
@@ -117,4 +117,3 @@
     position: fixed;
     margin: 0.2vh 57vh;
   }
-}
