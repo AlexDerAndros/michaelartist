@@ -50,15 +50,29 @@ function Hamburger() {
    </div>
  { click && (
   <div className='content'>
-    <div style={{color:'white'}}>
-   <ul>
+   <ul className='textCo'>
     <li> <a href='https://michael-ntrikos.art'>Home</a></li>
    <li><a href='#'>Bildgalerie</a> </li>
    </ul>
-    </div>
-  </div>
+    
+ </div>
  )}
  </div>
+ 
+  );
+}
+const images =[];
+function ImageList (){
+  const [currentIndex, setCurrentIndex]= useState(0);
+  const nextImage = () => {
+    setCurrentIndex((prevIndex)=>
+    prevIndex === images.length - 1 ? 0 :prevIndex + 1);
+  }
+  return (
+   <div className='imageList'>
+    <img className='imgI' src= {images[currentIndex]}/>
+    <button className='btn1' onClick={nextImage}>Next Picture</button>
+   </div>
   );
 }
 function Main() {
@@ -67,15 +81,19 @@ function Main() {
  <div className='info1'> 
   Welcome to my website!
 </div>
-
+<div className='info'>
+ Thanks to you I became the artist I am today 
+ and to reach the next level
+I made this website for you.
+</div>
+<ImageList/>
   </div>
  );
 }
 function Bottom() {
 return (
  <div className='unten'>
-  
-
+ 
  </div>
 );
 }
