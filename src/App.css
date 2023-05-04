@@ -20,7 +20,7 @@
   background-clip: text;
   color: transparent;
    left:10%;
-   top:0.001%;
+   top:0.01%;
   }
   .title:hover {
     font-size: 5vh;
