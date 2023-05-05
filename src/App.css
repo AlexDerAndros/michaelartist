@@ -1,4 +1,5 @@
-
+@media only screen and (max-width:1080px)
+{
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -20,7 +21,7 @@
   background-clip: text;
   color: transparent;
    left:10%;
-   top:0.01%;
+   top:0.2%;
   }
   .title:hover {
     font-size: 5vh;
@@ -97,7 +98,7 @@
   }
   .unten {
     width: 100%;
-    height:  10%;
+    height:  7%;
     background-color: black;
     position: fixed ;
     bottom:0vh;
@@ -105,18 +106,20 @@
     flex-direction: row;
     justify-content: space-between;
   }
+  .imgHome {
+    width: 15vh;
+    height: 10vh;
+    position: sticky;
+  }
   .Mitte {
     text-align: center;
     background: #cbcbcb69 ;
     width: 90%;
-    height: 70vh;
+    height: 75%;
     padding: 1vh;
-    position: fixed;
     border-radius: 4%;
     z-index: -1;
-    top: 15%;
-    left: 5%;
-    right: 8%;
+    margin: 12% 10%;
   }
   .info1 {
     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -135,16 +138,17 @@
   .img2 {
     width: 5vh;
     height: 5vh;
-    position: fixed;
     margin: 0.2vh -10vh;
   }
   .imageList {
     background: rgba(0, 0, 0, 0.639);
-    width: 90%;
+    width: 85%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     border-radius: 4%;
-   margin: 5% 4% ;
+    margin:0 6% ;
+    position: sticky;
   }
   .btn1 {
     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -152,21 +156,32 @@
     color: transparent;
     font-weight: bold;
     font-size: 4.5vh;
+    margin:-1% 25vh;
   }
   button {
    background: transparent;
    border: none;
   }
   .imgI {
-   width: 90%;
-   height: 30vh;
-   padding: 3vh;
+   width: 80%;
+   height: 90%;
    border-radius: 4%;
+   margin:3% 10% 1% 9%;
+   position: sticky;
   }
   .info {
-   color: black;
+    background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
+    background-clip: text;
+    color: transparent;
    font-weight: bold;
    margin:3% 0%;
    text-align: left;
    font-size: 2.5vh;
+   padding: 1% 3% ;
   }
+  .searchImg {
+    width: 10vh;
+    height: 10vh;
+    position: sticky;
+  }
+}
