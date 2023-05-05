@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import './App.css';
+import { FaImages } from 'react-icons/fa';
 
 export default function App() {
   return (
@@ -61,7 +62,9 @@ function Hamburger() {
  
   );
 }
-const images =[];
+const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz.jpeg'
+, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria.jpeg', './Teufel.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
+'./Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const nextImage = () => {
@@ -71,7 +74,7 @@ function ImageList (){
   return (
    <div className='imageList'>
     <img className='imgI' src= {images[currentIndex]}/>
-    <button className='btn1' onClick={nextImage}>Next Picture</button>
+    <button className='btn1' onClick={nextImage}> Next </button>
    </div>
   );
 }
@@ -93,7 +96,17 @@ I made this website for you.
 function Bottom() {
 return (
  <div className='unten'>
- 
+   <div>
+    <a href='https://michael-ntrikos.art'>
+      <img src='./home.jpeg' className='imgHome'/>
+    </a>
+   </div>
+   <div>
+    <img className='searchImg' src='./Search.jpeg'/>
+   </div>
+   <div style={{ color: 'white', backgroundColor: 'black', padding: '10px', borderRadius: '50%' , position:'sticky'}}>
+      <FaImages size={50} />
+    </div>
  </div>
 );
 }
