@@ -74,7 +74,7 @@ function ImageList (){
   return (
    <div className='imageList'>
     <img className='imgI' src= {images[currentIndex]}/>
-    <button className='btn1' onClick={nextImage}> Next </button>
+    <button className='btn1' onClick={nextImage}> Next Picture </button>
    </div>
   );
 }
