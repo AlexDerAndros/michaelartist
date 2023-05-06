@@ -1,4 +1,4 @@
-@media only screen and (max-width:420px)
+@media only screen and (max-width:460px)
 {
   main {
     background-image: url('./michaelBackground.png');
@@ -184,7 +184,7 @@
     position: sticky;
     }
 }
-@media only screen and (max-width:1080px)
+@media only screen and (min-width:620px)
 {
   main {
     background-image: url('./michaelBackground.png');
