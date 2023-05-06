@@ -87,7 +87,7 @@ function Main() {
 <div className='info'>
  Thanks to you I became the artist I am today 
  and to reach the next level
-I made this website for you.
+I made this website for you.l
 </div>
 <ImageList/>
   </div>
