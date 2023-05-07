@@ -57,7 +57,13 @@ function Hamburger() {
  { click && (
   <div className='content'>
   <div className='textCo'>
-  hallo
+  <ul>
+    <li>
+      <span className='element'>
+        Hallo
+      </span>
+    </li>
+  </ul>
   </div>
   </div>
  )}
@@ -163,3 +169,5 @@ function Search(){
       </div>
   )
 }
+//hamburger menu in react?
+
