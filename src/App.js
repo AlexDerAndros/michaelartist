@@ -8,10 +8,11 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 
 export default function App() {
+  const showHome = true;
+   
   return (
     <main>
     <Header/>
-   <Home/>
     <Bottom/>
     </main>
   );
@@ -19,7 +20,6 @@ export default function App() {
   // 3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
   // Wichtig: immer alles auf der neusten Version und updaten ab und zu
 }
-
 function Header() {
   return (
    <div className='header'>
@@ -47,6 +47,7 @@ function Hamburger() {
     setClick(!click);
   };
   return (
+  
  <div className='ham'>
    <div onClick={press} className='click'>
     <div className='linie1'></div>
@@ -54,51 +55,13 @@ function Hamburger() {
     <div className='linie3'></div>
    </div>
  { click && (
-  <Router>
-  
   <div className='content'>
-   <ul className='textCo'>
-    <li> 
-    <a href='https://michael-ntrikos.art'>
-   <span className='element'>
-    Home
-    </span>
-    </a></li>
-   <br/>
-   <li><a href='#'>
-   <span className='element'>
-   <Link to="/bildgalerie" >
-    Bildgalerie
-   </Link>
-   </span>
-   </a> </li>
-   <br/>
-   <li>
-    <span className='element'>
-     <Link to= "/Search">
-       Suchen
-     </Link>
-    </span>
-   </li>
-   <br/>
-   <li>
-     <span className='element'>
-       <Link to= "/chat">
-        Chat
-       </Link>
-     </span>
-    </li>
-   </ul>
-  <Routes>
-   <Route path="/bildgalerie" element={<Bildgalerie/>}/>
-   <Route path="/Search" element={<Search/>}/>
-   <Route path="/chat" element={<Chat/>}/>
-  </Routes>
- </div>
- </Router>
+  <div className='textCo'>
+  hallo
+  </div>
+  </div>
  )}
  </div>
- 
   );
 }
 const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz.jpeg'
@@ -137,11 +100,11 @@ return (
 <Router>
  <div className='unten'>
    <div>
-    <a href='https://michael-ntrikos.art'>
+   <Link to="/">
     <div style={{ color: 'black'}}>
       <FaHome size={40} />
     </div>
-    </a>
+    </Link>
    </div>
    <div>
    <Link to= "/Search">
@@ -161,6 +124,7 @@ return (
     </div>
   </Link>
     <Routes>
+    <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
    <Route path="/Search" element={<Search/>}/>
    <Route path="/chat" element={<Chat/>}/>

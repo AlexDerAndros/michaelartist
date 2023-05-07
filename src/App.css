@@ -36,6 +36,7 @@
   }
   .ham {
     margin: 0.2vh 0;
+    position: relative;
   }
   .linie1 {
     background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -64,7 +65,10 @@
   .click {
     width: 10vh;
     height: 8vh;
-   position: fixed;
+    position: absolute;
+    z-index: 999;
+
+   
     }
     .content {
     background-color: black;  
@@ -73,7 +77,7 @@
    height: 40vh;
    margin: 6vh 0vh ; 
    transition:transform ease-in-out 0.5s ;
-  z-index: 100;
+   z-index: 999;
    border-radius: 0% 0% 5% 0%;
    cursor: pointer;
     }
@@ -107,15 +111,15 @@
   .Mitte {
     text-align: center;
     background: #cbcbcb69 ;
-    width: 90%;
+    width: 80%;
     height: 75%;
     padding: 1vh;
     border-radius: 4%;
-    z-index: -1;
+    z-index: -100;
     left: 3%;
     right: 3%;
-    top: 13%;
-    position: sticky;
+    top: 10%;
+    position: fixed;
   }
   .info1 {
     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
