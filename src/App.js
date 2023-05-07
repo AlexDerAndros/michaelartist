@@ -4,12 +4,14 @@ import { FaImages } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 export default function App() {
   return (
     <main>
     <Header/>
-    <Main/>
+   <Home/>
     <Bottom/>
     </main>
   );
@@ -17,14 +19,13 @@ export default function App() {
   // 3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
   // Wichtig: immer alles auf der neusten Version und updaten ab und zu
 }
+
 function Header() {
   return (
    <div className='header'>
      <Hamburger/>
       <div className='title' >
-      <a href='https://michael-ntrikos.art'>
       Artist Michael Ntrikos
-      </a>
       </div>
       <div className='foto1'>
         <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
@@ -53,13 +54,48 @@ function Hamburger() {
     <div className='linie3'></div>
    </div>
  { click && (
+  <Router>
+  
   <div className='content'>
    <ul className='textCo'>
-    <li> <a href='https://michael-ntrikos.art'>Home</a></li>
-   <li><a href='#'>Bildgalerie</a> </li>
+    <li> 
+    <a href='https://michael-ntrikos.art'>
+   <span className='element'>
+    Home
+    </span>
+    </a></li>
+   <br/>
+   <li><a href='#'>
+   <span className='element'>
+   <Link to="/bildgalerie" >
+    Bildgalerie
+   </Link>
+   </span>
+   </a> </li>
+   <br/>
+   <li>
+    <span className='element'>
+     <Link to= "/Search">
+       Suchen
+     </Link>
+    </span>
+   </li>
+   <br/>
+   <li>
+     <span className='element'>
+       <Link to= "/chat">
+        Chat
+       </Link>
+     </span>
+    </li>
    </ul>
-    
+  <Routes>
+   <Route path="/bildgalerie" element={<Bildgalerie/>}/>
+   <Route path="/Search" element={<Search/>}/>
+   <Route path="/chat" element={<Chat/>}/>
+  </Routes>
  </div>
+ </Router>
  )}
  </div>
  
@@ -81,7 +117,7 @@ function ImageList (){
    </div>
   );
 }
-function Main() {
+function Home() {
  return (
 <div className='Mitte'>
  <div className='info1'> 
@@ -98,26 +134,68 @@ I made this website for you.
 }
 function Bottom() {
 return (
+<Router>
  <div className='unten'>
    <div>
     <a href='https://michael-ntrikos.art'>
     <div style={{ color: 'black'}}>
       <FaHome size={40} />
     </div>
-    
     </a>
    </div>
    <div>
+   <Link to= "/Search">
    <div style={{ color: 'black'  }}>
       <FaSearch size={38} />
     </div>
+    </Link>
    </div>
+   <Link to="/bildgalerie" >
    <div style={{ color: 'black'}}>
       <FaImages size={40} />
     </div>
+  </Link>
+  <Link to= "/chat">
     <div style={{ color: 'black'}}>
       <FaComment size={35} />
     </div>
+  </Link>
+    <Routes>
+   <Route path="/bildgalerie" element={<Bildgalerie/>}/>
+   <Route path="/Search" element={<Search/>}/>
+   <Route path="/chat" element={<Chat/>}/>
+  </Routes>
  </div>
+ </Router>
 );
+}
+
+
+//Chat
+function Chat() {
+  return (
+      <div>
+          
+      </div>
+  )
+}
+
+
+//Bildgalerie
+function Bildgalerie() {
+  return (
+      <div className='bildgalerie'>
+          
+      </div>
+  )
+}
+
+
+//Search
+function Search(){
+  return (
+      <div>
+          
+      </div>
+  )
 }
