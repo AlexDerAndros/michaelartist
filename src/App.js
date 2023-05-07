@@ -1,6 +1,9 @@
 import {useState} from 'react';
 import './App.css';
 import { FaImages } from 'react-icons/fa';
+import { FaComment } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 export default function App() {
   return (
@@ -87,7 +90,7 @@ function Main() {
 <div className='info'>
  Thanks to you I became the artist I am today 
  and to reach the next level
-I made this website for you.l
+I made this website for you.
 </div>
 <ImageList/>
   </div>
@@ -98,14 +101,22 @@ return (
  <div className='unten'>
    <div>
     <a href='https://michael-ntrikos.art'>
-      <img src='./home.jpeg' className='imgHome'/>
+    <div style={{ color: 'black'}}>
+      <FaHome size={40} />
+    </div>
+    
     </a>
    </div>
    <div>
-    <img className='searchImg' src='./Search.jpeg'/>
+   <div style={{ color: 'black'  }}>
+      <FaSearch size={38} />
+    </div>
    </div>
-   <div style={{ color: 'white', backgroundColor: 'black', padding: '10px', borderRadius: '50%' , position:'sticky'}}>
-      <FaImages size={50} />
+   <div style={{ color: 'black'}}>
+      <FaImages size={40} />
+    </div>
+    <div style={{ color: 'black'}}>
+      <FaComment size={35} />
     </div>
  </div>
 );
