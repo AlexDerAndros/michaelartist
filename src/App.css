@@ -36,7 +36,7 @@
   }
   .ham {
     margin: 0.2vh 0;
-    position: relative;
+    z-index: 999;
   }
   .linie1 {
     background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -66,17 +66,13 @@
     width: 10vh;
     height: 8vh;
     position: absolute;
-    z-index: 999;
-
-   
     }
     .content {
-    background-color: black;  
+    background: black;  
     position: fixed;
    width: 40%;
    height: 40vh;
    margin: 6vh 0vh ; 
-   transition:transform ease-in-out 0.5s ;
    z-index: 999;
    border-radius: 0% 0% 5% 0%;
    cursor: pointer;
@@ -107,7 +103,6 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
   .Mitte {
     text-align: center;
     background: #cbcbcb69 ;
@@ -115,8 +110,8 @@
     height: 75%;
     padding: 1vh;
     border-radius: 4%;
-    z-index: -100;
-    left: 3%;
+    z-index: -1;
+    left: 7%;
     right: 3%;
     top: 10%;
     position: fixed;
@@ -160,6 +155,7 @@
   button {
    background: transparent;
    border: none;
+   z-index: -100;
   }
   .imgI {
    width: 80%;
@@ -167,6 +163,7 @@
    border-radius: 4%;
    margin:3% 10% 1% 9%;
    position: sticky;
+   z-index: -100;
   }
   .info {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
@@ -177,11 +174,13 @@
    text-align: left;
    font-size: 2.5vh;
    padding: 1% 3% ;
+   z-index: -100;
   }
   .searchImg {
     width: 7vh;
     height: 7vh;
     position: sticky;
+    z-index: -100;
     }
 .element {
   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
