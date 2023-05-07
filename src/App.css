@@ -1,5 +1,3 @@
-@media only screen and (max-width:460px)
-{
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -10,7 +8,7 @@
     position: fixed;
    font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
    display: flex;
-   flex-direction: row;
+   justify-content: space-between;
   }
   .title {
    color: white;
@@ -106,9 +104,10 @@
     justify-content: space-between;
   }
   .imgHome {
-    width: 15vh;
+    width: 12vh;
     height: 10vh;
     position: sticky;
+    margin: -2%;
   }
   .Mitte {
     text-align: center;
@@ -118,8 +117,10 @@
     padding: 1vh;
     border-radius: 4%;
     z-index: -1;
-    margin: 15% 2%;
-    position: fixed;
+    left: 3%;
+    right: 3%;
+    top: 13%;
+    position: sticky;
   }
   .info1 {
     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
@@ -179,195 +180,7 @@
    padding: 1% 3% ;
   }
   .searchImg {
-    width: 10vh;
-    height: 10vh;
-    position: sticky;
-    }
-}
-@media only screen and (min-width:620px)
-{
-  main {
-    background-image: url('./michaelBackground.png');
-    background-size: cover;
-    background-repeat:no-repeat;
-    width: 100%;
-    height:100%;
-    zoom:75%;
-    position: fixed;
-   font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
-   display: flex;
-   flex-direction: row;
-  }
-  .title {
-   color: white;
-   font-weight: bold;
-   position: fixed;
-   font-size: 4.5vh;
-   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-  background-clip: text;
-  color: transparent;
-   left:10%;
-   top:0.5%;
-  }
-  .title:hover {
-    font-size: 5vh;
-  }
-    .header {
-    background-color: black;
-    width: 100%;
+    width: 7vh;
     height: 7vh;
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex: 123px;
-  }
-  .ham {
-    margin: 0.2vh 0;
-  }
-  .linie1 {
-    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    width: 6vh;
-    height: 1vh;
-    position: fixed;
-    border-radius: 10%;
-    margin:0.1vh 1vh;
-  }
-  .linie2 {
-    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    width: 4vh;
-    height: 1vh;
-    position: fixed;
-    border-radius: 10%;
-    margin:2.1vh 1vh;
-  }
-  .linie3 {
-    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    width: 3vh;
-    height: 1vh;
-    position: fixed;
-    border-radius: 10%;
-    margin:4.1vh 1vh;
-  }
-  .click {
-    width: 10vh;
-    height: 8vh;
-   position: fixed;
-    }
-    .content {
-    background-color: black;  
-    position: fixed;
-   width: 40%;
-   height: 40vh;
-   margin: 6vh 0vh ; 
-   transition:transform ease-in-out 0.5s ;
-  z-index: 100;
-   border-radius: 0% 0% 5% 0%;
-   cursor: pointer;
-    }
-  .textCo{
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    background-clip: text;
-     color: transparent;
-  }
-  a {
-    text-decoration: none;
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  ul { 
-    list-style: none;
-    font-size: 3vh;
-  }
-  .unten {
-    width: 100%;
-    height:  7%;
-    background-color: black;
-    position: fixed ;
-    bottom:0vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .imgHome {
-    width: 15vh;
-    height: 10vh;
-    position: sticky;
-  }
-  .Mitte {
-    text-align: center;
-    background: #cbcbcb69 ;
-    width: 90%;
-    height: 80%;
-    padding: 1vh;
-    border-radius: 4%;
-    z-index: -1;
-    margin: 7% 2%;
-    position: fixed;
-  }
-  .info1 {
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    background-clip: text;
-    color: transparent;
-    font-weight:bold ;
-    font-size: 4.5vh;
-  }
-  .img1 {
-    width: 5vh;
-    height: 5vh;
-    margin:0.5vh 20vh ;
-    position: fixed;
-  }
-  .img2 {
-    width: 5vh;
-    height: 5vh;
-    margin: 0.2vh -7vh;
-  }
-  .imageList {
-    background: rgba(0, 0, 0, 0.639);
-    width: 80%;
-    height: 84%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 4%;
-    margin:0 6% ;
-    position: sticky;
-  }
-  .btn1 {
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-    font-size: 4vh;
-    position: sticky;
-    padding: -1%;
-  }
-  button {
-   background: transparent;
-   border: none;
-  }
-  .imgI {
-   width: 67%;
-   height: 90%;
-   border-radius: 4%;
-   margin:3% 8% 0% 15%;
-   position: sticky;
-  }
-  .info {
-    background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
-    background-clip: text;
-    color: transparent;
-   font-weight: bold;
-   margin:1% 0%;
-   text-align: left;
-   font-size: 2.5vh;
-   padding: 0.5% 3% ;
-  }
-  .searchImg {
-    width: 10vh;
-    height: 10vh;
     position: sticky;
     }
-}
