@@ -86,13 +86,13 @@
     text-decoration: none;
     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
     background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+     color: transparent;
   }
   ul { 
     list-style: none;
     font-size: 3vh;
   }
+  
   .unten {
     width: 100%;
     height:  7%;
@@ -179,3 +179,30 @@
     height: 7vh;
     position: sticky;
     }
+.element {
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+   color: transparent;
+}
+.element:hover {
+  color: white;
+  text-decoration: underline white;
+}
+
+
+/**CSS Chat **/
+
+
+
+
+
+
+
+
+/**CSS Bildgalerie**/
+
+
+
+
+
+/**CSS Search**/
