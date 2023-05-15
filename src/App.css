@@ -110,18 +110,19 @@
     height: 75%;
     padding: 1vh;
     border-radius: 4%;
-    z-index: -1;
+    z-index: -100;
     left: 7%;
     right: 3%;
     top: 10%;
     position: fixed;
   }
   .info1 {
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
     background-clip: text;
     color: transparent;
     font-weight:bold ;
     font-size: 4.5vh;
+    z-index: -100;
   }
   .img1 {
     width: 5vh;
@@ -135,13 +136,14 @@
     margin: 0.2vh -7vh;
   }
   .imageList {
+    width: 89%;
+    height: 75%;
     background: rgba(0, 0, 0, 0.639);
-    width: 85%;
-    height: 80%;
     display: flex;
     flex-direction: column;
     border-radius: 4%;
-    margin:0 6% ;
+    top:6% ;
+    left:12% ;
     position: sticky;
   }
   .btn1 {
@@ -158,8 +160,8 @@
    z-index: -100;
   }
   .imgI {
-   width: 80%;
-   height: 90%;
+    width: 79%;
+    height: 85%;
    border-radius: 4%;
    margin:3% 10% 1% 9%;
    position: sticky;
@@ -185,7 +187,8 @@
 .element {
   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   background-clip: text;
-   color: transparent;
+  color: transparent;
+    
 }
 .element:hover {
   color: white;
