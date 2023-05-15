@@ -72,7 +72,9 @@ function Hamburger() {
 }
 const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz.jpeg'
 , './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria.jpeg', './Teufel.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
-'./Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg'];
+'./Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch.jpeg',
+'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
+'./Eli.jpeg', './EngFrau.jpeg', './FrauS.jpeg' , './BetenF.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const nextImage = () => {
@@ -144,7 +146,7 @@ return (
 //Chat
 function Chat() {
   return (
-      <div>
+      <div className='chat'>
           
       </div>
   )
@@ -164,7 +166,7 @@ function Bildgalerie() {
 //Search
 function Search(){
   return (
-      <div>
+      <div className='search'>
           
       </div>
   )
