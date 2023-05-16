@@ -109,25 +109,25 @@ return (
  <div className='unten'>
    <div>
    <Link to="/">
-    <div style={{ color: 'black'}}>
+    <div style={{ color: 'black'}} className='po'>
       <FaHome size={40} />
     </div>
     </Link>
    </div>
    <div>
    <Link to= "/Search">
-   <div style={{ color: 'black'  }}>
+   <div style={{ color: 'black'  }} className='po2'>
       <FaSearch size={38} />
     </div>
     </Link>
    </div>
-   <Link to="/bildgalerie" >
+   <Link to="/bildgalerie" className='po3'>
    <div style={{ color: 'black'}}>
       <FaImages size={40} />
     </div>
   </Link>
   <Link to= "/chat">
-    <div style={{ color: 'black'}}>
+    <div style={{ color: 'black'}} className='po1'>
       <FaComment size={35} />
     </div>
   </Link>
@@ -243,7 +243,7 @@ function InfoB() {
 function Comments() {
   return(
     <div className='comments'>
-      <FaComment size={40} style={{color:'white'}}/>
+      <FaComment size={45} style={{color:'white'}}/>
   </div>
   );
 }
@@ -259,7 +259,7 @@ function Likes() {
   }
    return (
      <div className='likes'>
-       <FaHeart size={40} style={buttonStyle} onMouseDown={handleButtonPress} 
+       <FaHeart size={45} style={buttonStyle} onMouseDown={handleButtonPress} 
        onTouchStart={handleButtonPress}
        onClick={ () => {
          setLikeNumber(like + 0);
@@ -272,12 +272,77 @@ function Likes() {
 }
 
 //Search
+const searchthings = [
+  {name:'Search', src:'/search', imgSRC:'#'},
+  {name:'Picture gallery', src:'/bildgalerie', imgSRC:'#'} , 
+  {name: 'Home', src:'/', imgSRC: '#'},
+  {name:'Chat' , src:'/', imgSRC:'#'},
+  {name:'Login', src:'/', imgSRC:'#'}
+]
 function Search(){
+  const [filterText, setFiltertext] = useState('');
+  const rows = [];
+
+  searchthings.forEach((search) => {
+    if (
+      search.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
+      return;
+    }
+    rows.push(
+      <div className='searchthings'>
+        <img src={search.imgSRC} className='Search'/>
+        <div className='name'>
+          {search.name}
+        </div>
+      </div>
+    )
+  });
+
   return (
       <div className='search'>
-          
-      </div>
-  )
+          <input type='text' value={filterText} placeholder='Search...'
+          onChange={(e) => setFiltertext(e.target.value)} 
+            className='input'
+          />
+       <div className='things'>
+         <div>
+           <img src={searchthings[0].imgSRC} className='Search'/>
+            <div className='name'>
+             {searchthings[0].name}
+            </div>
+          </div>
+          <div>
+           <img src={searchthings[1].imgSRC} className='Search'/>
+            <div className='name'>
+             {searchthings[1].name}
+            </div>
+          </div>
+          <div>
+           <img src={searchthings[2].imgSRC} className='Search'/>
+            <div className='name'>
+             {searchthings[2].name}
+            </div>
+          </div>
+          <div>
+           <img src={searchthings[3].imgSRC} className='Search'/>
+            <div className='name'>
+             {searchthings[3].name}
+            </div>
+          </div>
+          <div>
+           <img src={searchthings[4].imgSRC} className='Search'/>
+            <div className='name'>
+             {searchthings[4].name}
+            </div>
+          </div>
+
+
+         </div>
+        </div>
+  );
 }
 
 

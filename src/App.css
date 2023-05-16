@@ -194,10 +194,35 @@
   color: white;
   text-decoration: underline white;
 }
+.po {
+  margin: 1% 2%;
+ 
+}
+.po2{
+  margin: 6% 0%;
+}
+.po3{
+  margin: 0.5% 0%;
+ 
+}
+.po1 {
+  margin: 30% -78%;
+}
 
 
 /**CSS Chat **/
-
+.chat {
+  background-color: rgba(0, 0, 0, 0.744);
+  width: 80%;
+   height: 75%;
+   padding: 3vh 1vh;
+    border-radius: 4%;
+    z-index: -100;
+    left: 7%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+}
 
 
 
@@ -249,9 +274,39 @@
 .likeNumber {
   color: white;
   font-size: 4vh;
-  margin: 0% 20%;
+  margin: 0% 26%;
 
 }
 
 
 /**CSS Search**/ 
+.search {
+  background-color: rgba(0, 0, 0, 0.744);
+  width: 80%;
+   height: 75%;
+   padding: 3vh 1vh;
+    border-radius: 4%;
+    z-index: -100;
+    left: 7%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+}
+.name {
+  font-size: 6vh;
+  color: rgb(254, 254, 254);
+  font-weight: bold;
+}
+.input {
+  border: none;
+  background-color: transparent;
+  color: white;
+  width: 90%;
+  height: 5%;
+  font-size: 150%;
+}
+::placeholder {
+ color: white; 
+ font-size: 110%;
+
+}
