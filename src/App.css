@@ -206,9 +206,52 @@
 
 
 /**CSS Bildgalerie**/
+.bildgalerie {
+  background-color: rgba(0, 0, 0, 0.877);
+  width: 80%;
+    height: 75%;
+    padding: 1vh;
+    border-radius: 4%;
+    z-index: -100;
+    left: 7%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+    overflow-y: scroll;
+}
+.grid {
+ display: grid;
+ top: 10%;
+ grid-template-rows: repeat(7,0.1fr);
+ padding: 5%;
+}
+.imgG {
+   width: 87%;
+   max-height: 65%;
+   padding:0% 5% ;
+   border-radius: 14%;
+   text-align: center;
+   z-index: -1;
+}
+.icons1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: sticky;
+  margin: -32% 0%;
+}
+.like1 {
+ position: sticky;
+}
+.comment1 {
+  position: sticky;
+}
+.likeNumber {
+  color: white;
+  font-size: 4vh;
+  margin: 0% 20%;
+
+}
 
 
-
-
-
-/**CSS Search**/
+/**CSS Search**/ 

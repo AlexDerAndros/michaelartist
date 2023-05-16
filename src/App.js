@@ -6,10 +6,9 @@ import { FaHome } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {Link } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
 
 export default function App() {
-  const showHome = true;
-   
   return (
     <main>
     <Header/>
@@ -33,7 +32,7 @@ function Header() {
         </a>
       </div>
       <div className='foto2'>
-        <a href='https://www.instagram.com/michael.ntr/?igshid=YmMyMTA2M2Y%3D'>
+        <a href='https://www.instagram.com/michael.n.artist/?igshid=YmMyMTA2M2Y%3D'>
          <img className='img2' src='./instagram.jpeg'/>
         </a>
       </div>
@@ -74,7 +73,8 @@ const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage
 , './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria.jpeg', './Teufel.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
 './Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
-'./Eli.jpeg', './EngFrau.jpeg', './FrauS.jpeg' , './BetenF.jpeg'];
+'./Eli.jpeg', './EngFrau.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
+, './Indianer.jpeg', './Cello.jpeg', './Avatar.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const nextImage = () => {
@@ -157,11 +157,119 @@ function Chat() {
 function Bildgalerie() {
   return (
       <div className='bildgalerie'>
-          
+          <div className='grid'>
+            <img src={images[0]} className='imgG'/>
+            <InfoB/>
+            <img src={images[1]} className='imgG'/>
+            <InfoB/>
+            <img src={images[2]} className='imgG'/>
+            <InfoB/>
+            <img src={images[3]} className='imgG'/>
+            <InfoB/>
+            <img src={images[4]} className='imgG'/>
+            <InfoB/>
+            <img src={images[5]} className='imgG'/>
+            <InfoB/>
+            <img src={images[6]} className='imgG'/>
+            <InfoB/>
+            <img src={images[7]} className='imgG'/>
+            <InfoB/>
+            <img src={images[8]} className='imgG'/>
+            <InfoB/>
+            <img src={images[9]} className='imgG'/>
+            <InfoB/>
+            <img src={images[10]} className='imgG'/>
+            <InfoB/>
+            <img src={images[11]} className='imgG'/>
+            <InfoB/>
+            <img src={images[12]} className='imgG'/>
+            <InfoB/>
+            <img src={images[13]} className='imgG'/>
+            <InfoB/>
+            <img src={images[14]} className='imgG'/>
+            <InfoB/>
+            <img src={images[15]} className='imgG'/>
+            <InfoB/>
+            <img src={images[16]} className='imgG'/>
+            <InfoB/>
+            <img src={images[17]} className='imgG'/>
+            <InfoB/>
+            <img src={images[18]} className='imgG'/>
+            <InfoB/>
+            <img src={images[19]} className='imgG'/>
+            <InfoB/>
+            <img src={images[20]} className='imgG'/>
+            <InfoB/>
+            <img src={images[21]} className='imgG'/>
+            <InfoB/>
+            <img src={images[22]} className='imgG'/>
+            <InfoB/>
+            <img src={images[23]} className='imgG'/>
+            <InfoB/>
+            <img src={images[24]} className='imgG'/>
+            <InfoB/>
+            <img src={images[25]} className='imgG'/>
+            <InfoB/>
+            <img src={images[26]} className='imgG'/>
+            <InfoB/>
+            <img src={images[27]} className='imgG'/>
+            <InfoB/>
+            <img src={images[28]} className='imgG'/>
+            <InfoB/>
+            <img src={images[29]} className='imgG'/>
+            <InfoB/>
+            <img src={images[30]} className='imgG'/>
+            <InfoB/>
+            <img src={images[31]} className='imgG'/> 
+             <InfoB/>
+            <img src={images[32]} className='imgG'/>
+            <InfoB/>
+          </div>
       </div>
-  )
+  ) 
 }
-
+function InfoB() {
+  return ( 
+    <div className='icons1'>
+      <div className='like1'>
+        <Likes/>
+      </div>
+      <div className='comment1'>
+        <Comments/>
+      </div>
+    </div>
+  );
+}
+function Comments() {
+  return(
+    <div className='comments'>
+      <FaComment size={40} style={{color:'white'}}/>
+  </div>
+  );
+}
+function Likes() {
+  const [like,setLike] = useState(false);
+  const [likeNumber, setLikeNumber] = useState(0);
+  const handleButtonPress = () => {
+    setLike(true);
+  }
+  
+  const buttonStyle = {
+    color: like ? 'red' : 'white',
+  }
+   return (
+     <div className='likes'>
+       <FaHeart size={40} style={buttonStyle} onMouseDown={handleButtonPress} 
+       onTouchStart={handleButtonPress}
+       onClick={ () => {
+         setLikeNumber(like + 0);
+       }}/>
+       <div className='likeNumber'>
+        {likeNumber}
+       </div>
+      </div> 
+   )
+}
 
 //Search
 function Search(){
@@ -171,5 +279,6 @@ function Search(){
       </div>
   )
 }
-//hamburger menu in react?
+
+
 
