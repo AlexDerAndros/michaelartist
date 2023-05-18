@@ -7,6 +7,8 @@ import { FaSearch } from 'react-icons/fa';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
+import { FaPaperPlane } from "react-icons/fa";
+import { FaSignInAlt } from 'react-icons/fa';
 
 export default function App() {
   return (
@@ -131,11 +133,17 @@ return (
       <FaComment size={35} />
     </div>
   </Link>
+  <Link to= "/login">
+    <div style={{ color: 'black'}} className='po4'>
+      <FaSignInAlt size={35} />
+    </div>
+  </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
    <Route path="/Search" element={<Search/>}/>
    <Route path="/chat" element={<Chat/>}/>
+   <Route path="/login" element={<Login/>}/>
   </Routes>
  </div>
  </Router>
@@ -240,35 +248,74 @@ function InfoB() {
     </div>
   );
 }
+
 function Comments() {
-  return(
+  const [click, setClick] = useState(false);
+  const [com, setCom] = useState('');
+  const [comList, setComList] = useState([]);
+  let nextId = 0;
+
+  const press = () => {
+    setClick(!click);
+  };
+
+  return (
     <div className='comments'>
-      <FaComment size={45} style={{color:'white'}}/>
-  </div>
+      <FaComment className='ani' onClick={press} size={45} style={{color:'white'}}/>
+
+      {click && (
+        <div className='commentOpen'>
+          <input
+            type='text'
+            value={com}
+            onChange={(e) => setCom(e.target.value)}
+            placeholder='Write a comment'
+            className='input1'
+          />
+          <button
+            onClick={() => {
+              setComList([...comList, { id: nextId++, com: com }]);
+              setCom('');
+            }}
+          >
+           <FaPaperPlane size={30} className='send1'/>
+          </button>
+          <ul>
+            {comList.map(co => (
+              <li key={co.id}>
+                <div className='newCo'>{co.com}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
+
 function Likes() {
-  const [like,setLike] = useState(false);
+  const [like,setLike] = useState('white');
   const [likeNumber, setLikeNumber] = useState(0);
-  const handleButtonPress = () => {
-    setLike(true);
-  }
-  
-  const buttonStyle = {
-    color: like ? 'red' : 'white',
+  const handleClick = () => {
+    if (like === 'red') {
+      setLike('white');
+      setLikeNumber((prevScore) => prevScore - 1);
+    }
+    else {
+      setLike('red');
+      setLikeNumber((prevScore) => prevScore + 1)
+    }
   }
    return (
      <div className='likes'>
-       <FaHeart size={45} style={buttonStyle} onMouseDown={handleButtonPress} 
-       onTouchStart={handleButtonPress}
-       onClick={ () => {
-         setLikeNumber(like + 0);
-       }}/>
+     <button  onClick={handleClick}>
+        <FaHeart className='ani' size={45} style= {{ color: like}} />
+     </button>
        <div className='likeNumber'>
         {likeNumber}
        </div>
       </div> 
-   )
+   );
 }
 
 //Search
@@ -346,4 +393,56 @@ function Search(){
 }
 
 
+//Login und Sigup
+function Login() {
+ const handleUsernameChange = (e) => {
+   setUsername(e.target.value);
+ };
+ const handlePasswortChange = (e) => {
+   setPassword(e.target.value);
+ };
+ const handleLogin = () => {
+   if (username === username) {
+     alert("Login successful");
+   }
+   else {
+     alert("Login failed");
+   }
+ };
+  return (
+   <div className='login'>
+    <div className='head'>
+      Login
+    </div>
+    <input type="text" placeholder="Benutzername" value={username} onChange={handleUsernameChange} />
+      <input type="password" placeholder="Passwort" value={password} onChange={handlePasswordChange} />
+      <button onClick={handleLogin}>Anmelden</button>
+
+
+    <div className='importantI'>
+      Are you already login then 
+      <Link to="/login/signup">
+        <span className='sg'>
+         sign up .
+        </span>
+      </Link>
+    </div>
+    <Routes>
+      <Route path="/login/signup" element={<Sigup/>}/>
+    </Routes>
+   </div>
+  );
+
+}
+const [username, setUsername]= useState('');
+const [password, setPassword]= useState('');
+function Sigup() {
+
+  return (
+    <div className='signup'>
+
+    </div>
+  );
+
+}
 

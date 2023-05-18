@@ -195,18 +195,19 @@
   text-decoration: underline white;
 }
 .po {
-  margin: 1% 2%;
- 
+  position: sticky;
 }
 .po2{
-  margin: 6% 0%;
+  position: sticky;
 }
 .po3{
-  margin: 0.5% 0%;
- 
+  position: sticky;
 }
 .po1 {
-  margin: 30% -78%;
+  position: sticky;
+}
+.po4 {
+  position: sticky;
 }
 
 
@@ -277,8 +278,47 @@
   margin: 0% 26%;
 
 }
+.ani:hover {
+   transform: scale(1.3);
+}
+.commentOpen {
+  width: 82%;
+  height: 55%;
+  background-color: black;
+  z-index: 100;
+  margin: -84% -54%;
+  position: fixed;
+  overflow-y: scroll;
+ border-radius: 5%;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+}
+.input1 {
+ background-color: black;
+ color: white;
+ width: 50%;
+ height: 4%;
+ font-size: 150%;
+ position: fixed;
+ margin: 0% 6%;
+ border: rgb(74, 74, 74) 0.2vh solid;
+ border-radius: 5%;
+}
+.input1::placeholder {
+  font: 150%;
+}
+.send1 {
+  color: white;
+  margin: 1% 18%;
+  position: fixed;
+}
 
-
+.newCo {
+  padding:87% 0%;
+  margin: 3%;
+  color: white;
+}
 /**CSS Search**/ 
 .search {
   background-color: rgba(0, 0, 0, 0.744);
@@ -305,8 +345,35 @@
   height: 5%;
   font-size: 150%;
 }
-::placeholder {
+.input::placeholder {
  color: white; 
  font-size: 110%;
 
+}
+
+
+/** Login und Signup**/
+.login {
+   background-color: rgba(0, 0, 0, 0.744);
+   width: 80%;
+   height: 75%;
+   padding: 3vh 1vh;
+    border-radius: 4%;
+    z-index: -100;
+    left: 7%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+}
+.signup {
+  background-color: rgba(0, 0, 0, 0.744);
+  width: 80%;
+  height: 75%;
+  padding: 3vh 1vh;
+   border-radius: 4%;
+   z-index: -100;
+   left: 7%;
+   right: 3%;
+   top: 10%;
+   position: fixed;
 }
