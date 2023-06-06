@@ -394,7 +394,10 @@ function Search(){
 
 
 //Login und Sigup
+
 function Login() {
+  const [username, setUsername]= useState('');
+const [password, setPassword]= useState('');
  const handleUsernameChange = (e) => {
    setUsername(e.target.value);
  };
@@ -402,7 +405,7 @@ function Login() {
    setPassword(e.target.value);
  };
  const handleLogin = () => {
-   if (username === username) {
+   if (username === 'admin') {
      alert("Login successful");
    }
    else {
@@ -414,17 +417,21 @@ function Login() {
     <div className='head'>
       Login
     </div>
-    <input type="text" placeholder="Benutzername" value={username} onChange={handleUsernameChange} />
-      <input type="password" placeholder="Passwort" value={password} onChange={handlePasswordChange} />
-      <button onClick={handleLogin}>Anmelden</button>
+      <input id='us' type="text" placeholder="Username..." value={username} onChange={handleUsernameChange} />
+      <br/>
+      <input id='pa' type="password" placeholder="Password..." value={password} onChange={handlePasswortChange} />
+      <br/>
+      <br/>
+      <br/>
+      <button className='logBtn' onClick={handleLogin}>Login</button>
 
-
+ <br/>
+ <br/>
     <div className='importantI'>
-      Are you already login then 
+    <br/>
+      Are not you already login then
       <Link to="/login/signup">
-        <span className='sg'>
-         sign up .
-        </span>
+        <span className='sg'> sign up .</span>
       </Link>
     </div>
     <Routes>
@@ -434,13 +441,13 @@ function Login() {
   );
 
 }
-const [username, setUsername]= useState('');
-const [password, setPassword]= useState('');
-function Sigup() {
 
+function Sigup() {
+  const [username, setUsername]= useState('');
+  const [password, setPassword]= useState('');
   return (
     <div className='signup'>
-
+     <h1 style={{color:'red', fontSize:'300vh'}}> shhhh</h1>
     </div>
   );
 
