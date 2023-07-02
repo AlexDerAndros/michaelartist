@@ -25,7 +25,7 @@ function Header() {
   return (
    <div className='header'>
      <Hamburger/>
-      <div className='title' >
+      <div className='title' > 
       Artist Michael Ntrikos
       </div>
       <div className='foto1'>
@@ -320,78 +320,67 @@ function Likes() {
 
 //Search
 const searchthings = [
-  {name:'Search', src:'/search', imgSRC:'#'},
-  {name:'Picture gallery', src:'/bildgalerie', imgSRC:'#'} , 
-  {name: 'Home', src:'/', imgSRC: '#'},
-  {name:'Chat' , src:'/', imgSRC:'#'},
-  {name:'Login', src:'/', imgSRC:'#'}
-]
-function Search(){
+  {name:'Search', src:'/search', imgSRC:'#', cat:'Name'},
+  {name:'Picture gallery', src:'/bildgalerie', imgSRC:'#', cat:'Name'} , 
+  {name: 'Home', src:'/', imgSRC: '#', cat:'Name'},
+  {name:'Chat' , src:'/chat', imgSRC:'#' , cat:'Name'},
+  {name:'Login', src:'/login', imgSRC:'#', cat:'Name'}
+];
+function Search() {
   const [filterText, setFiltertext] = useState('');
   const rows = [];
-
-  searchthings.forEach((search) => {
+  let lastCategory = null ;
+  searchthings.forEach ((sear) => {
     if (
-      search.name.toLowerCase().indexOf(
+      sear.name.toLowerCase().indexOf(
         filterText.toLowerCase()
       ) === -1
     ) {
       return;
-    }
+  }
+   if (sear.cat !== lastCategory) {
     rows.push(
-      <div className='searchthings'>
-        <img src={search.imgSRC} className='Search'/>
+      <tr>
+      <th className='searchthings'>
+        <img src={sear.imgSRC} className='Search'/>
         <div className='name'>
-          {search.name}
+          {sear.name}
         </div>
-      </div>
-    )
+      </th>
+      </tr>
+    );
+    lastCategory = sear.cat ;
+   };
   });
 
   return (
       <div className='search'>
+       <form>
           <input type='text' value={filterText} placeholder='Search...'
           onChange={(e) => setFiltertext(e.target.value)} 
             className='input'
           />
-       <div className='things'>
-         <div>
-           <img src={searchthings[0].imgSRC} className='Search'/>
-            <div className='name'>
-             {searchthings[0].name}
-            </div>
-          </div>
-          <div>
-           <img src={searchthings[1].imgSRC} className='Search'/>
-            <div className='name'>
-             {searchthings[1].name}
-            </div>
-          </div>
-          <div>
-           <img src={searchthings[2].imgSRC} className='Search'/>
-            <div className='name'>
-             {searchthings[2].name}
-            </div>
-          </div>
-          <div>
-           <img src={searchthings[3].imgSRC} className='Search'/>
-            <div className='name'>
-             {searchthings[3].name}
-            </div>
-          </div>
-          <div>
-           <img src={searchthings[4].imgSRC} className='Search'/>
-            <div className='name'>
-             {searchthings[4].name}
-            </div>
-          </div>
-
-
-         </div>
-        </div>
+        </form>
+          <SearchTable rows={rows}/>
+       </div>
   );
 }
 
+
+function SearchTable() {
+  return (
+   <div className='searchthings'>
+        <div className='name'>
+          {searchthings[0].name}
+        </div>
+        <div className='searchthings'>
+         <div className='name'>
+          {searchthings[1].name}
+         </div>
+        </div> 
+    </div>
+  );
+}
 
 //Login und Sigup
 
@@ -423,7 +412,11 @@ const [password, setPassword]= useState('');
       <br/>
       <br/>
       <br/>
-      <button className='logBtn' onClick={handleLogin}>Login</button>
+      <button className='logBtn' onClick={handleLogin}>
+      <p className="AniB">
+        Login
+      </p>
+      </button>
 
  <br/>
  <br/>
@@ -435,19 +428,19 @@ const [password, setPassword]= useState('');
       </Link>
     </div>
     <Routes>
-      <Route path="/login/signup" element={<Sigup/>}/>
+      <Route path="/login/signup" element={<Signup/>}/>
     </Routes>
    </div>
   );
 
 }
 
-function Sigup() {
+function Signup() {
   const [username, setUsername]= useState('');
   const [password, setPassword]= useState('');
   return (
     <div className='signup'>
-     <h1 style={{color:'red', fontSize:'300vh'}}> shhhh</h1>
+     <h1 style={{color:'red', fontSize:'300vh'}}> </h1>
     </div>
   );
 
