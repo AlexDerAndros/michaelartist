@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -6,9 +7,10 @@
     height:100%;
     zoom:75%;
     position: fixed;
-   font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
    display: flex;
    justify-content: space-between;
+   font-family: 'Dancing Script',
+   cursive, 'Roboto', sans-serif;
   }
   .title {
    color: white;
@@ -20,6 +22,7 @@
   color: transparent;
    left:10%;
    top:0.5%;
+   cursor: pointer;
   }
   .title:hover {
     font-size: 5vh;
@@ -153,6 +156,7 @@
     font-weight: bold;
     font-size: 4.5vh;
     position: sticky;
+    font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
   }
   button {
    background: transparent;
@@ -160,10 +164,10 @@
    z-index: -100;
   }
   .imgI {
-    width: 79%;
+    width: 70%;
     height: 85%;
    border-radius: 4%;
-   margin:3% 10% 1% 9%;
+   margin:3% 10% 1% 16%;
    position: sticky;
    z-index: -100;
   }
@@ -275,12 +279,13 @@
 .likeNumber {
   color: white;
   font-size: 4vh;
-  margin: 0% 26%;
+  margin: 0% 33%;
 
 }
 .ani:hover {
    transform: scale(1.3);
 }
+
 .commentOpen {
   width: 82%;
   height: 55%;
@@ -364,6 +369,7 @@
     right: 3%;
     top: 10%;
     position: fixed;
+    font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
 }
 .signup {
   background-color: rgba(0, 0, 0, 0.744);
@@ -397,6 +403,8 @@
   height: 5%;
   font-size:195%;
   margin: 5%;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+
 }
 #pa {
   background: transparent ;
@@ -409,13 +417,21 @@
   height: 5%;
   font-size:195%;
   margin: 0% 5%;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+
 }
 #us::placeholder {
   color: white;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+
 }
 #pa::placeholder {
   color: white;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+
 }
+
+
 
 
 
@@ -432,14 +448,81 @@ color: white;
 .sg:hover {
   text-decoration: underline;
 }
-.logBtn {
-color: white;
-margin:0% 5%;
-font-size: 180%;
-font-weight: bolder;
-background:black ;
-border-width: 10px;
-  border-image: linear-gradient(to right, #ff0000, #00ff00); /* Farbverlauf definieren */
-  border-image-slice: 1;
+p {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  box-shadow:inset 0 0 0 1px #f96767;
+  color: #ffffff;
+  font-weight: bolder;
+  margin: -5% 4%;
+  padding: -100% 0%;
+ font-size: 250%;
+ width: 30%;
+ height: 7%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.AniB {
+  overflow: hidden;
+  position: absolute;
+  
+}
+.AniB::before, .AniB::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+.AniB::before {
+  top: 0;
+  left: 0;
+  border-top-color: #60daaa;
+  border-right-color: #60daaa;
+  animation: border 2s infinite;
+}
+.AniB::after {
+  bottom: 0;
+  right: 0;
+  animation: border 2s 1s infinite, borderColor 2s 1s infinite;
+}
 
+@keyframes border {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+  }
+  50% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes borderColor {
+  0% {
+    border-bottom-color: #60daaa;
+    border-left-color: #60daaa;
+  }
+  50% {
+    border-bottom-color: #60daaa;
+    border-left-color: #60daaa;
+  }
+  51% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  100% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
 }
