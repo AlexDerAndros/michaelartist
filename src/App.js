@@ -9,6 +9,10 @@ import {Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { FaPaperPlane } from "react-icons/fa";
 import { FaSignInAlt } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faVideo } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function App() {
   return (
@@ -138,12 +142,20 @@ return (
       <FaSignInAlt size={35} />
     </div>
   </Link>
+  <Link to='/PictureShop'>
+    <FontAwesomeIcon icon={faShoppingCart} style={{ color: 'black', width:'90%', height:'75%'}} />
+  </Link>
+  <Link to='/Videogalerie'>
+  <FontAwesomeIcon icon={faVideo} style={{ color: 'black', width:'90%', height:'75%' }} />
+  </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
    <Route path="/Search" element={<Search/>}/>
    <Route path="/chat" element={<Chat/>}/>
    <Route path="/login" element={<Login/>}/>
+   <Route path='/PictureShop' element={<PictureShop/>}/>
+   <Route path='/Videogalerie' element={<Videogalerie/>}/>
   </Routes>
  </div>
  </Router>
@@ -446,3 +458,25 @@ function Signup() {
 
 }
 
+//Videogalerie
+
+const Videogalerie = () => {
+
+  return (
+    <div className='videogalerie'>
+      <video controls className='video'>
+      <source src="/C4EF135C-1DD4-469C-81D3-448FBB715860.mp4" type="video/mp4"/>
+     </video>
+    </div>
+  );
+}
+
+//Picture shop
+
+const PictureShop = () => {
+  return (
+    <div className='pictureShop'>
+      
+    </div>
+  );
+} 
