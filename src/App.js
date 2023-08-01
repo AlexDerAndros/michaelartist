@@ -143,10 +143,10 @@ return (
     </div>
   </Link>
   <Link to='/PictureShop'>
-    <FontAwesomeIcon icon={faShoppingCart} style={{ color: 'black', width:'90%', height:'75%'}} />
+    <FontAwesomeIcon icon={faShoppingCart} style={{ color: 'black', width:'90%', height:'75%', position: 'sticky'}} />
   </Link>
   <Link to='/Videogalerie'>
-  <FontAwesomeIcon icon={faVideo} style={{ color: 'black', width:'90%', height:'75%' }} />
+  <FontAwesomeIcon icon={faVideo} style={{ color: 'black', width:'90%', height:'75%', position:'sticky' }} />
   </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
@@ -466,6 +466,9 @@ const Videogalerie = () => {
     <div className='videogalerie'>
       <video controls className='video'>
       <source src="/C4EF135C-1DD4-469C-81D3-448FBB715860.mp4" type="video/mp4"/>
+     </video>
+     <video controls className='video'>
+      <source src="/A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4" type="video/mp4"/>
      </video>
     </div>
   );
