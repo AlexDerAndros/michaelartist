@@ -80,7 +80,10 @@ const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage
 './Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
 './Eli.jpeg', './EngFrau.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
-, './Indianer.jpeg', './Cello.jpeg', './Avatar.jpeg'];
+, './Indianer.jpeg', './Cello.jpeg', './Avatar.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
+'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen.jpeg', './Pferd.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF.jpeg',
+ './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
+'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const nextImage = () => {
@@ -115,38 +118,38 @@ return (
  <div className='unten'>
    <div>
    <Link to="/">
-    <div style={{ color: 'black'}} className='po'>
+    <div style={{ color: 'white'}} className='po'>
       <FaHome size={40} />
     </div>
     </Link>
    </div>
    <div>
    <Link to= "/Search">
-   <div style={{ color: 'black'  }} className='po2'>
+   <div style={{ color: 'white'  }} className='po2'>
       <FaSearch size={38} />
     </div>
     </Link>
    </div>
    <Link to="/bildgalerie" className='po3'>
-   <div style={{ color: 'black'}}>
+   <div style={{ color: 'white'}}>
       <FaImages size={40} />
     </div>
   </Link>
   <Link to= "/chat">
-    <div style={{ color: 'black'}} className='po1'>
+    <div style={{ color: 'white'}} className='po1'>
       <FaComment size={35} />
     </div>
   </Link>
   <Link to= "/login">
-    <div style={{ color: 'black'}} className='po4'>
+    <div style={{ color: 'white'}} className='po4'>
       <FaSignInAlt size={35} />
     </div>
   </Link>
   <Link to='/PictureShop'>
-    <FontAwesomeIcon icon={faShoppingCart} style={{ color: 'black', width:'90%', height:'75%', position: 'sticky'}} />
+    <FontAwesomeIcon icon={faShoppingCart} className='shPi'  />
   </Link>
   <Link to='/Videogalerie'>
-  <FontAwesomeIcon icon={faVideo} style={{ color: 'black', width:'90%', height:'75%', position:'sticky' }} />
+  <FontAwesomeIcon icon={faVideo}  className='shPi'/>
   </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
@@ -244,6 +247,52 @@ function Bildgalerie() {
              <InfoB/>
             <img src={images[32]} className='imgG'/>
             <InfoB/>
+            <img src={images[33]} className='imgG'/>
+            <InfoB/>
+            <img src={images[34]} className='imgG'/>
+            <InfoB/>
+            <img src={images[35]} className='imgG'/>
+            <InfoB/>
+            <img src={images[36]} className='imgG'/>
+            <InfoB/>
+            <img src={images[37]} className='imgG'/>
+            <InfoB/>
+            <img src={images[38]} className='imgG'/>
+            <InfoB/>
+            <img src={images[39]} className='imgG'/>
+            <InfoB/>
+            <img src={images[40]} className='imgG'/>
+            <InfoB/>
+            <img src={images[41]} className='imgG'/>
+            <InfoB/>
+            <img src={images[42]} className='imgG'/>
+            <InfoB/>
+            <img src={images[43]} className='imgG'/>
+            <InfoB/>
+            <img src={images[44]} className='imgG'/>
+            <InfoB/>
+            <img src={images[45]} className='imgG'/>
+            <InfoB/>
+            <img src={images[46]} className='imgG'/>
+            <InfoB/>
+            <img src={images[47]} className='imgG'/>
+            <InfoB/>
+            <img src={images[48]} className='imgG'/>
+            <InfoB/>
+            <img src={images[49]} className='imgG'/>
+            <InfoB/>
+            <img src={images[50]} className='imgG'/>
+            <InfoB/>
+            <img src={images[51]} className='imgG'/>
+            <InfoB/>
+            <img src={images[52]} className='imgG'/>
+            <InfoB/>
+            <img src={images[53]} className='imgG'/>
+            <InfoB/>
+            <img src={images[54]} className='imgG'/>
+            <InfoB/>
+            <img src={images[55]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   ) 
@@ -254,9 +303,7 @@ function InfoB() {
       <div className='like1'>
         <Likes/>
       </div>
-      <div className='comment1'>
-        <Comments/>
-      </div>
+      
     </div>
   );
 }
@@ -331,68 +378,125 @@ function Likes() {
 }
 
 //Search
-const searchthings = [
-  {name:'Search', src:'/search', imgSRC:'#', cat:'Name'},
-  {name:'Picture gallery', src:'/bildgalerie', imgSRC:'#', cat:'Name'} , 
-  {name: 'Home', src:'/', imgSRC: '#', cat:'Name'},
-  {name:'Chat' , src:'/chat', imgSRC:'#' , cat:'Name'},
-  {name:'Login', src:'/login', imgSRC:'#', cat:'Name'}
-];
-function Search() {
-  const [filterText, setFiltertext] = useState('');
+function FilterableProductTable({ products }) {
+  const [filterText, setFilterText] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
+
+  return (
+    <div>
+      <SearchBar 
+        filterText={filterText} 
+        inStockOnly={inStockOnly} />
+      <ProductTable 
+        products={products}
+        filterText={filterText}
+        inStockOnly={inStockOnly} />
+    </div>
+  );
+}
+
+function ProductCategoryRow({ category }) {
+  return (
+    <tr>
+      <th colSpan="2">
+        {category}
+      </th>
+    </tr>
+  );
+}
+
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
+
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
+  );
+}
+
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
-  let lastCategory = null ;
-  searchthings.forEach ((sear) => {
+  let lastCategory = null;
+
+  products.forEach((product) => {
     if (
-      sear.name.toLowerCase().indexOf(
+      product.name.toLowerCase().indexOf(
         filterText.toLowerCase()
       ) === -1
     ) {
       return;
-  }
-   if (sear.cat !== lastCategory) {
+    }
+    if (inStockOnly && !product.stocked) {
+      return;
+    }
+    if (product.category !== lastCategory) {
+      rows.push(
+        <ProductCategoryRow
+          category={product.category}
+          key={product.category} />
+      );
+    }
     rows.push(
-      <tr>
-      <th className='searchthings'>
-        <img src={sear.imgSRC} className='Search'/>
-        <div className='name'>
-          {sear.name}
-        </div>
-      </th>
-      </tr>
+      <ProductRow
+        product={product}
+        key={product.name} />
     );
-    lastCategory = sear.cat ;
-   };
+    lastCategory = product.category;
   });
 
   return (
-      <div className='search'>
-       <form>
-          <input type='text' value={filterText} placeholder='Search...'
-          onChange={(e) => setFiltertext(e.target.value)} 
-            className='input'
-          />
-        </form>
-          <SearchTable rows={rows}/>
-       </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
   );
 }
 
-
-function SearchTable() {
+function SearchBar({ filterText, inStockOnly }) {
   return (
-   <div className='searchthings'>
-        <div className='name'>
-          {searchthings[0].name}
-        </div>
-        <div className='searchthings'>
-         <div className='name'>
-          {searchthings[1].name}
-         </div>
-        </div> 
+    <form>
+      <input 
+        type="text" 
+        value={filterText} 
+        placeholder="Search..."/>
+      <label>
+        <input 
+          type="checkbox" 
+          checked={inStockOnly} />
+        {' '}
+        Only show products in stock
+      </label>
+    </form>
+  );
+}
+
+const PRODUCTS = [
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+];
+
+ function Search() {
+  return (
+    <div className='search'>
+      <FilterableProductTable products={PRODUCTS}/>
     </div>
   );
 }
+
 
 //Login und Sigup
 
@@ -459,7 +563,30 @@ function Signup() {
 }
 
 //Videogalerie
-
+function Likes1() {
+  const [like,setLike] = useState('white');
+  const [likeNumber, setLikeNumber] = useState(0);
+  const handleClick = () => {
+    if (like === 'red') {
+      setLike('white');
+      setLikeNumber((prevScore) => prevScore - 1);
+    }
+    else {
+      setLike('red');
+      setLikeNumber((prevScore) => prevScore + 1)
+    }
+  }
+   return (
+     <div className='likes'>
+     <button  onClick={handleClick}>
+        <FaHeart className='ani1' size={45} style= {{ color: like}} />
+     </button>
+       <div className='likeNumber1'>
+        {likeNumber}
+       </div>
+      </div> 
+   );
+}
 const Videogalerie = () => {
 
   return (
@@ -467,9 +594,23 @@ const Videogalerie = () => {
       <video controls className='video'>
       <source src="/C4EF135C-1DD4-469C-81D3-448FBB715860.mp4" type="video/mp4"/>
      </video>
+     <Likes1/>
      <video controls className='video'>
       <source src="/A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4" type="video/mp4"/>
      </video>
+     <Likes1/>
+     <video controls className='video'>
+      <source src='/64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4' type='video/mp4'/>
+     </video>
+     <Likes1/>
+     <video controls className='video'>
+      <source src='/31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4' type='video/mp4'/>
+     </video>
+     <Likes1/>
+     <video controls className='video'>
+      <source src='/3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4' type='video/mp4'/>
+     </video>
+     <Likes1/>
     </div>
   );
 }

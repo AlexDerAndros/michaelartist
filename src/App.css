@@ -44,6 +44,12 @@
     justify-content: space-between;
     
   }
+  .shPi {
+    color: white;
+    width:90%;
+    height:75%;
+    position: sticky;
+  }
   .ham {
     margin: 0.2vh 0;
     z-index: 999;
@@ -343,6 +349,7 @@
     right: 3%;
     top: 10%;
     position: fixed;
+    color: white;
 }
 .name {
   font-size: 6vh;
@@ -567,7 +574,13 @@ p {
     overflow-y: scroll;
 }
 .video {
-   width: 90%;
+   width: 80%;
    height: 90%;
    border-radius: 5%;
+   margin: 10% 5% ;
+}
+.likeNumber1 {
+  color: white;
+  font-size: 3vh;
+  margin: 0 5%;
 }
