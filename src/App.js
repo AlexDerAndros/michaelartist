@@ -145,15 +145,15 @@ return (
       <FaSignInAlt size={35} />
     </div>
   </Link>
-  <Link to='/PictureShop'>
-   <div className='shPi'>
-    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
-    </div>
-  </Link>
   <Link to='/Videogalerie'>
    <div className='shPi'>
     <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
    </div>
+  </Link>
+  <Link to='/PictureShop'>
+   <div className='shPi'>
+    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
+    </div>
   </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
