@@ -226,7 +226,9 @@
 .po4 {
   position: sticky;
 }
-
+.shPi {
+  position: sticky;
+}
 
 /**CSS Chat **/
 .chat {
