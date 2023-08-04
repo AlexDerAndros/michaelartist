@@ -557,7 +557,17 @@ p {
     position: fixed;
     overflow-y: scroll;
 }
-
+.video {
+  width: 80%;
+  height: 90%;
+  border-radius: 5%;
+  margin: 10% 5% ;
+}
+.likeNumber1 {
+ color: white;
+ font-size: 3vh;
+ margin: 0 5%;
+}
 
 
 /**Picture shop**/
@@ -575,14 +585,15 @@ p {
     position: fixed;
     overflow-y: scroll;
 }
-.video {
-   width: 80%;
-   height: 90%;
-   border-radius: 5%;
-   margin: 10% 5% ;
-}
-.likeNumber1 {
+.headPS {
+  /**background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+  font-size: 1000vh;
+  background-color: red;
+  position: fixed;
+  z-index: 100;
+  width: 10000vh;
+  height: 10000vh;**/
   color: white;
-  font-size: 3vh;
-  margin: 0 5%;
 }
