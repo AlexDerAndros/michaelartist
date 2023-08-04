@@ -146,10 +146,14 @@ return (
     </div>
   </Link>
   <Link to='/PictureShop'>
-    <FontAwesomeIcon icon={faShoppingCart} className='shPi'  />
+   <div className='shPi'>
+    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white', width:'60%', height:'65%'}} />
+    </div>
   </Link>
   <Link to='/Videogalerie'>
-  <FontAwesomeIcon icon={faVideo}  className='shPi'/>
+   <div className='shPi'>
+    <FontAwesomeIcon icon={faVideo} style={{color:'white', width:'60%', height:'65%'}} />
+   </div>
   </Link>
     <Routes>
     <Route path="/" element={<Home/>}/>
@@ -386,9 +390,11 @@ function FilterableProductTable({ products }) {
     <div>
       <SearchBar 
         filterText={filterText} 
-        inStockOnly={inStockOnly} />
+        inStockOnly={inStockOnly} 
+        onFilterTextChange={setFilterText} 
+        onInStockOnlyChange={setInStockOnly} />
       <ProductTable 
-        products={products}
+        products={products} 
         filterText={filterText}
         inStockOnly={inStockOnly} />
     </div>
@@ -406,15 +412,12 @@ function ProductCategoryRow({ category }) {
 }
 
 function ProductRow({ product }) {
-  const name = product.stocked ? product.name :
-    <span style={{ color: 'red' }}>
-      {product.name}
-    </span>;
+  const name = product.name;
+ 
 
   return (
     <tr>
       <td>{name}</td>
-      <td>{product.price}</td>
     </tr>
   );
 }
@@ -453,8 +456,9 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>
+            Themes on the website
+          </th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -462,28 +466,27 @@ function ProductTable({ products, filterText, inStockOnly }) {
   );
 }
 
-function SearchBar({ filterText, inStockOnly }) {
+function SearchBar({
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange
+}) {
   return (
     <form>
       <input 
         type="text" 
-        value={filterText} 
-        placeholder="Search..."/>
-      <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} />
-        {' '}
-        Only show products in stock
-      </label>
+        value={filterText} placeholder="Search..." 
+        onChange={(e) => onFilterTextChange(e.target.value)} />
     </form>
   );
 }
-
+//<label>
+ //<input type="checkbox" checked={inStockOnly} onChange={(e) => onInStockOnlyChange(e.target.checked)} />{' '}Only show products in stock</label>
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Main", name: "Home", component:'<Home/>'},
+  {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
+  {category: "Main",  name: "Chat", component:'<Chat/>' },
   {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
   {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
   {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
