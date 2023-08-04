@@ -147,12 +147,12 @@ return (
   </Link>
   <Link to='/PictureShop'>
    <div className='shPi'>
-    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white', width:'60%', height:'65%'}} />
+    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
     </div>
   </Link>
   <Link to='/Videogalerie'>
    <div className='shPi'>
-    <FontAwesomeIcon icon={faVideo} style={{color:'white', width:'60%', height:'65%'}} />
+    <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
    </div>
   </Link>
     <Routes>
@@ -623,7 +623,9 @@ const Videogalerie = () => {
 const PictureShop = () => {
   return (
     <div className='pictureShop'>
-      
+      <div className='headPS'>
+        Picture shop
+      </div>
     </div>
   );
 } 
