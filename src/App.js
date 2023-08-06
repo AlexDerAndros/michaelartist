@@ -1,5 +1,7 @@
 import {useState} from 'react';
+import { useReducer } from 'react';
 import './App.css';
+import ReactGA from 'react-ga';
 import { FaImages } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
@@ -98,6 +100,10 @@ function ImageList (){
   );
 }
 function Home() {
+  ReactGA.initialize('YOUR_TRACKING_ID');
+  ReactGA.pageview(window.location.pathname);
+  
+
  return (
 <div className='Mitte'>
  <div className='info1'> 
@@ -109,6 +115,7 @@ function Home() {
 I made this website for you.
 </div>
 <ImageList/>
+
   </div>
  );
 }
@@ -171,15 +178,163 @@ return (
 
 
 //Chat
-function Chat() {
+
+function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask
+}) {
+  const [task, setTask] = useState([]);
   return (
-      <div className='chat'>
-          
-      </div>
-  )
+    <ul className='list'>
+      {tasks.map(task => (
+        <li key={task.id}>
+          <Task
+            task={task}
+            onChange={onChangeTask}
+            onDelete={onDeleteTask}
+          />
+        </li>
+      ))}
+    </ul>
+  );
 }
 
+function Task({ task, onChange, onDelete }) {
+  const [isEditing, setIsEditing] = useState(false);
+  let taskContent;
+  if (isEditing) {
+    taskContent = (
+      <>
+        <input
+          value={task.text}
+          onChange={e => {
+            onChange({
+              ...task,
+              text: e.target.value
+            });
+          }} />
+          <br/>
+        <button onClick={() => setIsEditing(false)} className='btnS'>
+          Save
+        </button>
+      </>
+    );
+  } else {
+    taskContent = (
+      <>
+      <br/>
+        {task.text}
+        <button onClick={() => setIsEditing(true)} className='btnE'>
+          Edit
+        </button>
+      </>
+    );
+  }
+  return (
+    <label>
+      {taskContent}
+      <button onClick={() => onDelete(task.id)} className='btnD'>
+        Delete
+      </button>
+    </label>
+  );
+}
 
+//Main
+function Chat() {
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
+
+  function handleAddTask(text) {
+    dispatch({
+      type: 'added',
+      id: nextId++,
+      text: text,
+    });
+  }
+ 
+  function handleChangeTask(task) {
+    dispatch({
+      type: 'changed',
+      task: task
+    });
+  }
+
+  function handleDeleteTask(taskId) {
+    dispatch({
+      type: 'deleted',
+      id: taskId
+    });
+  }
+
+  return (
+    <div className='chat'>
+     
+      <TaskList
+        tasks={tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
+      />
+      <AddTask
+        onAddTask={handleAddTask}
+      />
+    </div>
+  );
+}
+
+function tasksReducer(tasks, action) {
+  switch (action.type) {
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
+    }
+    case 'changed': {
+      return tasks.map(t => {
+        if (t.id === action.task.id) {
+          return action.task;
+        } else {
+          return t;
+        }
+      });
+    }
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
+    }
+    default: {
+      throw Error('Unknown action: ' + action.type);
+    }
+  }
+}
+
+let nextId = 0;
+const initialTasks = [
+  
+];
+function AddTask({ onAddTask }) {
+  const [text, setText] = useState('');
+  return (
+    <>
+      <input
+        placeholder="Write a message..."
+        value={text}
+        onChange={e => setText(e.target.value)}
+        className='inputCH'
+      />
+      <button onClick={() => {
+        setText('');
+        onAddTask(text);
+      }}>
+       <FaPaperPlane size={25} className='send2'/>
+      </button>
+    </>
+  )
+}
 //Bildgalerie
 function Bildgalerie() {
   return (
@@ -477,7 +632,7 @@ function SearchBar({
       <input 
         type="text" 
         value={filterText} placeholder="Search..." 
-        onChange={(e) => onFilterTextChange(e.target.value)} />
+        onChange={(e) => onFilterTextChange(e.target.value)} className='input' />
     </form>
   );
 }
@@ -594,7 +749,7 @@ const Videogalerie = () => {
 
   return (
     <div className='videogalerie'>
-      <video controls className='video'>
+      <video  controls className='video'>
       <source src="/C4EF135C-1DD4-469C-81D3-448FBB715860.mp4" type="video/mp4"/>
      </video>
      <Likes1/>
@@ -602,11 +757,11 @@ const Videogalerie = () => {
       <source src="/A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4" type="video/mp4"/>
      </video>
      <Likes1/>
-     <video controls className='video'>
+     <video  controls className='video'>
       <source src='/64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4' type='video/mp4'/>
      </video>
      <Likes1/>
-     <video controls className='video'>
+     <video  controls className='video'>
       <source src='/31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4' type='video/mp4'/>
      </video>
      <Likes1/>

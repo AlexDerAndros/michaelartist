@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@media only screen and (max-width: 2800px) {
+ 
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -153,13 +155,12 @@
   }
   .imageList {
     width: 89%;
-    height: 75%;
+    height: 74%;
     background: rgba(0, 0, 0, 0.639);
     display: flex;
     flex-direction: column;
     border-radius: 4%;
-    top:6% ;
-    left:12% ;
+    margin: -2% 5%;
     position: sticky;
   }
   .btn1 {
@@ -170,6 +171,7 @@
     font-size: 4.5vh;
     position: sticky;
     font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+    margin: -1.5% 0;
   }
   button {
    background: transparent;
@@ -242,10 +244,55 @@
     right: 3%;
     top: 10%;
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
 }
+.send2 {
+  color: white;
+  position: fixed;
+  margin: -5% 33%;
+}
+.inputCH {
+  border: none;
+  background-color: transparent;
+  color: white;
+  width: 70%;
+  height: 4%;
+  font-size: 120%;
+  position: fixed;
+  margin:  0% 1% ;
+}
+.inputCH::placeholder {
+ color: white; 
+ font-size: 100%;
 
+}
+.btnD {
+  color: white;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
 
+}
+.btnE {
+  color: white;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
 
+}
+.btnS {
+  color: white;
+  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start ;
+  overflow-y: scroll;
+  height: 100%;
+  margin: 7% 0%;
+  gap: -7% 0%;
+}
 
 
 
@@ -363,12 +410,12 @@
   background-color: transparent;
   color: white;
   width: 90%;
-  height: 5%;
-  font-size: 150%;
+  height: 3%;
+  font-size: 120%;
 }
 .input::placeholder {
  color: white; 
- font-size: 110%;
+ font-size: 100%;
 
 }
 
@@ -596,4 +643,7 @@ p {
   width: 10000vh;
   height: 10000vh;**/
   color: white;
+}
+
+
 }
