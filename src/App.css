@@ -91,7 +91,7 @@
    width: 40%;
    height: 40vh;
    margin: 6vh 0vh ; 
-   z-index: 999;
+   z-index: ya;
    border-radius: 0% 0% 5% 0%;
    cursor: pointer;
     }
@@ -252,7 +252,7 @@
 .send2 {
   color: white;
   position: fixed;
-  margin: -5% 33%;
+  margin: -2% 70%;
 }
 .inputCH {
   border: none;
@@ -262,7 +262,7 @@
   height: 4%;
   font-size: 120%;
   position: fixed;
-  margin:  0% 1% ;
+  margin:  0%  ;
 }
 .inputCH::placeholder {
  color: white; 
@@ -286,15 +286,33 @@
 }
 .list {
   display: flex;
-  flex-direction: column;
-  justify-content:flex-start ;
+  flex-direction: column ;
+  justify-content:flex-start;
   overflow-y: scroll;
   height: 100%;
   margin: 7% 0%;
-  gap: -7% 0%;
+  gap: -3% 0%;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-
+.inputCH1 {
+  border: none;
+  background-color: white;
+  color: black;
+  width: 90%;
+  height: auto;
+  font-size: 100%;
+  position: sticky;
+  margin:  0% 0% ;
+  border-radius: 5%;
+}
+.message {
+  background-color: rgb(4, 86, 12);
+  padding: 5%;
+  margin:  5% -10%;
+  height: auto;
+  width: 50%;
+  border-radius: 5%;
+}
 
 
 /**CSS Bildgalerie**/
@@ -413,12 +431,23 @@
   height: 3%;
   font-size: 120%;
 }
+.input::after {
+  content: '';
+  background-color: gray;
+ width: 1000%;
+ height: 500%;
+}
 .input::placeholder {
  color: white; 
  font-size: 100%;
 
 }
-
+th {
+  font-size: 4vh;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+ background-clip: text;
+ color: transparent;
+}
 
 /** Login und Signup**/
 .login {
@@ -647,3 +676,5 @@ p {
 
 
 }
+
+/**Desktop**/

@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { useReducer } from 'react';
+import { useReducer, useContext } from 'react';
 import './App.css';
 import ReactGA from 'react-ga';
 import { FaImages } from 'react-icons/fa';
@@ -14,6 +14,7 @@ import { FaSignInAlt } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 export default function App() {
@@ -179,75 +180,115 @@ return (
 
 //Chat
 
-function TaskList({
-  tasks,
-  onChangeTask,
-  onDeleteTask
-}) {
-  const [task, setTask] = useState([]);
+
+ 
+    function TaskList({
+      tasks,
+      onChangeTask,
+      onDeleteTask  }) {
+      const [task, setTask] = useState([]);
+      const [click,setClick] = useState(false);
+      const [text, setText] = useState('');
+      const [isEditing, setIsEditing] = useState(false);
+      let taskContent;
+      const press = () => {
+        setClick(!click);
+      };
+      return (
+      
+        <ul className='list'>
+        {tasks.map(task => (
+          <li key={task.id}  className='message' onClick={press}>
+             {click && (
+             <div> 
+              <Edit setIsEditing={setIsEditing} task={task}/>
+              <Delete  task={task} onDelete={onDeleteTask} taskContent={taskContent}/>
+            </div>  
+        )}
+          </li>
+        ))}
+        
+       </ul>
+    
+      );
+    }
+
+    function Task({ task, onChange, onDelete }) {
+      const [click,setClick] = useState(false);
+      
+      const press = () => {
+        setClick(!click);
+      };
+      let taskContent;
+      const handleSave = () => {
+        setIsEditing(false); // Beende den Bearbeitungsmodus
+        // Führe die Aktion aus, um die Änderungen zu speichern (onChange in deinem Fall)
+        onChange(...task);
+      };
+      const [isEditing, setIsEditing] = useState(false);
+      if (isEditing) {
+        taskContent = (
+        <>
+          <input
+          value={task.text}
+          className='inputCH1'
+          onChange={handleSave} />
+           <br/>
+            <button onClick={() => setIsEditing(false)} className='btnS'>
+              Save
+            </button>
+          </>
+
+        );
+      } else {
+        taskContent = (
+        <>
+          {task.text}
+          <Edit setIsEditing={setIsEditing}/>
+        </>
+        );
+      }
+   return (
+   <>
+   {taskContent}
+    <Delete task={task} onDelete={onDelete} />
+   </> 
+   ); 
+   
+  }
+  //<Delete task={task} onDelete={onDelete} taskContent={taskContent}/>
+const Edit = ({task, setIsEditing}) => {
   return (
-    <ul className='list'>
-      {tasks.map(task => (
-        <li key={task.id}>
-          <Task
-            task={task}
-            onChange={onChangeTask}
-            onDelete={onDeleteTask}
-          />
-        </li>
-      ))}
-    </ul>
+    <>
+      <br/>
+   <button onClick={() => setIsEditing(true)} className='btnE'>
+    Edit
+     </button>
+     </>       
   );
 }
-
-function Task({ task, onChange, onDelete }) {
-  const [isEditing, setIsEditing] = useState(false);
-  let taskContent;
-  if (isEditing) {
-    taskContent = (
-      <>
-        <input
-          value={task.text}
-          onChange={e => {
-            onChange({
-              ...task,
-              text: e.target.value
-            });
-          }} />
-          <br/>
-        <button onClick={() => setIsEditing(false)} className='btnS'>
-          Save
-        </button>
-      </>
-    );
-  } else {
-    taskContent = (
-      <>
-      <br/>
-        {task.text}
-        <button onClick={() => setIsEditing(true)} className='btnE'>
-          Edit
-        </button>
-      </>
-    );
-  }
+const Delete = ({task, onDelete, taskContent}) => {
   return (
     <label>
-      {taskContent}
-      <button onClick={() => onDelete(task.id)} className='btnD'>
+      
+      <br/>
+        <button onClick={() => onDelete(task.id)} className='btnD'>
         Delete
       </button>
-    </label>
+    </label>    
   );
 }
 
+
+           
+             
 //Main
 function Chat() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
   );
-
+  
   function handleAddTask(text) {
     dispatch({
       type: 'added',
@@ -277,6 +318,7 @@ function Chat() {
         tasks={tasks}
         onChangeTask={handleChangeTask}
         onDeleteTask={handleDeleteTask}
+        
       />
       <AddTask
         onAddTask={handleAddTask}
@@ -313,18 +355,31 @@ function tasksReducer(tasks, action) {
 }
 
 let nextId = 0;
-const initialTasks = [
-  
-];
+const initialTasks = [];
+
+
 function AddTask({ onAddTask }) {
+  const[inputValue, setInputValue] = useState('');
   const [text, setText] = useState('');
+  let summ = inputValue + text ;
+ const CheckInput = (e) => {
+   setInputValue(e.target.value);
+ }
+ const TextCheck = (e) => {
+  setText(e.target.value);
+ }
+const handleCombinedChange = (g) => {
+      this.CheckInput(g);
+      this.TextCheck(g);
+    }
   return (
-    <>
+    <div className='chatIn'>
       <input
         placeholder="Write a message..."
-        value={text}
-        onChange={e => setText(e.target.value)}
+        value={summ}
+        onChange={TextCheck}
         className='inputCH'
+        type='text'
       />
       <button onClick={() => {
         setText('');
@@ -332,8 +387,8 @@ function AddTask({ onAddTask }) {
       }}>
        <FaPaperPlane size={25} className='send2'/>
       </button>
-    </>
-  )
+    </div>
+  );
 }
 //Bildgalerie
 function Bildgalerie() {
@@ -556,15 +611,7 @@ function FilterableProductTable({ products }) {
   );
 }
 
-function ProductCategoryRow({ category }) {
-  return (
-    <tr>
-      <th colSpan="2">
-        {category}
-      </th>
-    </tr>
-  );
-}
+
 
 function ProductRow({ product }) {
   const name = product.name;
@@ -592,13 +639,7 @@ function ProductTable({ products, filterText, inStockOnly }) {
     if (inStockOnly && !product.stocked) {
       return;
     }
-    if (product.category !== lastCategory) {
-      rows.push(
-        <ProductCategoryRow
-          category={product.category}
-          key={product.category} />
-      );
-    }
+   
     rows.push(
       <ProductRow
         product={product}
@@ -616,7 +657,7 @@ function ProductTable({ products, filterText, inStockOnly }) {
           </th>
         </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      {rows}
     </table>
   );
 }
