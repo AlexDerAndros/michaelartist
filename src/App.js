@@ -694,9 +694,11 @@ const PRODUCTS = [
   {category: "Main", name: "Home", component:'<Home/>'},
   {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
   {category: "Main",  name: "Chat", component:'<Chat/>' },
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category:'Main', name: 'Login', component:'<Login/>'},
+  {category:'Main', name: 'Signup', component:'<Signup/>', link:' '},
+  {category:'Main', name:'Video gallery', component:'<Videogalerie/>', link: '/Videogalerie'},
+  {category:'Main', name:'Picture shop', component:'<PictureShop/>', link:'/PictureShop'},
+  {category:'Main', name:'About Us', component:'<AboutUs/>', link:'/AboutUs'},  
 ];
 
  function Search() {
@@ -711,6 +713,7 @@ const PRODUCTS = [
 //Login und Sigup
 
 function Login() {
+
   const [username, setUsername]= useState('');
 const [password, setPassword]= useState('');
  const handleUsernameChange = (e) => {
@@ -727,6 +730,10 @@ const [password, setPassword]= useState('');
      alert("Login failed");
    }
  };
+ const [click,setClick]= useState(false);
+ const press = () => {
+    setClick(!click);
+ }
   return (
    <div className='login'>
     <div className='head'>
@@ -749,14 +756,16 @@ const [password, setPassword]= useState('');
     <div className='importantI'>
     <br/>
       Are not you already login then
-      <Link to="/login/signup">
-        <span className='sg'> sign up .</span>
-      </Link>
+        <span className='sg' onClick={press}> sign up .</span>
     </div>
-    <Routes>
-      <Route path="/login/signup" element={<Signup/>}/>
-    </Routes>
-   </div>
+     {click && (
+      <>
+      <br/>
+        <Signup/>
+      </>
+     )}
+    </div>
+   
   );
 
 }
@@ -765,8 +774,8 @@ function Signup() {
   const [username, setUsername]= useState('');
   const [password, setPassword]= useState('');
   return (
-    <div className='signup'>
-     <h1 style={{color:'red', fontSize:'300vh'}}> </h1>
+    <div className='signUP'>
+     Signup
     </div>
   );
 
@@ -830,9 +839,30 @@ const Videogalerie = () => {
 const PictureShop = () => {
   return (
     <div className='pictureShop'>
-      <div className='headPS'>
+      <div className='head'>
         Picture shop
       </div>
+      <div className='filter'>
+       Filter
+        <input type='checkbox'/>
+      </div>
+      <div className='nonePic'>
+       Currently no images are available.
+      </div>
+     
     </div>
   );
 } 
+
+
+
+//About Us 
+const AboutUs = () => {
+  return (
+    <div className='aboutUs'>
+      <div className='headAU'>
+        About Us
+      </div>
+    </div>
+  );
+}
