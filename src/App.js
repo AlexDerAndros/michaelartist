@@ -198,14 +198,10 @@ return (
       
         <ul className='list'>
         {tasks.map(task => (
-          <li key={task.id}  className='message' onClick={press}>
-             {click && (
-             <div> 
-              <Edit setIsEditing={setIsEditing} task={task}/>
-              <Delete  task={task} onDelete={onDeleteTask} taskContent={taskContent}/>
-            </div>  
-        )}
-          </li>
+          <li key={task.id}   onClick={press} className='message'>
+          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask}/>
+            </li>
+          
         ))}
         
        </ul>
@@ -220,47 +216,37 @@ return (
         setClick(!click);
       };
       let taskContent;
-      const handleSave = () => {
-        setIsEditing(false); // Beende den Bearbeitungsmodus
-        // Führe die Aktion aus, um die Änderungen zu speichern (onChange in deinem Fall)
-        onChange(...task);
-      };
+      
       const [isEditing, setIsEditing] = useState(false);
       if (isEditing) {
         taskContent = (
         <>
-          <input
-          value={task.text}
-          className='inputCH1'
-          onChange={handleSave} />
-           <br/>
-            <button onClick={() => setIsEditing(false)} className='btnS'>
-              Save
-            </button>
+         <Save task={task} setIsEditing={setIsEditing} text={text} onChange={onChange}/>
           </>
 
         );
       } else {
         taskContent = (
         <>
-          {task.text}
-          <Edit setIsEditing={setIsEditing}/>
+          
+          <Edit setIsEditing={setIsEditing} task={task}/>
         </>
         );
       }
    return (
    <>
-   {taskContent}
-    <Delete task={task} onDelete={onDelete} />
+  <Delete task={task} onDelete={onDelete} taskContent={taskContent}/>
+    
    </> 
    ); 
    
   }
-  //<Delete task={task} onDelete={onDelete} taskContent={taskContent}/>
+ // <Delete task={task} onDelete={oneDlete} taskContent={taskContent}/>
 const Edit = ({task, setIsEditing}) => {
   return (
     <>
-      <br/>
+    {task.text}
+     <br/>
    <button onClick={() => setIsEditing(true)} className='btnE'>
     Edit
      </button>
@@ -270,16 +256,41 @@ const Edit = ({task, setIsEditing}) => {
 const Delete = ({task, onDelete, taskContent}) => {
   return (
     <label>
-      
-      <br/>
+   {taskContent}
+    <br/>
         <button onClick={() => onDelete(task.id)} className='btnD'>
         Delete
       </button>
     </label>    
   );
 }
+const Save = ({task, setIsEditing, text, onChange}) => {
+  return (
+    <>
+          <input
+          value={task.text}
+          className='inputCH1'
+          onChange={e => {
+            onChange({
+              ...task,
+              text: e.target.value
+            });
+          }}
+        />
+           <button onClick={() => setIsEditing(false)} className='btnS'>
+          Save
+        </button>
+          </>
 
-
+  );
+}
+const Message = ({task}) => {
+  return (
+    <div>
+   {task.text}
+    </div>
+  );
+}
            
              
 //Main
@@ -376,8 +387,8 @@ const handleCombinedChange = (g) => {
     <div className='chatIn'>
       <input
         placeholder="Write a message..."
-        value={summ}
-        onChange={TextCheck}
+        value={text}
+        onChange={e => setText(e.target.value)}
         className='inputCH'
         type='text'
       />

@@ -251,18 +251,18 @@
 }
 .send2 {
   color: white;
-  position: fixed;
-  margin: -2% 70%;
+  position: sticky;
 }
 .inputCH {
   border: none;
   background-color: transparent;
   color: white;
   width: 70%;
-  height: 4%;
+  height: 60%;
   font-size: 120%;
-  position: fixed;
+  position: sticky;
   margin:  0%  ;
+  
 }
 .inputCH::placeholder {
  color: white; 
@@ -313,7 +313,9 @@
   width: 50%;
   border-radius: 5%;
 }
-
+.away {
+  font-size: 0vh;
+}
 
 /**CSS Bildgalerie**/
 .bildgalerie {
