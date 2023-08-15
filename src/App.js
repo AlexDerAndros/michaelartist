@@ -24,7 +24,7 @@ export default function App() {
     <Bottom/>
     </main>
   );
-  // Aktualisierung einer React App: 1.npm run build 2.firebase deploy
+  // Aktualisierung einer React App: 1.npm run build 2.firebase deploy oder firebase deploy --only hosting:michael--artist
   // 3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
   // Wichtig: immer alles auf der neusten Version und updaten ab und zu
 }
@@ -589,6 +589,7 @@ function Likes() {
       setLike('red');
       setLikeNumber((prevScore) => prevScore + 1)
     }
+    firebase.database().ref('public-counter').set(like);
   }
    return (
      <div className='likes'>

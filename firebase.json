@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "michael--artist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -17,4 +18,5 @@
     },
     "singleProjectMode": true
   }
+ 
 }
