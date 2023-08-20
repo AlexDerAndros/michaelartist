@@ -18,7 +18,6 @@ import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import  {firebase} from './firebase';
-//App
 export default function App() {
  
   return (
