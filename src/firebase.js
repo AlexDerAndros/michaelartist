@@ -1,7 +1,7 @@
-import {getFirestore} from '@firebase/firestore'; 
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-const firestore = getFirestore(app); // Firestore-Komponente
+
 // Required for side-effects
 const firebaseConfig = {
   apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
