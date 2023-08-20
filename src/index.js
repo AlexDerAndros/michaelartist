@@ -5,6 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth'; 
+import 'firebase/firestore'; 
+import 'firebase/database';
+import 'firebase/auth';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -14,6 +18,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
 const firebaseConfig = {
   apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
   authDomain: "michael--artist.firebaseapp.com",

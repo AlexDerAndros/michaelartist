@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import { useReducer, useContext } from 'react';
+import { useReducer, useContext , useEffect } from 'react';
+import Search from './Search/Search';
 import './App.css';
 import ReactGA from 'react-ga';
 import { FaImages } from 'react-icons/fa';
@@ -15,9 +16,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { text } from '@fortawesome/fontawesome-svg-core';
-
-
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import  {firebase} from './firebase';
+//App
 export default function App() {
+ 
   return (
     <main>
     <Header/>
@@ -31,7 +34,6 @@ export default function App() {
 function Header() {
   return (
    <div className='header'>
-     <Hamburger/>
       <div className='title' > 
       Artist Michael Ntrikos
       </div>
@@ -89,17 +91,57 @@ const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage
 './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
+  const[click,setClick] = useState(false);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const toggleImageSize = () => {
+    setIsImageExpanded(!isImageExpanded);
+    setZoomLevel(1); // Beim Zurücksetzen auf Standardgröße auch den Zoom auf 1 setzen
+  };
+
+  
   const nextImage = () => {
-    setCurrentIndex((prevIndex)=>
-    prevIndex === images.length - 1 ? 0 :prevIndex + 1);
+    setCurrentIndex((prevIndex) =>
+    prevIndex === images.length - 1 ? 0 : prevIndex + 1
+  );
   }
+  function prevImage() {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  }
+  const BiggerPic = () => {
+    setClick(!click);
+  }
+  
   return (
    <div className='imageList'>
-    <img className='imgI' src= {images[currentIndex]}/>
-    <button className='btn1' onClick={nextImage}> Next Picture </button>
+    <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
+       style={{
+          cursor: 'pointer',
+          transform: click ? 'scale(1.7)' : 'scale(1)',
+          transition: ' 0.3s ease-in-out',
+          width: '70%',
+         height: '85%',
+         borderRadius: '4%',
+        margin: click ? '0% 10% 1% 16%' : '3% 10% 1% 16%',
+        position: 'sticky',
+          zIndex: click ? '100' : '-100'
+        }}
+    />
+   <div className='imgBtn'>
+    <button  onClick={nextImage} className='btn1'> 
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'fixed', margin: '0 59%'}} />
+    </button>
+  <button className='btn1' onClick={prevImage}>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', transform:'rotate(-180deg)', position:'fixed', margin:'0% -62%'  }}/>
+  </button>
+    </div>
    </div>
   );
 }
+
 function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
@@ -166,7 +208,7 @@ return (
     <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
-   <Route path="/Search" element={<Search/>}/>
+   <Route path="/Search" element={<SEARCH/>}/>
    <Route path="/chat" element={<Chat/>}/>
    <Route path="/login" element={<Login/>}/>
    <Route path='/PictureShop' element={<PictureShop/>}/>
@@ -580,6 +622,19 @@ function Comments() {
 function Likes() {
   const [like,setLike] = useState('white');
   const [likeNumber, setLikeNumber] = useState(0);
+ // useEffect(() => {
+    // Lade die aktuelle Zählerzahl aus der Firebase-Datenbank beim Laden der Komponente
+   // const counterRef = firebase.database().ref('public-counter');
+ //   counterRef.on('value', (snapshot) => {
+  //    const currentCount = snapshot.val();
+  //    setLikeNumber(currentCount);
+   // });
+
+  //  return () => {
+      // Beim Entladen der Komponente: Deaktiviere das Zählen
+   //   counterRef.off();
+  //  };
+ // }, []);
   const handleClick = () => {
     if (like === 'red') {
       setLike('white');
@@ -589,7 +644,7 @@ function Likes() {
       setLike('red');
       setLikeNumber((prevScore) => prevScore + 1)
     }
-    firebase.database().ref('public-counter').set(like);
+//    firebase.database().ref('public-counter').set(likeNumber);
   }
    return (
      <div className='likes'>
@@ -604,113 +659,11 @@ function Likes() {
 }
 
 //Search
-function FilterableProductTable({ products }) {
-  const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);
-
-  return (
-    <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
-        onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
-        filterText={filterText}
-        inStockOnly={inStockOnly} />
-    </div>
+function SEARCH() {
+  return ( 
+  <Search/>
   );
 }
-
-
-
-function ProductRow({ product }) {
-  const name = product.name;
- 
-
-  return (
-    <tr>
-      <td>{name}</td>
-    </tr>
-  );
-}
-
-function ProductTable({ products, filterText, inStockOnly }) {
-  const rows = [];
-  let lastCategory = null;
-
-  products.forEach((product) => {
-    if (
-      product.name.toLowerCase().indexOf(
-        filterText.toLowerCase()
-      ) === -1
-    ) {
-      return;
-    }
-    if (inStockOnly && !product.stocked) {
-      return;
-    }
-   
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name} />
-    );
-    lastCategory = product.category;
-  });
-
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Themes on the website
-          </th>
-        </tr>
-      </thead>
-      {rows}
-    </table>
-  );
-}
-
-function SearchBar({
-  filterText,
-  inStockOnly,
-  onFilterTextChange,
-  onInStockOnlyChange
-}) {
-  return (
-    <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
-        onChange={(e) => onFilterTextChange(e.target.value)} className='input' />
-    </form>
-  );
-}
-//<label>
- //<input type="checkbox" checked={inStockOnly} onChange={(e) => onInStockOnlyChange(e.target.checked)} />{' '}Only show products in stock</label>
-const PRODUCTS = [
-  {category: "Main", name: "Home", component:'<Home/>'},
-  {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
-  {category: "Main",  name: "Chat", component:'<Chat/>' },
-  {category:'Main', name: 'Login', component:'<Login/>'},
-  {category:'Main', name: 'Signup', component:'<Signup/>', link:' '},
-  {category:'Main', name:'Video gallery', component:'<Videogalerie/>', link: '/Videogalerie'},
-  {category:'Main', name:'Picture shop', component:'<PictureShop/>', link:'/PictureShop'},
-  {category:'Main', name:'About Us', component:'<AboutUs/>', link:'/AboutUs'},  
-];
-
- function Search() {
-  return (
-    <div className='search'>
-      <FilterableProductTable products={PRODUCTS}/>
-    </div>
-  );
-}
-
-
 //Login und Sigup
 
 function Login() {
