@@ -28,7 +28,7 @@
    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   background-clip: text;
   color: transparent;
-   left:10%;
+   left:3%;
    top:0.5%;
    cursor: pointer;
   }
@@ -42,7 +42,7 @@
     position: fixed;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     
   }
   .shPi {
@@ -109,7 +109,12 @@
     list-style: none;
     font-size: 3vh;
   }
-  
+  .imgBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
   .unten {
     width: 100%;
     height:  7%;
@@ -144,13 +149,14 @@
   .img1 {
     width: 5vh;
     height: 5vh;
-    margin:0.5vh 20vh ;
-    position: fixed;
+    top: 0.5%;
+    position: sticky;
   }
   .img2 {
     width: 5vh;
     height: 5vh;
-    margin: 0.2vh -7vh;
+    top: 0.5%;
+   position: sticky;
   }
   .imageList {
     width: 89%;
@@ -163,32 +169,21 @@
     position: sticky;
   }
   .btn1 {
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-    background-clip: text;
-    color: transparent;
+   color: white;
     font-weight: bold;
     font-size: 4.5vh;
     position: sticky;
-    font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
     margin: -1.5% 0;
+    width: 10%;
+    height: 10%;
   }
   button {
    background: transparent;
    border: none;
    z-index: -100;
   }
-  .imgI {
-    width: 70%;
-    height: 85%;
-   border-radius: 4%;
-   margin:3% 10% 1% 16%;
-   position: sticky;
-   z-index: -100;
-  }
-  .imgI:hover {
-   transform: scale(1.75);
-   z-index: 100;
-  }
+  
+  
   .info {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
     background-clip: text;
