@@ -125,17 +125,17 @@ function ImageList (){
           width: '70%',
          height: '85%',
          borderRadius: '4%',
-        margin: click ? '0% 10% 1% 16%' : '3% 10% 1% 16%',
+        margin: click ? '-3% 10% 1% 16%' : '3% 10% 1% 16%',
         position: 'sticky',
           zIndex: click ? '100' : '-100'
         }}
     />
    <div className='imgBtn'>
     <button  onClick={nextImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'fixed', margin: '0 59%'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute', margin: '0% 57%'}} />
     </button>
   <button className='btn1' onClick={prevImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', transform:'rotate(-180deg)', position:'fixed', margin:'0% -62%'  }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', transform:'rotate(-180deg)', position:'absolute', margin:'0% -62%'  }}/>
   </button>
     </div>
    </div>
