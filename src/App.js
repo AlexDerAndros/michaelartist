@@ -757,7 +757,7 @@ function Signup() {
 //Videogalerie
 function Likes1() {
   const [like,setLike] = useState('white');
-  const [likeNumber, setLikeNumber] = useState(0);
+  const [likeNumber, setLikeNumber] = useState(1999);
   const handleClick = () => {
     if (like === 'red') {
       setLike('white');
@@ -801,6 +801,10 @@ const Videogalerie = () => {
      <Likes1/>
      <video controls className='video'>
       <source src='/3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4' type='video/mp4'/>
+     </video>
+     <Likes1/>
+     <video controls className='video'>
+      <source src='/FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4' type='video/mp4'/>
      </video>
      <Likes1/>
     </div>
