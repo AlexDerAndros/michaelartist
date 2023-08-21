@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { useReducer, useContext , useEffect } from 'react';
+import { useReducer, useContext , useEffect, useRef } from 'react';
 import Search from './Search/Search';
 import './App.css';
 import ReactGA from 'react-ga';
@@ -15,11 +15,33 @@ import { FaSignInAlt } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
-import { text } from '@fortawesome/fontawesome-svg-core';
+import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import  {firebase} from './firebase';
+import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {getFirestore} from '@firebase/firestore';
+import {collection} from '@firebase/firestore';
+
+
+
+//Login https://firebase.google.com/docs/auth/web/start?hl=de
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
+  authDomain: "michael--artist.firebaseapp.com",
+  databaseURL: "https://michael--artist-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "michael--artist",
+  storageBucket: "michael--artist.appspot.com",
+  messagingSenderId: "690442290094",
+  appId: "1:690442290094:web:62e0a17e181182ce23fe3f",
+  measurementId: "G-GGJ7KLTS88"
+};
+const app = initializeApp(firebaseConfig);
+
+
+
 export default function App() {
- 
   return (
     <main>
     <Header/>
@@ -130,11 +152,11 @@ function ImageList (){
         }}
     />
    <div className='imgBtn'>
-    <button  onClick={nextImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute', margin: '0% 57%'}} />
+    <button  onClick={prevImage} className='btn1'> 
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 57%'}} />
     </button>
-  <button className='btn1' onClick={prevImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', transform:'rotate(-180deg)', position:'absolute', margin:'0% -62%'  }}/>
+  <button className='btn1' onClick={nextImage}>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -62%'  }}/>
   </button>
     </div>
    </div>
@@ -619,43 +641,41 @@ function Comments() {
 }
 
 function Likes() {
-  const [like,setLike] = useState('white');
-  const [likeNumber, setLikeNumber] = useState(0);
- // useEffect(() => {
-    // Lade die aktuelle Zählerzahl aus der Firebase-Datenbank beim Laden der Komponente
-   // const counterRef = firebase.database().ref('public-counter');
- //   counterRef.on('value', (snapshot) => {
-  //    const currentCount = snapshot.val();
-  //    setLikeNumber(currentCount);
-   // });
+  const [like, setLike] = useState('white');
+  const [likeNumber, setLikeNumber] = useState(1002);
 
-  //  return () => {
-      // Beim Entladen der Komponente: Deaktiviere das Zählen
-   //   counterRef.off();
-  //  };
- // }, []);
   const handleClick = () => {
+    let newCount;
     if (like === 'red') {
       setLike('white');
-      setLikeNumber((prevScore) => prevScore - 1);
-    }
-    else {
+      newCount = likeNumber - 1;
+      setLikeNumber(newCount);
+      
+    } else {
       setLike('red');
-      setLikeNumber((prevScore) => prevScore + 1)
+      newCount = likeNumber + 1;
+      setLikeNumber(newCount);
+      
     }
-//    firebase.database().ref('public-counter').set(likeNumber);
-  }
-   return (
-     <div className='likes'>
-     <button  onClick={handleClick}>
-        <FaHeart className='ani' size={45} style= {{ color: like}} />
-     </button>
-       <div className='likeNumber'>
+   
+    
+  };
+
+  
+
+  return (
+    <div className='likes'>
+      <button onClick={handleClick}>
+        <FaHeart className='ani' size={45} style={{ color: like }} />
+      </button>
+      <div className='likeNumber'>
         {likeNumber}
-       </div>
-      </div> 
-   );
+      </div>
+    </div>
+  );
 }
+
+
 
 //Search
 function SEARCH() {
