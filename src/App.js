@@ -779,34 +779,36 @@ function Likes1() {
       </div> 
    );
 }
+const videos = [
+  './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
+  './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
+  './3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4','./FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4'
+ ];
 const Videogalerie = () => {
-
+ 
+ const [currentIndex, setCurrentIndex]= useState(0);
+ const nextImage = () => {
+  setCurrentIndex((currentIndex + 1) % videos.length);
+}
+function prevImage() {
+  setCurrentIndex((prevIndex) =>
+    prevIndex === 0 ? videos.length - 1 : prevIndex - 1
+  );
+}
   return (
     <div className='videogalerie'>
-      <video  controls className='video'>
-      <source src="/C4EF135C-1DD4-469C-81D3-448FBB715860.mp4" type="video/mp4"/>
-     </video>
-     <Likes1/>
-     <video controls className='video'>
-      <source src="/A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4" type="video/mp4"/>
-     </video>
-     <Likes1/>
-     <video  controls className='video'>
-      <source src='/64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4' type='video/mp4'/>
-     </video>
-     <Likes1/>
-     <video  controls className='video'>
-      <source src='/31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4' type='video/mp4'/>
-     </video>
-     <Likes1/>
-     <video controls className='video'>
-      <source src='/3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4' type='video/mp4'/>
-     </video>
-     <Likes1/>
-     <video controls className='video'>
-      <source src='/FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4' type='video/mp4'/>
-     </video>
-     <Likes1/>
+       <video controls autoPlay className='video' key={videos[currentIndex]}>
+        <source src={videos[currentIndex]} type="video/mp4"/>
+        Your browser does not support the video tag.
+       </video>
+       <div className='imgBtn'>
+    <button  onClick={prevImage} className='btn1'> 
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 57%'}} />
+    </button>
+  <button className='btn1' onClick={nextImage}>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -62%'  }}/>
+  </button>
+    </div>
     </div>
   );
 }
