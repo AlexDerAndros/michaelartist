@@ -120,7 +120,7 @@
     height:  7%;
     background: transparent ;
     position: fixed ;
-    bottom: 0%;
+    bottom: -0.3%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -479,6 +479,7 @@ td {
     top: 10%;
     position: fixed;
     font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+   overflow-y: scroll;
 }
 
 .head {
@@ -554,11 +555,11 @@ p {
   box-shadow:inset 0 0 0 1px #f96767;
   color: #ffffff;
   font-weight: bolder;
-  margin: -5% 4%;
+  margin: -3% 4%;
   padding: -100% 0%;
  font-size: 250%;
  width: auto;
- padding: 5%;
+ padding: 2%;
  height: 7%;
  display: flex;
  justify-content: center;
