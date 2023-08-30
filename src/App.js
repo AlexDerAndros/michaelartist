@@ -726,17 +726,27 @@ function Signup() {
   const [addPassword, setAddPassword]= useState('');
   return (
     <div className='signUP'>
-     <div className='head'>
+     <div className='headR'>
       Register
      </div>
-     <input id='us' type="text" placeholder="Username..." />
-      <br/>
-      <input id='pa' type="password" placeholder="Password..."  />
-      <br/>
-      <br/>
-      <br/>
+     <br/>
+    <div className='REG'>
+     <input id='email' className='child'  type='email' placeholder="Enter an email adress..." />
+     <input id='us1'  className='child' type="text" placeholder="Create an username..." />
+      <input id='pa1'  className='child' type="password" placeholder="Create a password..."  />
+      <input id='pa1'   className='child' type="password" placeholder="Repeat your password..."  />
+     </div>
+     <br/>
+     <br/>
       <button className='logBtn'  >
-      <p className="AniB" >
+      <p className="AniB" onClick={()=> {
+        if (addUsername == addUsername && addPassword == addPassword){
+          alert("Register successful");
+        }
+        else {
+          alert("Register failed");
+        }
+      }}>
         Register
       </p>
       </button>
