@@ -494,8 +494,9 @@ td {
   color:white;
   width: 70%;
   height: 5%;
-  font-size:195%;
-  margin: 5%;
+  font-size:155%;
+  margin: 3% 5%;
+ 
  
 
 }
@@ -507,9 +508,8 @@ td {
   border-left: none;
   color:white;
   width: 70%;
-  height: 5%;
-  font-size:195%;
-  margin: 0% 5%;
+  font-size:155%;
+  margin: 3% 5%;
  
 
 }
@@ -523,7 +523,36 @@ td {
   
 
 }
+#us1 {
+  background: transparent ;
+  border-bottom: 1% rgb(255, 255, 255) ;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  color:white;
+  width: 70%;
+  font-size:155%;
+margin:3% 0%;
 
+}
+#us1::placeholder {
+  color: white;
+}
+#pa1::placeholder {
+ color: white;
+}
+#pa1 {
+  background: transparent ;
+  border-bottom: 1% rgb(255, 255, 255) ;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  color:white;
+  width: 70%;
+  font-size:155%;
+margin:3% 0%;
+
+}
 .importantI {
   color: white;
   font-size: 140%;
@@ -621,7 +650,36 @@ p {
 .signUP {
   color: white;
 }
+#email {
+  background: transparent ;
+  border-bottom: 1% rgb(255, 255, 255) ;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  color:white;
+  width: 70%;
+  height: 5%;
+  font-size:155%;
+ margin:3% 0%;
 
+}
+#email::placeholder {
+  color: white;
+}
+.REG {
+  display: flex;
+  flex-direction: column;
+  margin: 0% 5%;
+}
+.headR {
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-size: 300%;
+  text-align: center;
+  position: fixed;
+}
 /**Videogalerie**/
 .videogalerie {
   background-color: rgba(0, 0, 0, 0.877);
@@ -645,7 +703,7 @@ p {
 .likeNumber1 {
  color: white;
  font-size: 3vh;
- margin: 0 5%;
+ margin: 0% 5%;
 }
 
 

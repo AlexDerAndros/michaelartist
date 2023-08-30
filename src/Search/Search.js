@@ -1,6 +1,8 @@
 //Search
 import { useState } from "react";
 import './searchStyle.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 function FilterableProductTable({ products }) {
     const [filterText, setFilterText] = useState('');
     const [inStockOnly, setInStockOnly] = useState(false);
@@ -27,9 +29,11 @@ function FilterableProductTable({ products }) {
    
   
     return (
+   
       <tr>
         <td>{name}</td>
       </tr>
+    
     );
   }
   
@@ -100,6 +104,7 @@ function FilterableProductTable({ products }) {
   ];
   
   export default function Search() {
+  
     return (
       <div className='search'>
         <FilterableProductTable products={PRODUCTS}/>
