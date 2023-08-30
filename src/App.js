@@ -698,9 +698,11 @@ function Login() {
       <Log/>
       <br/>
       <br/>
+      <br/>
+      <br/>
        <div className='importantI'>
            Are not you already login then
-             <span className='sg' onClick={press}> sign up .</span>
+             <span className='sg' onClick={press}> register.</span>
          </div>
          </div>
      );
@@ -709,8 +711,8 @@ function Login() {
   return (
     <div className='login'>
     <button onClick={press}>
-     <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',
-     transform:'rotate(-180deg)'
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', position:'absolute' 
      }} />
      </button>
     <Signup/>
@@ -720,14 +722,24 @@ function Login() {
 }
 
 function Signup() {
-  const [username, setUsername]= useState('');
-  const [password, setPassword]= useState('');
+  const [addUsername, setAddUsername]= useState('');
+  const [addPassword, setAddPassword]= useState('');
   return (
     <div className='signUP'>
      <div className='head'>
-      Signup
+      Register
      </div>
-    
+     <input id='us' type="text" placeholder="Username..." />
+      <br/>
+      <input id='pa' type="password" placeholder="Password..."  />
+      <br/>
+      <br/>
+      <br/>
+      <button className='logBtn'  >
+      <p className="AniB" >
+        Register
+      </p>
+      </button>
     </div>
   );
 

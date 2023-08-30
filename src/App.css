@@ -120,7 +120,7 @@
     height:  7%;
     background: transparent ;
     position: fixed ;
-    bottom: -0.3%;
+    bottom: -0.5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -474,7 +474,6 @@ td {
     top: 10%;
     position: fixed;
     font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
-   overflow-y: scroll;
 }
 
 .head {
@@ -525,10 +524,6 @@ td {
 
 }
 
-
-
-
-
 .importantI {
   color: white;
   font-size: 140%;
@@ -551,14 +546,15 @@ p {
   color: #ffffff;
   font-weight: bolder;
   margin: -3% 4%;
-  padding: -100% 0%;
  font-size: 250%;
  width: auto;
- padding: 2%;
+ padding: 4%;
  height: 7%;
  display: flex;
  justify-content: center;
  align-items: center;
+ border-radius: 5%;
+ background-color: black;
 }
 .AniB {
   overflow: hidden;
@@ -569,7 +565,7 @@ p {
   content: '';
   box-sizing: border-box;
   position: absolute;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   width: 0;
   height: 0;
 }
