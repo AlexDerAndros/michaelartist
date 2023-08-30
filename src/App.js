@@ -686,29 +686,72 @@ function SEARCH() {
 //Login und Sigup
 
 function Login() {
-
-  const [username, setUsername]= useState('');
-const [password, setPassword]= useState('');
- const handleUsernameChange = (e) => {
-   setUsername(e.target.value);
- };
- const handlePasswortChange = (e) => {
-   setPassword(e.target.value);
- };
- const handleLogin = () => {
-   if (username === 'admin') {
-     alert("Login successful");
-   }
-   else {
-     alert("Login failed");
-   }
- };
- const [click,setClick]= useState(false);
- const press = () => {
+  const [click,setClick]= useState(false);
+  
+  const press = () => {
     setClick(!click);
- }
+  }
+  if (!click) {
+    
+    return (
+      <div className='login'>
+      <Log/>
+      <br/>
+      <br/>
+       <div className='importantI'>
+           Are not you already login then
+             <span className='sg' onClick={press}> sign up .</span>
+         </div>
+         </div>
+     );
+   }
+ else {
   return (
-   <div className='login'>
+    <div className='login'>
+    <button onClick={press}>
+     <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',
+     transform:'rotate(-180deg)'
+     }} />
+     </button>
+    <Signup/>
+  </div>
+  );
+}
+}
+
+function Signup() {
+  const [username, setUsername]= useState('');
+  const [password, setPassword]= useState('');
+  return (
+    <div className='signUP'>
+     <div className='head'>
+      Signup
+     </div>
+    
+    </div>
+  );
+
+}
+const Log = () => {
+  const [username, setUsername]= useState('');
+  const [password, setPassword]= useState('');
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+  const handlePasswortChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleLogin = () => {
+    if (username === 'admin') {
+      alert("Login successful");
+    }
+    else {
+      alert("Login failed");
+    } 
+  }
+ return (
+  
+    <div>
     <div className='head'>
       Login
     </div>
@@ -718,41 +761,15 @@ const [password, setPassword]= useState('');
       <br/>
       <br/>
       <br/>
-      <button className='logBtn' onClick={handleLogin}>
-      <p className="AniB">
+      <button className='logBtn' onClick={handleLogin} >
+      <p className="AniB" >
         Login
       </p>
       </button>
-
- <br/>
- <br/>
-    <div className='importantI'>
-    <br/>
-      Are not you already login then
-        <span className='sg' onClick={press}> sign up .</span>
-    </div>
-     {click && (
-      <>
-      <br/>
-        <Signup/>
-      </>
-     )}
-    </div>
-   
-  );
-
-}
-
-function Signup() {
-  const [username, setUsername]= useState('');
-  const [password, setPassword]= useState('');
-  return (
-    <div className='signUP'>
-     Signup
-    </div>
-  );
-
-}
+     
+    </div>   
+    );
+ }
 
 //Videogalerie
 function Likes1() {
@@ -778,7 +795,7 @@ function Likes1() {
        </div>
       </div> 
    );
-}
+   }
 const videos = [
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',

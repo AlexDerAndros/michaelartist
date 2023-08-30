@@ -271,17 +271,16 @@
 }
 .btnD {
   color: white;
-  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
-
+  
 }
 .btnE {
   color: white;
-  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+  
 
 }
 .btnS {
   color: white;
-  font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+  
 
 }
 .list {
@@ -328,17 +327,13 @@
     top: 10%;
     position: fixed;
     overflow-y: scroll;
-    max-width: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 .grid {
  display: grid;
  top: 10%;
- grid-template-rows: repeat(7,5fr);
  padding: 5%;
- gap: 0.25%;
+
 }
 .imgG {
    width: 90%;
@@ -346,10 +341,10 @@
    padding:0% 5% ;
    border-radius: 14%;
    z-index: -1;
-   max-height: 600px;
-   max-width: 525px;
-   
-
+   max-height: 550px;
+   max-width: 500px;
+  margin-bottom: 45%; 
+ 
 }
 .icons1 {
   display: flex;
