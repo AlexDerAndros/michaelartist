@@ -137,6 +137,13 @@
     right: 3%;
     top: 10%;
     position: fixed;
+    
+  }
+  .about{
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
   }
   .info1 {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
@@ -162,7 +169,7 @@
   .imageList {
     width: 89%;
     height: 74%;
-    background: rgba(0, 0, 0, 0.639);
+    background: rgba(0, 0, 0, 0.639); 
     display: flex;
     flex-direction: column;
     border-radius: 4%;
@@ -530,9 +537,9 @@ td {
   border-right: none;
   border-left: none;
   color:white;
-  width: 70%;
+  width: auto;
   font-size:155%;
-margin:3% 0%;
+margin:2% 0%;
 
 }
 #us1::placeholder {
@@ -548,9 +555,9 @@ margin:3% 0%;
   border-right: none;
   border-left: none;
   color:white;
-  width: 70%;
+  width: auto;
   font-size:155%;
-margin:3% 0%;
+   margin:2% 0%;
 
 }
 .importantI {
@@ -560,13 +567,11 @@ margin:3% 0%;
   font-family: Arial, Helvetica, sans-serif;
 }
 .sg  {
-color: white;
-
-
+color: rgb(63, 139, 233);
+cursor: pointer;
+text-decoration:underline ;
 }
-.sg:hover {
-  text-decoration: underline;
-}
+
 p {
   background: none;
   border: 0;
@@ -657,10 +662,10 @@ p {
   border-right: none;
   border-left: none;
   color:white;
-  width: 70%;
+  width: auto;
   height: 5%;
   font-size:155%;
- margin:3% 0%;
+ margin:2% 0%;
 
 }
 #email::placeholder {
@@ -678,7 +683,6 @@ p {
   background-clip: text;
   font-size: 300%;
   text-align: center;
-  position: fixed;
 }
 /**Videogalerie**/
 .videogalerie {
@@ -698,8 +702,9 @@ p {
   width: 80%;
   height: 90%;
   border-radius: 5%;
- margin:  0% 10%;
+  margin:0% 13%;
 }
+ 
 .likeNumber1 {
  color: white;
  font-size: 3vh;
@@ -723,10 +728,39 @@ p {
     overflow-y: scroll;
     color: white;
 }
+.fil {
+  display: flex;
+  justify-content: column;
+}
 .filter {
-  color: white;
-  font-size: 5vh;
+  color: rgb(117, 114, 114);
+  font-size: 2.5vh;
+  font-family: Arial, Helvetica, sans-serif;
   z-index: 100;
+}
+.PicHam {
+  background-color: rgb(61, 61, 61);
+  width: 3vh;
+  height:0.5vh;
+  z-index: 100;
+  margin:8% 1%;
+}
+.PicHam1 {
+  background-color: rgb(61, 61, 61);
+  width: 2.5vh;
+  height:0.5vh;
+  z-index: 100;
+  margin:8% 1%;
+}
+.PicHam2 {
+  background-color: rgb(61, 61, 61);
+  width: 2vh;
+  height:0.5vh;
+  z-index: 100;
+  margin:3% 1%;
+}
+.resHam {
+  transition: 0.3s ease-in-out;
 }
 .nonePic {
   color: rgb(117, 114, 114);

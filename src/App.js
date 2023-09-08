@@ -68,6 +68,7 @@ function Header() {
          <img className='img2' src='./instagram.jpeg'/>
         </a>
       </div>
+
     </div>
   );
 }
@@ -146,17 +147,18 @@ function ImageList (){
           width: '70%',
          height: '85%',
          borderRadius: '4%',
-        margin: click ? '-3% 10% 1% 16%' : '3% 10% 1% 16%',
+        margin: click ? '-3% 10% 1% 16%' : '4% 10% 1% 16%',
         position: 'sticky',
-          zIndex: click ? '100' : '-100'
+          zIndex: click ? '100' : '-100',
+          maxWidth:'300px'
         }}
     />
-   <div className='imgBtn'>
+    <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 57%'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'fixed',transform:'rotate(-180deg)', margin: '0% 2.5%'}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -62%'  }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'fixed', margin:'0% -5%'  }}/>
   </button>
     </div>
    </div>
@@ -583,7 +585,7 @@ function Bildgalerie() {
             <InfoB/>
           </div>
       </div>
-  ) 
+  );
 }
 function InfoB() {
   return ( 
@@ -701,8 +703,8 @@ function Login() {
       <br/>
       <br/>
        <div className='importantI'>
-           Are not you already login then
-             <span className='sg' onClick={press}> register.</span>
+       If your are not yet logged in
+       <span className='sg' onClick={press}> please register!  </span>
          </div>
          </div>
      );
@@ -712,7 +714,7 @@ function Login() {
     <div className='login'>
     <button onClick={press}>
      <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', position:'absolute' 
+     transform:'rotate(-180deg)', position:'absolute', cursor:'pointer'
      }} />
      </button>
     <Signup/>
@@ -856,23 +858,44 @@ function prevImage() {
 //Picture shop
 
 const PictureShop = () => {
+  const [click, setClick] = useState(false);
+  const press = () => {
+    setClick(!click);
+  }
   return (
     <div className='pictureShop'>
       <div className='head'>
         Picture shop
       </div>
+      <br/>
+     <div className='fil'> 
       <div className='filter'>
-       Filter
+       FILTER
+      </div>
+     <div onClick={press}> 
+      <div className='PicHam' ></div> 
+      <div className='PicHam1' ></div> 
+      <div className='PicHam2' ></div> 
+    </div>
+      {click && (
+       <div className='resHam'>
         <input type='checkbox'/>
-      </div>
-      <div className='nonePic'>
-       Currently no images are available.
-      </div>
-     
+       </div>
+      )}   
+    </div> 
+     <div className='elePic'>
+      <img className='imgSh' src={ShopImages.src}/>
+     </div>
     </div>
   );
-} 
+}
+const ShopImage = () => {
+  
+}
+const ShopImages = [
+{price:100, src:'./Avatar.jpeg', format:'60cmx30cm'},
 
+];
 
 
 //About Us 
