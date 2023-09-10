@@ -883,10 +883,47 @@ const PictureShop = () => {
        </div>
       )}   
     </div> 
+  <div className='shopGR'>
      <div className='elePic'>
-      <img className='imgSh' src={ShopImages.src}/>
+      <img className='imgSh' src={ShopImages[0].src}/>
+      <div className='pri'>
+        Price: {ShopImages[0].price}€
+      </div>
      </div>
-    </div>
+     <div className='elePic'>
+      <img className='imgSh' src={ShopImages[1].src}/>
+      <div className='pri'>
+        Price: {ShopImages[1].price}€
+      </div>
+     </div>
+     <div className='elePic'>
+      <img className='imgSh' src={ShopImages[2].src}/>
+      <div className='pri'>
+        Price: {ShopImages[2].price}€
+      </div>
+     </div>
+     </div> 
+    <div className='shopGR1'> 
+      <div className='elePic1'>
+       <img className='imgShA1' src={ShopImages[3].src} />
+        <div className='pri'>
+         Price: {ShopImages[3].price}€
+       </div>
+      </div> 
+     <div className='elePic1'>
+      <img className='imgShA2' src={ShopImages[4].src}/>
+      <div className='pri2'>
+        Price: {ShopImages[4].price}€
+      </div>
+     </div> 
+     <div className='elePic1'>
+      <img className='imgShA3' src={ShopImages[5].src}/>
+      <div className='pri3'>
+        Price: {ShopImages[5].price}€
+      </div>
+     </div> 
+     </div>   
+</div>
   );
 }
 const ShopImage = () => {
@@ -894,6 +931,12 @@ const ShopImage = () => {
 }
 const ShopImages = [
 {price:100, src:'./Avatar.jpeg', format:'60cmx30cm'},
+{price:150, src:'./BuntF.jpeg', format:'60cmx30cm'},
+{price:200, src:'./BaumFrau.jpeg', format:'60cmx30cm'},
+{price:250, src:'./FrauSchläft.jpeg', format:'60cmx30cm'},
+{price:300, src:'./CringeF.jpeg', format:'60cmx30cm'},
+{price:350, src:'./BuntF2.jpeg', format:'60cmx30cm'},
+
 
 ];
 
