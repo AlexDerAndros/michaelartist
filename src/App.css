@@ -731,6 +731,9 @@ p {
 .fil {
   display: flex;
   justify-content: column;
+  width: 3vh;
+  height: 2vh;
+  cursor: pointer;
 }
 .filter {
   color: rgb(117, 114, 114);
@@ -758,9 +761,6 @@ p {
   height:0.5vh;
   z-index: 100;
   margin:3% 1%;
-}
-.resHam {
-  transition: 0.3s ease-in-out;
 }
 .nonePic {
   color: rgb(117, 114, 114);
@@ -797,7 +797,7 @@ padding: 2%;
 }
 .imgShA1 {
   width:65%;
-  height:70%;
+  height:70.5%;
   border-radius: 5%;
 } 
 .elePic1 {
@@ -812,21 +812,58 @@ padding: 2%;
   margin:0% -25%;
 } 
 .imgShA3 {
-  width:90%;
+  width:95%;
   height:70%;
   border-radius: 5%;
   margin:0% -15%;
 } 
-.pri2 {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0% -25%;
-}
 .pri3 {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0% -15%;
 
 }
+.resHam {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  width: 34%;
+  height: 78%;
+  padding: 5% 10%  ;
+  transition: ease 0.5s;
 
+}
+
+.away {
+  font-size: 4vh;
+}
+.imgSHI {
+  width:65%;
+  height:70.5%;
+  max-width: 50vh;
+  border-radius: 5%;
+  margin: 4% 10% 1% 17%;
+}
+.pri2 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4vh;
+  margin: 0% ;
+  padding:0% 19%;
+}
+.btnShop {
+  color: black;
+  width: 20%;
+  height: 10%;
+  margin: 0% 19%;
+  font-weight: bolder;
+  font-size: 90%;
+  border-radius: 5%;
+  background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+}
+.btnShop:hover {
+  box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
+-webkit-box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
+-moz-box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
+}
 /**About Us **/
 .aboutUs {
   background-color: rgba(0, 0, 0, 0.877);

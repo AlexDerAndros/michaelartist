@@ -55,6 +55,7 @@ export default function App() {
 function Header() {
   return (
    <div className='header'>
+   
       <div className='title' > 
       Artist Michael Ntrikos
       </div>
@@ -847,7 +848,7 @@ function prevImage() {
     <button  onClick={prevImage} className='btn1'> 
       <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 57%'}} />
     </button>
-  <button className='btn1' onClick={nextImage}>
+    <button className='btn1' onClick={nextImage}>
     <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -62%'  }}/>
   </button>
     </div>
@@ -859,83 +860,354 @@ function prevImage() {
 
 const PictureShop = () => {
   const [click, setClick] = useState(false);
+ 
   const press = () => {
     setClick(!click);
   }
-  return (
-    <div className='pictureShop'>
-      <div className='head'>
+  const pressDif= () => {
+    setClick(click);
+  }
+  const[click0,setClick0] = useState(false);
+  const press0 = () => {
+    setClick0(!click0);
+  }
+  const[click1,setClick1] = useState(false);
+  const press1 = () => {
+    setClick1(!click1);
+  }
+  const[click2,setClick2] = useState(false);
+  const press2 = () => {
+    setClick2(!click2);
+  }
+  const[click3,setClick3] = useState(false);
+  const press3 = () => {
+    setClick3(!click3);
+  }
+  const[click4,setClick4] = useState(false);
+  const press4 = () => {
+    setClick4(!click4);
+  }
+  const[click5,setClick5] = useState(false);
+  const press5 = () => {
+    setClick5(!click5);
+  }
+  if (!click0 && !click1&& !click2&& !click3&& !click4 && !click5) {
+    return (
+   <div className='pictureShop'>   
+   <div>
+       <div className='head'>
         Picture shop
-      </div>
+     </div>
       <br/>
-     <div className='fil'> 
+     <div className='fil' onClick={press}> 
       <div className='filter'>
        FILTER
       </div>
-     <div onClick={press}> 
+     <div> 
       <div className='PicHam' ></div> 
       <div className='PicHam1' ></div> 
       <div className='PicHam2' ></div> 
-    </div>
+     </div>
       {click && (
-       <div className='resHam'>
-        <input type='checkbox'/>
-       </div>
+        <div className='resHam'>
+     <ul>
+        <li>
+           <input type='text' id='under100' className='checkIn'/>
+        </li>
+      </ul>
+      <br/>
+      <br/>
+        </div>
       )}   
-    </div> 
-  <div className='shopGR'>
-     <div className='elePic'>
+     </div> 
+     {click && (
+      <div>
+        <br/>
+        <br/>
+      </div>
+     )}
+     </div>
+      <div className='shopGR'>
+     <div className='elePic' onClick={press0}>
       <img className='imgSh' src={ShopImages[0].src}/>
       <div className='pri'>
         Price: {ShopImages[0].price}€
       </div>
      </div>
-     <div className='elePic'>
+     <div className='elePic' onClick={press1}>
       <img className='imgSh' src={ShopImages[1].src}/>
       <div className='pri'>
         Price: {ShopImages[1].price}€
       </div>
      </div>
-     <div className='elePic'>
+     <div className='elePic' onClick={press2}>
       <img className='imgSh' src={ShopImages[2].src}/>
       <div className='pri'>
         Price: {ShopImages[2].price}€
       </div>
      </div>
      </div> 
-    <div className='shopGR1'> 
-      <div className='elePic1'>
+     <div className='shopGR1'> 
+      <div className='elePic1' onClick={press3}>
        <img className='imgShA1' src={ShopImages[3].src} />
         <div className='pri'>
          Price: {ShopImages[3].price}€
        </div>
       </div> 
-     <div className='elePic1'>
+     <div className='elePic1' onClick={press4}>
       <img className='imgShA2' src={ShopImages[4].src}/>
-      <div className='pri2'>
+      <div style={{fontFamily: 'Arial, Helvetica, sans-serif',
+  margin:' 0% -25%'}}>
         Price: {ShopImages[4].price}€
       </div>
      </div> 
-     <div className='elePic1'>
+     <div className='elePic1' onClick={press5}>
       <img className='imgShA3' src={ShopImages[5].src}/>
       <div className='pri3'>
         Price: {ShopImages[5].price}€
       </div>
      </div> 
-     </div>   
-</div>
+     </div>  
+    </div> 
+    );
+  }
+  else if (click0) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press0}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage0/>
+       
+      </div>
+    )
+  }
+  else if (click1) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press1}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage1/>
+       
+      </div>
+    )
+  }
+  else if (click2) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press2}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage2/>
+       
+      </div>
+    )
+  }
+  else if (click3) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press3}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage3/>
+       
+      </div>
+    )
+  }
+  else if (click4) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press4}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage4/>
+       
+      </div>
+    )
+  }
+  else if (click5) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press5}>
+     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
+     }} />
+     </button>
+        <ShopImage5/>
+       
+      </div>
+    )
+  }
+  
+ 
+}
+
+
+
+const ShopImage0 = () => {
+  return (
+    <>
+    <img className='imgSHI' src={ShopImages[0].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[0].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[0].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[0].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+    </>
+    );
+}
+const ShopImage1 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[1].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[1].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[1].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[1].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+    
+  </>
   );
 }
-const ShopImage = () => {
-  
+const ShopImage2 = () => {
+  return (
+  <>
+   <img className='imgSHI' src={ShopImages[2].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[2].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[2].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[2].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
 }
+const ShopImage3 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[3].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[3].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[3].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[3].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage4 = () => {
+  return (
+  <>
+   <img className='imgSHI' src={ShopImages[4].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[4].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[4].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[4].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage5 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[5].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[5].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[5].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[5].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+
 const ShopImages = [
-{price:100, src:'./Avatar.jpeg', format:'60cmx30cm'},
-{price:150, src:'./BuntF.jpeg', format:'60cmx30cm'},
-{price:200, src:'./BaumFrau.jpeg', format:'60cmx30cm'},
-{price:250, src:'./FrauSchläft.jpeg', format:'60cmx30cm'},
-{price:300, src:'./CringeF.jpeg', format:'60cmx30cm'},
-{price:350, src:'./BuntF2.jpeg', format:'60cmx30cm'},
+{price:100, src:'./Avatar.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:150, src:'./BuntF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:200, src:'./BaumFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:250, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:300, src:'./CringeF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:350, src:'./BuntF2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 
 
 ];
