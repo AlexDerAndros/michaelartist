@@ -120,7 +120,7 @@
     height:  7%;
     background: transparent ;
     position: fixed ;
-    bottom: -0.5%;
+    bottom: 0%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -128,7 +128,7 @@
   .Mitte {
     text-align: center;
     background: transparent;
-    width: 80%;
+    width: 100%0%;
     height: 75%;
     padding: 1vh;
     border-radius: 4%;
@@ -136,6 +136,7 @@
     left: 7%;
     right: 3%;
     top: 10%;
+    overflow-y: scroll;
     position: fixed;
     
   }
@@ -180,11 +181,11 @@
    color: white;
     font-weight: bold;
     font-size: 4.5vh;
-    position: sticky;
     margin: -1.5% 0;
     width: 10%;
     height: 10%;
     cursor: pointer;
+    position: sticky;
   }
   button {
    background: transparent;

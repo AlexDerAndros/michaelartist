@@ -143,29 +143,34 @@ function ImageList (){
     <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
        style={{
           cursor: 'pointer',
-          transform: click ? 'scale(1.7)' : 'scale(1)',
+          transform: click ? 'scale(1.6)' : 'scale(1)',
           transition: ' 0.3s ease-in-out',
           width: '70%',
          height: '85%',
          borderRadius: '4%',
-        margin: click ? '-3% 10% 1% 16%' : '4% 10% 1% 16%',
-        position: 'sticky',
+         margin: click ? '-3% 10% 1% 16%' : '4% 10% 1% 16%',
           zIndex: click ? '100' : '-100',
           maxWidth:'300px'
         }}
     />
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'fixed',transform:'rotate(-180deg)', margin: '0% 2.5%'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white',transform:'rotate(-180deg)', margin:'-35% -35%', position:'absolute'}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'fixed', margin:'0% -5%'  }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', margin:'-35% -35%', position:'absolute' }}/>
   </button>
     </div>
    </div>
   );
 }
-
+const Impressum = () => {
+  return (
+    <div className='Imp'>
+      Hallo
+    </div>
+  );
+}
 function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
@@ -177,12 +182,12 @@ function Home() {
   Welcome to my website!
 </div>
 <div className='info'>
- Thanks to you I became the artist I am today 
- and to reach the next level
-I made this website for you.
+"If you feel it, you can paint it.
+When you paint, you feel it."  By Michael Ntrikos
 </div>
 <ImageList/>
-
+<br/>
+<Impressum/>
   </div>
  );
 }
@@ -975,9 +980,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press0}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+     <BackSymbol/>
      </button>
         <ShopImage0/>
        
@@ -988,9 +991,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press1}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+     <BackSymbol/>
      </button>
         <ShopImage1/>
        
@@ -1001,9 +1002,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press2}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+     <BackSymbol/>
      </button>
         <ShopImage2/>
        
@@ -1014,9 +1013,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press3}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+     <BackSymbol/>
      </button>
         <ShopImage3/>
        
@@ -1027,9 +1024,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press4}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+     <BackSymbol/>
      </button>
         <ShopImage4/>
        
@@ -1040,9 +1035,7 @@ const PictureShop = () => {
     return(
       <div className='pictureShop'>
        <button onClick={press5}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', cursor:'pointer', margin:'-86% 0%', position:'absolute'
-     }} />
+        <BackSymbol/>    
      </button>
         <ShopImage5/>
        
@@ -1200,26 +1193,23 @@ const ShopImage5 = () => {
   </>
   );
 }
+const BackSymbol = () => {
+  return (
+    <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+    transform:'rotate(180deg)', cursor:'pointer', top:'5%', position:'absolute'
+    }} />
+  );
+}
 
 const ShopImages = [
-{price:100, src:'./Avatar.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:150, src:'./BuntF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:200, src:'./BaumFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:250, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:300, src:'./CringeF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:350, src:'./BuntF2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Avatar.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BuntF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BaumFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./CringeF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BuntF2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 
 
 ];
 
-
-//About Us 
-const AboutUs = () => {
-  return (
-    <div className='aboutUs'>
-      <div className='headAU'>
-        About Us
-      </div>
-    </div>
-  );
-}
+ 
