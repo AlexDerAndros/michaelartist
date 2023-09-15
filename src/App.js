@@ -150,25 +150,59 @@ function ImageList (){
          borderRadius: '4%',
          margin: click ? '-3% 10% 1% 16%' : '4% 10% 1% 16%',
           zIndex: click ? '100' : '-100',
-          maxWidth:'300px'
+          maxWidth:'300px',
+          
         }}
     />
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white',transform:'rotate(-180deg)', margin:'-35% -35%', position:'absolute'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white',transform:'rotate(-180deg)', position:'absolute'}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', margin:'-35% -35%', position:'absolute' }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white',  position:'absolute',  margin:'0% -35%'}}/>
   </button>
     </div>
    </div>
   );
 }
-const Impressum = () => {
+const Info = () => {
   return (
     <div className='Imp'>
-      Hallo
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div className='infoUN'>
+        <div className='fontIn textIF'>
+          Impressum
+        </div>
+        <div className='DatER textIF'>
+          Privacy policy
+        </div>
+        <div className='NutzBe textIF'>
+          Terms of use
+        </div>
+      </div>
     </div>
+  );
+}
+const Impressum = () => {
+  return(
+    <>
+
+    </>
+  );
+}
+const Datenschutzerklärung = () => {
+  return(
+    <>
+    </>
+  );
+}
+const Nutzungsbedingungen = () => {
+  return(
+    <>
+    </>
   );
 }
 function Home() {
@@ -187,7 +221,7 @@ When you paint, you feel it."  By Michael Ntrikos
 </div>
 <ImageList/>
 <br/>
-<Impressum/>
+<Info/>
   </div>
  );
 }
