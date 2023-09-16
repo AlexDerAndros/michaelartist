@@ -37,16 +37,14 @@
   }
   th {
     font-size: 4vh;
-    background: linear-gradient(to right, rgb(18, 78, 231), #3ce1fa);
-   background-clip: text;
-   color: transparent;
+   color: white;
+   font-family: Arial, Helvetica, sans-serif;
   }
   td {
-    background: linear-gradient(to right, rgb(202, 1, 238), #0220b9);
-    background-clip: text;
-    color: transparent;
+   color: white;
     font-weight: bold;
     font-size: 3.5vh;
     margin: 70% 0%;
     position: sticky;
+    font-family: Arial, Helvetica, sans-serif;
    }

@@ -31,7 +31,7 @@ function FilterableProductTable({ products }) {
     return (
    
       <tr>
-        <td>{name}</td>
+        <td style={{color:'white'}}>{name}</td>
       </tr>
     
     );
@@ -65,7 +65,7 @@ function FilterableProductTable({ products }) {
       <table>
         <thead>
           <tr>
-            <th>
+            <th style={{color:'white'}}>
               Themes on the website
             </th>
           </tr>

@@ -172,17 +172,16 @@ const Info = () => {
       <br/>
       <br/>
       <br/>
-      <div className='infoUN'>
-        <div className='fontIn textIF'>
+      <ul className='infoUN'>
+        <li className='fontIn textIF'>
           Impressum
-        </div>
-        <div className='DatER textIF'>
+        </li>
+        <li className='DatER textIF'>
           Privacy policy
-        </div>
-        <div className='NutzBe textIF'>
-          Terms of use
-        </div>
-      </div>
+        </li>
+        <li className='NutzBe textIF'>          Terms of use
+        </li>
+      </ul>
     </div>
   );
 }
@@ -864,7 +863,8 @@ const videos = [
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
   './3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4','./FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4',
- './85210F06-83A1-4F7C-85C7-0C2475B1FE93.mp4'
+ './85210F06-83A1-4F7C-85C7-0C2475B1FE93.mp4', './copy_B16F5226-BE8F-4D94-8875-7BC1E6372E3.mp4',
+
 ];
 const Videogalerie = () => {
  
@@ -987,21 +987,20 @@ const PictureShop = () => {
      </div>
      </div> 
      <div className='shopGR1'> 
-      <div className='elePic1' onClick={press3}>
-       <img className='imgShA1' src={ShopImages[3].src} />
+      <div className='elePic' onClick={press3}>
+       <img className='imgSh' src={ShopImages[3].src} />
         <div className='pri'>
          Price: {ShopImages[3].price}€
        </div>
       </div> 
-     <div className='elePic1' onClick={press4}>
-      <img className='imgShA2' src={ShopImages[4].src}/>
-      <div style={{fontFamily: 'Arial, Helvetica, sans-serif',
-  margin:' 0% -25%'}}>
+     <div className='elePic' onClick={press4}>
+      <img className='imgSh' src={ShopImages[4].src}/>
+      <div style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>
         Price: {ShopImages[4].price}€
       </div>
      </div> 
-     <div className='elePic1' onClick={press5}>
-      <img className='imgShA3' src={ShopImages[5].src}/>
+     <div className='elePic' onClick={press5}>
+      <img className='imgSh' src={ShopImages[5].src}/>
       <div className='pri3'>
         Price: {ShopImages[5].price}€
       </div>
@@ -1236,14 +1235,19 @@ const BackSymbol = () => {
 }
 
 const ShopImages = [
-{price:'/', src:'./Avatar.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./BuntF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./BaumFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./CringeF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./BuntF2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-
-
+{price:'/', src:'./FrauB2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./mannBlitz2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./KettenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./FrauSilber.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./FBJZ.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Sänger.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./CooleFRau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Statur.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BlumenFrau21.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./KüssFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./EngMann.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./EngFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Brüste.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 ];
 
  
