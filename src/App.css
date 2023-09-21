@@ -166,16 +166,7 @@
     top: 0.5%;
    position: sticky;
   }
-  .imageList {
-    width: 89%;
-    height: 74%;
-    background: rgba(0, 0, 0, 0.639); 
-    display: flex;
-    flex-direction: column;
-    border-radius: 4%;
-    margin: -2% 5%;
-    position: sticky;
-  }
+ 
   .btn1 {
    color: white;
     font-weight: bold;
@@ -799,9 +790,24 @@ padding: 2%;
 }
 .shopGR1 {
   display: flex;
- flex-direction: column-reverse  row;
+ flex-direction: column  row;
  padding: 2%;
 } 
+.shopGR2 {
+  display: flex;
+ flex-direction: column  row;
+ padding: 2%;
+}
+.shopGR3 {
+  display: flex;
+  flex-direction: column  row;
+  padding: 2%;
+}
+.shopGR4 {
+  display: flex;
+  flex-direction: column  row;
+  padding: 2%;
+}
 .elePic {
   height: auto;
   width: auto;
@@ -849,7 +855,7 @@ padding: 2%;
   font-size: 4vh;
 }
 .imgSHI {
-  width:65%;
+  width:70%;
   height:70.5%;
   max-width: 50vh;
   border-radius: 5%;
@@ -873,9 +879,9 @@ padding: 2%;
   background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
 }
 .btnShop:hover {
-  box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
--webkit-box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
--moz-box-shadow: 10px 19px 73px 17px rgba(96,251,181,0.61);
+  box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+-webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+-moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
 }
 /**About Us **/
 .aboutUs {
