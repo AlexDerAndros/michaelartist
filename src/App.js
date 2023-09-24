@@ -23,8 +23,6 @@ import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from '@firebase/firestore';
 import {collection} from '@firebase/firestore';
 
-
-
 //Login https://firebase.google.com/docs/auth/web/start?hl=de
 
 const firebaseConfig = {
@@ -103,15 +101,16 @@ function Hamburger() {
  </div>
   );
 }
-const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz.jpeg'
-, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria.jpeg', './Teufel.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
-'./Eiffelturm.jpeg', './KettenFrau.jpeg', './GefässelteFrau.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch.jpeg',
-'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
-'./Eli.jpeg', './EngFrau.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
-, './Indianer.jpeg', './Cello.jpeg', './Avatar.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
-'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen.jpeg', './Pferd.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF.jpeg',
+const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
+, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
+'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg',
+'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
+'./Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
+, './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
+'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
  './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
-'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg'];
+'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
+'./FrauSilber.jpeg', './MickeyMouse.jpeg', './Statur.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const[click,setClick] = useState(false);
@@ -140,9 +139,9 @@ function ImageList (){
   
   return (
    <div  style={{
-    width: click ? '89%' : '71%',
+    width:  '71%',
     height: '74%',
-    background: 'rgba(0, 0, 0, 0.639)',
+    background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
     display: 'flex',
     flexDirection: 'column',
     borderRadius:' 4%', 
@@ -153,10 +152,10 @@ function ImageList (){
           cursor: 'pointer',
           transform: click ? 'scale(1.6)' : 'scale(1)',
           transition: ' 0.3s ease-in-out',
-          width: '70%',
+          width: click ? '80%' :'70%',
          height: '85%',
          borderRadius: '4%',
-         margin: click ? '-3% 10% 1% 10%' : '2% 10% 1% 16%',
+         margin: click ? '0% 0% 1% 10%' : '2% 10% 1% 16%',
           zIndex: click ? '100' : '-100',
           maxWidth:'600px',
           maxHeight:'500px'
@@ -165,10 +164,10 @@ function ImageList (){
     />
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white',transform:'rotate(-180deg)', position:'absolute'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute'}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white',  position:'absolute',  margin:'0% -35%'}}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'0% -35%'}}/>
   </button>
     </div>
    </div>
@@ -631,6 +630,16 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[55]} className='imgG'/>
             <InfoB/>
+            <img src={images[56]} className='imgG'/>
+            <InfoB/>
+            <img src={images[57]} className='imgG'/>
+            <InfoB/>
+            <img src={images[58]} className='imgG'/>
+            <InfoB/>
+            <img src={images[59]} className='imgG'/>
+            <InfoB/>
+            <img src={images[60]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -692,24 +701,34 @@ function Comments() {
 
 function Likes() {
   const [like, setLike] = useState('white');
-  const [likeNumber, setLikeNumber] = useState(1002);
-
+  const [click, setClick] = useState(false);
+  
+  
+    const randomNumber = Math.floor(Math.random() * 5000); // Hier wird eine zufällige Zahl von 0 bis 99 generiert
+  const [likeNumber, setLikeNumber] = useState(randomNumber);
+ 
   const handleClick = () => {
     let newCount;
     if (like === 'red') {
       setLike('white');
       newCount = likeNumber - 1;
       setLikeNumber(newCount);
+      setClick(click);
       
     } else {
       setLike('red');
       newCount = likeNumber + 1;
       setLikeNumber(newCount);
+      setClick(!click);
       
     }
    
     
   };
+ 
+  
+  
+
 
   
 
@@ -788,7 +807,7 @@ function Signup() {
      </div>
      <br/>
      <br/>
-      <button className='logBtn'  >
+      <button style={{fontSize:'1.5vh'}}>
       <p className="AniB" onClick={()=> {
         if (addUsername == addUsername && addPassword == addPassword){
           alert("Register successful");
@@ -827,17 +846,19 @@ const Log = () => {
     <div className='head'>
       Login
     </div>
+    <form onSubmit={handleLogin}>
       <input id='us' type="text" placeholder="Username..." value={username} onChange={handleUsernameChange} />
       <br/>
       <input id='pa' type="password" placeholder="Password..." value={password} onChange={handlePasswortChange} />
       <br/>
       <br/>
       <br/>
-      <button className='logBtn' onClick={handleLogin} >
-      <p className="AniB" >
+      <button className='logBtn' type='submit' >
+      <p className="AniB" style={{fontSize:'2.5vh'}}>
         Login
       </p>
       </button>
+      </form>
      
     </div>   
     );
@@ -967,7 +988,51 @@ const PictureShop = () => {
   const press12 = () => {
     setClick12(!click12);
   }
-  if (!click0 && !click1&& !click2&& !click3&& !click4 && !click5&& !click6 && !click7 && !click8 && !click9 && !click10 && !click11 && !click12) {
+  const[click13,setClick13] = useState(false);
+  const press13 = () => {
+    setClick13(!click13);
+  }
+  const[click14,setClick14] = useState(false);
+  const press14 = () => {
+    setClick14(!click14);
+  }
+  const[click15,setClick15] = useState(false);
+  const press15 = () => {
+    setClick15(!click15);
+  }
+  const[click16,setClick16] = useState(false);
+  const press16 = () => {
+    setClick16(!click16);
+  }
+  const[click17,setClick17] = useState(false);
+  const press17 = () => {
+    setClick17(!click17);
+  }
+  const[click18,setClick18] = useState(false);
+  const press18 = () => {
+    setClick18(!click18);
+  }
+  const[click19,setClick19] = useState(false);
+  const press19  = () => {
+    setClick19(!click19);
+  }
+  const[click20,setClick20] = useState(false);
+  const press20 = () => {
+    setClick20(!click20);
+  }
+  const[click21,setClick21] = useState(false);
+  const press21 = () => {
+    setClick21(!click21);
+  }
+  const[click22,setClick22] = useState(false);
+  const press22 = () => {
+    setClick22(!click22);
+  }
+  const[click23,setClick23] = useState(false);
+  const press23 = () => {
+    setClick23(!click23);
+  }
+  if (!click0 && !click1&& !click2&& !click3&& !click4 && !click5&& !click6 && !click7 && !click8 && !click9 && !click10 && !click11 && !click12&& !click13&& !click14&& !click15&& !click16&& !click17&& !click18&& !click19&& !click20&& !click21&& !click22&& !click23) {
     return (
    <div className='pictureShop'>   
    <div>
@@ -1005,7 +1070,7 @@ const PictureShop = () => {
      </div>
       <div className='shopGR'>
      <div className='elePic' onClick={press0}>
-      <img className='imgSh' src={ShopImages[0].src}/>
+      <img className='imgSh' src={ShopImages[0].src} />
       <div className='pri'>
         Price: {ShopImages[0].price}€
       </div>
@@ -1093,21 +1158,84 @@ const PictureShop = () => {
         Price: {ShopImages[12].price}€
        </div>
       </div>
-      <div className='elePic' onClick={press11}>
-       <img className='imgSh' src={ShopImages[11].src}/>
+      <div className='elePic' onClick={press13}>
+       <img className='imgSh' src={ShopImages[13].src}/>
        <div className='pri'>
-        Price: {ShopImages[11].price}€
+        Price: {ShopImages[13].price}€
        </div>
       </div>
-      <div className='elePic' onClick={press11}>
-       <img className='imgSh' src={ShopImages[11].src}/>
+      <div className='elePic' onClick={press14}>
+       <img className='imgSh' src={ShopImages[14].src}/>
        <div className='pri'>
-        Price: {ShopImages[11].price}€
+        Price: {ShopImages[14].price}€
        </div>
       </div>
      </div>
     
+    <div className='shopGR5'>
+    <div className='elePic' onClick={press15}>
+       <img className='imgSh' src={ShopImages[15].src}/>
+       <div className='pri'>
+        Price: {ShopImages[15].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press16}>
+       <img className='imgSh' src={ShopImages[16].src}/>
+       <div className='pri'>
+        Price: {ShopImages[16].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press17}>
+       <img className='imgSh' src={ShopImages[17].src}/>
+       <div className='pri'>
+        Price: {ShopImages[17].price}€
+       </div>
+      </div>
+    </div>
 
+    <div className='shopGR6'>
+    <div className='elePic' onClick={press18}>
+       <img className='imgSh' src={ShopImages[18].src}/>
+       <div className='pri'>
+        Price: {ShopImages[18].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press19}>
+       <img className='imgSh' src={ShopImages[19].src}/>
+       <div className='pri'>
+        Price: {ShopImages[19].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press20}>
+       <img className='imgSh' src={ShopImages[20].src}/>
+       <div className='pri'>
+        Price: {ShopImages[20].price}€
+       </div>
+      </div>
+
+  </div>
+
+     <div className='shopGR7'>
+    <div className='elePic' onClick={press21}>
+       <img className='imgSh' src={ShopImages[21].src}/>
+       <div className='pri'>
+        Price: {ShopImages[21].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press21}>
+       <img className='imgSh' src={ShopImages[21].src}/>
+       <div className='pri'>
+        Price: {ShopImages[21].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press21}>
+       <img className='imgSh' src={ShopImages[21].src}/>
+       <div className='pri'>
+        Price: {ShopImages[21].price}€
+       </div>
+      </div>
+  </div>
+   
       
     </div> 
     );
@@ -1251,6 +1379,116 @@ const PictureShop = () => {
         <BackSymbol/>    
      </button>
         <ShopImage12/>
+       
+      </div>
+    )
+  }
+  else if (click13) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press13}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage13/>
+       
+      </div>
+    )
+  }
+  else if (click14) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press14}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage14/>
+       
+      </div>
+    )
+  }
+  else if (click15) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press15}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage15/>
+       
+      </div>
+    )
+  }
+  else if (click16) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press16}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage16/>
+       
+      </div>
+    )
+  }
+  else if (click17) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press17}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage17/>
+       
+      </div>
+    )
+  }
+  else if (click18) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press18}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage18/>
+       
+      </div>
+    )
+  }
+  else if (click19) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press19}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage19/>
+       
+      </div>
+    )
+  }
+  else if (click20) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press20}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage20/>
+       
+      </div>
+    )
+  }
+  else if (click21) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press21}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage21/>
+       
+      </div>
+    )
+  }
+  else if (click22) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press22}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage22/>
        
       </div>
     )
@@ -1574,6 +1812,246 @@ const ShopImage12 = () => {
   </>
   );
 }
+const ShopImage13 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[13].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[13].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[13].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[13].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage14 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[14].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[14].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[14].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[14].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage15 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[15].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[15].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[15].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[15].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage16 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[16].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[16].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[16].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[16].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage17 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[17].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[17].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[17].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[17].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage18 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[18].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[18].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[18].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[18].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage19 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[19].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[19].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[19].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[19].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage20 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[20].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[20].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[20].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[20].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage21 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[21].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[21].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[21].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[21].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage22 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[22].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[22].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[22].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[22].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
 const BackSymbol = () => {
   return (
     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
@@ -1596,6 +2074,16 @@ const ShopImages = [
 {price:'/', src:'./EngMann.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./EngFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Brüste.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./AlkoholF2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Avatar2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Cello2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Pferd2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Läspisch2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Tanzen2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Maria2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Teufel2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BlumenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 ];
 
  
