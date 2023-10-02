@@ -17,39 +17,53 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import 'firebase/firestore';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getFirestore} from '@firebase/firestore';
-import {collection} from '@firebase/firestore';
-
+import fire from './config/firebase';
+import { Component } from 'react';
 //Login https://firebase.google.com/docs/auth/web/start?hl=de
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
-  authDomain: "michael--artist.firebaseapp.com",
-  databaseURL: "https://michael--artist-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "michael--artist",
-  storageBucket: "michael--artist.appspot.com",
-  messagingSenderId: "690442290094",
-  appId: "1:690442290094:web:62e0a17e181182ce23fe3f",
-  measurementId: "G-GGJ7KLTS88"
-};
-const app = initializeApp(firebaseConfig);
 
 
+class app extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+  }
 
-export default function App() {
-  return (
-    <main>
-    <Header/>
-    <Bottom/>
-    </main>
-  );
-  // Aktualisierung einer React App: 1.npm run build 2.firebase deploy oder firebase deploy --only hosting:michael--artist
-  // 3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
-  // Wichtig: immer alles auf der neusten Version und updaten ab und zu
+  componentDidMount() {
+    this.authListener();
+  }
+  authListener(){
+    fire.auth().onAuthStateChanged((user) => {
+      if(user) {
+        this.setState({user})
+      }
+      else {
+        this.setState({user: null})
+      }
+    })
+  }
+render() {
+  return <App/>
 }
+ 
+
+  
+}
+
+
+  export default function App() {
+    return (
+     <main>
+     <Header/>
+    <Bottom/>
+      </main>
+    );
+//    Aktualisierung einer React App: 1.npm run build 2.firebase deploy oder firebase deploy --only hosting:michael--artist
+//   3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
+//   Wichtig: immer alles auf der neusten Version und updaten ab und zu
+ }
 function Header() {
   return (
    <div className='header'>
@@ -150,7 +164,7 @@ function ImageList (){
     <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
        style={{
           cursor: 'pointer',
-          transform: click ? 'scale(1.6)' : 'scale(1)',
+          transform: click ? 'scale(1.7)' : 'scale(1)',
           transition: ' 0.3s ease-in-out',
           width: click ? '80%' :'70%',
          height: '85%',
@@ -228,7 +242,6 @@ When you paint, you feel it."  By Michael Ntrikos
 </div>
 <ImageList/>
 <br/>
-<Info/>
   </div>
  );
 }
@@ -808,14 +821,15 @@ function Signup() {
      <br/>
      <br/>
       <button style={{fontSize:'1.5vh'}}>
-      <p className="AniB" onClick={()=> {
+      {/* <p className="AniB" onClick={()=> {
         if (addUsername == addUsername && addPassword == addPassword){
           alert("Register successful");
         }
         else {
           alert("Register failed");
         }
-      }}>
+      }> */}
+      <p className="AniB">
         Register
       </p>
       </button>
@@ -824,32 +838,32 @@ function Signup() {
 
 }
 const Log = () => {
-  const [username, setUsername]= useState('');
-  const [password, setPassword]= useState('');
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-  const handlePasswortChange = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleLogin = () => {
-    if (username === 'admin') {
-      alert("Login successful");
-    }
-    else {
-      alert("Login failed");
-    } 
-  }
+  // const [username, setUsername]= useState('');
+  // const [password, setPassword]= useState('');
+  // const handleUsernameChange = (e) => {
+  //   setUsername(e.target.value);
+  // };
+  // const handlePasswortChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
+  // const handleLogin = () => {
+  //   if (username === 'admin') {
+  //     alert("Login successful");
+  //   }
+  //   else {
+  //     alert("Login failed");
+  //   } 
+  // }
  return (
   
     <div>
     <div className='head'>
       Login
     </div>
-    <form onSubmit={handleLogin}>
-      <input id='us' type="text" placeholder="Username..." value={username} onChange={handleUsernameChange} />
+    <form>
+      <input id='us' type="text" placeholder="Username..." />
       <br/>
-      <input id='pa' type="password" placeholder="Password..." value={password} onChange={handlePasswortChange} />
+      <input id='pa' type="password" placeholder="Password..."   />
       <br/>
       <br/>
       <br/>
@@ -893,8 +907,14 @@ const videos = [
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
   './3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4','./FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4',
- './85210F06-83A1-4F7C-85C7-0C2475B1FE93.mp4', './copy_B16F5226-BE8F-4D94-8875-7BC1E6372E3.mp4',
-
+ './85210F06-83A1-4F7C-85C7-0C2475B1FE93.mp4','./B4B3E89B-E02F-4735-97EC-D467C10D7874.mp4',
+'./4F2D5055-EED0-498C-BDCD-FD2F4DC7D910.mp4', './C30BCC52-6700-4FCF-9B90-167169F37065.mp4',
+'./copy_B0D61099-C60A-4D60-9B07-08C4248CD82B.mp4','./B385F5F1-CA88-490F-9CA3-61E6C5B166EC.mp4',
+'./A02876CC-9293-48F9-9B32-127EDD12F151.mp4','./export_1683919611553.mp4',
+'./41999F3E-67B9-4AD4-BCF4-90C304F84E04.mp4', "./D9EFDC13-AA25-4747-AA3C-587C5C6461A9.mp4",
+'./C62DBA36-81A8-4664-8E29-9FCF91248950.mp4', './2E7ED2C4-EB5C-469A-9AEA-07824BD0194C.mp4',
+'./521B77C0-DD4C-417E-A842-B9DF6DF343D0.mp4','./3DE96816-A4FF-466B-94BB-2BE1F8604E5B.mp4',
+'./8C8364AC-72DD-46D1-9254-1DBD2668A3AA.mp4',
 ];
 const Videogalerie = () => {
  
