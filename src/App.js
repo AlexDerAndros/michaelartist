@@ -56,21 +56,28 @@ render() {
   export default function App() {
     return (
      <main>
-     <Header/>
-    <Bottom/>
+     <HeaderBo/>
+   
       </main>
     );
 //    Aktualisierung einer React App: 1.npm run build 2.firebase deploy oder firebase deploy --only hosting:michael--artist
 //   3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
 //   Wichtig: immer alles auf der neusten Version und updaten ab und zu
  }
-function Header() {
+function HeaderBo() {
   return (
+   <Router>
+   <div>
    <div className='header'>
    
       <div className='title' > 
       Artist Michael Ntrikos
       </div>
+     <Link to="/AboutUs">
+      <div className='about'>
+        About Us
+      </div>
+      </Link>  
       <div className='foto1'>
         <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
           <img className='img1' src='./tiktok.jpeg'/>
@@ -83,172 +90,7 @@ function Header() {
       </div>
 
     </div>
-  );
-}
-function Hamburger() {
-  const [click,setClick] = useState(false);
-  
-  const press = () => {
-    setClick(!click);
-  };
-  return (
-  
- <div className='ham'>
-   <div onClick={press} className='click'>
-    <div className='linie1'></div>
-    <div className='linie2'></div>
-    <div className='linie3'></div>
-   </div>
- { click && (
-  <div className='content'>
-  <div className='textCo'>
-  <ul>
-    <li>
-      <span className='element'>
-        Hallo
-      </span>
-    </li>
-  </ul>
-  </div>
-  </div>
- )}
- </div>
-  );
-}
-const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
-, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
-'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg',
-'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
-'./Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
-, './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
-'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
- './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
-'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
-'./FrauSilber.jpeg', './MickeyMouse.jpeg', './Statur.jpeg'];
-function ImageList (){
-  const [currentIndex, setCurrentIndex]= useState(0);
-  const[click,setClick] = useState(false);
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(1);
-
-  const toggleImageSize = () => {
-    setIsImageExpanded(!isImageExpanded);
-    setZoomLevel(1); // Beim Zurücksetzen auf Standardgröße auch den Zoom auf 1 setzen
-  };
-
-  
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) =>
-    prevIndex === images.length - 1 ? 0 : prevIndex + 1
-  );
-  }
-  function prevImage() {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  }
-  const BiggerPic = () => {
-    setClick(!click);
-  }
-  
-  return (
-   <div  style={{
-    width:  '71%',
-    height: '74%',
-    background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius:' 4%', 
-    position: 'sticky',
-    margin: '2% 13%'}}>
-    <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
-       style={{
-          cursor: 'pointer',
-          transform: click ? 'scale(1.7)' : 'scale(1)',
-          transition: ' 0.3s ease-in-out',
-          width: click ? '80%' :'70%',
-         height: '85%',
-         borderRadius: '4%',
-         margin: click ? '0% 0% 1% 10%' : '2% 10% 1% 16%',
-          zIndex: click ? '100' : '-100',
-          maxWidth:'600px',
-          maxHeight:'500px'
-          
-        }}
-    />
-    <div className='imgBtn'> 
-    <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute'}} />
-    </button>
-  <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'0% -35%'}}/>
-  </button>
-    </div>
-   </div>
-  );
-}
-const Info = () => {
-  return (
-    <div className='Imp'>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <ul className='infoUN'>
-        <li className='fontIn textIF'>
-          Impressum
-        </li>
-        <li className='DatER textIF'>
-          Privacy policy
-        </li>
-        <li className='NutzBe textIF'>          Terms of use
-        </li>
-      </ul>
-    </div>
-  );
-}
-const Impressum = () => {
-  return(
-    <>
-
-    </>
-  );
-}
-const Datenschutzerklärung = () => {
-  return(
-    <>
-    </>
-  );
-}
-const Nutzungsbedingungen = () => {
-  return(
-    <>
-    </>
-  );
-}
-function Home() {
-  ReactGA.initialize('YOUR_TRACKING_ID');
-  ReactGA.pageview(window.location.pathname);
-  
-
- return (
-<div className='Mitte'>
- <div className='info1'> 
-  Welcome to my website!
-</div>
-<div className='info'>
-"If you feel it, you can paint it.
-When you paint, you feel it."  By Michael Ntrikos
-</div>
-<ImageList/>
-<br/>
-  </div>
- );
-}
-function Bottom() {
-return (
-<Router>
- <div className='unten'>
+    <div className='unten'>
    <div>
    <Link to="/">
     <div style={{ color: 'white'}} className='po'>
@@ -296,11 +138,228 @@ return (
    <Route path="/login" element={<Login/>}/>
    <Route path='/PictureShop' element={<PictureShop/>}/>
    <Route path='/Videogalerie' element={<Videogalerie/>}/>
+   <Route path='/AboutUs' element={<AboutUs/>}/>
+
   </Routes>
  </div>
- </Router>
-);
+</div>
+</Router> 
+  );
 }
+function Hamburger() {
+  const [click,setClick] = useState(false);
+  
+  const press = () => {
+    setClick(!click);
+  };
+  return (
+  
+ <div className='ham'>
+   <div onClick={press} className='click'>
+    <div className='linie1'></div>
+    <div className='linie2'></div>
+    <div className='linie3'></div>
+   </div>
+ { click && (
+  <div className='content'>
+  <div className='textCo'>
+  <ul>
+    <li>
+      <span className='element'>
+        Hallo
+      </span>
+    </li>
+  </ul>
+  </div>
+  </div>
+ )}
+ </div>
+  );
+}
+const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
+, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
+'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg',
+'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
+'./Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
+, './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
+'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
+ './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
+'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
+'./FrauSilber.jpeg', './MickeyMouse.jpeg', './Statur.jpeg'];
+function ImageList (){
+  const [currentIndex, setCurrentIndex]= useState(0);
+  const[click,setClick] = useState(false);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  
+
+  const toggleImageSize = () => {
+    setIsImageExpanded(!isImageExpanded);
+    setZoomLevel(1); // Beim Zurücksetzen auf Standardgröße auch den Zoom auf 1 setzen
+  };
+
+  
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) =>
+    prevIndex === images.length - 1 ? 0 : prevIndex + 1
+  );
+  }
+  function prevImage() {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  }
+  const BiggerPic = () => {
+    setClick(!click);
+  }
+  
+  return (
+   <div  style={{
+    width:  '71%',
+    height: '74%',
+    background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius:' 4%', 
+    position: 'sticky',
+    margin: '2% 13%'}}>
+    <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
+       style={{
+          cursor: 'pointer',
+          transform: click ? 'scale(1.65)' : 'scale(1)',
+          transition: ' 0.3s ease-in-out',
+          width: click ? '80%' :'70%',
+         height: '85%',
+         borderRadius: '4%',
+         margin: click ? '0% 0% 1% 10%' : '2% 10% 1% 16%',
+          zIndex: click ? '100' : '-100',
+          maxWidth:'600px',
+          maxHeight:'500px'
+          
+        }}
+    />
+    <div className='imgBtn'> 
+    <button  onClick={prevImage} className='btn1'> 
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute'}} />
+    </button>
+  <button className='btn1' onClick={nextImage}>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'0% -35%'}}/>
+  </button>
+    </div>
+   </div>
+  );
+}
+const Info = () => {
+  return (
+    <div className='Imp'>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <ul className='infoUN'>
+        <li className='fontIn textIF'>
+          Impressum
+        </li>
+        <li className='DatER textIF'>
+          Privacy policy
+        </li>
+        <li className='NutzBe textIF'>          Terms of use
+        </li>
+      </ul>
+    </div>
+  );
+}
+function AboutUs() {
+  return(
+    <div className='aboutUs'>
+      <div className='headAb'>
+        About Us
+      </div>
+      <div className='imp'>
+       <details>
+         <summary>Impressum</summary>
+          <div> Hello World</div>
+        </details>
+      </div>
+    </div>
+  );
+}
+function Home() {
+  ReactGA.initialize('YOUR_TRACKING_ID');
+  ReactGA.pageview(window.location.pathname);
+  
+
+ return (
+<div className='Mitte'>
+ <div className='info1'> 
+  Welcome to my website!
+</div>
+<div className='info'>
+"If you feel it, you can paint it.
+When you paint, you feel it."  By Michael Ntrikos
+</div>
+<ImageList/>
+<br/>
+  </div>
+ );
+}
+// function Bottom() {
+// return (
+// <Router>
+
+//  <div className='unten'>
+//    <div>
+//    <Link to="/">
+//     <div style={{ color: 'white'}} className='po'>
+//       <FaHome size={40} />
+//     </div>
+//     </Link>
+//    </div>
+//    <div>
+//    <Link to= "/Search">
+//    <div style={{ color: 'white'  }} className='po2'>
+//       <FaSearch size={38} />
+//     </div>
+//     </Link>
+//    </div>
+//    <Link to="/bildgalerie" className='po3'>
+//    <div style={{ color: 'white'}}>
+//       <FaImages size={40} />
+//     </div>
+//   </Link>
+//   <Link to= "/chat">
+//     <div style={{ color: 'white'}} className='po1'>
+//       <FaComment size={35} />
+//     </div>
+//   </Link>
+//   <Link to= "/login">
+//     <div style={{ color: 'white'}} className='po4'>
+//       <FaSignInAlt size={35} />
+//     </div>
+//   </Link>
+//   <Link to='/Videogalerie'>
+//    <div className='shPi'>
+//     <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
+//    </div>
+//   </Link>
+//   <Link to='/PictureShop'>
+//    <div className='shPi'>
+//     <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
+//     </div>
+//   </Link>
+//     <Routes>
+//     <Route path="/" element={<Home/>}/>
+//    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
+//    <Route path="/Search" element={<SEARCH/>}/>
+//    <Route path="/chat" element={<Chat/>}/>
+//    <Route path="/login" element={<Login/>}/>
+//    <Route path='/PictureShop' element={<PictureShop/>}/>
+//    <Route path='/Videogalerie' element={<Videogalerie/>}/>
+//   </Routes>
+//  </div>
+//  </Router>
+// );
+// }
 
 
 //Chat

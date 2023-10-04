@@ -23,14 +23,32 @@
   .title {
    color: rgb(255, 255, 255);
    font-weight: bold;
-   position: fixed;
-   font-size: 4vh;
-   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-  background-clip: text;
-  color: transparent;
-   left:3%;
-   top:0.5%;
+   position: sticky;
+   font-size: 3.5vh;
+   background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
+   background-clip: text;
+   color: transparent;
    cursor: pointer;
+   width: 80%;
+   display: flex;
+   align-items: center;
+   left: 2%;
+  }
+  .about {
+    font-size: 3.5vh;
+    width: auto;
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
+   background-clip: text;
+   color: transparent;
+   font-weight: bold;
+   position: fixed;
+   top: 0.9%;
+   left: 40%;
+  
+
   }
   /* .title:hover {
     font-size: 4.2vh;
@@ -38,7 +56,7 @@
     .header {
     background-color: black;
     width: 100%;
-    height: 7vh;
+    height: 6vh;
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -135,15 +153,8 @@
     left: 0%;
     right: 0%;
     top: 10%;
-    overflow-y: scroll;
     position: fixed;
     
-  }
-  .about{
-    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-  background-clip: text;
-  color: transparent;
-  font-weight: bold;
   }
   .info1 {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
@@ -889,7 +900,8 @@ padding: 2%;
 }
 .btnShop {
   color: black;
-  width: 20%;
+  width: auto;
+  min-width: 15%;
   height: 10%;
   margin: 0% 19%;
   font-weight: bolder;
@@ -914,4 +926,12 @@ padding: 2%;
     right: 3%;
     top: 10%;
     position: fixed;
+}
+.headAb {
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-size: 300%;
+  text-align: center;
 }
