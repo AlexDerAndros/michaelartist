@@ -176,7 +176,7 @@ function Hamburger() {
  </div>
   );
 }
-const images =['./michaelBackground.png', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
+const images =['./michaelBackground.png','./Medusa.jpeg', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
 , './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
 './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
@@ -277,8 +277,54 @@ function AboutUs() {
       </div>
       <div className='imp'>
        <details>
-         <summary>Impressum</summary>
-          <div> Hello World</div>
+         <summary>  Impressum  </summary>
+          <div> 
+          <span className='theAb'> Privacy policy </span>
+          <br/>
+         The data is used so that the users have an account under one name, so that they can see the videos on Instagram and TikTok before they are
+         published, it can be assigned
+        which user buys a picture and so that the chat
+        with Michael Ntrikos really only remains under the 
+         user and Michael Ntrikos. 
+           <br/>
+           <br/>
+        <span className='theAb'> Withdrawal </span>
+         <br/>
+            German Civil Code (BGB) § 312g Right of revocation
+
+              Unless the parties have agreed otherwise, the right of revocation does not apply to the following contracts:
+              <br/>
+              1. contracts for the supply of goods that are not prefabricated and 
+              for the production of which an individual choice or determination 
+             by the consumer is 
+            decisive or which are clearly tailored to the personal 
+             needs of the consumer.
+              <br/>
+             2. contracts for the supply of goods that are likely
+              to deteriorate quickly or whose expiration date 
+              would be quickly exceeded.
+              <br/>
+             3. contracts for the supply of sealed goods 
+              that are not suitable for return for reasons 
+             of health protection or hygiene if their seal has been
+             removed after delivery.
+             <br/>
+                4. contracts where the consumer has expressly requested the trader 
+                 to visit him in order to carry out urgent repair
+                 or maintenance work; this does not apply to other 
+                 services provided during the visit that the consumer has not
+                expressly requested, or to those goods delivered during the
+                 visit that are not necessarily required as spare parts
+                 for maintenance or repair.
+
+
+
+
+
+
+
+
+          </div>
         </details>
       </div>
     </div>
@@ -712,6 +758,8 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[60]} className='imgG'/>
             <InfoB/>
+            <img src={images[61]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -962,12 +1010,12 @@ function Likes1() {
       </div> 
    );
    }
-const videos = [
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
   './3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4','./FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4',
  './85210F06-83A1-4F7C-85C7-0C2475B1FE93.mp4','./B4B3E89B-E02F-4735-97EC-D467C10D7874.mp4',
-'./4F2D5055-EED0-498C-BDCD-FD2F4DC7D910.mp4', './C30BCC52-6700-4FCF-9B90-167169F37065.mp4',
+'./4F2D5055-EED0-498C-BDCD-FD2F4DC7D910.mp4', 
 './copy_B0D61099-C60A-4D60-9B07-08C4248CD82B.mp4','./B385F5F1-CA88-490F-9CA3-61E6C5B166EC.mp4',
 './A02876CC-9293-48F9-9B32-127EDD12F151.mp4','./export_1683919611553.mp4',
 './41999F3E-67B9-4AD4-BCF4-90C304F84E04.mp4', "./D9EFDC13-AA25-4747-AA3C-587C5C6461A9.mp4",

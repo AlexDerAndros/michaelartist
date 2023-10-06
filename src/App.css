@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
 
   main {
     background-image: url('./michaelBackground.png');
@@ -919,19 +920,34 @@ padding: 2%;
   background-color: rgba(0, 0, 0, 0.877);
   width: 80%;
     height: 75%;
-    padding: 1vh;
+    padding: 2vh;
     border-radius: 4%;
     z-index: -100;
     left: 7%;
     right: 3%;
     top: 10%;
     position: fixed;
+    overflow-y: scroll;
 }
 .headAb {
   font-weight: bold;
   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   color: transparent;
   background-clip: text;
-  font-size: 300%;
+  font-size: 160%;
   text-align: center;
+}
+.imp {
+  color: white;
+  font-family:'Poppins', sans-serif ;
+  font-size: 2vh;
+}
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2.5vh;
+
+}
+.theAb {
+  text-decoration: underline white;
 }
