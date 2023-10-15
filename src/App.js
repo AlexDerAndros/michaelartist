@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { useReducer, useContext , useEffect, useRef } from 'react';
+import { useReducer, useContext , useEffect, useRef, createContext } from 'react';
 import Search from './Search/Search';
 import './App.css';
 import ReactGA from 'react-ga';
@@ -64,18 +64,53 @@ render() {
 //   3.Quellcodeverwaltung unten dann oben commit 4. Aktualisieren
 //   Wichtig: immer alles auf der neusten Version und updaten ab und zu
  }
+ 
 function HeaderBo() {
+  const [english, setEnglish] = useState(true);
+  const[german, setGerman] = useState(false);
+  const pressG = () => {
+    setGerman(true);
+     setEnglish(false);
+  }
+  const pressE = () => {
+    setEnglish(true);
+      setGerman(false);
+  }
   return (
    <Router>
    <div>
    <div className='header'>
    
       <div className='title' > 
-      Artist Michael Ntrikos
+      { german ? (
+       <span>
+        Künstler Michael Ntrikos
+       </span>
+      ): english ? (
+        <span>
+        Artist Michael Ntrikos
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
       </div>
      <Link to="/AboutUs">
       <div className='about'>
+      { german ? (
+       <span>
+       Über uns
+       </span>
+      ): english ? (
+        <span>
         About Us
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
       </div>
       </Link>  
       <div className='foto1'>
@@ -88,8 +123,41 @@ function HeaderBo() {
          <img className='img2' src='./instagram.jpeg'/>
         </a>
       </div>
-
     </div>
+    <div className='translation'>
+    <div className='ge1' onClick={pressG}
+    style={{color: german ? 'blue' : 'white', borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+      { german ? (
+       <span>
+        Deutsch
+       </span>
+      ): english ? (
+        <span>
+          German
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+    <div className='en1' onClick={pressE}
+     style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+    { german ? (
+       <span>
+        Englisch
+       </span>
+      ): english ?  (
+        <span>
+          English
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+   </div>
     <div className='unten'>
    <div>
    <Link to="/">
@@ -176,16 +244,64 @@ function Hamburger() {
  </div>
   );
 }
-const images =['./michaelBackground.png','./Medusa.jpeg', './TraumfrauBlume.jpeg', './FrauGarage.jpeg', './mannBlitz2.jpeg'
-, './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
-'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg',
+function Translation() {
+  const [english, setEnglish] = useState(true);
+  const[german, setGerman] = useState(false);
+  const pressG = () => {
+    setGerman(true);
+     setEnglish(false);
+  }
+  const pressE = () => {
+    setEnglish(true);
+      setGerman(false);
+  }
+  return (
+   <div className='translation'>
+    <div className='ge' onClick={pressG}
+    style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+      { german ? (
+       <span>
+        Deutsch
+       </span>
+      ): english ? (
+        <span>
+          German
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+    <div className='en' onClick={pressE}
+     style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+    { german ? (
+       <span>
+        Englisch
+       </span>
+      ): english ?  (
+        <span>
+          English
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+   </div>
+  );
+}
+const images =['./michaelBackground.png','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+ './Lecken.jpeg','./Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
+'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
 './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
 , './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
 './LächelF.jpeg', './SchWeiF.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
  './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
 './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
-'./FrauSilber.jpeg', './MickeyMouse.jpeg', './Statur.jpeg'];
+'./FrauSilber.jpeg',  './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const[click,setClick] = useState(false);
@@ -333,20 +449,92 @@ function AboutUs() {
 function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
-  
+  const [english, setEnglish] = useState(true);
+  const[german, setGerman] = useState(false);
+  const pressG = () => {
+    setGerman(true);
+     setEnglish(false);
+  }
+  const pressE = () => {
+    setEnglish(true);
+      setGerman(false);
+  }
 
  return (
+  <>
+  <div className='translation'>
+  <div className='ge' onClick={pressG}
+  style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+    { german ? (
+     <span>
+      Deutsch
+     </span>
+    ): english ? (
+      <span>
+        German
+      </span>
+    ): (
+      <span>
+        Error
+      </span>
+    )}
+  </div>
+  <div className='en' onClick={pressE}
+   style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+  { german ? (
+     <span>
+      Englisch
+     </span>
+    ): english ?  (
+      <span>
+        English
+      </span>
+    ): (
+      <span>
+        Error
+      </span>
+    )}
+  </div>
+ </div>
 <div className='Mitte'>
  <div className='info1'> 
-  Welcome to my website!
+ { german ? (
+     <span>
+      Willkommen auf meiner Website!
+     </span>
+    ): english ?  (
+      <span>
+        Welcome to my Website!
+      </span>
+    ): (
+      <span>
+        Error
+      </span>
+    )}
 </div>
 <div className='info'>
-"If you feel it, you can paint it.
-When you paint, you feel it."  By Michael Ntrikos
+{ german ? (
+     <span>
+     ,,Wenn du es fühlst, kannst du es malen.
+       Wenn du malst, fühlst du es." Von Michael Ntrikos
+     </span>
+    ): english ?  (
+      <span>
+      "If you feel it, you can paint it.
+        When you paint, you feel it."  By Michael Ntrikos 
+      </span>
+    ): (
+      <span>
+        Error
+      </span>
+    )}
+
+
 </div>
 <ImageList/>
 <br/>
   </div>
+  </>
  );
 }
 // function Bottom() {
@@ -760,10 +948,31 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[61]} className='imgG'/>
             <InfoB/>
+            <img src={images[62]} className='imgG'/>
+            <InfoB/>
+            <img src={images[63]} className='imgG'/>
+            <InfoB/>
+            <img src={images[64]} className='imgG'/>
+            <InfoB/>
+            <img src={images[65]} className='imgG'/>
+            <InfoB/>
+            <img src={images[66]} className='imgG'/>
+            <InfoB/>
+            <img src={images[67]} className='imgG'/>
+            <InfoB/>
+            <img src={images[68]} className='imgG'/>
+            <InfoB/>
+            <img src={images[69]} className='imgG'/>
+            <InfoB/>
+            <img src={images[70]} className='imgG'/>
+            <InfoB/>
+            <img src={images[71]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
-}
+  }
+
 function InfoB() {
   return ( 
     <div className='icons1'>
@@ -880,137 +1089,262 @@ function Login() {
   const press = () => {
     setClick(!click);
   }
-  if (!click) {
-    
-    return (
+  const [english, setEnglish] = useState(true);
+  const[german, setGerman] = useState(false);
+  const pressG = () => {
+    setGerman(true);
+     setEnglish(false);
+  }
+  const pressE = () => {
+    setEnglish(true);
+      setGerman(false);
+  }
+  if (!click) 
+  {
+    let username = 'Username...';
+    let password = 'Password...';
+    if (german == true) 
+    {
+       username = 'Benutzername...';
+       password = 'Passwort...';
+    }
+    else 
+    {
+      username = 'Username...';
+      password = 'Password...';
+    }
+   
+      return (
+      <>
+      <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+       style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
       <div className='login'>
-      <Log/>
+      <div className='head'>
+      { german ? (
+         <span>
+          Anmeldung
+         </span>
+        ): english ?  (
+          <span>
+            Login
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+    </div>
+    <form>
+      <input id='us' type="text" placeholder={username}/>
+      <br/>
+      <input id='pa' type="password" placeholder={password}  />
+      <br/>
+      <br/>
+      <br/>
+      <button className='logBtn' type='submit' >
+      <p className="AniB" style={{fontSize:'2.5vh'}}>
+      { german ? (
+         <span>
+          Anmelden
+         </span>
+        ): english ?  (
+          <span>
+            Login
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </p>
+      </button>
+      </form>
+     
       <br/>
       <br/>
       <br/>
       <br/>
        <div className='importantI'>
-       If your are not yet logged in
-       <span className='sg' onClick={press}> please register!  </span>
+       { german ? (
+         <span>
+          Wenn du noch nicht eingeloggt bist
+         </span>
+        ): english ?  (
+          <span>
+          If your are not yet logged in
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      
+       <span className='sg' onClick={press}> 
+       { german ? (
+         <span>
+          <br/>, regestriere dich bitte!
+         </span>
+        ): english ?  (
+          <span> 
+          <br/> please register!
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} </span>
          </div>
          </div>
-     );
+      </>
+    );
    }
- else {
-  return (
+else { 
+  let creusername = 'Create an username...';
+  let crepassword = 'Create a password...';
+  let reppas = 'Repeat your password...';
+  let email = 'Enter an email adress...';
+  if (german == true) 
+  {
+     creusername = 'Erstelle Sie ein Benutzername...';
+     crepassword = 'Erstellen Sie ein Passwort...';
+     reppas = 'Wiederholen Sie ihr Passwort...';
+     email = 'Geben Sie eine E-Mail Adresse an...';
+  }
+  else {
+    creusername = 'Create an username...';
+    crepassword = 'Create a password...';
+    reppas = 'Repeat your password...';
+    email = 'Enter an email adress...';
+    
+  }
+
+  return(
+    <> 
+       <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+       style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
     <div className='login'>
     <button onClick={press}>
      <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
      transform:'rotate(-180deg)', position:'absolute', cursor:'pointer'
      }} />
      </button>
-    <Signup/>
-  </div>
-  );
-}
-}
-
-function Signup() {
-  const [addUsername, setAddUsername]= useState('');
-  const [addPassword, setAddPassword]= useState('');
-  return (
+    
     <div className='signUP'>
      <div className='headR'>
-      Register
+     { german ? (
+         <span>
+          Regestrierung
+         </span>
+        ): english ?  (
+          <span>
+            Register
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
      </div>
      <br/>
     <div className='REG'>
-     <input id='email' className='child'  type='email' placeholder="Enter an email adress..." />
-     <input id='us1'  className='child' type="text" placeholder="Create an username..." />
-      <input id='pa1'  className='child' type="password" placeholder="Create a password..."  />
-      <input id='pa1'   className='child' type="password" placeholder="Repeat your password..."  />
+     <input style={{fontSize:'120%'}} id='email' className='child'  type='email' placeholder={email} />
+     <input id='us1'  className='child' type="text" placeholder={creusername} />
+      <input id='pa1'  className='child' type="password" placeholder={crepassword}  />
+      <input id='pa1'   className='child' type="password" placeholder={reppas}  />
      </div>
      <br/>
      <br/>
       <button style={{fontSize:'1.5vh'}}>
-      {/* <p className="AniB" onClick={()=> {
-        if (addUsername == addUsername && addPassword == addPassword){
-          alert("Register successful");
-        }
-        else {
-          alert("Register failed");
-        }
-      }> */}
-      <p className="AniB">
-        Register
+      
+      <p className="AniB" style={{fontSize: '2.5vh'}}>
+      { german ? (
+         <span>
+          Regestrieren
+         </span>
+        ): english ?  (
+          <span>
+            Register
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
       </p>
       </button>
     </div>
+    </div>
+    </>
   );
-
 }
-const Log = () => {
-  // const [username, setUsername]= useState('');
-  // const [password, setPassword]= useState('');
-  // const handleUsernameChange = (e) => {
-  //   setUsername(e.target.value);
-  // };
-  // const handlePasswortChange = (e) => {
-  //   setPassword(e.target.value);
-  // };
-  // const handleLogin = () => {
-  //   if (username === 'admin') {
-  //     alert("Login successful");
-  //   }
-  //   else {
-  //     alert("Login failed");
-  //   } 
-  // }
- return (
-  
-    <div>
-    <div className='head'>
-      Login
-    </div>
-    <form>
-      <input id='us' type="text" placeholder="Username..." />
-      <br/>
-      <input id='pa' type="password" placeholder="Password..."   />
-      <br/>
-      <br/>
-      <br/>
-      <button className='logBtn' type='submit' >
-      <p className="AniB" style={{fontSize:'2.5vh'}}>
-        Login
-      </p>
-      </button>
-      </form>
-     
-    </div>   
-    );
- }
+}
 
-//Videogalerie
-function Likes1() {
-  const [like,setLike] = useState('white');
-  const [likeNumber, setLikeNumber] = useState(1999);
-  const handleClick = () => {
-    if (like === 'red') {
-      setLike('white');
-      setLikeNumber((prevScore) => prevScore - 1);
-    }
-    else {
-      setLike('red');
-      setLikeNumber((prevScore) => prevScore + 1)
-    }
-  }
-   return (
-     <div className='likes'>
-     <button  onClick={handleClick}>
-        <FaHeart className='ani1' size={45} style= {{ color: like}} />
-     </button>
-       <div className='likeNumber1'>
-        {likeNumber}
-       </div>
-      </div> 
-   );
-   }
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
+'./copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
   './3494B8E0-9DBB-4BCF-9D3B-120BC9676661.mp4','./FFFEDECD-A80B-4AF7-B3AC-9E3CDBFB2E69.mp4',

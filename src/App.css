@@ -255,7 +255,52 @@
 .textIF:hover {
   color: yellow;
 }
-/**CSS Chat **/
+/* Translation */
+.translation {
+  background-color: black;
+  width: 100%;
+  height:4vh;
+  position: fixed;
+  top:6%;
+  display: flex;
+  flex-direction: row;
+}
+.ge {
+  font-family: 'Poppins',  sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in;
+  
+}
+.en {
+  font-family: 'Poppins' , sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in-out;
+ 
+}
+/* Ausnahme Home */
+.ge1 {
+  font-family: 'Poppins',  sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in;
+ 
+  
+}
+.en1 {
+  font-family: 'Poppins' , sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in-out;
+ 
+
+}
+/* CSS Chat  */
 .chat {
   background-color: rgba(0, 0, 0, 0.744);
   width: 80%;
@@ -515,9 +560,9 @@ td {
   color:white;
   width: 70%;
   height: 5%;
-  font-size:155%;
+  font-size:120%;
   margin: 3% 5%;
- 
+  font-family: 'Poppins', sans-serif;
  
 
 }
@@ -529,18 +574,21 @@ td {
   border-left: none;
   color:white;
   width: 70%;
-  font-size:155%;
+  font-size:120%;
   margin: 3% 5%;
+  font-family: 'Poppins', sans-serif;
  
 
 }
 #us::placeholder {
   color: white;
+  font-family: 'Poppins', sans-serif;
   
 
 }
 #pa::placeholder {
   color: white;
+  font-family: 'Poppins', sans-serif;
   
 
 }
@@ -552,16 +600,23 @@ td {
   border-left: none;
   color:white;
   width: auto;
-  font-size:155%;
+  font-size:120%;
 margin:2% 0%;
+font-family: 'Poppins', sans-serif;
+
 
 }
 #us1::placeholder {
   color: white;
+  font-family: 'Poppins', sans-serif;
+
 }
 #pa1::placeholder {
  color: white;
+ font-family: 'Poppins', sans-serif;
+
 }
+
 #pa1 {
   background: transparent ;
   border-bottom: 1% rgb(255, 255, 255) ;
@@ -570,22 +625,27 @@ margin:2% 0%;
   border-left: none;
   color:white;
   width: auto;
-  font-size:155%;
+  font-size:120%;
    margin:2% 0%;
-
+   font-family: 'Poppins', sans-serif;
+  
 }
 .importantI {
   color: white;
   font-size: 130%;
   margin: 0% 5%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .sg  {
 color: rgb(63, 139, 233);
 cursor: pointer;
 text-decoration:underline ;
-}
+font-family: 'Poppins', sans-serif;
 
+}
+.child {
+  font-family: 'Poppins', sans-serif;
+}
 p {
   background: none;
   border: 0;
@@ -602,6 +662,8 @@ p {
  align-items: center;
  border-radius: 5%;
  background-color: black;
+ font-family: 'Poppins', sans-serif;
+
 }
 .AniB {
   overflow: hidden;
