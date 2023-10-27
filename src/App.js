@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { useReducer, useContext , useEffect, useRef, createContext } from 'react';
-import Search from './Search/Search';
+
 import './App.css';
 import ReactGA from 'react-ga';
 import { FaImages } from 'react-icons/fa';
@@ -292,16 +292,16 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
- './Lecken.jpeg','./Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', './Wikinger.jpeg', './BlumenFrau2.jpeg', 
-'./Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
+const images =['./michaelBackground.png','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+ './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
+ './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
 './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
 , './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
-'./LächelF.jpeg', './SchWeiF.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
+'./LächelF.jpeg', './SchWeiF.jpeg','./BuntMusterFrau.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
  './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
 './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
-'./FrauSilber.jpeg',  './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];
+ './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const[click,setClick] = useState(false);
@@ -968,6 +968,8 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[71]} className='imgG'/>
             <InfoB/>
+            <img src={images[72]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -1076,11 +1078,129 @@ function Likes() {
 
 
 //Search
+
 function SEARCH() {
-  return ( 
-  <Search/>
+  const [filterText, setFilterText] = useState('');
+    const [inStockOnly, setInStockOnly] = useState(false);
+    const [click, setClick] = useState(false);
+    const link = () => {
+      setClick(!click);
+      if (!click) {
+        return ( 
+          <div className='search'>
+          <SearchBar 
+            filterText={filterText} 
+            inStockOnly={inStockOnly} 
+            onFilterTextChange={setFilterText} 
+            onInStockOnlyChange={setInStockOnly} />
+          <ProductTable 
+            products={PRODUCTS} 
+            filterText={filterText}
+            inStockOnly={inStockOnly} 
+              link={link}
+            />
+        </div>
+        );
+      }
+      else {
+       
+        return (
+          PRODUCTS.component
+         );
+      }
+    }
+ 
+}
+function ProductRow({ product, link }) {
+ 
+  
+   
+  const name = product.name;
+  const component = product.component;
+
+  return (
+<div>
+
+
+
+    <tr>
+      <td style={{color:'white'}} onClick={link}>{name}</td>
+    </tr>
+  
+   </div> 
+
+  );
+ }
+
+function ProductTable({ products, filterText, inStockOnly }) {
+  const rows = [];
+  let lastCategory = null;
+
+  products.forEach((product) => {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
+      return;
+    }
+    if (inStockOnly && !product.stocked) {
+      return;
+    }
+   
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} 
+        
+        />
+    );
+    lastCategory = product.category;
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th style={{color:'white'}}>
+            Themes on the website
+          </th>
+        </tr>
+      </thead>
+      {rows}
+    </table>
   );
 }
+
+function SearchBar({
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange
+}) {
+  return (
+    <form>
+      <input 
+        type="text" 
+        value={filterText} placeholder="Search..." 
+        onChange={(e) => onFilterTextChange(e.target.value)} className='input' />
+    </form>
+  );
+}
+//<label>
+ //<input type="checkbox" checked={inStockOnly} onChange={(e) => onInStockOnlyChange(e.target.checked)} />{' '}Only show products in stock</label>
+const PRODUCTS = [
+  {category: "Main", name: "Home", component:'<Home/>'},
+  {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
+  {category: "Main",  name: "Chat", component:'<Chat/>' },
+  {category:'Main', name: 'Login', component:'<Login/>'},
+  {category:'Main', name: 'Signup', component:'<Signup/>', link:' '},
+  {category:'Main', name:'Video gallery', component:'<Videogalerie/>', link: '/Videogalerie'},
+  {category:'Main', name:'Picture shop', component:'<PictureShop/>', link:'/PictureShop'},
+  {category:'Main', name:'About Us', component:'<AboutUs/>', link:'/AboutUs'},  
+];
+
+
 //Login und Sigup
 
 function Login() {
@@ -1493,7 +1613,49 @@ const PictureShop = () => {
   const press23 = () => {
     setClick23(!click23);
   }
-  if (!click0 && !click1&& !click2&& !click3&& !click4 && !click5&& !click6 && !click7 && !click8 && !click9 && !click10 && !click11 && !click12&& !click13&& !click14&& !click15&& !click16&& !click17&& !click18&& !click19&& !click20&& !click21&& !click22&& !click23) {
+  const[click24,setClick24] = useState(false);
+  const press24 = () => {
+    setClick24(!click24);
+  }
+  const[click25,setClick25] = useState(false);
+  const press25 = () => {
+    setClick25(!click25);
+  }
+  const[click26,setClick26] = useState(false);
+  const press26 = () => {
+    setClick26(!click26);
+  }
+  const[click27,setClick27] = useState(false);
+  const press27 = () => {
+    setClick27(!click27);
+  }
+  const[click28,setClick28] = useState(false);
+  const press28 = () => {
+    setClick28(!click28);
+  }
+  const[click29,setClick29] = useState(false);
+  const press29 = () => {
+    setClick29(!click29);
+  }
+  const[click30,setClick30] = useState(false);
+  const press30 = () => {
+    setClick30(!click30);
+  }
+  const[click31,setClick31] = useState(false);
+  const press31 = () => {
+    setClick31(!click31);
+  }
+  const[click32,setClick32] = useState(false);
+  const press32 = () => {
+    setClick32(!click32);
+  }
+  if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
+    !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
+     !click12 && !click13 && !click14 && !click15 && !click16 
+     && !click17&& !click18&& !click19 && !click20 && !click21 && !click22 && !click23 &&
+       !click24 && !click25 && !click26 && 
+    !click27 && !click28 && !click29 && !click30 && !click31 && !click32) 
+    {
     return (
    <div className='pictureShop'>   
    <div>
@@ -1676,28 +1838,107 @@ const PictureShop = () => {
 
   </div>
 
-     <div className='shopGR7'>
+  <div className='shopGR7'>
     <div className='elePic' onClick={press21}>
        <img className='imgSh' src={ShopImages[21].src}/>
        <div className='pri'>
         Price: {ShopImages[21].price}€
        </div>
       </div>
-      <div className='elePic' onClick={press21}>
-       <img className='imgSh' src={ShopImages[21].src}/>
+      <div className='elePic' onClick={press22}>
+       <img className='imgSh' src={ShopImages[22].src}/>
        <div className='pri'>
-        Price: {ShopImages[21].price}€
+        Price: {ShopImages[22].price}€
        </div>
       </div>
-      <div className='elePic' onClick={press21}>
-       <img className='imgSh' src={ShopImages[21].src}/>
+      <div className='elePic' onClick={press23}>
+       <img className='imgSh' src={ShopImages[23].src}/>
        <div className='pri'>
-        Price: {ShopImages[21].price}€
+        Price: {ShopImages[23].price}€
        </div>
       </div>
   </div>
-   
-      
+  <div className='shopGR8'>
+  <div className='elePic' onClick={press24}>
+       <img className='imgSh' src={ShopImages[24].src}/>
+       <div className='pri'>
+        Price: {ShopImages[24].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press25}>
+       <img className='imgSh' src={ShopImages[25].src}/>
+       <div className='pri'>
+        Price: {ShopImages[25].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press26}>
+       <img className='imgSh' src={ShopImages[26].src}/>
+       <div className='pri'>
+        Price: {ShopImages[26].price}€
+       </div>
+      </div>
+  </div>
+  <div className='shopGR9'>
+  <div className='elePic' onClick={press27}>
+       <img className='imgSh' src={ShopImages[27].src}/>
+       <div className='pri'>
+        Price: {ShopImages[27].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press28}>
+       <img className='imgSh' src={ShopImages[28].src}/>
+       <div className='pri'>
+        Price: {ShopImages[28].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press29}>
+       <img className='imgSh' src={ShopImages[29].src}/>
+       <div className='pri'>
+        Price: {ShopImages[29].price}€
+       </div>
+      </div>
+  </div>
+  <div className='shopGR10'>
+  <div className='elePic' onClick={press30}>
+       <img className='imgSh' src={ShopImages[30].src}/>
+       <div className='pri'>
+        Price: {ShopImages[30].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press31}>
+       <img className='imgSh' src={ShopImages[31].src}/>
+       <div className='pri'>
+        Price: {ShopImages[31].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press32}>
+       <img className='imgSh' src={ShopImages[32].src}/>
+       <div className='pri'>
+        Price: {ShopImages[32].price}€
+       </div>
+      </div>
+  </div>
+  {/* <div className='shopGR11'>
+  <div className='elePic' onClick={press21}>
+       <img className='imgSh' src={ShopImages[21].src}/>
+       <div className='pri'>
+        Price: {ShopImages[21].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press22}>
+       <img className='imgShA1' src={ShopImages[22].src}/>
+       <div className='pri'>
+        Price: {ShopImages[22].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press23}>
+       <img className='imgShA1' src={ShopImages[23].src}/>
+       <div className='pri'>
+        Price: {ShopImages[23].price}€
+       </div>
+      </div>
+  </div>
+       */}
     </div> 
     );
   }
@@ -1950,6 +2191,116 @@ const PictureShop = () => {
         <BackSymbol/>    
      </button>
         <ShopImage22/>
+       
+      </div>
+    )
+  }
+  else if (click23) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press23}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage23/>
+       
+      </div>
+    )
+  }
+  else if (click24) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press24}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage24/>
+       
+      </div>
+    )
+  }
+  else if (click25) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press25}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage25/>
+       
+      </div>
+    )
+  }
+  else if (click27) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press27}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage27/>
+       
+      </div>
+    )
+  }
+  else if (click26) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press26}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage26/>
+       
+      </div>
+    )
+  }
+  else if (click29) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press29}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage29/>
+       
+      </div>
+    )
+  }
+  else if (click28) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press28}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage28/>
+       
+      </div>
+    )
+  }
+  else if (click30) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press30}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage30/>
+       
+      </div>
+    )
+  }
+  else if (click31) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press31}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage31/>
+       
+      </div>
+    )
+  }
+  else if (click32) {
+    return(
+      <div className='pictureShop'>
+       <button onClick={press32}>
+        <BackSymbol/>    
+     </button>
+        <ShopImage32/>
        
       </div>
     )
@@ -2513,6 +2864,246 @@ const ShopImage22 = () => {
   </>
   );
 }
+const ShopImage23 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[23].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[23].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[23].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[23].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage24 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[24].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[24].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[24].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[24].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage25 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[25].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[25].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[25].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[25].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage26 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[26].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[26].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[26].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[26].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage27 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[27].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[27].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[27].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[27].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage28 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[28].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[28].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[28].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[28].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage29 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[29].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[29].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[29].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[29].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage30 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[30].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[30].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[30].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[30].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage31 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[31].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[31].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[31].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[31].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
+const ShopImage32 = () => {
+  return (
+  <>
+    <img className='imgSHI' src={ShopImages[32].src}/>
+    <br/>
+    <br/>
+    <div className='pri2'>
+     Price: {ShopImages[32].price} €
+    </div>
+    <br/>
+    <div className='pri2'>
+      Format:  {ShopImages[32].format}
+    </div>
+    <br/>
+    <div className='pri2'>
+      Painted with {ShopImages[32].paintedT}
+    </div>
+    <br/>
+    <button className='btnShop'>
+      Buy
+    </button>
+  </>
+  );
+}
 const BackSymbol = () => {
   return (
     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
@@ -2545,6 +3136,18 @@ const ShopImages = [
 {price:'/', src:'./Teufel2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./BlumenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./7.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./GelbeFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Ritterin.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Lecken.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./FrauMeer.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Eiffelturm.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./EngelTeufel.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BulleF.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./BluSchlafFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./Löwe.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:'/', src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+
 ];
 
  

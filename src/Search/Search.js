@@ -25,17 +25,23 @@ function FilterableProductTable({ products }) {
   
   
   function ProductRow({ product }) {
-    const name = product.name;
    
+    const name = product.name;
+    const component = product.component;
   
     return (
-   
+  <div>
+  
+  
+
       <tr>
         <td style={{color:'white'}}>{name}</td>
       </tr>
     
+     </div> 
+  
     );
-  }
+   }
   
   function ProductTable({ products, filterText, inStockOnly }) {
     const rows = [];
@@ -56,7 +62,8 @@ function FilterableProductTable({ products }) {
       rows.push(
         <ProductRow
           product={product}
-          key={product.name} />
+          key={product.name} 
+          />
       );
       lastCategory = product.category;
     });
