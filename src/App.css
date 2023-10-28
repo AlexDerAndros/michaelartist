@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
-
+@media screen and (max-width:650px) {
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -856,10 +856,9 @@ p {
   position: sticky;
 }
 .imgSh {
- width: 0%;
- height:70%;
+ width: 15vh;
+ height:20vh;
  border-radius: 6px;
- margin: 1%;
  cursor: pointer;
 }
 .imgShA1 {
@@ -926,7 +925,7 @@ p {
 .elePic {
   height: auto;
   width: auto;
-  margin: 0%;
+  margin: 0vh 1.5vh;
   grid-area: ele;
 }
 .imgShA1 {
@@ -1034,4 +1033,5 @@ summary {
 }
 .theAb {
   text-decoration: underline white;
+}
 }
