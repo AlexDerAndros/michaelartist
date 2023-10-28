@@ -25,7 +25,7 @@
    color: rgb(255, 255, 255);
    font-weight: bold;
    position: sticky;
-   font-size: 3vh;
+   font-size: 2.75vh;
    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
    background-clip: text;
    color: transparent;
@@ -36,7 +36,7 @@
    left: 2%;
   }
   .about {
-    font-size: 3vh;
+    font-size: 2.75vh;
     width: auto;
     display: flex;
     align-items:center;
@@ -257,11 +257,11 @@
 }
 /* Translation */
 .translation {
-  background-color: black;
+ background-color: rgba(0, 0, 0, 0.744);
   width: 100%;
   height:4vh;
   position: fixed;
-  top:6%;
+  bottom:7%;
   display: flex;
   flex-direction: row;
 }
@@ -304,7 +304,7 @@
 .chat {
   background-color: rgba(0, 0, 0, 0.744);
   width: 80%;
-   height: 75%;
+   height: 72%;
    padding: 3vh 1vh;
     border-radius: 4%;
     z-index: -100;
@@ -485,7 +485,7 @@
  .search {
   background-color: rgba(0, 0, 0, 0.744);
   width: 80%;
-   height: 75%;
+   height: 72%;
    padding: 3vh 1vh;
     border-radius: 4%;
     z-index: -100;
@@ -874,7 +874,7 @@ p {
 .shopGR {
   display: flex;
  flex-direction: row;
-
+ padding-top:2vh ;
 }
 .shopGR1 {
   display: flex;
@@ -925,7 +925,7 @@ p {
 .elePic {
   height: auto;
   width: auto;
-  margin: 0vh 1.5vh;
+  margin: 0vh 0.75vh;
   grid-area: ele;
 }
 .imgShA1 {

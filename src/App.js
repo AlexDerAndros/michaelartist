@@ -82,6 +82,7 @@ function HeaderBo() {
    <div className='header'>
    
       <div className='title' > 
+      <Link to= '/'>
       { german ? (
        <span>
         Künstler Michael Ntrikos
@@ -95,6 +96,7 @@ function HeaderBo() {
           Error
         </span>
       )}
+      </Link>
       </div>
      <Link to="/AboutUs">
       <div className='about'>
@@ -126,7 +128,7 @@ function HeaderBo() {
     </div>
     <div className='translation'>
     <div className='ge1' onClick={pressG}
-    style={{color: german ? 'blue' : 'white', borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+    style={{color: german ? 'blue' : 'white', borderTop: german ? 'blue 0.3vh solid' : 'none'}}>
       { german ? (
        <span>
         Deutsch
@@ -142,7 +144,7 @@ function HeaderBo() {
       )}
     </div>
     <div className='en1' onClick={pressE}
-     style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+     style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none'}}>
     { german ? (
        <span>
         Englisch
@@ -258,7 +260,7 @@ function Translation() {
   return (
    <div className='translation'>
     <div className='ge' onClick={pressG}
-    style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+    style={{color: german ? 'blue' : 'white',  borderTop: german ? 'blue 0.3vh solid' : 'none'}}>
       { german ? (
        <span>
         Deutsch
@@ -274,7 +276,7 @@ function Translation() {
       )}
     </div>
     <div className='en' onClick={pressE}
-     style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+     style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none'}}>
     { german ? (
        <span>
         Englisch
@@ -464,7 +466,7 @@ function Home() {
   <>
   <div className='translation'>
   <div className='ge' onClick={pressG}
-  style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
+  style={{color: german ? 'blue' : 'white',  borderTop: german ? 'blue 0.3vh solid' : 'none'}}>
     { german ? (
      <span>
       Deutsch
@@ -480,7 +482,7 @@ function Home() {
     )}
   </div>
   <div className='en' onClick={pressE}
-   style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+   style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none'}}>
   { german ? (
      <span>
       Englisch
@@ -1085,7 +1087,8 @@ function SEARCH() {
     const [click, setClick] = useState(false);
     const link = () => {
       setClick(!click);
-      if (!click) {
+    }
+      // if (click) {
         return ( 
           <div className='search'>
           <SearchBar 
@@ -1101,16 +1104,18 @@ function SEARCH() {
             />
         </div>
         );
-      }
-      else {
+       }
+      // else {
        
-        return (
-          PRODUCTS.component
-         );
-      }
-    }
+      //   return (
+      //     <>
+      //     PRODUCTS.component
+      //     </>
+      //    );
+      // }
+    
  
-}
+
 function ProductRow({ product, link }) {
  
   
