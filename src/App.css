@@ -856,10 +856,11 @@ p {
   position: sticky;
 }
 .imgSh {
- width: 20vh;
- height:25vh;
+ width: 0%;
+ height:70%;
  border-radius: 6px;
- margin: 1vh;
+ margin: 1%;
+ cursor: pointer;
 }
 .imgShA1 {
   max-width: 100vh;
@@ -869,8 +870,7 @@ p {
 }
 .pri {
   font-family:'Poppins', sans-serif;
-  padding: 0vh 1vh;
-
+ 
 }
 .shopGR {
   display: flex;

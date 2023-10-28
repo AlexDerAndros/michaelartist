@@ -1720,13 +1720,13 @@ const PictureShop = () => {
       </div> 
      <div className='elePic' onClick={press4}>
       <img className='imgSh' src={ShopImages[4].src}/>
-      <div style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>
+      <div style={{fontFamily: '"Poppins", sans-serif'}}>
         Price: {ShopImages[4].price}€
       </div>
      </div> 
      <div className='elePic' onClick={press5}>
       <img className='imgSh' src={ShopImages[5].src}/>
-      <div className='pri3'>
+      <div className='pri'>
         Price: {ShopImages[5].price}€
       </div>
      </div>
