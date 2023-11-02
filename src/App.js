@@ -294,7 +294,7 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+const images =['./michaelBackground.png','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
  './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
  './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
@@ -972,6 +972,8 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[72]} className='imgG'/>
             <InfoB/>
+            <img src={images[72]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -1468,7 +1470,8 @@ else {
 }
 }
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
+'./copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
 './copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
   './64E90D9B-1865-4A24-9EB7-9C398D11FC50.mp4','./31C18F11-3C66-4BC9-9B48-C02A3127BD89.mp4',
