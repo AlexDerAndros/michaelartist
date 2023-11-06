@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
-@media screen and (max-width:650px) {
+@media screen and (max-width:700px) {
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -1033,5 +1033,29 @@ summary {
 }
 .theAb {
   text-decoration: underline white;
+}
+.igimg2 {
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+}
+.ig {
+  color: transparent;
+  background-image: linear-gradient(to right, rgb(233, 18, 223), rgb(184, 140, 29));
+  -webkit-background-clip: text;
+  cursor: pointer;
+}
+.ttimg2 {
+  width: 5.5%;
+  height: 5.5%;
+  cursor: pointer;
+  margin: -1% 0% ;
+}
+.tt {
+  color: transparent;
+  background-image: linear-gradient(to right,  rgb(29, 101, 184), rgb(246, 5, 230));
+  -webkit-background-clip: text;
+  cursor: pointer;
+
 }
 }
