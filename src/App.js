@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import { useReducer, useContext , useEffect, useRef, createContext } from 'react';
-
 import './App.css';
 import ReactGA from 'react-ga';
 import { FaImages } from 'react-icons/fa';
@@ -17,40 +16,30 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import fire from './config/firebase';
 import { Component } from 'react';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword , onAuthStateChanged , createUserWithEmailAndPassword} from "firebase/auth";
 //Login https://firebase.google.com/docs/auth/web/start?hl=de
+const firebaseConfig = {
+  apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
+  authDomain: "michael--artist.firebaseapp.com",
+  databaseURL: "https://michael--artist-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "michael--artist",
+  storageBucket: "michael--artist.appspot.com",
+  messagingSenderId: "690442290094",
+  appId: "1:690442290094:web:62e0a17e181182ce23fe3f",
+  measurementId: "G-GGJ7KLTS88"
+};
+
+// Initialize Firebase
+const fire = initializeApp(firebaseConfig);
+const auth = getAuth(fire);
 
 
 
-class app extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: null
-    }
-  }
-
-  componentDidMount() {
-    this.authListener();
-  }
-  authListener(){
-    fire.auth().onAuthStateChanged((user) => {
-      if(user) {
-        this.setState({user})
-      }
-      else {
-        this.setState({user: null})
-      }
-    })
-  }
-render() {
-  return <App/>
-}
- 
-
-  
-}
 
 
   export default function App() {
@@ -66,16 +55,7 @@ render() {
  }
  
 function HeaderBo() {
-  const [english, setEnglish] = useState(true);
-  const[german, setGerman] = useState(false);
-  const pressG = () => {
-    setGerman(true);
-     setEnglish(false);
-  }
-  const pressE = () => {
-    setEnglish(true);
-      setGerman(false);
-  }
+ 
   return (
    <Router>
    <div>
@@ -83,36 +63,12 @@ function HeaderBo() {
    
       <div className='title' > 
       <Link to= '/'>
-      { german ? (
-       <span>
-        Künstler Michael Ntrikos
-       </span>
-      ): english ? (
-        <span>
         Artist Michael Ntrikos
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
       </Link>
       </div>
      <Link to="/AboutUs">
       <div className='about'>
-      { german ? (
-       <span>
-       Über uns
-       </span>
-      ): english ? (
-        <span>
         About Us
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
       </div>
       </Link>  
       <div className='foto1'>
@@ -126,78 +82,47 @@ function HeaderBo() {
         </a>
       </div>
     </div>
-    <div className='translation'>
-    <div className='ge1' onClick={pressG}
-    style={{color: german ? 'blue' : 'white', borderTop: german ? 'blue 0.3vh solid' : 'none'}}>
-      { german ? (
-       <span>
-        Deutsch
-       </span>
-      ): english ? (
-        <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en1' onClick={pressE}
-     style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none'}}>
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
+  
     <div className='unten'>
    <div>
    <Link to="/">
     <div style={{ color: 'white'}} className='po'>
-      <FaHome size={40} />
+      <FaHome size={40} /> <span className='he'> Home</span>
     </div>
     </Link>
    </div>
    <div>
    <Link to= "/Search">
    <div style={{ color: 'white'  }} className='po2'>
-      <FaSearch size={38} />
+      <FaSearch size={38} /> <span className='he'> Search</span>
     </div>
     </Link>
    </div>
    <Link to="/bildgalerie" className='po3'>
    <div style={{ color: 'white'}}>
-      <FaImages size={40} />
+      <FaImages size={40} /> <span className='he'> Picture gallery</span>
     </div>
   </Link>
   <Link to= "/chat">
     <div style={{ color: 'white'}} className='po1'>
-      <FaComment size={35} />
+      <FaComment size={35} /> <span className='he'> Chat</span>
     </div>
   </Link>
   <Link to= "/login">
     <div style={{ color: 'white'}} className='po4'>
-      <FaSignInAlt size={35} />
+      <FaSignInAlt size={35} /> <span className='he'> Login and Signup</span>
     </div>
   </Link>
   <Link to='/Videogalerie'>
    <div className='shPi'>
     <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
+    <span className='he'> Video gallery</span>
    </div>
   </Link>
   <Link to='/PictureShop'>
    <div className='shPi'>
     <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
+    <span className='he'> Picture shop</span>
     </div>
   </Link>
     <Routes>
@@ -205,7 +130,7 @@ function HeaderBo() {
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
    <Route path="/Search" element={<SEARCH/>}/>
    <Route path="/chat" element={<Chat/>}/>
-   <Route path="/login" element={<Login/>}/>
+   <Route path="/login" element={<Log/>}/>
    <Route path='/PictureShop' element={<PictureShop/>}/>
    <Route path='/Videogalerie' element={<Videogalerie/>}/>
    <Route path='/AboutUs' element={<AboutUs/>}/>
@@ -306,17 +231,18 @@ const images =['./michaelBackground.png','./Joker.jpeg','./BootSonne.jpeg','./Le
  './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
-  const[click,setClick] = useState(false);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  
+  const[click,setClick] = useState(false);
 
   const toggleImageSize = () => {
     setIsImageExpanded(!isImageExpanded);
     setZoomLevel(1); // Beim Zurücksetzen auf Standardgröße auch den Zoom auf 1 setzen
   };
 
-  
+  const BiggerPic= () => {
+    setClick(!click);
+  }
   const nextImage = () => {
     setCurrentIndex((prevIndex) =>
     prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -327,32 +253,16 @@ function ImageList (){
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   }
-  const BiggerPic = () => {
-    setClick(!click);
-  }
+  
   
   return (
-   <div  style={{
-    width:  '71%',
-    height: '74%',
+   <div className='imageList' style={{
     background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius:' 4%', 
-    position: 'sticky',
     margin: '2% 13%'}}>
-    <img className='imgI' src= {images[currentIndex]} onClick={BiggerPic}
-       style={{
-          cursor: 'pointer',
-          transform: click ? 'scale(1.65)' : 'scale(1)',
-          transition: ' 0.3s ease-in-out',
-          width: click ? '80%' :'70%',
-         height: '85%',
-         borderRadius: '4%',
-         margin: click ? '0% 0% 1% 10%' : '2% 10% 1% 16%',
-          zIndex: click ? '100' : '-100',
-          maxWidth:'600px',
-          maxHeight:'500px'
+    <img  onClick={BiggerPic} className='imgI' src= {images[currentIndex]} 
+       style= {{
+          transform: click ? 'scale(1.6)' : 'scale(1)',
+          zIndex: click ? '100' : '-1',
           
         }}
     />
@@ -691,6 +601,7 @@ function Home() {
   ReactGA.pageview(window.location.pathname);
   const [english, setEnglish] = useState(true);
   const[german, setGerman] = useState(false);
+  const[click,setClick] = useState(false);
   const pressG = () => {
     setGerman(true);
      setEnglish(false);
@@ -699,6 +610,7 @@ function Home() {
     setEnglish(true);
       setGerman(false);
   }
+  
 
  return (
   <>
@@ -840,187 +752,189 @@ function Home() {
 
 
  
-    function TaskList({
-      tasks,
-      onChangeTask,
-      onDeleteTask  }) {
-      const [task, setTask] = useState([]);
-      const [click,setClick] = useState(false);
-      const [text, setText] = useState('');
-      const [isEditing, setIsEditing] = useState(false);
-      let taskContent;
-      const press = () => {
-        setClick(!click);
-      };
-      return (
-      
-        <ul className='list'>
-        {tasks.map(task => (
-          <li key={task.id}   onClick={press} className='message'>
-          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask}/>
-            </li>
-          
-        ))}
-        
-       </ul>
-    
-      );
-    }
-
-    function Task({ task, onChange, onDelete }) {
-      const [click,setClick] = useState(false);
-      
-      const press = () => {
-        setClick(!click);
-      };
-      let taskContent;
-      
-      const [isEditing, setIsEditing] = useState(false);
-      if (isEditing) {
-        taskContent = (
-        <>
-         <Save task={task} setIsEditing={setIsEditing} text={text} onChange={onChange}/>
-          </>
-
-        );
-      } else {
-        taskContent = (
-        <>
-          
-          <Edit setIsEditing={setIsEditing} task={task}/>
-        </>
-        );
-      }
-   return (
-   <>
-  <Delete task={task} onDelete={onDelete} taskContent={taskContent}/>
-    
-   </> 
-   ); 
-   
-  }
- // <Delete task={task} onDelete={oneDlete} taskContent={taskContent}/>
-const Edit = ({task, setIsEditing}) => {
+function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask  }) {
+  const [task, setTask] = useState([]);
+  const [click,setClick] = useState(false);
+  const [text, setText] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  let taskContent;
+  const press = () => {
+    setClick(!click);
+  };
   return (
-    <>
-    {task.text}
-     <br/>
-   <button onClick={() => setIsEditing(true)} className='btnE'>
-    Edit
-     </button>
-     </>       
+  
+    <ul className='list'>
+    {tasks.map(task => (
+      <li key={task.id}   onClick={press} className='message'>
+      <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask}/>
+        </li>
+      
+    ))}
+    
+   </ul>
+
   );
+}
+
+function Task({ task, onChange, onDelete }) {
+  const [click,setClick] = useState(false);
+  
+  const press = () => {
+    setClick(!click);
+  };
+  let taskContent;
+  
+  const [isEditing, setIsEditing] = useState(false);
+  if (isEditing) {
+    taskContent = (
+    <>
+     <Save task={task} setIsEditing={setIsEditing} text={text} onChange={onChange}/>
+      </>
+
+    );
+  } else {
+    taskContent = (
+    <>
+      
+      <Edit setIsEditing={setIsEditing} task={task}/>
+    </>
+    );
+  }
+return (
+<>
+<Delete task={task} onDelete={onDelete} taskContent={taskContent}/>
+
+</> 
+); 
+
+}
+// <Delete task={task} onDelete={oneDlete} taskContent={taskContent}/>
+const Edit = ({task, setIsEditing}) => {
+return (
+<>
+{task.text}
+ <br/>
+<button onClick={() => setIsEditing(true)} className='btnE'>
+<FontAwesomeIcon icon={faEdit} size='1.5x'/>
+
+ </button>
+ </>       
+);
 }
 const Delete = ({task, onDelete, taskContent}) => {
-  return (
-    <label>
-   {taskContent}
-    <br/>
-        <button onClick={() => onDelete(task.id)} className='btnD'>
-        Delete
-      </button>
-    </label>    
-  );
+return (
+<label>
+{taskContent}
+<br/>
+    <button onClick={() => onDelete(task.id)} className='btnD'>
+    <FontAwesomeIcon icon={faTrash} size='1.5x'/>
+    
+  </button>
+</label>    
+);
 }
-const Save = ({task, setIsEditing, text, onChange}) => {
-  return (
-    <>
-          <input
-          value={task.text}
-          className='inputCH1'
-          onChange={e => {
-            onChange({
-              ...task,
-              text: e.target.value
-            });
-          }}
-        />
-           <button onClick={() => setIsEditing(false)} className='btnS'>
-          Save
-        </button>
-          </>
+const Save = ({task, setIsEditing,text,  onChange}) => {
+return (
+<>
+      <input
+      value={task.text}
+      className='inputCH1'
+      onChange={e => {
+        onChange({
+          ...task,
+          text: e.target.value
+        });
+      }}
+    /><br/>
+       <button onClick={() => setIsEditing(false)} className='btnS'>
+      <FontAwesomeIcon icon={faCheck} size='1.5x'/>
+    </button>
+      </>
 
-  );
+);
 }
 const Message = ({task}) => {
-  return (
-    <div>
-   {task.text}
-    </div>
-  );
+return (
+<div>
+{task.text}
+</div>
+);
 }
-           
-             
+       
+         
 //Main
 function Chat() {
-  const [tasks, dispatch] = useReducer(
-    tasksReducer,
-    initialTasks
-  );
-  
-  function handleAddTask(text) {
-    dispatch({
-      type: 'added',
-      id: nextId++,
-      text: text,
-    });
-  }
+const [tasks, dispatch] = useReducer(
+tasksReducer,
+initialTasks
+);
+
+function handleAddTask(text) {
+dispatch({
+  type: 'added',
+  id: nextId++,
+  text: text,
+});
+}
+
+function handleChangeTask(task) {
+dispatch({
+  type: 'changed',
+  task: task
+});
+}
+
+function handleDeleteTask(taskId) {
+dispatch({
+  type: 'deleted',
+  id: taskId
+});
+}
+
+return (
+<div className='chat'>
  
-  function handleChangeTask(task) {
-    dispatch({
-      type: 'changed',
-      task: task
-    });
-  }
-
-  function handleDeleteTask(taskId) {
-    dispatch({
-      type: 'deleted',
-      id: taskId
-    });
-  }
-
-  return (
-    <div className='chat'>
-     
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-        
-      />
-      <AddTask
-        onAddTask={handleAddTask}
-      />
-    </div>
-  );
+  <TaskList
+    tasks={tasks}
+    onChangeTask={handleChangeTask}
+    onDeleteTask={handleDeleteTask}
+    
+  />
+  <AddTask
+    onAddTask={handleAddTask}
+  />
+</div>
+);
 }
 
 function tasksReducer(tasks, action) {
-  switch (action.type) {
-    case 'added': {
-      return [...tasks, {
-        id: action.id,
-        text: action.text,
-        done: false
-      }];
+switch (action.type) {
+case 'added': {
+  return [...tasks, {
+    id: action.id,
+    text: action.text,
+    done: false
+  }];
+}
+case 'changed': {
+  return tasks.map(t => {
+    if (t.id === action.task.id) {
+      return action.task;
+    } else {
+      return t;
     }
-    case 'changed': {
-      return tasks.map(t => {
-        if (t.id === action.task.id) {
-          return action.task;
-        } else {
-          return t;
-        }
-      });
-    }
-    case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
-    }
-    default: {
-      throw Error('Unknown action: ' + action.type);
-    }
-  }
+  });
+}
+case 'deleted': {
+  return tasks.filter(t => t.id !== action.id);
+}
+default: {
+  throw Error('Unknown action: ' + action.type);
+}
+}
 }
 
 let nextId = 0;
@@ -1028,36 +942,35 @@ const initialTasks = [];
 
 
 function AddTask({ onAddTask }) {
-  const[inputValue, setInputValue] = useState('');
-  const [text, setText] = useState('');
-  let summ = inputValue + text ;
- const CheckInput = (e) => {
-   setInputValue(e.target.value);
- }
- const TextCheck = (e) => {
-  setText(e.target.value);
- }
+const[inputValue, setInputValue] = useState('');
+const [text, setText] = useState('');
+const CheckInput = (e) => {
+setInputValue(e.target.value);
+}
+const TextCheck = (e) => {
+setText(e.target.value);
+}
 const handleCombinedChange = (g) => {
-      this.CheckInput(g);
-      this.TextCheck(g);
-    }
-  return (
-    <div className='chatIn'>
-      <input
-        placeholder="Write a message..."
-        value={text}
-        onChange={e => setText(e.target.value)}
-        className='inputCH'
-        type='text'
-      />
-      <button onClick={() => {
-        setText('');
-        onAddTask(text);
-      }}>
-       <FaPaperPlane size={25} className='send2'/>
-      </button>
-    </div>
-  );
+  this.CheckInput(g);
+  this.TextCheck(g);
+}
+return (
+<div className='chatIn'>
+  <input
+    placeholder="Write a message..."
+    value={text}
+    onChange={e => setText(e.target.value)}
+    className='inputCH'
+    type='text'
+  />
+  <button onClick={() => {
+    setText('');
+    onAddTask(text);
+  }}>
+   <FaPaperPlane size={25} className='send2'/>
+  </button>
+</div>
+);
 }
 //Bildgalerie
 function Bildgalerie() {
@@ -1308,7 +1221,7 @@ function Likes() {
   return (
     <div className='likes'>
       <button onClick={handleClick}>
-        <FaHeart className='ani' size={45} style={{ color: like }} />
+        <FaHeart className='ani' size={50} style={{ color: like }} />
       </button>
       <div className='likeNumber'>
         {likeNumber}
@@ -1447,7 +1360,19 @@ const PRODUCTS = [
 
 
 //Login und Sigup
-
+function Log() {
+  const [loggedIN,setLoggedIn] = useState(false);
+ return (
+   <>
+    {
+      loggedIN ? <LoggedIN/> : <Login/>
+    }
+   </>
+ );
+}
+function LoggedIN() {
+   
+}
 function Login() {
   const [click,setClick]= useState(false);
   
@@ -1530,6 +1455,7 @@ function Login() {
             Error
           </span>
         )}
+
     </div>
     <form>
       <input id='us' type="text" placeholder={username}/>
@@ -1556,6 +1482,7 @@ function Login() {
       </p>
       </button>
       </form>
+  
      
       <br/>
       <br/>
@@ -1614,7 +1541,22 @@ else {
     email = 'Enter an email adress...';
     
   }
-
+  createUserWithEmailAndPassword(auth, email)
+  .then((userCredential) => {
+    
+    const user = userCredential.user;
+   
+   
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+   return (
+    <>
+      Error
+    </>
+   );
+  });
   return(
     <> 
        <div className='translation'>
@@ -1705,10 +1647,14 @@ else {
     </div>
     </>
   );
+
+  
 }
 }
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
+
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4',
+'./copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
 './copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
 './copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
