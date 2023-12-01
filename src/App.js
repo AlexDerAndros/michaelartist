@@ -21,6 +21,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, signInWithEmailAndPassword , onAuthStateChanged , createUserWithEmailAndPassword} from "firebase/auth";
 //Login https://firebase.google.com/docs/auth/web/start?hl=de
 const firebaseConfig = {
@@ -33,6 +34,7 @@ const firebaseConfig = {
   appId: "1:690442290094:web:62e0a17e181182ce23fe3f",
   measurementId: "G-GGJ7KLTS88"
 };
+
 
 // Initialize Firebase
 const fire = initializeApp(firebaseConfig);
@@ -86,42 +88,42 @@ function HeaderBo() {
     <div className='unten'>
    <div>
    <Link to="/">
-    <div style={{ color: 'white'}} className='po'>
-      <FaHome size={40} /> <span className='he'> Home</span>
+     <div className='po'> 
+      <FaHome size={40} className='ic'/> <span className='he'> Home</span>
     </div>
     </Link>
    </div>
    <div>
    <Link to= "/Search">
-   <div style={{ color: 'white'  }} className='po2'>
-      <FaSearch size={38} /> <span className='he'> Search</span>
+   <div className='po2'>
+      <FaSearch size={38} className='ic'/> <span className='he'> Search</span>
     </div>
     </Link>
    </div>
    <Link to="/bildgalerie" className='po3'>
-   <div style={{ color: 'white'}}>
-      <FaImages size={40} /> <span className='he'> Picture gallery</span>
+   <div>
+      <FaImages size={40} className='ic' /> <span className='he'> Picture gallery</span>
     </div>
   </Link>
   <Link to= "/chat">
-    <div style={{ color: 'white'}} className='po1'>
-      <FaComment size={35} /> <span className='he'> Chat</span>
+    <div className='po1'>
+      <FaComment size={35}  className='ic'/> <span className='he'> Chat</span>
     </div>
   </Link>
   <Link to= "/login">
-    <div style={{ color: 'white'}} className='po4'>
-      <FaSignInAlt size={35} /> <span className='he'> Login and Signup</span>
+    <div className='po4'>
+      <FaSignInAlt size={35}  className='ic'/> <span className='he'> Login and Signup</span>
     </div>
   </Link>
   <Link to='/Videogalerie'>
-   <div className='shPi'>
-    <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
+   <div>
+    <FontAwesomeIcon icon={faVideo}  size='2x' className='ic' />
     <span className='he'> Video gallery</span>
    </div>
   </Link>
   <Link to='/PictureShop'>
-   <div className='shPi'>
-    <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
+   <div>
+    <FontAwesomeIcon icon={faShoppingCart}  size='2x'  className='ic'/>
     <span className='he'> Picture shop</span>
     </div>
   </Link>
@@ -219,7 +221,7 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+const images =['./michaelBackground.png','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
  './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
  './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
@@ -312,7 +314,9 @@ function AboutUs() {
     <>
     <div className='translation'>
     <div className='ge' onClick={pressG}
-    style={{color: german ? 'blue' : 'white',  borderTop: german ? 'blue 0.3vh solid' : 'none'}}>
+    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+  backgroundClip: 'text',
+  color: german ? 'blue' : 'transparent'}}>
       { german ? (
        <span>
         Deutsch
@@ -328,7 +332,10 @@ function AboutUs() {
       )}
     </div>
     <div className='en' onClick={pressE}
-     style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none'}}>
+    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+  webkitBackgroundClip: 'text',
+  color: english ? 'blue' : 'transparent'}}>
+
     { german ? (
        <span>
         Englisch
@@ -614,40 +621,46 @@ function Home() {
 
  return (
   <>
-  <div className='translation'>
-  <div className='ge' onClick={pressG}
-  style={{color: german ? 'blue' : 'white',  borderTop: german ? 'blue 0.3vh solid' : 'none', zIndex:'100'}}>
+    <div className='translation'>
+    <div className='ge' onClick={pressG}
+    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+  backgroundClip: 'text',
+  color: german ? 'blue' : 'transparent'}}>
+      { german ? (
+       <span>
+        Deutsch
+       </span>
+      ): english ? (
+        <span>
+          German
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+    <div className='en' onClick={pressE}
+    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+  webkitBackgroundClip: 'text',
+  color: english ? 'blue' : 'transparent'}}>
+
     { german ? (
-     <span>
-      Deutsch
-     </span>
-    ): english ? (
-      <span>
-        German
-      </span>
-    ): (
-      <span>
-        Error
-      </span>
-    )}
-  </div>
-  <div className='en' onClick={pressE}
-   style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none', zIndex:'100'}}>
-  { german ? (
-     <span>
-      Englisch
-     </span>
-    ): english ?  (
-      <span>
-        English
-      </span>
-    ): (
-      <span>
-        Error
-      </span>
-    )}
-  </div>
- </div>
+       <span>
+        Englisch
+       </span>
+      ): english ?  (
+        <span>
+          English
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+   </div>
+  
 <div className='Mitte'>
  <div className='info1'> 
  { german ? (
@@ -768,7 +781,8 @@ function TaskList({
   
     <ul className='list'>
     {tasks.map(task => (
-      <li key={task.id}   onClick={press} className='message'>
+      <li className='message'>
+      <span  className='textChat' key={task.id}></span>
       <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask}/>
         </li>
       
@@ -1125,6 +1139,8 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[72]} className='imgG'/>
             <InfoB/>
+            <img src={images[73]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -1237,11 +1253,8 @@ function Likes() {
 function SEARCH() {
   const [filterText, setFilterText] = useState('');
     const [inStockOnly, setInStockOnly] = useState(false);
-    const [click, setClick] = useState(false);
-    const link = () => {
-      setClick(!click);
-    }
-      // if (click) {
+   
+      
         return ( 
           <div className='search'>
           <SearchBar 
@@ -1253,19 +1266,12 @@ function SEARCH() {
             products={PRODUCTS} 
             filterText={filterText}
             inStockOnly={inStockOnly} 
-              link={link}
+             
             />
         </div>
         );
        }
-      // else {
-       
-      //   return (
-      //     <>
-      //     PRODUCTS.component
-      //     </>
-      //    );
-      // }
+   
     
  
 
@@ -1282,7 +1288,7 @@ function ProductRow({ product, link }) {
 
 
     <tr>
-      <td style={{color:'white'}} onClick={link}>{name}</td>
+      <td onClick={link}>{name}</td>
     </tr>
   
    </div> 
@@ -1320,7 +1326,7 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th style={{color:'white'}}>
+          <th>
             Themes on the website
           </th>
         </tr>
@@ -1365,7 +1371,7 @@ function Log() {
  return (
    <>
     {
-      loggedIN ? <LoggedIN/> : <Login/>
+  loggedIN ? (<LoggedIN/>): (<Login/>)
     }
    </>
  );
@@ -1404,42 +1410,50 @@ function Login() {
       password = 'Password...';
     }
    
-      return (
+      
+      
+    return(
       <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-       style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+       <div className='translation'>
+    <div className='ge' onClick={pressG}
+    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+  backgroundClip: 'text',
+  color: german ? 'blue' : 'transparent'}}>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
+       <span>
+        Deutsch
+       </span>
+      ): english ? (
+        <span>
+          German
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+    <div className='en' onClick={pressE}
+    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+  BackgroundClip: 'text',
+  color: english ? 'blue' : 'transparent'}}>
+
+    { german ? (
+       <span>
+        Englisch
+       </span>
+      ): english ?  (
+        <span>
+          English
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+   </div>
+    
       <div className='login'>
       <div className='head'>
       { german ? (
@@ -1521,6 +1535,9 @@ function Login() {
          </div>
       </>
     );
+   
+
+
    }
 else { 
   let creusername = 'Create an username...';
@@ -1541,112 +1558,108 @@ else {
     email = 'Enter an email adress...';
     
   }
-  createUserWithEmailAndPassword(auth, email)
-  .then((userCredential) => {
-    
-    const user = userCredential.user;
-   
-   
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-   return (
-    <>
-      Error
-    </>
-   );
-  });
-  return(
-    <> 
-       <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{color: german ? 'blue' : 'white',  borderBottom: german ? 'blue 0.3vh solid' : 'none'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-       style={{color: english ? 'blue' : 'white', borderBottom: english ? 'blue 0.3vh solid' : 'none'}}>
+  
+    return(
+      <div> 
+       
+       
+      <div className='login'>
+      <div className='translation'>
+    <div className='ge' onClick={pressG}
+    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+  backgroundClip: 'text',
+  color: german ? 'blue' : 'transparent'}}>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    <div className='login'>
-    <button onClick={press}>
-     <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-     transform:'rotate(-180deg)', position:'absolute', cursor:'pointer'
-     }} />
-     </button>
-    
-    <div className='signUP'>
-     <div className='headR'>
-     { german ? (
-         <span>
-          Regestrierung
-         </span>
-        ): english ?  (
-          <span>
-            Register
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-     </div>
-     <br/>
-    <div className='REG'>
-     <input style={{fontSize:'120%'}} id='email' className='child'  type='email' placeholder={email} />
-     <input id='us1'  className='child' type="text" placeholder={creusername} />
-      <input id='pa1'  className='child' type="password" placeholder={crepassword}  />
-      <input id='pa1'   className='child' type="password" placeholder={reppas}  />
-     </div>
-     <br/>
-     <br/>
-      <button style={{fontSize:'1.5vh'}}>
+       <span>
+        Deutsch
+       </span>
+      ): english ? (
+        <span>
+          German
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+    <div className='en' onClick={pressE}
+    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+  BackgroundClip: 'text',
+  color: english ? 'blue' : 'transparent'}}>
+
+    { german ? (
+       <span>
+        Englisch
+       </span>
+      ): english ?  (
+        <span>
+          English
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+    </div>
+   </div>
+      <button onClick={press}>
+       <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
+       transform:'rotate(-180deg)', position:'absolute', cursor:'pointer'
+       }} />
+       </button>
       
-      <p className="AniB" style={{fontSize: '2.5vh'}}>
-      { german ? (
-         <span>
-          Regestrieren
-         </span>
-        ): english ?  (
-          <span>
-            Register
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </p>
-      </button>
-    </div>
-    </div>
-    </>
-  );
+      <div className='signUP'>
+       <div className='headR'>
+       { german ? (
+           <span>
+            Regestrierung
+           </span>
+          ): english ?  (
+            <span>
+              Register
+            </span>
+          ): (
+            <span>
+              Error
+            </span>
+          )}
+       </div>
+       <br/>
+      <div className='REG'>
+       <input style={{fontSize:'120%'}} id='email' className='child'  type='email' placeholder={email} />
+       <input id='us1'  className='child' type="text" placeholder={creusername} />
+        <input id='pa1'  className='child' type="password" placeholder={crepassword}  />
+        <input id='pa1'   className='child' type="password" placeholder={reppas}  />
+       </div>
+       <br/>
+       <br/>
+        <button style={{fontSize:'1.5vh'}}>
+        
+        <p className="AniB" style={{fontSize: '2.5vh'}}>
+        { german ? (
+           <span>
+            Regestrieren
+           </span>
+          ): english ?  (
+            <span>
+              Register
+            </span>
+          ): (
+            <span>
+              Error
+            </span>
+          )}
+        </p>
+        </button>
+      </div>
+      </div>
+      </div>
+    );
+   
+  
+    
+
 
   
 }
@@ -1912,7 +1925,7 @@ const PictureShop = () => {
       </div> 
      <div className='elePic' onClick={press4}>
       <img className='imgSh' src={ShopImages[4].src}/>
-      <div style={{fontFamily: '"Poppins", sans-serif'}}>
+      <div className='pri'>
         Price: {ShopImages[4].price}€
       </div>
      </div> 

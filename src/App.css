@@ -22,7 +22,6 @@
     position: sticky;
   }
   .title {
-   color: rgb(255, 255, 255);
    font-weight: bold;
    position: sticky;
    font-size: 2.75vh;
@@ -72,6 +71,9 @@
     width:90%;
     height:75%;
     position: sticky;
+  }
+  .ic {
+   color: white;
   }
   .ham {
     margin: 0.2vh 0;
@@ -289,7 +291,10 @@
   flex-direction: row;
 }
 .ge {
-  font-family: 'Poppins',  sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+  font-family: 'Dancing Script';
   margin: 0 10%;
   cursor: pointer;
   padding: 0%;
@@ -297,11 +302,13 @@
   
 }
 .en {
-  font-family: 'Poppins' , sans-serif;
+  background-clip: text;
   margin: 0 10%;
   cursor: pointer;
   padding: 0%;
   transition: 0.5s ease-in-out;
+ 
+  font-family: 'Dancing Script';
  
 }
 /* Ausnahme Home */
@@ -341,24 +348,24 @@
     color: white;
 }
 .send2 {
-  color: white;
+ color: white;
   position: sticky;
 }
 .inputCH {
   border: none;
   background-color: transparent;
-  color: white;
   width: 70%;
   height: 60%;
   font-size: 120%;
   position: sticky;
   margin:  0%  ;
-  font-family: 'Poppins', sans-serif;  
+  color: white;
+  font-family: 'Dancing Script';
 }
 .inputCH::placeholder {
- color: white; 
  font-size: 100%;
- font-family: 'Poppins', sans-serif;
+ color: white;
+ font-family: 'Dancing Script';
 
 }
 .btnD {
@@ -381,6 +388,7 @@
   
 
 }
+
 .list {
   display: flex;
   flex-direction: column ;
@@ -403,11 +411,19 @@
   border-radius: 5%;
 }
 .message {
-  background-color: rgb(4, 86, 12);
+  background-color: rgba(1, 1, 116, 0.423);
   padding: 5%;
   margin:  5% -10%;
   max-width: 50%;
   border-radius: 5%;
+  
+  font-family: 'Dancing Script';
+}
+.textChat {
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+  font-family: 'Dancing Script';
 }
 .away {
   font-size: 0vh;
@@ -516,22 +532,22 @@
     right: 3%;
     top: 10%;
     position: fixed;
-    color: white;
 }
-.name {
+ .name {
   font-size: 6vh;
   color: rgb(254, 254, 254);
   font-weight: bold;
-}
+} 
 .input {
   border: none;
   background-color: transparent;
-  color: white;
   width: 90%;
   height: 3%;
   font-size: 120%;
- font-family: 'Poppins', sans-serif;
-
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
 }
 .input::after {
   content: '';
@@ -540,24 +556,28 @@
  height: 500%;
 }
 .input::placeholder {
- color: white; 
  font-size: 100%;
- font-family: 'Poppins', sans-serif;
-
-
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
 }
 th {
   font-size: 4vh;
- color: white;
- font-family: 'Poppins', sans-serif;
+ background-image: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+
 }
 td {
- color: white;
   font-weight: bold;
   font-size: 3.5vh;
   margin: 70% 0%;
   position: sticky;
-  font-family: 'Poppins', sans-serif;
+ background-image: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+
  }
 /** Login und Signup**/
 .login {
@@ -571,7 +591,7 @@ td {
     right: 3%;
     top: 10%;
     position: fixed;
-    font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+    font-family: 'Dancing Script';
 }
 
 .head {
@@ -589,13 +609,15 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: 70%;
   height: 5%;
   font-size:120%;
   margin: 3% 5%;
-  font-family: 'Poppins', sans-serif;
- 
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+
 
 }
 #pa {
@@ -604,23 +626,31 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: 70%;
   font-size:120%;
   margin: 3% 5%;
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-family: 'Dancing Script';
  
 
 }
 #us::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
   
 
 }
 #pa::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+  
+
   
 
 }
@@ -630,22 +660,29 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   font-size:120%;
 margin:2% 0%;
-font-family: 'Poppins', sans-serif;
+background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-family: 'Dancing Script';
 
 
 }
 #us1::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-family: 'Dancing Script';
 
 }
 #pa1::placeholder {
  color: white;
- font-family: 'Poppins', sans-serif;
+ background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-family: 'Dancing Script';
 
 }
 
@@ -655,35 +692,36 @@ font-family: 'Poppins', sans-serif;
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   font-size:120%;
    margin:2% 0%;
-   font-family: 'Poppins', sans-serif;
+   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+
   
 }
 .importantI {
-  color: white;
   font-size: 130%;
   margin: 0% 5%;
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 .sg  {
 color: rgb(63, 139, 233);
 cursor: pointer;
 text-decoration:underline ;
-font-family: 'Poppins', sans-serif;
+
 
 }
-.child {
-  font-family: 'Poppins', sans-serif;
-}
+
 p {
   background: none;
   border: 0;
   box-sizing: border-box;
   box-shadow:inset 0 0 0 1px #f96767;
-  color: #ffffff;
   font-weight: bolder;
   margin:-7% 4%;
  width: auto;
@@ -694,7 +732,11 @@ p {
  align-items: center;
  border-radius: 5%;
  background-color: black;
- font-family: 'Poppins', sans-serif;
+ background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+
 
 }
 .AniB {
@@ -768,15 +810,23 @@ p {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   height: 5%;
   font-size:155%;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
  margin:2% 0%;
+ font-family: 'Dancing Script';
+
 
 }
 #email::placeholder {
-  color: white;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+
 }
 .REG {
   display: flex;
@@ -891,8 +941,13 @@ p {
   cursor: pointer;
 }
 .pri {
-  font-family:'Poppins', sans-serif;
- 
+  font-family:'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-weight: bold;
+ font-size: 2.5vh;
+ margin-bottom: 15%;
 }
 .shopGR {
   display: flex;
@@ -974,9 +1029,13 @@ p {
   margin:0% -15%;
 } 
 .pri3 {
-  font-family: 'Poppins', sans-serif;
+  
   margin: 0% -15%;
-
+  font-family:'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-weight: bold;
 }
 .resHam {
   font-family: Arial, Helvetica, sans-serif;
@@ -999,27 +1058,35 @@ p {
   margin: 4% 10% 1% 17%;
 }
 .pri2 {
-  color: white;
-  font-family: 'Poppins', sans-serif;
   font-size: 4vh;
   margin: 0% ;
   padding:0% 19%;
+  font-family:'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-weight: 800;
 }
 .btnShop {
-  color: black;
+  color:rgb(0, 0, 0);
   width: auto;
   min-width: 15%;
   height: 10%;
   margin: 0% 19%;
-  font-weight: bolder;
+  font-weight: 1000;
   font-size: 90%;
   border-radius: 5%;
+font-family:'Dancing Script';
+
   background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
 }
 .btnShop:hover {
   box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
 -webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
 -moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+color: white;
+font-family:'Dancing Script';
+
 }
 /**About Us **/
 .aboutUs {
@@ -1044,8 +1111,8 @@ p {
   text-align: center;
 }
 .imp {
-  color: white;
-  font-family:'Poppins', sans-serif ;
+ color: white;
+  font-family:'Dancing Script' ;
   font-size: 2vh;
 }
 summary {
@@ -1055,7 +1122,7 @@ summary {
 
 }
 .theAb {
-  text-decoration: underline white;
+  text-decoration: underline white ;
 }
 .igimg2 {
   width: 4%;
@@ -1300,9 +1367,13 @@ summary {
   }
   .he {
     position: fixed;
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.5vh;
+    font-family: 'Dancing Script';
+    font-size: 3vh;
     margin: 0.5%;
+    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+  
   }
   .img1 {
     width: 5vh;
@@ -1356,7 +1427,7 @@ summary {
     z-index: -100;
     }
 .element {
-  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
   background-clip: text;
   color: transparent;
     
@@ -1367,6 +1438,8 @@ summary {
 }
 .po {
   position: sticky;
+ color: rgb(96, 251, 181);
+  
 }
 .po2{
   position: sticky;
@@ -1382,6 +1455,12 @@ summary {
 }
 .shPi {
   position: sticky;
+  color: white;
+}
+.ic {
+  position: sticky;
+  color: rgb(96, 251, 181);
+ 
 }
 
 .infoUN {
@@ -1433,19 +1512,23 @@ summary {
   z-index: -100;
 }
 .ge {
-  font-family: 'Poppins',  sans-serif;
+  font-family: 'Dancing Script';
   margin: 0 10%;
   cursor: pointer;
   padding: 0%;
   transition: 0.5s ease-in;
+  background-clip:text ;
+  font-weight: bold;
   
 }
 .en {
-  font-family: 'Poppins' , sans-serif;
+  font-family: 'Dancing Script';
   margin: 0 10%;
   cursor: pointer;
   padding: 0%;
   transition: 0.5s ease-in-out;
+  background-clip:text ;
+ font-weight: bold;
  
 }
 /* Ausnahme Home */
@@ -1491,18 +1574,22 @@ summary {
 .inputCH {
   border: none;
   background-color: transparent;
-  color: white;
   width: 70%;
   height: 60%;
   font-size: 120%;
   position: sticky;
   margin:  0%  ;
-  font-family: 'Poppins', sans-serif;  
+  background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+  font-family: 'Dancing Script';  
 }
 .inputCH::placeholder {
- color: white; 
  font-size: 100%;
- font-family: 'Poppins', sans-serif;
+ background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+ background-clip: text;
+ color: transparent;
+ font-family: 'Dancing Script';  
 
 }
 .btnD {
@@ -1652,7 +1739,7 @@ summary {
 /**CSS Search**/ 
 
  .search {
-  background-color: rgba(0, 0, 0, 0.744);
+  background-color:rgba(0, 0, 0, 0.877);
   width: 80%;
    height: 83%;
    padding: 3vh 1vh;
@@ -1662,21 +1749,25 @@ summary {
     right: 3%;
     top: 10%;
     position: fixed;
-    color: white;
+    
 }
 .name {
   font-size: 6vh;
-  color: rgb(254, 254, 254);
+  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
   font-weight: bold;
 }
 .input {
   border: none;
   background-color: transparent;
-  color: white;
+  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
   width: 90%;
   height: 3%;
   font-size: 120%;
- font-family: 'Poppins', sans-serif;
+ font-family: 'Dancing Script';
 
 }
 .input::after {
@@ -1688,22 +1779,29 @@ summary {
 .input::placeholder {
  color: white; 
  font-size: 100%;
- font-family: 'Poppins', sans-serif;
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+ background-clip: text;
+ color: transparent;
 
 
 }
 th {
   font-size: 4vh;
- color: white;
- font-family: 'Poppins', sans-serif;
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
 }
 td {
- color: white;
   font-weight: bold;
   font-size: 3.5vh;
   margin: 70% 0%;
   position: sticky;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
  }
 /** Login und Signup**/
 .login {
@@ -1717,7 +1815,7 @@ td {
     right: 3%;
     top: 15%;
     position: fixed;
-    font-family: 'Dancing Script', cursive, 'Roboto', sans-serif;
+    font-family: 'Dancing Script';
 }
 
 .head {
@@ -1735,13 +1833,14 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: 70%;
   height: 5%;
   font-size:120%;
   margin: 3% 5%;
-  font-family: 'Poppins', sans-serif;
- 
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 
 }
 #pa {
@@ -1750,24 +1849,27 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: 70%;
   font-size:120%;
   margin: 3% 5%;
-  font-family: 'Poppins', sans-serif;
- 
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 
 }
 #us::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 
 }
 #pa::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 
 }
 #us1 {
@@ -1776,23 +1878,27 @@ td {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   font-size:120%;
 margin:2% 0%;
-font-family: 'Poppins', sans-serif;
-
+font-family: 'Dancing Script';
+background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+color: transparent;
+background-clip: text;
 
 }
 #us1::placeholder {
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Dancing Script';
+background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+color: transparent;
+background-clip: text;
 
 }
 #pa1::placeholder {
- color: white;
- font-family: 'Poppins', sans-serif;
-
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 
 #pa1 {
@@ -1801,35 +1907,40 @@ font-family: 'Poppins', sans-serif;
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   font-size:120%;
    margin:2% 0%;
-   font-family: 'Poppins', sans-serif;
-  
+   font-family: 'Dancing Script';
+   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+   color: transparent;
+   background-clip: text;
 }
 .importantI {
-  color: white;
   font-size: 130%;
   margin: 0% 5%;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Dancing Script';
+   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+   color: transparent;
+   background-clip: text;
 }
 .sg  {
-color: rgb(63, 139, 233);
 cursor: pointer;
 text-decoration:underline ;
-font-family: 'Poppins', sans-serif;
-
+font-family: 'Dancing Script';
+   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+   color: transparent;
+   background-clip: text;
 }
+
+
 .child {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Dancing Script';
 }
 p {
   background: none;
   border: 0;
   box-sizing: border-box;
   box-shadow:inset 0 0 0 1px #f96767;
-  color: #ffffff;
   font-weight: bolder;
   margin: 0% 4%;
  width: auto;
@@ -1840,9 +1951,13 @@ p {
  align-items: center;
  border-radius: 5%;
  background-color: black;
- font-family: 'Poppins', sans-serif;
-
+ font-family: 'Dancing Script';
+   background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+   color: transparent;
+   background-clip: text;
 }
+
+
 .AniB {
   overflow: hidden;
   position: absolute;
@@ -1906,7 +2021,10 @@ p {
   }
 }
 .signUP {
-  color: white;
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 #email {
   background: transparent ;
@@ -1914,20 +2032,30 @@ p {
   border-top: none;
   border-right: none;
   border-left: none;
-  color:white;
   width: auto;
   height: 5%;
   font-size:155%;
  margin:2% 0%;
-
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+ color: transparent;
+ background-clip: text;
+ 
 }
 #email::placeholder {
-  color: white;
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 .REG {
   display: flex;
   flex-direction: column;
   margin: 0% 5%;
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 .headR {
   font-weight: bold;
@@ -1936,6 +2064,7 @@ p {
   background-clip: text;
   font-size: 300%;
   text-align: center;
+  
 }
 /**Videogalerie**/
 .videogalerie {
@@ -2037,8 +2166,12 @@ p {
   cursor: pointer;
 }
 .pri {
-  font-family:'Poppins', sans-serif;
- 
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  margin-bottom:5% ;
+  font-weight: bold;
 }
 .shopGR {
   display: flex;
@@ -2144,7 +2277,10 @@ p {
 .pri3 {
   font-family: 'Poppins', sans-serif;
   margin: 0% -15%;
-
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
 }
 .resHam {
   font-family: Arial, Helvetica, sans-serif;
@@ -2167,11 +2303,14 @@ p {
   margin: 4% 10% 1% 17%;
 }
 .pri2 {
-  color: white;
-  font-family: 'Poppins', sans-serif;
   font-size: 4vh;
   margin: 0% ;
   padding:0% 19%;
+  font-family: 'Dancing Script';
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-weight: bold;
 }
 .btnShop {
   color: black;
@@ -2188,6 +2327,7 @@ p {
   box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
 -webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
 -moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+color: white;
 }
 /**About Us **/
 .aboutUs {
@@ -2213,7 +2353,7 @@ p {
 }
 .imp {
   color: white;
-  font-family:'Poppins', sans-serif ;
+  font-family:'Dancing Script';
   font-size: 2vh;
 }
 summary {
