@@ -1460,6 +1460,7 @@ summary {
 .ic {
   position: sticky;
   color: rgb(96, 251, 181);
+  margin:0% 4% ;
  
 }
 
@@ -1566,6 +1567,7 @@ summary {
     flex-direction: column;
     justify-content: flex-end;
     color: white;
+
 }
 .send2 {
   color: white;
@@ -1594,18 +1596,15 @@ summary {
 }
 .btnD {
   color: white;
- font-family: 'Poppins', sans-serif;
  cursor: pointer;
 }
 .btnE {
   color: white;
- font-family: 'Poppins', sans-serif;
  cursor: pointer;
 
 }
 .btnS {
   color: white;
- font-family: 'Poppins', sans-serif;
  cursor: pointer;
   
 
@@ -1618,9 +1617,10 @@ summary {
   height: 100%;
   margin: 7% 0%;
   gap: -3% 0%;
-  
-  font-family: 'Poppins', sans-serif;
-}
+  }
+  element::-webkit-scrollbar {
+    display: none;
+  }
 .inputCH1 {
   border: none;
   background-color: white;
@@ -1743,7 +1743,7 @@ summary {
   width: 80%;
    height: 83%;
    padding: 3vh 1vh;
-    border-radius: 4%;
+    border-radius: 10px;
     z-index: -100;
     left: 15%;
     right: 3%;
@@ -1925,7 +1925,7 @@ background-clip: text;
 }
 .sg  {
 cursor: pointer;
-text-decoration:underline ;
+text-decoration:underline rgb(96, 251, 181) ;
 font-family: 'Dancing Script';
    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
    color: transparent;
@@ -2366,8 +2366,8 @@ summary {
   text-decoration: underline white;
 }
 .igimg2 {
-  width: 1.5%;
-  height: 1.5%;
+  width: 1%;
+  height: 1%;
   cursor: pointer;
 }
 .ig {
@@ -2377,8 +2377,8 @@ summary {
   cursor: pointer;
 }
 .ttimg2 {
-  width: 2.5%;
-  height: 2.5%;
+  width: 1.75%;
+  height: 1.75%;
   cursor: pointer;
   margin: -0.5% 0%;
 }

@@ -221,7 +221,7 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+const images =['./michaelBackground.png','./GroßeBrüsteF.jpeg','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
  './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
  './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
@@ -237,11 +237,8 @@ function ImageList (){
   const [zoomLevel, setZoomLevel] = useState(1);
   const[click,setClick] = useState(false);
 
-  const toggleImageSize = () => {
-    setIsImageExpanded(!isImageExpanded);
-    setZoomLevel(1); // Beim Zurücksetzen auf Standardgröße auch den Zoom auf 1 setzen
-  };
-
+  
+  
   const BiggerPic= () => {
     setClick(!click);
   }
@@ -1141,6 +1138,8 @@ function Bildgalerie() {
             <InfoB/>
             <img src={images[73]} className='imgG'/>
             <InfoB/>
+            <img src={images[74]} className='imgG'/>
+            <InfoB/>
           </div>
       </div>
   );
@@ -1666,8 +1665,8 @@ else {
 }
 
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4',
-'./copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', './export_1701962505711.MP4'
+, './copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
 './copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
 './copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
   './C4EF135C-1DD4-469C-81D3-448FBB715860.mp4','./A0F18F97-7A34-4312-9BFD-0B3B363503A1.mp4',
