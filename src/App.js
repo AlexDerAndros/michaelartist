@@ -221,7 +221,7 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./GroßeBrüsteF.jpeg','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
+const images =['./michaelBackground.png','./GroßeBrüsteF.JPEG','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
  './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
  './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
