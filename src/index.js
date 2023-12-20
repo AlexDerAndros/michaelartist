@@ -1,23 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import firebase from 'firebase/app';
-import 'firebase/database';
-import 'firebase/auth'; 
-import 'firebase/firestore'; 
-import 'firebase/database';
-import 'firebase/auth';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import { getAnalytics } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+
+// Login: https://firebase.google.com/docs/auth/web/start?hl=de
 
 const firebaseConfig = {
   apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
@@ -30,8 +21,16 @@ const firebaseConfig = {
   measurementId: "G-GGJ7KLTS88"
 };
 const app = initializeApp(firebaseConfig);
+
+// Hier wird das Analytics-Modul korrekt importiert und initialisiert
 const analytics = getAnalytics(app);
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// Wenn du die Leistung deiner App messen möchtest, kannst du reportWebVitals nutzen
 reportWebVitals();

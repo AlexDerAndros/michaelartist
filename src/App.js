@@ -20,25 +20,7 @@ import { Component } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, signInWithEmailAndPassword , onAuthStateChanged , createUserWithEmailAndPassword} from "firebase/auth";
-//Login https://firebase.google.com/docs/auth/web/start?hl=de
-const firebaseConfig = {
-  apiKey: "AIzaSyDq_9NtGYng1Ra5PtKk_ifQoys6ZH-goMc",
-  authDomain: "michael--artist.firebaseapp.com",
-  databaseURL: "https://michael--artist-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "michael--artist",
-  storageBucket: "michael--artist.appspot.com",
-  messagingSenderId: "690442290094",
-  appId: "1:690442290094:web:62e0a17e181182ce23fe3f",
-  measurementId: "G-GGJ7KLTS88"
-};
 
-
-// Initialize Firebase
-const fire = initializeApp(firebaseConfig);
-const auth = getAuth(fire);
 
 
 
@@ -307,6 +289,7 @@ function AboutUs() {
     setEnglish(true);
       setGerman(false);
   }
+ 
   return(
     <>
     <div className='translation'>
@@ -596,6 +579,8 @@ die der Verbraucher nicht ausdrücklich verlangt hat,
       </span>
     )}
       </div>
+      
+       
     </div>
    </> 
   );
@@ -1252,8 +1237,15 @@ function Likes() {
 function SEARCH() {
   const [filterText, setFilterText] = useState('');
     const [inStockOnly, setInStockOnly] = useState(false);
-   
-      
+   const [home,setHome]= useState(false);
+   const [pictureGallery,setPictureGallery] = useState(false);
+   const [chat, setChat] = useState(false);
+   const[login,setLogin] = useState(false);
+   const[videogallery,setVideogallery] = useState(false);
+   const[pictureShop,setPictureShop] = useState(false);
+   const[aboutUs, setAboutUs] = useState(false);
+    if(!home && !pictureGallery && !chat && !login && !videogallery && !pictureShop && !aboutUs) 
+      {
         return ( 
           <div className='search'>
           <SearchBar 
@@ -1270,7 +1262,19 @@ function SEARCH() {
         </div>
         );
        }
-   
+       else if(home) {
+        return(
+       <Home/>
+        );
+       }
+       else {
+        return (
+         <>
+           Error
+         </>
+        );
+       }
+      }
     
  
 
@@ -1287,7 +1291,7 @@ function ProductRow({ product, link }) {
 
 
     <tr>
-      <td onClick={link}>{name}</td>
+      <td>{name}</td>
     </tr>
   
    </div> 
@@ -1326,11 +1330,11 @@ function ProductTable({ products, filterText, inStockOnly }) {
       <thead>
         <tr>
           <th>
-            Themes on the website
+              Themes on the website
           </th>
         </tr>
       </thead>
-      {rows}
+    {rows}
     </table>
   );
 }
@@ -1357,7 +1361,6 @@ const PRODUCTS = [
   {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
   {category: "Main",  name: "Chat", component:'<Chat/>' },
   {category:'Main', name: 'Login', component:'<Login/>'},
-  {category:'Main', name: 'Signup', component:'<Signup/>', link:' '},
   {category:'Main', name:'Video gallery', component:'<Videogalerie/>', link: '/Videogalerie'},
   {category:'Main', name:'Picture shop', component:'<PictureShop/>', link:'/PictureShop'},
   {category:'Main', name:'About Us', component:'<AboutUs/>', link:'/AboutUs'},  
@@ -1665,7 +1668,8 @@ else {
 }
 
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', './export_1701962505711.MP4'
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./export_1702824220526.MP4',
+ './export_1701962505711.MP4'
 , './copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
 './copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
 './copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
@@ -3342,7 +3346,7 @@ const ShopImages = [
 {price:'/', src:'./Tanzen2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Maria2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Teufel2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:'/', src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:520, src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./BlumenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./7.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./GelbeFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
@@ -3355,6 +3359,7 @@ const ShopImages = [
 {price:'/', src:'./BluSchlafFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Löwe.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+
 
 ];
 
