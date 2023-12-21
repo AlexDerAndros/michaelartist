@@ -1,0 +1,60 @@
+[debug] [2023-12-21T12:39:10.640Z] ----------------------------------------------------------------------
+[debug] [2023-12-21T12:39:10.642Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ntrik\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-12-21T12:39:10.643Z] CLI Version:   12.7.0
+[debug] [2023-12-21T12:39:10.643Z] Platform:      win32
+[debug] [2023-12-21T12:39:10.643Z] Node Version:  v21.2.0
+[debug] [2023-12-21T12:39:10.643Z] Time:          Thu Dec 21 2023 13:39:10 GMT+0100 (Mitteleuropäische Normalzeit)
+[debug] [2023-12-21T12:39:10.643Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-21T12:39:10.645Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-21T12:39:10.723Z] Field ".emulators.hosting.port" in "firebase.json" is possibly invalid: should be number
+[debug] [2023-12-21T12:39:10.730Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-21T12:39:10.730Z] > authorizing via signed-in user (alexandros.ntrikos@ohg-monheim.eu)
+[debug] [2023-12-21T12:39:10.730Z] [iam] checking project michael--artist for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-21T12:39:10.731Z] > refreshing access token with scopes: []
+[debug] [2023-12-21T12:39:10.732Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-21T12:39:10.732Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-21T12:39:14.100Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-21T12:39:14.100Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-21T12:39:14.111Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions [none]
+[debug] [2023-12-21T12:39:14.111Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions x-goog-quota-user=projects/michael--artist
+[debug] [2023-12-21T12:39:14.111Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-21T12:39:28.891Z] *** [apiv2] error from fetch(https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions, {"headers":{},"method":"POST","body":"{\"permissions\":[\"firebase.projects.get\",\"firebasehosting.sites.update\"]}"}): FetchError: request to https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions failed, reason: read ECONNRESET
+[debug] [2023-12-21T12:39:28.892Z] [iam] error while checking permissions, command may fail: FirebaseError: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions
+[debug] [2023-12-21T12:39:28.895Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/michael--artist [none]
+[debug] [2023-12-21T12:39:35.218Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/michael--artist 200
+[debug] [2023-12-21T12:39:35.218Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/michael--artist {"projectId":"michael--artist","projectNumber":"690442290094","displayName":"Michael","name":"projects/michael--artist","resources":{"hostingSite":"michael--artist","realtimeDatabaseInstance":"michael--artist-default-rtdb","storageBucket":"michael--artist.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_593a661c-9f50-4697-bebc-1fe9ab43655f"}
+[info] 
+[info] === Deploying to 'michael--artist'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-12-21T12:39:35.233Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/michael--artist/versions [none]
+[debug] [2023-12-21T12:39:35.233Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/michael--artist/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-12-21T12:39:36.247Z] *** [apiv2] error from fetch(https://firebase-public.firebaseio.com/cli.json, {"headers":{},"method":"GET"}): FetchError: request to https://firebase-public.firebaseio.com/cli.json failed, reason: 
+[warn] !  Unable to fetch the CLI MOTD and remote config. 
+[debug] [2023-12-21T12:39:36.248Z] Failed to fetch MOTD FirebaseError: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2023-12-21T12:39:49.424Z] ----------------------------------------------------------------------
+[debug] [2023-12-21T12:39:49.426Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ntrik\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-12-21T12:39:49.427Z] CLI Version:   12.7.0
+[debug] [2023-12-21T12:39:49.427Z] Platform:      win32
+[debug] [2023-12-21T12:39:49.427Z] Node Version:  v21.2.0
+[debug] [2023-12-21T12:39:49.427Z] Time:          Thu Dec 21 2023 13:39:49 GMT+0100 (Mitteleuropäische Normalzeit)
+[debug] [2023-12-21T12:39:49.427Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-21T12:39:49.429Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-21T12:39:49.508Z] Field ".emulators.hosting.port" in "firebase.json" is possibly invalid: should be number
+[debug] [2023-12-21T12:39:49.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-21T12:39:49.513Z] > authorizing via signed-in user (alexandros.ntrikos@ohg-monheim.eu)
+[debug] [2023-12-21T12:39:49.514Z] [iam] checking project michael--artist for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-21T12:39:49.514Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions [none]
+[debug] [2023-12-21T12:39:49.514Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions x-goog-quota-user=projects/michael--artist
+[debug] [2023-12-21T12:39:49.514Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/michael--artist:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-21T12:39:54.147Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-21T12:39:54.147Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-12-21T12:39:55.455Z] *** [apiv2] error from fetch(https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/michael--artist/versions, {"headers":{},"method":"POST","body":"{\"status\":\"CREATED\",\"labels\":{\"deployment-tool\":\"cli-firebase\"}}"}): FetchError: request to https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/michael--artist/versions failed, reason: Client network socket disconnected before secure TLS connection was established
+[debug] [2023-12-21T12:40:00.469Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\ntrik\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:254:49)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+[error] 
+[error] Error: An unexpected error has occurred.

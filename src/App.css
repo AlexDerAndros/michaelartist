@@ -538,6 +538,13 @@
   color: rgb(254, 254, 254);
   font-weight: bold;
 } 
+.backIconS {
+  color:white;
+  transform:rotate(180deg);
+  cursor: pointer;
+ inset: 7% 0%;
+  position:fixed;
+}
 .input {
   border: none;
   background-color: transparent;
@@ -562,17 +569,16 @@
    background-clip: text;
    color: transparent;
 }
-th {
+/* th {
   font-size: 4vh;
  background-image: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
    background-clip: text;
    color: transparent;
 
-}
-td {
+} */
+.searchItem {
   font-weight: bold;
   font-size: 3.5vh;
-  margin: 70% 0%;
   position: sticky;
  background-image: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
    background-clip: text;
@@ -1786,14 +1792,14 @@ summary {
 
 
 }
-th {
+/* th {
   font-size: 4vh;
  font-family: 'Dancing Script';
  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
    background-clip: text;
    color: transparent;
-}
-td {
+} */
+.searchItem{
   font-weight: bold;
   font-size: 3.5vh;
   margin: 70% 0%;

@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { useReducer, useContext , useEffect, useRef, createContext } from 'react';
 import './App.css';
-import ReactGA from 'react-ga';
+import ReactGA, { set } from 'react-ga';
 import { FaImages } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import { FaHome } from 'react-icons/fa';
@@ -1234,137 +1234,156 @@ function Likes() {
 
 //Search
 
-function SEARCH() {
-  const [filterText, setFilterText] = useState('');
-    const [inStockOnly, setInStockOnly] = useState(false);
-   const [home,setHome]= useState(false);
-   const [pictureGallery,setPictureGallery] = useState(false);
-   const [chat, setChat] = useState(false);
-   const[login,setLogin] = useState(false);
-   const[videogallery,setVideogallery] = useState(false);
-   const[pictureShop,setPictureShop] = useState(false);
-   const[aboutUs, setAboutUs] = useState(false);
-    if(!home && !pictureGallery && !chat && !login && !videogallery && !pictureShop && !aboutUs) 
-      {
-        return ( 
-          <div className='search'>
-          <SearchBar 
-            filterText={filterText} 
-            inStockOnly={inStockOnly} 
-            onFilterTextChange={setFilterText} 
-            onInStockOnlyChange={setInStockOnly} />
-          <ProductTable 
-            products={PRODUCTS} 
-            filterText={filterText}
-            inStockOnly={inStockOnly} 
-             
-            />
-        </div>
-        );
-       }
-       else if(home) {
-        return(
-       <Home/>
-        );
-       }
-       else {
-        return (
-         <>
-           Error
-         </>
-        );
-       }
-      }
-    
- 
-
-function ProductRow({ product, link }) {
- 
-  
-   
-  const name = product.name;
-  const component = product.component;
-
-  return (
-<div>
 
 
-
-    <tr>
-      <td>{name}</td>
-    </tr>
-  
-   </div> 
-
+const SEARCH = () => {
+  const PHome = () => {
+    return (
+    <div>
+    <FontAwesomeIcon  onClick={pressHome} icon={faArrowRight} size='2x' className='backIconS' />
+     <Home/>
+    </div>
   );
- }
-
-function ProductTable({ products, filterText, inStockOnly }) {
-  const rows = [];
-  let lastCategory = null;
-
-  products.forEach((product) => {
-    if (
-      product.name.toLowerCase().indexOf(
-        filterText.toLowerCase()
-      ) === -1
-    ) {
-      return;
-    }
-    if (inStockOnly && !product.stocked) {
-      return;
-    }
-   
-    rows.push(
-      <ProductRow
-        product={product}
-        key={product.name} 
-        
-        />
+  }
+  const PPictureGallery = () => {
+    return (
+   <div>
+    <FontAwesomeIcon  onClick={pressPicturegallery} icon={faArrowRight} size='2x' className='backIconS' />
+     <Bildgalerie/>
+    </div>
+  );
+  }
+  const PChat = () => {
+    return (
+    <div>
+    <FontAwesomeIcon  onClick={pressChat} icon={faArrowRight} size='2x' className='backIconS'/>
+     <Chat/>
+    </div>
+  );
+  };
+  const PLogin = () => {
+    return (
+    <div>
+    <FontAwesomeIcon  onClick={pressLogin} icon={faArrowRight} size='2x' className='backIconS'/>
+     <Log/>
+    </div>
     );
-    lastCategory = product.category;
-  });
+  };
+  const PVideoGallery = () => {
+    return (
+      <div>
+    <FontAwesomeIcon  onClick={pressVideogallery} icon={faArrowRight} size='2x' className='backIconS'/>
+     <Videogalerie/>
+    </div>
+    );
+  };
+  const PAboutUs = () => {
+    return (
+      <div>
+    <FontAwesomeIcon  onClick={pressAboutUs} icon={faArrowRight} size='2x' className='backIconS'/>
+     <AboutUs/>
+    </div>
+    );
+  };
+  const PPictureShop = () => {
+    return (
+      <div>
+    <FontAwesomeIcon  onClick={pressPictureShop} icon={faArrowRight} size='2x' className='backIconS'/>
+     <PictureShop/>
+    </div>
+    );
+  };
+  const [home,setHome]= useState(false);
+  const [pictureGallery,setPictureGallery] = useState(false);
+  const [chat, setChat] = useState(false);
+  const[login,setLogin] = useState(false);
+  const[videogallery,setVideogallery] = useState(false);
+  const[pictureShop,setPictureShop] = useState(false);
+  const[aboutUs, setAboutUs] = useState(false);
+  const pressHome = () => {
+    setHome(!home);
+  }
+  
+  const pressPicturegallery = () => {
+    setPictureGallery(!pictureGallery);
+  }
+  const pressChat = () => {
+    setChat(!chat);
+  }
+  const pressLogin = () => {
+    setLogin(!login);
+  }
+  const pressVideogallery = () => {
+    setVideogallery(!videogallery);
+  }
+  const pressPictureShop = () => {
+    setPictureShop(!pictureShop);
+  }
+  const pressAboutUs = () => {
+    setAboutUs(!aboutUs);
+  }
+  const [searchItems, setSearchItems] = useState([
+    { id: 1, term: 'Home', className: 'searchItem', image: '#', press: pressHome},
+    { id: 2, term: 'Picture gallery', className: 'searchItem', image: 'js_image.jpg', press: pressPicturegallery},
+    { id: 3, term: 'Chat', className: 'searchItem', image: 'js_image.jpg', press: pressChat},
+    { id: 4, term: 'Login', className: 'searchItem', image: 'js_image.jpg', press: pressLogin},
+    { id: 5, term: 'Video gallery', className: 'searchItem', image: 'js_image.jpg', press: pressVideogallery},
+    { id: 6, term: 'Picture shop', className: 'searchItem', image: 'js_image.jpg', press: pressPictureShop},
+    { id: 7, term: 'About Us', className: 'searchItem', image: 'js_image.jpg', press:pressAboutUs},
+    
+  ]);
 
+  const [filteredSearchItems, setFilteredSearchItems] = useState([...searchItems]);
+  const handleFilter = (filterTerm) => {
+    const filteredItems = searchItems.filter(item =>
+      item.term.toLowerCase().includes(filterTerm.toLowerCase())
+    );
+    setFilteredSearchItems(filteredItems);
+  };
+ 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>
-              Themes on the website
-          </th>
-        </tr>
-      </thead>
-    {rows}
-    </table>
+    <div>
+      { home ? (
+        <PHome/>
+      ) :  pictureGallery ?(
+        <div>
+        <PPictureGallery/>
+      </div>
+      ): chat ? (
+        <PChat/>
+      ): login ? (
+        <PLogin/>
+      ): aboutUs ? (
+        <PAboutUs/>
+      ): videogallery ? (
+         <PVideoGallery/>
+      ) : pictureShop ? (
+        <PPictureShop/>
+      ):(
+        <div className='search'>
+          
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => handleFilter(e.target.value)}
+            className='input'
+          />
+          <ul>
+            {filteredSearchItems.map((item) => (
+              <li key={item.id} className={item.className}  onClick={item.press}>
+                <img src={item.image}/>
+                {item.term}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+        
+    </div>
   );
-}
+};
 
-function SearchBar({
-  filterText,
-  inStockOnly,
-  onFilterTextChange,
-  onInStockOnlyChange
-}) {
-  return (
-    <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
-        onChange={(e) => onFilterTextChange(e.target.value)} className='input' />
-    </form>
-  );
-}
-//<label>
- //<input type="checkbox" checked={inStockOnly} onChange={(e) => onInStockOnlyChange(e.target.checked)} />{' '}Only show products in stock</label>
-const PRODUCTS = [
-  {category: "Main", name: "Home", component:'<Home/>'},
-  {category: "Main", name: "Picture gallery", component:'<Bildgalerie/>'},
-  {category: "Main",  name: "Chat", component:'<Chat/>' },
-  {category:'Main', name: 'Login', component:'<Login/>'},
-  {category:'Main', name:'Video gallery', component:'<Videogalerie/>', link: '/Videogalerie'},
-  {category:'Main', name:'Picture shop', component:'<PictureShop/>', link:'/PictureShop'},
-  {category:'Main', name:'About Us', component:'<AboutUs/>', link:'/AboutUs'},  
-];
+
 
 
 //Login und Sigup
