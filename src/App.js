@@ -16,6 +16,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCross } from '@fortawesome/free-solid-svg-icons';
 import { Component } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -1687,8 +1688,8 @@ else {
 }
 
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4','./export_1702824220526.MP4',
- './export_1701962505711.MP4'
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', "./8ba2ba26c765447dbaeb8a156f1dd5a0.MP4"
+,'./export_1702824220526.MP4', './export_1701962505711.MP4'
 , './copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
 './copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
 './copy_44300C70-C36A-42C4-995D-114F26DFEC54.mp4',
@@ -1898,29 +1899,29 @@ const PictureShop = () => {
       <div className='filter'>
        FILTER
       </div>
+    
      <div> 
       <div className='PicHam' ></div> 
       <div className='PicHam1' ></div> 
       <div className='PicHam2' ></div> 
+     </div> 
      </div>
-      {click && (
+       {click && (
         <div className='resHam'>
-     <ul>
+          <div onClick={press} className='aw'>
+           X
+          </div>
+     <ul className='filterEle'>
         <li>
-           <input type='text' id='under100' className='checkIn'/>
+          <input type='checkbox'/>
         </li>
       </ul>
       <br/>
       <br/>
         </div>
-      )}   
-     </div> 
-     {click && (
-      <div>
-        <br/>
-        <br/>
-      </div>
-     )}
+      )}    
+   
+   
      </div>
       <div className='shopGR'>
      <div className='elePic' onClick={press0}>
@@ -3365,7 +3366,7 @@ const ShopImages = [
 {price:'/', src:'./Tanzen2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Maria2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Teufel2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:520, src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:650, src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./BlumenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./7.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./GelbeFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
