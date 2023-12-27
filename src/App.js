@@ -21,6 +21,7 @@ import { Component } from 'react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -1324,13 +1325,13 @@ const SEARCH = () => {
     setAboutUs(!aboutUs);
   }
   const [searchItems, setSearchItems] = useState([
-    { id: 1, term: 'Home', className: 'searchItem', image: '#', press: pressHome},
-    { id: 2, term: 'Picture gallery', className: 'searchItem', image: 'js_image.jpg', press: pressPicturegallery},
-    { id: 3, term: 'Chat', className: 'searchItem', image: 'js_image.jpg', press: pressChat},
-    { id: 4, term: 'Login', className: 'searchItem', image: 'js_image.jpg', press: pressLogin},
-    { id: 5, term: 'Video gallery', className: 'searchItem', image: 'js_image.jpg', press: pressVideogallery},
-    { id: 6, term: 'Picture shop', className: 'searchItem', image: 'js_image.jpg', press: pressPictureShop},
-    { id: 7, term: 'About Us', className: 'searchItem', image: 'js_image.jpg', press:pressAboutUs},
+    { id: 1, term: 'Home', className: 'searchItem', icon:  <FaHome size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressHome},
+    { id: 2, term: 'Picture gallery', className: 'searchItem', icon: <FaImages size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressPicturegallery},
+    { id: 3, term: 'Chat', className: 'searchItem', icon: <FaComment size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressChat},
+    { id: 4, term: 'Login', className: 'searchItem', icon: <FaSignInAlt size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressLogin},
+    { id: 5, term: 'Video gallery', className: 'searchItem', icon:<FontAwesomeIcon icon={faVideo} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressVideogallery},
+    { id: 6, term: 'Picture shop', className: 'searchItem', icon: <FontAwesomeIcon icon={faShoppingCart} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/> , press: pressPictureShop},
+    { id: 7, term: 'About Us', className: 'searchItem', icon:  <FontAwesomeIcon icon={faInfoCircle}  style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}} />, press:pressAboutUs},
     
   ]);
 
@@ -1372,7 +1373,7 @@ const SEARCH = () => {
           <ul>
             {filteredSearchItems.map((item) => (
               <li key={item.id} className={item.className}  onClick={item.press}>
-                <img src={item.image}/>
+                {item.icon}
                 {item.term}
               </li>
             ))}
@@ -1742,7 +1743,17 @@ function prevImage() {
 
 const PictureShop = () => {
   const [click, setClick] = useState(false);
- 
+  const [priceFilters, setPriceFilters] = useState(Array(10).fill(false));
+
+  const toggleFilter = (index) => {
+    const newFilters = [...priceFilters];
+    newFilters[index] = !newFilters[index];
+    setPriceFilters(newFilters);
+  };
+
+  const clearFilters = () => {
+    setPriceFilters(Array(10).fill(false)); 
+  };
   const press = () => {
     setClick(!click);
   }
@@ -1891,38 +1902,44 @@ const PictureShop = () => {
     return (
    <div className='pictureShop'>   
    <div>
-       <div className='head'>
-        Picture shop
-     </div>
-      <br/>
-     <div className='fil' onClick={press}> 
-      <div className='filter'>
-       FILTER
-      </div>
-    
-     <div> 
+        <div className='head'>Picture shop</div>
+        <br />
+        <div className='fil' onClick={() => setClick(!click)}>
+          <div className='filter'>FILTER</div>
+          <div> 
       <div className='PicHam' ></div> 
       <div className='PicHam1' ></div> 
       <div className='PicHam2' ></div> 
      </div> 
-     </div>
-       {click && (
-        <div className='resHam'>
-          <div onClick={press} className='aw'>
-           X
+          <div>
+           
           </div>
-     <ul className='filterEle'>
-        <li>
-          <input type='checkbox'/>
-        </li>
-      </ul>
-      <br/>
-      <br/>
         </div>
-      )}    
-   
-   
-     </div>
+        {click && (
+          <div className='resHam'>
+            <div onClick={() => { setClick(false); clearFilters(); }} className='aw'>
+              X
+            </div>
+            <ul className='filterEle'>
+              {priceFilters.map((filter, index) => (
+                <li className='filterOn' key={index}>
+                  <label htmlFor={`inputCHE${index}`}>
+                    <span className="infoFil">Under {index * 150}</span>
+                  </label>
+                  <input
+                    type='checkbox'
+                    id={`inputCHE${index}`}
+                    checked={filter}
+                    onChange={() => toggleFilter(index)}
+                  />
+                </li>
+              ))}
+            </ul>
+            <br />
+            <br />
+          </div>
+        )}
+      </div>
       <div className='shopGR'>
      <div className='elePic' onClick={press0}>
       <img className='imgSh' src={ShopImages[0].src} />
@@ -3366,7 +3383,7 @@ const ShopImages = [
 {price:'/', src:'./Tanzen2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Maria2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./Teufel2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
-{price:650, src:'./MickeyMouse.jpeg', format:'60cmx30cm', paintedT:'nothing'},
+{price:650, src:'./MickeyMouse.jpeg', format:'50cmx70cm', paintedT:'acryl colors,glowing colors and it is sealed. '},
 {price:'/', src:'./BlumenFrau2.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./7.jpeg', format:'60cmx30cm', paintedT:'nothing'},
 {price:'/', src:'./GelbeFrau.jpeg', format:'60cmx30cm', paintedT:'nothing'},
