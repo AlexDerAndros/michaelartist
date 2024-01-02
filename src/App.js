@@ -2085,7 +2085,19 @@ const PictureShop = () => {
         <div className={item.classEle} onClick={item.press}>
           <img src={item.src} className='imgSh'/>
           <div className={item.classPreis}>
-            Price: {item.price} €
+          { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {item.price} €
           </div>
         </div>
       </div>
@@ -2097,19 +2109,55 @@ const PictureShop = () => {
      <div className='elePic' onClick={press0}>
       <img className='imgSh' src={ShopImages[0].src} />
       <div className='pri'>
-        Price: {ShopImages[0].price}€
+      { german ? (
+       <span>
+       Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[0].price}€
       </div>
      </div>
      <div className='elePic' onClick={press1}>
       <img className='imgSh' src={ShopImages[1].src}/>
       <div className='pri'>
-        Price: {ShopImages[1].price}€
+      { german ? (
+       <span>
+         Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[1].price}€
       </div>
      </div>
      <div className='elePic' onClick={press2}>
       <img className='imgSh' src={ShopImages[2].src}/>
       <div className='pri'>
-        Price: {ShopImages[2].price}€
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[2].price}€
       </div>
      </div>
      </div> 
@@ -2117,19 +2165,55 @@ const PictureShop = () => {
       <div className='elePic' onClick={press3}>
        <img className='imgSh' src={ShopImages[3].src} />
         <div className='pri'>
-         Price: {ShopImages[3].price}€
+        { german ? (
+       <span>
+         Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[3].price}€
        </div>
       </div> 
      <div className='elePic' onClick={press4}>
       <img className='imgSh' src={ShopImages[4].src}/>
       <div className='pri'>
-        Price: {ShopImages[4].price}€
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}{ShopImages[4].price}€
       </div>
      </div> 
      <div className='elePic' onClick={press5}>
       <img className='imgSh' src={ShopImages[5].src}/>
       <div className='pri'>
-        Price: {ShopImages[5].price}
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[5].price}
       </div>
      </div>
 
@@ -2139,19 +2223,55 @@ const PictureShop = () => {
        <div className='elePic' onClick={press6}>
         <img className='imgSh' src={ShopImages[6].src}/>
           <div className='pri'>
-            Price: {ShopImages[6].price}€
+          { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[6].price}€
           </div>
        </div>
      <div className='elePic' onClick={press7}>
         <img className='imgSh' src={ShopImages[7].src}/>
        <div className='pri'>
-         Price: {ShopImages[7].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[7].price}€
        </div>
       </div>
      <div className='elePic' onClick={press8}>
        <img className='imgSh' src={ShopImages[8].src}/>
        <div className='pri'>
-        Price: {ShopImages[8].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[8].price}€
        </div>
       </div>
       </div> 
@@ -2159,19 +2279,55 @@ const PictureShop = () => {
      <div className='elePic' onClick={press9}>
        <img className='imgSh' src={ShopImages[9].src}/>
        <div className='pri'>
-        Price: {ShopImages[9].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[9].price}€
        </div>
       </div>
       <div className='elePic' onClick={press10}>
        <img className='imgSh' src={ShopImages[10].src}/>
        <div className='pri'>
-        Price: {ShopImages[10].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[10].price}€
        </div>
       </div>
       <div className='elePic' onClick={press11}>
        <img className='imgSh' src={ShopImages[11].src}/>
        <div className='pri'>
-        Price: {ShopImages[11].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[11].price}€
        </div>
       </div>
       </div>
@@ -2180,19 +2336,55 @@ const PictureShop = () => {
      <div className='elePic' onClick={press12}>
        <img className='imgSh' src={ShopImages[12].src}/>
        <div className='pri'>
-        Price: {ShopImages[12].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[12].price}€
        </div>
       </div>
       <div className='elePic' onClick={press13}>
        <img className='imgSh' src={ShopImages[13].src}/>
        <div className='pri'>
-        Price: {ShopImages[13].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[13].price}€
        </div>
       </div>
       <div className='elePic' onClick={press14}>
        <img className='imgSh' src={ShopImages[14].src}/>
        <div className='pri'>
-        Price: {ShopImages[14].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[14].price}€
        </div>
       </div>
      </div>
@@ -2201,19 +2393,55 @@ const PictureShop = () => {
     <div className='elePic' onClick={press15}>
        <img className='imgSh' src={ShopImages[15].src}/>
        <div className='pri'>
-        Price: {ShopImages[15].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[15].price}€
        </div>
       </div>
       <div className='elePic' onClick={press16}>
        <img className='imgSh' src={ShopImages[16].src}/>
        <div className='pri'>
-        Price: {ShopImages[16].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[16].price}€
        </div>
       </div>
       <div className='elePic' onClick={press17}>
        <img className='imgSh' src={ShopImages[17].src}/>
        <div className='pri'>
-        Price: {ShopImages[17].price}€
+       { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[17].price}€
        </div>
       </div>
     </div>
@@ -2222,19 +2450,55 @@ const PictureShop = () => {
     <div className='elePic' onClick={press18}>
        <img className='imgSh' src={ShopImages[18].src}/>
        <div className='pri'>
-        Price: {ShopImages[18].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[18].price}€
        </div>
       </div>
       <div className='elePic' onClick={press19}>
        <img className='imgSh' src={ShopImages[19].src}/>
        <div className='pri'>
-        Price: {ShopImages[19].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[19].price}€
        </div>
       </div>
       <div className='elePic' onClick={press20}>
        <img className='imgSh' src={ShopImages[20].src}/>
        <div className='pri'>
-        Price: {ShopImages[20].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+         Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[20].price}€
        </div>
       </div>
 
@@ -2244,19 +2508,55 @@ const PictureShop = () => {
     <div className='elePic' onClick={press21}>
        <img className='imgSh' src={ShopImages[21].src}/>
        <div className='pri'>
-        Price: {ShopImages[21].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[21].price}€
        </div>
       </div>
       <div className='elePic' onClick={press22}>
        <img className='imgSh' src={ShopImages[22].src}/>
        <div className='pri'>
-        Price: {ShopImages[22].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[22].price}€
        </div>
       </div>
       <div className='elePic' onClick={press23}>
        <img className='imgSh' src={ShopImages[23].src}/>
        <div className='pri'>
-        Price: {ShopImages[23].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[23].price}€
        </div>
       </div>
   </div>
@@ -2264,19 +2564,55 @@ const PictureShop = () => {
   <div className='elePic' onClick={press24}>
        <img className='imgSh' src={ShopImages[24].src}/>
        <div className='pri'>
-        Price: {ShopImages[24].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[24].price}€
        </div>
       </div>
       <div className='elePic' onClick={press25}>
        <img className='imgSh' src={ShopImages[25].src}/>
        <div className='pri'>
-        Price: {ShopImages[25].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[25].price}€
        </div>
       </div>
       <div className='elePic' onClick={press26}>
        <img className='imgSh' src={ShopImages[26].src}/>
        <div className='pri'>
-        Price: {ShopImages[26].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[26].price}€
        </div>
       </div>
   </div>
@@ -2284,19 +2620,55 @@ const PictureShop = () => {
   <div className='elePic' onClick={press27}>
        <img className='imgSh' src={ShopImages[27].src}/>
        <div className='pri'>
-        Price: {ShopImages[27].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}:{ShopImages[27].price}€
        </div>
       </div>
       <div className='elePic' onClick={press28}>
        <img className='imgSh' src={ShopImages[28].src}/>
        <div className='pri'>
-        Price: {ShopImages[28].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}:  {ShopImages[28].price}€
        </div>
       </div>
       <div className='elePic' onClick={press29}>
        <img className='imgSh' src={ShopImages[29].src}/>
        <div className='pri'>
-        Price: {ShopImages[29].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[29].price}€
        </div>
       </div>
   </div>
@@ -2304,19 +2676,55 @@ const PictureShop = () => {
   <div className='elePic' onClick={press30}>
        <img className='imgSh' src={ShopImages[30].src}/>
        <div className='pri'>
-        Price: {ShopImages[30].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[30].price}€
        </div>
       </div>
       <div className='elePic' onClick={press31}>
        <img className='imgSh' src={ShopImages[31].src}/>
        <div className='pri'>
-        Price: {ShopImages[31].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[31].price}€
        </div>
       </div>
       <div className='elePic' onClick={press32}>
        <img className='imgSh' src={ShopImages[32].src}/>
        <div className='pri'>
-        Price: {ShopImages[32].price}€
+       { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[32].price}€
        </div>
       </div>
   </div>
@@ -2324,19 +2732,55 @@ const PictureShop = () => {
    <div className='elePic' onClick={press33}>
         <img className='imgSh' src={ShopImages[33].src}/>
         <div className='pri'>
-         Price: {ShopImages[33].price}€
+        { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[33].price}€
         </div>
        </div>
        <div className='elePic' onClick={press34}>
         <img className='imgSh' src={ShopImages[34].src}/>
         <div className='pri'>
-         Price: {ShopImages[34].price}€
+        { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[34].price}€
         </div>
        </div>
        <div className='elePic' onClick={press35}>
         <img className='imgSh' src={ShopImages[35].src}/>
         <div className='pri'>
-         Price: {ShopImages[35].price}€
+        { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[35].price}€
         </div>
        </div>
    </div>
@@ -2622,7 +3066,19 @@ const PictureShop = () => {
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[2].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ? (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[2].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -2630,11 +3086,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[2].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ? (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[2].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ? (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2697,7 +3177,19 @@ const PictureShop = () => {
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[3].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ? (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[3].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -2705,11 +3197,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[3].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ? (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[3].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ? (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2772,7 +3288,19 @@ const PictureShop = () => {
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[4].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ? (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[4].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -2780,11 +3308,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[4].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ? (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[4].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ? (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2847,7 +3399,19 @@ const PictureShop = () => {
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[5].price} 
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ? (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[5].price} 
         </div>
         <br/>
         <div className='pri2'>
@@ -2855,11 +3419,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[5].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ? (
+          <span>
+         Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[5].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+           Kaufen
+         </span>
+        ): english ? (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2922,7 +3510,19 @@ const PictureShop = () => {
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[6].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ? (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[6].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -2930,11 +3530,34 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[6].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ? (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[6].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span> Kaufen
+         </span>
+        ): english ? (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2953,11 +3576,62 @@ const PictureShop = () => {
     const ShopImage7 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[7].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[7].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[7].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -2965,11 +3639,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[7].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[7].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -2988,11 +3686,62 @@ const PictureShop = () => {
     const ShopImage8 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[8].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[8].price} €
+        { german ? (
+         <span>
+           Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[8].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3000,11 +3749,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[8].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[8].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3023,11 +3796,62 @@ const PictureShop = () => {
     const ShopImage9 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[9].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[9].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[9].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3035,11 +3859,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[9].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[9].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3058,11 +3906,62 @@ const PictureShop = () => {
     const ShopImage10 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[10].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[10].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+          Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[10].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3070,11 +3969,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[10].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[10].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3093,11 +4016,62 @@ const PictureShop = () => {
     const ShopImage11 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[11].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[11].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[11].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3105,11 +4079,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[11].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[11].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3128,11 +4126,62 @@ const PictureShop = () => {
     const ShopImage12 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[12].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[12].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[12].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3140,11 +4189,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[12].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[12].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3163,11 +4236,62 @@ const PictureShop = () => {
     const ShopImage13 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[13].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[13].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[13].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3175,11 +4299,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[13].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[13].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3198,11 +4346,62 @@ const PictureShop = () => {
     const ShopImage14 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[14].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[14].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[14].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3210,11 +4409,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[14].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[14].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3233,11 +4456,62 @@ const PictureShop = () => {
     const ShopImage15 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[15].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[15].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[15].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3245,11 +4519,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[15].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[15].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3268,11 +4566,62 @@ const PictureShop = () => {
     const ShopImage16 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[16].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[16].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[16].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3280,11 +4629,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[16].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[16].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3303,11 +4676,62 @@ const PictureShop = () => {
     const ShopImage17 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[17].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[17].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[17].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3315,11 +4739,35 @@ const PictureShop = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[17].paintedT}
+        { german ? (
+         <span>
+           Gemalt mit 
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[17].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3339,11 +4787,62 @@ const PictureShop = () => {
 const ShopImage18 = () => {
   return (
   <>
+    <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
     <img className='imgSHI' src={ShopImages[18].src}/>
     <br/>
     <br/>
     <div className='pri2'>
-     Price: {ShopImages[18].price} €
+    { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[18].price} €
     </div>
     <br/>
     <div className='pri2'>
@@ -3351,11 +4850,35 @@ const ShopImage18 = () => {
     </div>
     <br/>
     <div className='pri2'>
-      Painted with {ShopImages[18].paintedT}
+    { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[18].paintedT}
     </div>
     <br/>
     <button className='btnShop'>
-      Buy
+    { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
     </button>
   </>
   );
@@ -3375,11 +4898,62 @@ const ShopImage18 = () => {
     const ShopImage19 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[19].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[19].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[19].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3387,11 +4961,35 @@ const ShopImage18 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[19].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[19].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3411,11 +5009,62 @@ const ShopImage18 = () => {
     const ShopImage20 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[20].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[20].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[20].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3423,11 +5072,35 @@ const ShopImage18 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[20].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[20].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3446,11 +5119,62 @@ const ShopImage18 = () => {
     const ShopImage21 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[21].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[21].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[21].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3458,11 +5182,35 @@ const ShopImage18 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[21].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[21].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3482,11 +5230,62 @@ const ShopImage18 = () => {
 const ShopImage22 = () => {
   return (
   <>
+    <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
     <img className='imgSHI' src={ShopImages[22].src}/>
     <br/>
     <br/>
     <div className='pri2'>
-     Price: {ShopImages[22].price} €
+    { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[22].price} €
     </div>
     <br/>
     <div className='pri2'>
@@ -3494,11 +5293,35 @@ const ShopImage22 = () => {
     </div>
     <br/>
     <div className='pri2'>
-      Painted with {ShopImages[22].paintedT}
+    { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[22].paintedT}
     </div>
     <br/>
     <button className='btnShop'>
-      Buy
+    { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
     </button>
   </>
   );
@@ -3517,11 +5340,62 @@ const ShopImage22 = () => {
     const ShopImage23 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[23].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[23].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[23].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3529,11 +5403,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[23].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[23].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+           Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3552,11 +5450,62 @@ const ShopImage22 = () => {
     const ShopImage24 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[24].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[24].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[24].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3564,11 +5513,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[24].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[24].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
           Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3589,11 +5562,62 @@ const ShopImage22 = () => {
     const ShopImage25 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[25].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[25].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[25].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3601,11 +5625,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[25].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[25].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3624,11 +5672,62 @@ const ShopImage22 = () => {
     const ShopImage27 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[27].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[27].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[27].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3636,11 +5735,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[27].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[27].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3659,11 +5782,62 @@ const ShopImage22 = () => {
     const ShopImage26 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[26].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[26].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[26].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3671,11 +5845,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[26].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[26].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3694,11 +5892,62 @@ const ShopImage22 = () => {
     const ShopImage29 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[29].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[29].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[29].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3706,11 +5955,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[29].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[29].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3729,11 +6002,62 @@ const ShopImage22 = () => {
     const ShopImage28 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[28].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[28].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[28].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3741,11 +6065,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[28].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[28].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3764,11 +6112,62 @@ const ShopImage22 = () => {
     const ShopImage30 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[30].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[30].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[30].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3776,11 +6175,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[30].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[30].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3799,11 +6222,62 @@ const ShopImage22 = () => {
     const ShopImage31 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[31].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[31].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[31].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3811,11 +6285,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[31].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[31].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+           Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );
@@ -3834,11 +6332,62 @@ const ShopImage22 = () => {
     const ShopImage32 = () => {
       return (
       <>
+        <div className='translation'>
+      <div className='ge' onClick={pressG}
+      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
+    backgroundClip: 'text',
+    color: german ? 'blue' : 'transparent'}}>
+        { german ? (
+         <span>
+          Deutsch
+         </span>
+        ): english ? (
+          <span>
+            German
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+      <div className='en' onClick={pressE}
+      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
+    BackgroundClip: 'text',
+    color: english ? 'blue' : 'transparent'}}>
+  
+      { german ? (
+         <span>
+          Englisch
+         </span>
+        ): english ?  (
+          <span>
+            English
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </div>
+     </div>
         <img className='imgSHI' src={ShopImages[32].src}/>
         <br/>
         <br/>
         <div className='pri2'>
-         Price: {ShopImages[32].price} €
+        { german ? (
+         <span>
+          Preis
+         </span>
+        ): english ?  (
+          <span>
+            Price
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}: {ShopImages[32].price} €
         </div>
         <br/>
         <div className='pri2'>
@@ -3846,11 +6395,35 @@ const ShopImage22 = () => {
         </div>
         <br/>
         <div className='pri2'>
-          Painted with {ShopImages[32].paintedT}
+        { german ? (
+         <span>
+          Gemalt mit
+         </span>
+        ): english ?  (
+          <span>
+            Painted with
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )} {ShopImages[32].paintedT}
         </div>
         <br/>
         <button className='btnShop'>
-          Buy
+        { german ? (
+         <span>
+          Kaufen
+         </span>
+        ): english ?  (
+          <span>
+            Buy
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
         </button>
       </>
       );

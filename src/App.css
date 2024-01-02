@@ -1017,8 +1017,9 @@ input:checked {
 .format {
   margin: 0% 70%;
   position: absolute;
-  width: 30%;
+  width: 28%;
   font-size: 2.5vh;
+  cursor: pointer;
   
 }
 .sq1 {
