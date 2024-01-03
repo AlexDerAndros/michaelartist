@@ -206,8 +206,21 @@ function Translation() {
    </div>
   );
 }
-const images =['./michaelBackground.png','./GroßeBrüsteF.JPEG','./IMG_0493.JPEG','./Joker.jpeg','./BootSonne.jpeg','./Lecken.jpeg','./Medusa.jpeg','./MickeyMouse.jpeg', './FrauSilber.jpeg','./FrauMeer.jpeg','./TraumfrauBlume.jpeg',
- './Jessia1.jpeg','./Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
+const images =[
+'./michaelBackground.png',
+'./IMG_1268.JPEG',
+'./GroßeBrüsteF.JPEG',
+'./IMG_0493.JPEG',
+'./Joker.jpeg',
+'./BootSonne.jpeg',
+'./Lecken.jpeg',
+'./Medusa.jpeg',
+'./MickeyMouse.jpeg', 
+'./FrauSilber.jpeg',
+'./FrauMeer.jpeg',
+'./TraumfrauBlume.jpeg',
+ './Jessia1.jpeg',
+ './Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
  './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
 './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
 './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
@@ -221,8 +234,6 @@ function ImageList (){
   const [isImageExpanded, setIsImageExpanded] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const[click,setClick] = useState(false);
-
-  
   
   const BiggerPic= () => {
     setClick(!click);
@@ -688,64 +699,6 @@ function Home() {
   </>
  );
 }
-// function Bottom() {
-// return (
-// <Router>
-
-//  <div className='unten'>
-//    <div>
-//    <Link to="/">
-//     <div style={{ color: 'white'}} className='po'>
-//       <FaHome size={40} />
-//     </div>
-//     </Link>
-//    </div>
-//    <div>
-//    <Link to= "/Search">
-//    <div style={{ color: 'white'  }} className='po2'>
-//       <FaSearch size={38} />
-//     </div>
-//     </Link>
-//    </div>
-//    <Link to="/bildgalerie" className='po3'>
-//    <div style={{ color: 'white'}}>
-//       <FaImages size={40} />
-//     </div>
-//   </Link>
-//   <Link to= "/chat">
-//     <div style={{ color: 'white'}} className='po1'>
-//       <FaComment size={35} />
-//     </div>
-//   </Link>
-//   <Link to= "/login">
-//     <div style={{ color: 'white'}} className='po4'>
-//       <FaSignInAlt size={35} />
-//     </div>
-//   </Link>
-//   <Link to='/Videogalerie'>
-//    <div className='shPi'>
-//     <FontAwesomeIcon icon={faVideo} style={{color:'white'}} size='2x' />
-//    </div>
-//   </Link>
-//   <Link to='/PictureShop'>
-//    <div className='shPi'>
-//     <FontAwesomeIcon icon={faShoppingCart} style={{color:'white'}} size='2x' />
-//     </div>
-//   </Link>
-//     <Routes>
-//     <Route path="/" element={<Home/>}/>
-//    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
-//    <Route path="/Search" element={<SEARCH/>}/>
-//    <Route path="/chat" element={<Chat/>}/>
-//    <Route path="/login" element={<Login/>}/>
-//    <Route path='/PictureShop' element={<PictureShop/>}/>
-//    <Route path='/Videogalerie' element={<Videogalerie/>}/>
-//   </Routes>
-//  </div>
-//  </Router>
-// );
-// }
-
 
 //Chat
 
@@ -977,158 +930,12 @@ function Bildgalerie() {
   return (
       <div className='bildgalerie'>
           <div className='grid'>
-            <img src={images[0]} className='imgG'/>
-            <InfoB/>
-            <img src={images[1]} className='imgG'/>
-            <InfoB/>
-            <img src={images[2]} className='imgG'/>
-            <InfoB/>
-            <img src={images[3]} className='imgG'/>
-            <InfoB/>
-            <img src={images[4]} className='imgG'/>
-            <InfoB/>
-            <img src={images[5]} className='imgG'/>
-            <InfoB/>
-            <img src={images[6]} className='imgG'/>
-            <InfoB/>
-            <img src={images[7]} className='imgG'/>
-            <InfoB/>
-            <img src={images[8]} className='imgG'/>
-            <InfoB/>
-            <img src={images[9]} className='imgG'/>
-            <InfoB/>
-            <img src={images[10]} className='imgG'/>
-            <InfoB/>
-            <img src={images[11]} className='imgG'/>
-            <InfoB/>
-            <img src={images[12]} className='imgG'/>
-            <InfoB/>
-            <img src={images[13]} className='imgG'/>
-            <InfoB/>
-            <img src={images[14]} className='imgG'/>
-            <InfoB/>
-            <img src={images[15]} className='imgG'/>
-            <InfoB/>
-            <img src={images[16]} className='imgG'/>
-            <InfoB/>
-            <img src={images[17]} className='imgG'/>
-            <InfoB/>
-            <img src={images[18]} className='imgG'/>
-            <InfoB/>
-            <img src={images[19]} className='imgG'/>
-            <InfoB/>
-            <img src={images[20]} className='imgG'/>
-            <InfoB/>
-            <img src={images[21]} className='imgG'/>
-            <InfoB/>
-            <img src={images[22]} className='imgG'/>
-            <InfoB/>
-            <img src={images[23]} className='imgG'/>
-            <InfoB/>
-            <img src={images[24]} className='imgG'/>
-            <InfoB/>
-            <img src={images[25]} className='imgG'/>
-            <InfoB/>
-            <img src={images[26]} className='imgG'/>
-            <InfoB/>
-            <img src={images[27]} className='imgG'/>
-            <InfoB/>
-            <img src={images[28]} className='imgG'/>
-            <InfoB/>
-            <img src={images[29]} className='imgG'/>
-            <InfoB/>
-            <img src={images[30]} className='imgG'/>
-            <InfoB/>
-            <img src={images[31]} className='imgG'/> 
+           {images.map((item)=>(
+            <>
+             <img src={item} className='imgG'/>
              <InfoB/>
-            <img src={images[32]} className='imgG'/>
-            <InfoB/>
-            <img src={images[33]} className='imgG'/>
-            <InfoB/>
-            <img src={images[34]} className='imgG'/>
-            <InfoB/>
-            <img src={images[35]} className='imgG'/>
-            <InfoB/>
-            <img src={images[36]} className='imgG'/>
-            <InfoB/>
-            <img src={images[37]} className='imgG'/>
-            <InfoB/>
-            <img src={images[38]} className='imgG'/>
-            <InfoB/>
-            <img src={images[39]} className='imgG'/>
-            <InfoB/>
-            <img src={images[40]} className='imgG'/>
-            <InfoB/>
-            <img src={images[41]} className='imgG'/>
-            <InfoB/>
-            <img src={images[42]} className='imgG'/>
-            <InfoB/>
-            <img src={images[43]} className='imgG'/>
-            <InfoB/>
-            <img src={images[44]} className='imgG'/>
-            <InfoB/>
-            <img src={images[45]} className='imgG'/>
-            <InfoB/>
-            <img src={images[46]} className='imgG'/>
-            <InfoB/>
-            <img src={images[47]} className='imgG'/>
-            <InfoB/>
-            <img src={images[48]} className='imgG'/>
-            <InfoB/>
-            <img src={images[49]} className='imgG'/>
-            <InfoB/>
-            <img src={images[50]} className='imgG'/>
-            <InfoB/>
-            <img src={images[51]} className='imgG'/>
-            <InfoB/>
-            <img src={images[52]} className='imgG'/>
-            <InfoB/>
-            <img src={images[53]} className='imgG'/>
-            <InfoB/>
-            <img src={images[54]} className='imgG'/>
-            <InfoB/>
-            <img src={images[55]} className='imgG'/>
-            <InfoB/>
-            <img src={images[56]} className='imgG'/>
-            <InfoB/>
-            <img src={images[57]} className='imgG'/>
-            <InfoB/>
-            <img src={images[58]} className='imgG'/>
-            <InfoB/>
-            <img src={images[59]} className='imgG'/>
-            <InfoB/>
-            <img src={images[60]} className='imgG'/>
-            <InfoB/>
-            <img src={images[61]} className='imgG'/>
-            <InfoB/>
-            <img src={images[62]} className='imgG'/>
-            <InfoB/>
-            <img src={images[63]} className='imgG'/>
-            <InfoB/>
-            <img src={images[64]} className='imgG'/>
-            <InfoB/>
-            <img src={images[65]} className='imgG'/>
-            <InfoB/>
-            <img src={images[66]} className='imgG'/>
-            <InfoB/>
-            <img src={images[67]} className='imgG'/>
-            <InfoB/>
-            <img src={images[68]} className='imgG'/>
-            <InfoB/>
-            <img src={images[69]} className='imgG'/>
-            <InfoB/>
-            <img src={images[70]} className='imgG'/>
-            <InfoB/>
-            <img src={images[71]} className='imgG'/>
-            <InfoB/>
-            <img src={images[72]} className='imgG'/>
-            <InfoB/>
-            <img src={images[72]} className='imgG'/>
-            <InfoB/>
-            <img src={images[73]} className='imgG'/>
-            <InfoB/>
-            <img src={images[74]} className='imgG'/>
-            <InfoB/>
+            </>
+           ))}
           </div>
       </div>
   );
