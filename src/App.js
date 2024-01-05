@@ -606,6 +606,11 @@ function Home() {
   const [english, setEnglish] = useState(true);
   const[german, setGerman] = useState(false);
   const[click,setClick] = useState(false);
+  let adminUS = "AdminMichaelNtrikos";
+  let adminPA = "U27sapyycbzf";
+  const[state,setState] = useState(false);
+  const[us,setUs]= useState('');
+  const[pa,setPa]= useState('');
   const pressG = () => {
     setGerman(true);
      setEnglish(false);
@@ -614,7 +619,10 @@ function Home() {
     setEnglish(true);
       setGerman(false);
   }
-  
+  if (adminUS === us && adminPA === pa) {
+    setState(!state);
+  }
+ 
 
  return (
   <>
@@ -666,7 +674,13 @@ function Home() {
      </span>
     ): english ?  (
       <span>
-        Welcome to my Website!
+        Welcome { state ? ( <>
+        Michael Ntrikos
+        </> ) : (
+        <span>
+            to my website!
+        </span>
+        )}
       </span>
     ): (
       <span>
@@ -695,6 +709,9 @@ function Home() {
 </div>
 <ImageList/>
 <br/>
+  </div>
+  <div style={{display:"none"}}>
+  <LoginInputName german={german} english={english} click={click} pa={pa} setPa={setPa} us={us} setUs={setUs}/>
   </div>
   </>
  );
@@ -1208,25 +1225,7 @@ function Log() {
    </>
  );
 }
-function LoggedIN() {
-   
-}
-function Login() {
-  const [click,setClick]= useState(false);
-  
-  const press = () => {
-    setClick(!click);
-  }
-  const [english, setEnglish] = useState(true);
-  const[german, setGerman] = useState(false);
-  const pressG = () => {
-    setGerman(true);
-     setEnglish(false);
-  }
-  const pressE = () => {
-    setEnglish(true);
-      setGerman(false);
-  }
+function LoginInputName( german,english, click, pa, us ,setPa, setUs) {
   if (!click) 
   {
     let username = 'Username...';
@@ -1241,6 +1240,71 @@ function Login() {
       username = 'Username...';
       password = 'Password...';
     }
+    return (
+     <> 
+      <form>
+      <input id='us'
+       type="text" 
+       placeholder={username}
+       value={us}
+       onChange={(e)=> { setUs(e.target.value);}}/>
+      <br/>
+      <input id='pa'
+       type="password"
+        placeholder={password} 
+        value={pa}
+        onChange={(e)=>{setPa(e.target.value);}} />
+      <br/>
+      <br/>
+      <br/>
+      <button className='logBtn' type='submit' >
+      <p className="AniB" style={{fontSize:'2.5vh'}}>
+      { german ? (
+         <span>
+          Anmelden
+         </span>
+        ): english ?  (
+          <span>
+            Login
+          </span>
+        ): (
+          <span>
+            Error
+          </span>
+        )}
+      </p>
+      </button>
+      </form>
+     </> 
+    );
+
+}
+}
+function LoggedIN() {
+   
+}
+function Login() {
+  const[us,setUs]= useState('');
+  const[pa,setPa]= useState('');
+  const [click,setClick]= useState(false);
+  
+  const press = () => {
+    setClick(!click);
+  }
+  const [english, setEnglish] = useState(true);
+  const[german, setGerman] = useState(false);
+  
+  const pressG = () => {
+    setGerman(true);
+     setEnglish(false);
+  }
+  const pressE = () => {
+    setEnglish(true);
+      setGerman(false);
+  }
+  if (!click) 
+  {
+    
    
       
       
@@ -1303,32 +1367,9 @@ function Login() {
         )}
 
     </div>
-    <form>
-      <input id='us' type="text" placeholder={username}/>
-      <br/>
-      <input id='pa' type="password" placeholder={password}  />
-      <br/>
-      <br/>
-      <br/>
-      <button className='logBtn' type='submit' >
-      <p className="AniB" style={{fontSize:'2.5vh'}}>
-      { german ? (
-         <span>
-          Anmelden
-         </span>
-        ): english ?  (
-          <span>
-            Login
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </p>
-      </button>
-      </form>
-  
+   
+  <LoginInputName german={german} english={english} click={click} pa={pa} setPa={setPa} us={us} setUs={setUs}/>
+
      
       <br/>
       <br/>
@@ -1390,6 +1431,7 @@ else {
     email = 'Enter an email adress...';
     
   }
+  
   
     return(
       <div> 
@@ -1498,7 +1540,9 @@ else {
 }
 
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', "./8ba2ba26c765447dbaeb8a156f1dd5a0.MP4"
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4',
+'./copy_AA8F9BA2-F28C-4E56-BC28-D177B0ACE41D.MP4'
+, "./8ba2ba26c765447dbaeb8a156f1dd5a0.MP4"
 ,'./export_1702824220526.MP4', './export_1701962505711.MP4'
 , './copy_1C945C47-402D-4F34-A314-C0AEC8006700.MP4','./copy_27D8C9B2-34C6-4518-8784-29510BAA2C93.MP4',
 './copy_85E11D5B-17E8-4CA2-AFB7-9369D46BFEC0.mp4',
@@ -6593,4 +6637,4 @@ const BackSymbol = () => {
     
     
   );
-};
+  }
