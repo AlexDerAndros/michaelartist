@@ -936,9 +936,21 @@ input:checked {
 }
 .filterOn {
   margin:5% 0%;
-  width: 20vh;
+  width: 25vh;
   height: 20%;
 
+}
+.inPri {
+  background: none;
+  border: none;
+  color: white;
+  width: 60%;
+  height: 20%;
+  position: absolute;
+  font-family: "Dancing Script";
+}
+.inPri::placeholder {
+  font-size: 2.5vh;
 }
 .resHam {
   background-color: black;

@@ -128,84 +128,8 @@ function HeaderBo() {
 </Router> 
   );
 }
-function Hamburger() {
-  const [click,setClick] = useState(false);
-  
-  const press = () => {
-    setClick(!click);
-  };
-  return (
-  
- <div className='ham'>
-   <div onClick={press} className='click'>
-    <div className='linie1'></div>
-    <div className='linie2'></div>
-    <div className='linie3'></div>
-   </div>
- { click && (
-  <div className='content'>
-  <div className='textCo'>
-  <ul>
-    <li>
-      <span className='element'>
-        Hallo
-      </span>
-    </li>
-  </ul>
-  </div>
-  </div>
- )}
- </div>
-  );
-}
-function Translation() {
-  const [english, setEnglish] = useState(true);
-  const[german, setGerman] = useState(false);
-  const pressG = () => {
-    setGerman(true);
-     setEnglish(false);
-  }
-  const pressE = () => {
-    setEnglish(true);
-      setGerman(false);
-  }
-  return (
-   <div className='translation'>
-    <div className='ge' onClick={pressG}
-    style={{color: german ? 'blue' : 'white',  borderTop: german ? 'blue 0.3vh solid' : 'none', zIndex:'-1'}}>
-      { german ? (
-       <span>
-        Deutsch
-       </span>
-      ): english ? (
-        <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en' onClick={pressE}
-     style={{color: english ? 'blue' : 'white', borderTop: english ? 'blue 0.3vh solid' : 'none', zIndex:'-1'}}>
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
-  );
-}
+
+ 
 const images =[
 './michaelBackground.png',
 './IMG_1268.JPEG',
@@ -272,30 +196,11 @@ function ImageList (){
    </div>
   );
 }
-const Info = () => {
-  return (
-    <div className='Imp'>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <ul className='infoUN'>
-        <li className='fontIn textIF'>
-          Impressum
-        </li>
-        <li className='DatER textIF'>
-          Privacy policy
-        </li>
-        <li className='NutzBe textIF'>     
-          Terms of use
-        </li>
-      </ul>
-    </div>
-  );
-}
+
 function AboutUs() {
   const [english, setEnglish] = useState(true);
   const[german, setGerman] = useState(false);
+ 
   const pressG = () => {
     setGerman(true);
      setEnglish(false);
@@ -603,109 +508,24 @@ die der Verbraucher nicht ausdrücklich verlangt hat,
 function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
-  const [english, setEnglish] = useState(true);
-  const[german, setGerman] = useState(false);
   const[click,setClick] = useState(false);
   let adminUS = "AdminMichaelNtrikos";
   let adminPA = "U27sapyycbzf";
-  const[state,setState] = useState(false);
-  const[us,setUs]= useState('');
-  const[pa,setPa]= useState('');
-  const pressG = () => {
-    setGerman(true);
-     setEnglish(false);
-  }
-  const pressE = () => {
-    setEnglish(true);
-      setGerman(false);
-  }
-  if (adminUS === us && adminPA === pa) {
-    setState(!state);
-  }
+   const[german,setGerman] = useState(false);
+  const[english,setEnglish] = useState(true);
+  const[pa,setPa] = useState('');
+  const[us,setUs] = useState('');
  
 
  return (
   <>
-    <div className='translation'>
-    <div className='ge' onClick={pressG}
-    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-  backgroundClip: 'text',
-  color: german ? 'blue' : 'transparent'}}>
-      { german ? (
-       <span>
-        Deutsch
-       </span>
-      ): english ? (
-        <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en' onClick={pressE}
-    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-  webkitBackgroundClip: 'text',
-  color: english ? 'blue' : 'transparent'}}>
-
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
-  
 <div className='Mitte'>
  <div className='info1'> 
- { german ? (
-     <span>
-      Willkommen auf meiner Website!
-     </span>
-    ): english ?  (
-      <span>
-        Welcome { state ? ( <>
-        Michael Ntrikos
-        </> ) : (
-        <span>
-            to my website!
-        </span>
-        )}
-      </span>
-    ): (
-      <span>
-        Error
-      </span>
-    )}
+  Welcome to my website
 </div>
 <div className='info'>
-{ german ? (
-     <span>
-     ,,Wenn du es fühlst, kannst du es malen.
-       Wenn du malst, fühlst du es." Von Michael Ntrikos
-     </span>
-    ): english ?  (
-      <span>
       "If you feel it, you can paint it.
         When you paint, you feel it."  By Michael Ntrikos 
-      </span>
-    ): (
-      <span>
-        Error
-      </span>
-    )}
-
-
 </div>
 <ImageList/>
 <br/>
@@ -1310,45 +1130,7 @@ function Login() {
       
     return(
       <>
-       <div className='translation'>
-    <div className='ge' onClick={pressG}
-    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-  backgroundClip: 'text',
-  color: german ? 'blue' : 'transparent'}}>
-      { german ? (
-       <span>
-        Deutsch
-       </span>
-      ): english ? (
-        <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en' onClick={pressE}
-    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-  BackgroundClip: 'text',
-  color: english ? 'blue' : 'transparent'}}>
-
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
+       
     
       <div className='login'>
       <div className='head'>
@@ -1438,45 +1220,7 @@ else {
        
        
       <div className='login'>
-      <div className='translation'>
-    <div className='ge' onClick={pressG}
-    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-  backgroundClip: 'text',
-  color: german ? 'blue' : 'transparent'}}>
-      { german ? (
-       <span>
-        Deutsch
-       </span>
-      ): english ? (
-        <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en' onClick={pressE}
-    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-  BackgroundClip: 'text',
-  color: english ? 'blue' : 'transparent'}}>
-
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
+  
       <button onClick={press}>
        <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
        transform:'rotate(-180deg)', position:'absolute', cursor:'pointer'
@@ -1768,46 +1512,48 @@ const PictureShop = () => {
   
  
   const ShopImages =[
-    {id:1, price:700, src:'./FrauB2.jpeg', format:'50cmx70cm',paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press0, classPreis: "pri", classGR: "shopGRR", classEle:"elePic"},
-    {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic"},
-    {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic"},
-  {id:4, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic"},
-  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic"},
-  {id:6, price:english ? "unaffortable" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic"},
-  {id:7, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic"},
-  {price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic"},
-  {price:450, src:'./BlumenFrau21.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press8, classPreis: "pri", classGR: "shopGR2", classEle:"elePic"},
-  {price:450, src:'./KüssFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press9, classPreis: "pri", classGR: "shopGR3", classEle:"elePic"},
-  {price:650, src:'./EngMann.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press10, classPreis: "pri", classGR: "shopGR3", classEle:"elePic"},
-  {price:350, src:'./EngFrau2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press11, classPreis: "pri", classGR: "shopGR3", classEle:"elePic"},
-  {price:150, src:'./Brüste.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press12, classPreis: "pri", classGR: "shopGR4", classEle:"elePic"},
-  {price:900, src:'./AlkoholF2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press13, classPreis: "pri", classGR: "shopGR4", classEle:"elePic"},
-  {price:750, src:'./Avatar2.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press14, classPreis: "pri", classGR: "shopGR4", classEle:"elePic"},
-  {price:700, src:'./Cello2.jpeg', format:'50cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press15, classPreis: "pri", classGR: "shopGR5", classEle:"elePic"},
-  {price:650, src:'./Pferd2.jpeg', format:'40cmx50cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press16, classPreis: "pri", classGR: "shopGR5", classEle:"elePic"},
-  {price:450, src:'./Läspisch2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press17, classPreis: "pri", classGR: "shopGR5", classEle:"elePic"},
-  {price:350, src:'./Tanzen2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press18, classPreis: "pri", classGR: "shopGR6", classEle:"elePic"},
-  {price:700, src:'./Maria2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press19, classPreis: "pri", classGR: "shopGR6", classEle:"elePic"},
-  {price:850, src:'./Teufel2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error",press20, classPreis: "pri", classGR: "shopGR6", classEle:"elePic"},
+    {id:1, price:700, src:'./FrauB2.jpeg', format:'50cmx70cm',paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press0, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click:click0},
+    {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1},
+    {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2},
+  {id:4, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click3},
+  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click4},
+  {id:6, price:english ? "unaffortable" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5},
+  {id:7, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click6},
+  {price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click7},
+  {price:450, src:'./BlumenFrau21.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press8, classPreis: "pri", classGR: "shopGR2", classEle:"elePic" , click: click8},
+  {price:450, src:'./KüssFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press9, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click9},
+  {price:650, src:'./EngMann.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press10, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click10},
+  {price:350, src:'./EngFrau2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press11, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click11},
+  {price:150, src:'./Brüste.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press12, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click12},
+  {price:900, src:'./AlkoholF2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press13, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click13},
+  {price:750, src:'./Avatar2.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press14, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click14},
+  {price:700, src:'./Cello2.jpeg', format:'50cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press15, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click15},
+  {price:650, src:'./Pferd2.jpeg', format:'40cmx50cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press16, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click16},
+  {price:450, src:'./Läspisch2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press17, classPreis: "pri", classGR: "shopGR5", classEle:"elePic", click: click17},
+  {price:350, src:'./Tanzen2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press18, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click18},
+  {price:700, src:'./Maria2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press19, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click19},
+  {price:850, src:'./Teufel2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error",press20, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click20},
   {price:650, src:'./MickeyMouse.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press21, classPreis: "pri", classGR: "shopGR7", classEle:"elePic"},
-  {price:950, src:'./Athen.jpeg', format:'120cmx60cm', paintedT:english ? 'acryl colors and it is sealed.': german ? "mit Acryfarben und es ist versigelt": "Error", press: press22, classPreis: "pri", classGR: "shopGR7", classEle:"elePic"},
-  {price:500, src:'./Indianer.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press23, classPreis: "pri", classGR: "shopGR7", classEle:"elePic"},
-  {price:150, src:'./GelbeFrau.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press24, classPreis: "pri", classGR: "shopGR8", classEle:"elePic"},
-  {price:400, src:'./BootSonne.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press25, classPreis: "pri", classGR: "shopGR8", classEle:"elePic"},
-  {price:300, src:'./Lecken.jpeg', format:'30cmx40cm',  paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press26, classPreis: "pri", classGR: "shopGR8", classEle:"elePic"},
-  {price:700, src:'./FrauMeer.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press27, classPreis: "pri", classGR: "shopGR9", classEle:"elePic"},
-  {price:800, src:'./Eiffelturm.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press28, classPreis: "pri", classGR: "shopGR9", classEle:"elePic"},
-  {price:600, src:'./EngelTeufel.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press29, classPreis: "pri", classGR: "shopGR9", classEle:"elePic"},
-  {price:650, src:'./BulleF.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press30, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
-  {price:400, src:'./BluSchlafFrau.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press31, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
-  {price:750, src:'./Löwe.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press32, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
-  {price:650, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press33, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
-  {price:450, src:'./FrauS.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press34, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
-  {price:600, src:'./FrauSch.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press35, classPreis: "pri", classGR: "shopGR10", classEle:"elePic"},
+  {price:950, src:'./Athen.jpeg', format:'120cmx60cm', paintedT:english ? 'acryl colors and it is sealed.': german ? "mit Acryfarben und es ist versigelt": "Error", press: press22, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click21},
+  {price:500, src:'./Indianer.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press23, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click22},
+  {price:150, src:'./GelbeFrau.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press24, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click23},
+  {price:400, src:'./BootSonne.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press25, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click: click24},
+  {price:300, src:'./Lecken.jpeg', format:'30cmx40cm',  paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press26, classPreis: "pri", classGR: "shopGR8", classEle:"elePic",click: click25},
+  {price:700, src:'./FrauMeer.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press27, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click26},
+  {price:800, src:'./Eiffelturm.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press28, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click27},
+  {price:600, src:'./EngelTeufel.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press29, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click: click28},
+  {price:650, src:'./BulleF.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press30, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click29},
+  {price:400, src:'./BluSchlafFrau.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press31, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click30},
+  {price:750, src:'./Löwe.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press32, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click31},
+  {price:650, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press33, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click33},
+  {price:450, src:'./FrauS.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press34, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click34},
+  {price:600, src:'./FrauSch.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press35, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click35},
   
   
   ];
-  
+  const[valuePrices,setValuePrices] = useState(null);
+ 
+
   if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
     !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
      !click12 && !click13 && !click14 && !click15 && !click16 
@@ -1816,4825 +1562,3295 @@ const PictureShop = () => {
     !click27 && !click28 && !click29 && !click30 && !click31 && !click32
     && !click33 && !click34 && !click35) 
     {
-      let euros = true;
-   if (ShopImages.length == 5) {
-   euros = false;
+   return (
+   <>
+  
+    <div className='pictureShop'>
+    <div className='head'>Picture shop</div>
+
+<div className='format' onClick={() => { setFormat(!format); }}>
+  FORMAT:{format ? (
+    <span>
+      {german ? (
+        <span><br/>untereinander</span>
+      ) : english ? (
+        <span>one below the other</span>
+      ) : (
+        <span>Error</span>
+      )}
+    </span>
+  ) : (
+    <FontAwesomeIcon icon={faGripVertical} />
+  )}
+</div>
+  {format ? (
+   <>
+      <div className='fil' onClick={()=> setFil(!fil)}>
+           <div className='filter'>
+             FILTER
+          </div>
+        
+           <div > 
+             <div className='PicHam' ></div> 
+             <div className='PicHam1' ></div> 
+             <div className='PicHam2' ></div> 
+          </div> 
+          </div> 
+          { fil && (
+           <div className='resHam'>
+             <div onClick={() =>  setFil(!fil) } className='aw'>
+               X
+             </div>
+             <ul className='filterEle'>
+             <li className='filterOn'>
+              <span className='infoFil'> 
+              { german ? (
+             <span>
+             Gewünschter Betrag
+             </span>
+            ): english ?  (
+              <span>
+                Desired Amount
+              </span>
+            ): (
+              <span>
+                Error
+              </span>
+            )} 
+              </span> 
+              <input 
+               type='number' 
+               list="Prices"
+               className='inPri' 
+               placeholder='Write a price'
+               value={valuePrices}
+               onChange={(e)=> setValuePrices(e.target.value)}/>
+               <datalist id='Prices'>
+                 <option value="200"></option>
+               </datalist>
+             </li>
+         
+            <li>
+             {valuePrices}
+            </li>
+  
+             </ul>
+           </div>  
+         )}
+          {ShopImages.map((item) => (
+       <div key={item.id} className="shopGRR">
+         <div className={item.classEle} onClick={item.press}>
+           <img src={item.src} className='imgSh'/>
+           <div className={item.classPreis}>
+           { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {item.price} €
+           </div>
+         </div>
+       </div>
+     ))}
+   
+   </>
+  ): (
+    <>
+     <div className='shopGR'>
+      <div className='elePic' onClick={press0}>
+       <img className='imgSh' src={ShopImages[0].src} />
+       <div className='pri'>
+       { german ? (
+        <span>
+        Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[0].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press1}>
+       <img className='imgSh' src={ShopImages[1].src}/>
+       <div className='pri'>
+       { german ? (
+        <span>
+          Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[1].price}€
+       </div>
+      </div>
+      <div className='elePic' onClick={press2}>
+       <img className='imgSh' src={ShopImages[2].src}/>
+       <div className='pri'>
+       { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[2].price}€
+       </div>
+      </div>
+      </div> 
+      <div className='shopGR1'> 
+       <div className='elePic' onClick={press3}>
+        <img className='imgSh' src={ShopImages[3].src} />
+         <div className='pri'>
+         { german ? (
+        <span>
+          Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[3].price}€
+        </div>
+       </div> 
+      <div className='elePic' onClick={press4}>
+       <img className='imgSh' src={ShopImages[4].src}/>
+       <div className='pri'>
+       { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}{ShopImages[4].price}€
+       </div>
+      </div> 
+      <div className='elePic' onClick={press5}>
+       <img className='imgSh' src={ShopImages[5].src}/>
+       <div className='pri'>
+       { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[5].price}
+       </div>
+      </div>
+ 
+      </div> 
+      <div className='shopGR2'>
+        <div className='elePic' onClick={press6}>
+         <img className='imgSh' src={ShopImages[6].src}/>
+           <div className='pri'>
+           { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[6].price}€
+           </div>
+        </div>
+      <div className='elePic' onClick={press7}>
+         <img className='imgSh' src={ShopImages[7].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[7].price}€
+        </div>
+       </div>
+      <div className='elePic' onClick={press8}>
+        <img className='imgSh' src={ShopImages[8].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[8].price}€
+        </div>
+       </div>
+       </div> 
+      <div className='shopGR3'>
+      <div className='elePic' onClick={press9}>
+        <img className='imgSh' src={ShopImages[9].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[9].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press10}>
+        <img className='imgSh' src={ShopImages[10].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[10].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press11}>
+        <img className='imgSh' src={ShopImages[11].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[11].price}€
+        </div>
+       </div>
+       </div>
+       <div className="shopGR4">
+      <div className='elePic' onClick={press12}>
+        <img className='imgSh' src={ShopImages[12].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[12].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press13}>
+        <img className='imgSh' src={ShopImages[13].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[13].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press14}>
+        <img className='imgSh' src={ShopImages[14].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[14].price}€
+        </div>
+       </div>
+      </div>
+     
+     <div className='shopGR5'>
+     <div className='elePic' onClick={press15}>
+        <img className='imgSh' src={ShopImages[15].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[15].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press16}>
+        <img className='imgSh' src={ShopImages[16].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[16].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press17}>
+        <img className='imgSh' src={ShopImages[17].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis:
+        </span>
+       ): english ?  (
+         <span>
+           Price:
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )} {ShopImages[17].price}€
+        </div>
+       </div>
+     </div>
+     <div className='shopGR6'>
+     <div className='elePic' onClick={press18}>
+        <img className='imgSh' src={ShopImages[18].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[18].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press19}>
+        <img className='imgSh' src={ShopImages[19].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[19].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press20}>
+        <img className='imgSh' src={ShopImages[20].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+          Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[20].price}€
+        </div>
+       </div>
+ 
+   </div>
+ 
+   <div className='shopGR7'>
+     <div className='elePic' onClick={press21}>
+        <img className='imgSh' src={ShopImages[21].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[21].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press22}>
+        <img className='imgSh' src={ShopImages[22].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[22].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press23}>
+        <img className='imgSh' src={ShopImages[23].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[23].price}€
+        </div>
+       </div>
+   </div>
+   <div className='shopGR8'>
+   <div className='elePic' onClick={press24}>
+        <img className='imgSh' src={ShopImages[24].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[24].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press25}>
+        <img className='imgSh' src={ShopImages[25].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[25].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press26}>
+        <img className='imgSh' src={ShopImages[26].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[26].price}€
+        </div>
+       </div>
+   </div>
+   <div className='shopGR9'>
+   <div className='elePic' onClick={press27}>
+        <img className='imgSh' src={ShopImages[27].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}:{ShopImages[27].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press28}>
+        <img className='imgSh' src={ShopImages[28].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}:  {ShopImages[28].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press29}>
+        <img className='imgSh' src={ShopImages[29].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[29].price}€
+        </div>
+       </div>
+   </div>
+   <div className='shopGR10'>
+   <div className='elePic' onClick={press30}>
+        <img className='imgSh' src={ShopImages[30].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[30].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press31}>
+        <img className='imgSh' src={ShopImages[31].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[31].price}€
+        </div>
+       </div>
+       <div className='elePic' onClick={press32}>
+        <img className='imgSh' src={ShopImages[32].src}/>
+        <div className='pri'>
+        { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[32].price}€
+        </div>
+       </div>
+   </div>
+   <div className='shopGR11'>
+    <div className='elePic' onClick={press33}>
+         <img className='imgSh' src={ShopImages[33].src}/>
+         <div className='pri'>
+         { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[33].price}€
+         </div>
+        </div>
+        <div className='elePic' onClick={press34}>
+         <img className='imgSh' src={ShopImages[34].src}/>
+         <div className='pri'>
+         { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[34].price}€
+         </div>
+        </div>
+        <div className='elePic' onClick={press35}>
+         <img className='imgSh' src={ShopImages[35].src}/>
+         <div className='pri'>
+         { german ? (
+        <span>
+         Preis
+        </span>
+       ): english ?  (
+         <span>
+           Price
+         </span>
+       ): (
+         <span>
+           Error
+         </span>
+       )}: {ShopImages[35].price}€
+         </div>
+        </div>
+        </div>
+
+    </>
+  )}
+
+    </div>
+  </>
+   );
  }
- else {
-    euros = true;
-   }
+ else if (click1) {
+  const ShopImage1 = () => {
     return (
-  <div>
-    
-   <div className='pictureShop'>   
-   <div className='translation'>
-    <div className='ge' onClick={pressG}
-    style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-  backgroundClip: 'text',
-  color: german ? 'blue' : 'transparent'}}>
+    <>
+   
+      <img className='imgSHI' src={ShopImages[1].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
       { german ? (
        <span>
-        Deutsch
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[1].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[1].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[1].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+      
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press1}>
+   <BackSymbol/>
+   </button>
+      <ShopImage1/>
+     
+    </div>
+  )
+}
+else if (click2) {
+  const ShopImage2 = () => {
+    return (
+    <>
+  
+    
+  
+     <img className='imgSHI' src={ShopImages[2].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
        </span>
       ): english ? (
         <span>
-          German
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-    <div className='en' onClick={pressE}
-    style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-  BackgroundClip: 'text',
-  color: english ? 'blue' : 'transparent'}}>
-
-    { german ? (
-       <span>
-        Englisch
-       </span>
-      ): english ?  (
-        <span>
-          English
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}
-    </div>
-   </div>
-  
-        <div className='head'>Picture shop</div>
-        
-     <div className='format' onClick={()=> { setFormat(!format); }}>
-        FORMAT:{format ? (
-          <span>
-            { german ? (
-            <span>
-         <br/>    untereinander
-            </span>
-           ): english ?  (
-             <span>
-               one below the other
-             </span>
-           ): (
-             <span>
-               Error
-             </span>
-           )}   </span>
-       ): (
-        <>
-           <FontAwesomeIcon icon={faGripVertical} />
-        </>
-       )}
-     </div>
-     
-      {format ? (
-  <div>
-    
-        <div className='fil' onClick={()=> setFil(!fil)}>
-          <div className='filter'>
-            FILTER
-         </div>
-       
-          <div > 
-            <div className='PicHam' ></div> 
-            <div className='PicHam1' ></div> 
-            <div className='PicHam2' ></div> 
-         </div> 
-         </div> 
-        { fil &&(
-          <div className='resHam'>
-            <div onClick={() =>  setFil(!fil) } className='aw'>
-              X
-            </div>
-            <ul className='filterEle'>
-              {priceFilters.map((filter, index) => (
-                <li className='filterOn' key={index}>
-                  <label htmlFor={`inputCHE${index}`}>
-                    <span className="infoFil">Under {index * 150}</span>
-                  </label>
-                  <input
-                    type='checkbox'
-                    id={`inputCHE${index}`}
-                    checked={filter}
-                    onChange={() => toggleFilter(index)}
-                  />
-                </li>
-              ))}
-            </ul>
-            <br />
-            
-          </div>
-        )}
-      
-    {ShopImages.map((item) => (
-      <div key={item.id} className="shopGRR">
-        <div className={item.classEle} onClick={item.press}>
-          <img src={item.src} className='imgSh'/>
-          <div className={item.classPreis}>
-          { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {item.price} €
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-) : (
-  <div>
-    <div className='shopGR'>
-     <div className='elePic' onClick={press0}>
-      <img className='imgSh' src={ShopImages[0].src} />
-      <div className='pri'>
-      { german ? (
-       <span>
-       Preis:
-       </span>
-      ): english ?  (
-        <span>
           Price
         </span>
       ): (
         <span>
           Error
         </span>
-      )} {ShopImages[0].price}€
+      )}: {ShopImages[2].price} €
       </div>
-     </div>
-     <div className='elePic' onClick={press1}>
-      <img className='imgSh' src={ShopImages[1].src}/>
-      <div className='pri'>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[2].format}
+      </div>
+      <br/>
+      <div className='pri2'>
       { german ? (
        <span>
-         Preis:
+        Gemalt mit
        </span>
-      ): english ?  (
+      ): english ? (
         <span>
-          Price
+          Painted with
         </span>
       ): (
         <span>
           Error
         </span>
-      )} {ShopImages[1].price}€
+      )} {ShopImages[2].paintedT}
       </div>
-     </div>
-     <div className='elePic' onClick={press2}>
-      <img className='imgSh' src={ShopImages[2].src}/>
-      <div className='pri'>
+      <br/>
+      <button className='btnShop'>
       { german ? (
        <span>
-        Preis:
+        Kaufen
        </span>
-      ): english ?  (
+      ): english ? (
         <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[2].price}€
-      </div>
-     </div>
-     </div> 
-     <div className='shopGR1'> 
-      <div className='elePic' onClick={press3}>
-       <img className='imgSh' src={ShopImages[3].src} />
-        <div className='pri'>
-        { german ? (
-       <span>
-         Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[3].price}€
-       </div>
-      </div> 
-     <div className='elePic' onClick={press4}>
-      <img className='imgSh' src={ShopImages[4].src}/>
-      <div className='pri'>
-      { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}{ShopImages[4].price}€
-      </div>
-     </div> 
-     <div className='elePic' onClick={press5}>
-      <img className='imgSh' src={ShopImages[5].src}/>
-      <div className='pri'>
-      { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[5].price}
-      </div>
-     </div>
-
-     </div> 
-
-      <div className='shopGR2'>
-       <div className='elePic' onClick={press6}>
-        <img className='imgSh' src={ShopImages[6].src}/>
-          <div className='pri'>
-          { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[6].price}€
-          </div>
-       </div>
-     <div className='elePic' onClick={press7}>
-        <img className='imgSh' src={ShopImages[7].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[7].price}€
-       </div>
-      </div>
-     <div className='elePic' onClick={press8}>
-       <img className='imgSh' src={ShopImages[8].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[8].price}€
-       </div>
-      </div>
-      </div> 
-     <div className='shopGR3'>
-     <div className='elePic' onClick={press9}>
-       <img className='imgSh' src={ShopImages[9].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[9].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press10}>
-       <img className='imgSh' src={ShopImages[10].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[10].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press11}>
-       <img className='imgSh' src={ShopImages[11].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[11].price}€
-       </div>
-      </div>
-      </div>
-
-     <div className="shopGR4">
-     <div className='elePic' onClick={press12}>
-       <img className='imgSh' src={ShopImages[12].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[12].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press13}>
-       <img className='imgSh' src={ShopImages[13].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[13].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press14}>
-       <img className='imgSh' src={ShopImages[14].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[14].price}€
-       </div>
-      </div>
-     </div>
-    
-    <div className='shopGR5'>
-    <div className='elePic' onClick={press15}>
-       <img className='imgSh' src={ShopImages[15].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[15].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press16}>
-       <img className='imgSh' src={ShopImages[16].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[16].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press17}>
-       <img className='imgSh' src={ShopImages[17].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis:
-       </span>
-      ): english ?  (
-        <span>
-          Price:
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )} {ShopImages[17].price}€
-       </div>
-      </div>
-    </div>
-
-    <div className='shopGR6'>
-    <div className='elePic' onClick={press18}>
-       <img className='imgSh' src={ShopImages[18].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[18].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press19}>
-       <img className='imgSh' src={ShopImages[19].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[19].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press20}>
-       <img className='imgSh' src={ShopImages[20].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-         Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[20].price}€
-       </div>
-      </div>
-
-  </div>
-
-  <div className='shopGR7'>
-    <div className='elePic' onClick={press21}>
-       <img className='imgSh' src={ShopImages[21].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[21].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press22}>
-       <img className='imgSh' src={ShopImages[22].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[22].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press23}>
-       <img className='imgSh' src={ShopImages[23].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[23].price}€
-       </div>
-      </div>
-  </div>
-  <div className='shopGR8'>
-  <div className='elePic' onClick={press24}>
-       <img className='imgSh' src={ShopImages[24].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[24].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press25}>
-       <img className='imgSh' src={ShopImages[25].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[25].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press26}>
-       <img className='imgSh' src={ShopImages[26].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[26].price}€
-       </div>
-      </div>
-  </div>
-  <div className='shopGR9'>
-  <div className='elePic' onClick={press27}>
-       <img className='imgSh' src={ShopImages[27].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}:{ShopImages[27].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press28}>
-       <img className='imgSh' src={ShopImages[28].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}:  {ShopImages[28].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press29}>
-       <img className='imgSh' src={ShopImages[29].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[29].price}€
-       </div>
-      </div>
-  </div>
-  <div className='shopGR10'>
-  <div className='elePic' onClick={press30}>
-       <img className='imgSh' src={ShopImages[30].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[30].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press31}>
-       <img className='imgSh' src={ShopImages[31].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[31].price}€
-       </div>
-      </div>
-      <div className='elePic' onClick={press32}>
-       <img className='imgSh' src={ShopImages[32].src}/>
-       <div className='pri'>
-       { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[32].price}€
-       </div>
-      </div>
-  </div>
-   <div className='shopGR11'>
-   <div className='elePic' onClick={press33}>
-        <img className='imgSh' src={ShopImages[33].src}/>
-        <div className='pri'>
-        { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[33].price}€
-        </div>
-       </div>
-       <div className='elePic' onClick={press34}>
-        <img className='imgSh' src={ShopImages[34].src}/>
-        <div className='pri'>
-        { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[34].price}€
-        </div>
-       </div>
-       <div className='elePic' onClick={press35}>
-        <img className='imgSh' src={ShopImages[35].src}/>
-        <div className='pri'>
-        { german ? (
-       <span>
-        Preis
-       </span>
-      ): english ?  (
-        <span>
-          Price
-        </span>
-      ): (
-        <span>
-          Error
-        </span>
-      )}: {ShopImages[35].price}€
-        </div>
-       </div>
-   </div>
-   </div>
-)}
-        
-     
-     
-    </div> 
-    </div>
-    );
-  }
-  else if (click0) {
-    const ShopImage0 = () => {
-      return (
-        <>
-
-       <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-  
-        <img className='imgSHI' src={ShopImages[0].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-           Preis:
-         </span>
-        ): english ?  (
-          <span>
-            Price:
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[0].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[0].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-          { german ? (
-         <span>
-          Gemalt mit 
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[0].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-        </>
-        );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press0}>
-     <BackSymbol/>
-     </button>
-        <ShopImage0/>
-       
-      </div>
-    )
-  }
-  else if (click1) {
-    const ShopImage1 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[1].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis:
-         </span>
-        ): english ?  (
-          <span>
-            Price:
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[1].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[1].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[1].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-        
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press1}>
-     <BackSymbol/>
-     </button>
-        <ShopImage1/>
-       
-      </div>
-    )
-  }
-  else if (click2) {
-    const ShopImage2 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-       <img className='imgSHI' src={ShopImages[2].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ? (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[2].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[2].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ? (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[2].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ? (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press2}>
-     <BackSymbol/>
-     </button>
-        <ShopImage2/>
-       
-      </div>
-    )
-  }
-  else if (click3) {
-    const ShopImage3 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[3].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ? (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[3].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[3].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ? (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[3].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ? (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press3}>
-     <BackSymbol/>
-     </button>
-        <ShopImage3/>
-       
-      </div>
-    )
-  }
-  else if (click4) {
-    const ShopImage4 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-       <img className='imgSHI' src={ShopImages[4].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ? (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[4].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[4].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ? (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[4].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ? (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press4}>
-     <BackSymbol/>
-     </button>
-        <ShopImage4/>
-       
-      </div>
-    )
-  }
-  else if (click5) {
-    const ShopImage5 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[5].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ? (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[5].price} 
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[5].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ? (
-          <span>
-         Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[5].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-           Kaufen
-         </span>
-        ): english ? (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press5}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage5/>
-       
-      </div>
-    )
-  }
-  else if (click6) {
-    const ShopImage6 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[6].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ? (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[6].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[6].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ? (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[6].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span> Kaufen
-         </span>
-        ): english ? (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press6}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage6/>
-       
-      </div>
-    )
-  }
-  else if (click7) {
-    const ShopImage7 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[7].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[7].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[7].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[7].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press7}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage7/>
-       
-      </div>
-    )
-  }
-  else if (click8) {
-    const ShopImage8 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[8].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-           Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[8].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[8].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[8].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press8}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage8/>
-       
-      </div>
-    )
-  }
-  else if (click9) {
-    const ShopImage9 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[9].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[9].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[9].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[9].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press9}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage9/>
-       
-      </div>
-    )
-  }
-  else if (click10) {
-    const ShopImage10 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[10].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-          Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[10].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[10].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[10].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press10}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage10/>
-       
-      </div>
-    )
-  }
-  else if (click11) {
-    const ShopImage11 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[11].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[11].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[11].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[11].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press11}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage11/>
-       
-      </div>
-    )
-  }
-  else if (click12) {
-    const ShopImage12 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[12].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[12].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[12].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[12].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press12}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage12/>
-       
-      </div>
-    )
-  }
-  else if (click13) {
-    const ShopImage13 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[13].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[13].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[13].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[13].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press13}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage13/>
-       
-      </div>
-    )
-  }
-  else if (click14) {
-    const ShopImage14 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[14].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[14].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[14].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[14].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press14}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage14/>
-       
-      </div>
-    )
-  }
-  else if (click15) {
-    const ShopImage15 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[15].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[15].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[15].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[15].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press15}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage15/>
-       
-      </div>
-    )
-  }
-  else if (click16) {
-    const ShopImage16 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[16].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[16].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[16].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[16].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press16}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage16/>
-       
-      </div>
-    )
-  }
-  else if (click17) {
-    const ShopImage17 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[17].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[17].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[17].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-           Gemalt mit 
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[17].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press17}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage17/>
-       
-      </div>
-    )
-  }
-  else if (click18) {
-    
-const ShopImage18 = () => {
-  return (
-  <>
-    <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    <img className='imgSHI' src={ShopImages[18].src}/>
-    <br/>
-    <br/>
-    <div className='pri2'>
-    { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[18].price} €
-    </div>
-    <br/>
-    <div className='pri2'>
-      Format:  {ShopImages[18].format}
-    </div>
-    <br/>
-    <div className='pri2'>
-    { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[18].paintedT}
-    </div>
-    <br/>
-    <button className='btnShop'>
-    { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-    </button>
-  </>
-  );
-};
-
-    return(
-      <div className='pictureShop'>
-       <button onClick={press18}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage18/>
-       
-      </div>
-    )
-  }
-  else if (click19) {
-    const ShopImage19 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[19].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[19].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[19].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[19].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    
-    return(
-      <div className='pictureShop'>
-       <button onClick={press19}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage19/>
-       
-      </div>
-    )
-  }
-  else if (click20) {
-    const ShopImage20 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[20].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[20].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[20].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[20].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press20}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage20/>
-       
-      </div>
-    )
-  }
-  else if (click21) {
-    const ShopImage21 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[21].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[21].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[21].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[21].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press21}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage21/>
-       
-      </div>
-    )
-  }
-  else if (click22) {
-    
-const ShopImage22 = () => {
-  return (
-  <>
-    <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    <img className='imgSHI' src={ShopImages[22].src}/>
-    <br/>
-    <br/>
-    <div className='pri2'>
-    { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[22].price} €
-    </div>
-    <br/>
-    <div className='pri2'>
-      Format:  {ShopImages[22].format}
-    </div>
-    <br/>
-    <div className='pri2'>
-    { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[22].paintedT}
-    </div>
-    <br/>
-    <button className='btnShop'>
-    { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-    </button>
-  </>
-  );
-};
-    return(
-      <div className='pictureShop'>
-       <button onClick={press22}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage22/>
-       
-      </div>
-    )
-  }
-  else if (click23) {
-    const ShopImage23 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[23].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[23].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[23].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[23].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-           Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press23}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage23/>
-       
-      </div>
-    )
-  }
-  else if (click24) {
-    const ShopImage24 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
-      { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[24].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[24].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[24].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[24].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
           Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-   
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press2}>
+   <BackSymbol/>
+   </button>
+      <ShopImage2/>
+     
+    </div>
+  )
+}
+else if (click3) {
+  const ShopImage3 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[3].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ? (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[3].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[3].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ? (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[3].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ? (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press3}>
+   <BackSymbol/>
+   </button>
+      <ShopImage3/>
+     
+    </div>
+  )
+}
+else if (click4) {
+  const ShopImage4 = () => {
+    return (
+    <>
+     <img className='imgSHI' src={ShopImages[4].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ? (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[4].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[4].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ? (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[4].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ? (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press4}>
+   <BackSymbol/>
+   </button>
+      <ShopImage4/>
+     
+    </div>
+  )
+}
+else if (click5) {
+  const ShopImage5 = () => {
+    return (
+   <>
+      <img className='imgSHI' src={ShopImages[5].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ? (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[5].price} 
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[5].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ? (
+        <span>
+       Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[5].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+         Kaufen
+       </span>
+      ): english ? (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press5}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage5/>
+     
+    </div>
+  )
+}
+else if (click6) {
+  const ShopImage6 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[6].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ? (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[6].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[6].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ? (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[6].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span> Kaufen
+       </span>
+      ): english ? (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press6}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage6/>
+     
+    </div>
+  )
+}
+else if (click7) {
+  const ShopImage7 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[7].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[7].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[7].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[7].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press7}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage7/>
+     
+    </div>
+  )
+}
+else if (click8) {
+  const ShopImage8 = () => {
+    return (
+    <>
+     
+      <img className='imgSHI' src={ShopImages[8].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+         Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[8].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[8].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[8].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press8}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage8/>
+     
+    </div>
+  )
+}
+else if (click9) {
+  const ShopImage9 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[9].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[9].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[9].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[9].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press9}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage9/>
+     
+    </div>
+  )
+}
+else if (click10) {
+  const ShopImage10 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[10].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+        Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[10].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[10].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[10].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press10}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage10/>
+     
+    </div>
+  )
+}
+else if (click11) {
+  const ShopImage11 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[11].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[11].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[11].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[11].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press11}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage11/>
+     
+    </div>
+  )
+}
+else if (click12) {
+  const ShopImage12 = () => {
+    return (
+    <>
     
-    return(
-      <div className='pictureShop'>
-       <button onClick={press24}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage24/>
-       
-      </div>
-    )
-  }
-  else if (click25) {
-    const ShopImage25 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <img className='imgSHI' src={ShopImages[12].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[12].price} €
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[25].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[25].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[25].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[25].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press25}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage25/>
-       
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[12].format}
       </div>
-    )
-  }
-  else if (click27) {
-    const ShopImage27 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[12].paintedT}
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[27].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[27].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[27].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[27].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press27}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage27/>
-       
-      </div>
-    )
-  }
-  else if (click26) {
-    const ShopImage26 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <button className='btnShop'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[26].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[26].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[26].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[26].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press26}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage26/>
-       
-      </div>
-    )
-  }
-  else if (click29) {
-    const ShopImage29 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press12}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage12/>
+     
+    </div>
+  )
+}
+else if (click13) {
+  const ShopImage13 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[13].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[13].price} €
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[29].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[29].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[29].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[29].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press29}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage29/>
-       
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[13].format}
       </div>
-    )
-  }
-  else if (click28) {
-    const ShopImage28 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[13].paintedT}
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[28].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[28].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[28].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[28].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press28}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage28/>
-       
-      </div>
-    )
-  }
-  else if (click30) {
-    const ShopImage30 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <button className='btnShop'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[30].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[30].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[30].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[30].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press30}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage30/>
-       
-      </div>
-    )
-  }
-  else if (click31) {
-    const ShopImage31 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press13}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage13/>
+     
+    </div>
+  )
+}
+else if (click14) {
+  const ShopImage14 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[14].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[14].price} €
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[31].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[31].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[31].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[31].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-           Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press31}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage31/>
-       
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[14].format}
       </div>
-    )
-  }
-  else if (click32) {
-    const ShopImage32 = () => {
-      return (
-      <>
-        <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[14].paintedT}
       </div>
-     </div>
-        <img className='imgSHI' src={ShopImages[32].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis
-         </span>
-        ): english ?  (
-          <span>
-            Price
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}: {ShopImages[32].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[32].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[32].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press32}>
-        <BackSymbol/>    
-     </button>
-        <ShopImage32/>
-       
-      </div>
-    )
-  }
-  else if (click33) {
-    const ShopImage33 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <button className='btnShop'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[33].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis:
-         </span>
-        ): english ?  (
-          <span>
-            Price:
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[33].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[33].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[33].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-        
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press33}>
-     <BackSymbol/>
-     </button>
-        <ShopImage33/>
-       
-      </div>
-    )
-  }
-  else if (click34) {
-    const ShopImage34 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press14}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage14/>
+     
+    </div>
+  )
+}
+else if (click15) {
+  const ShopImage15 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[15].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[15].price} €
       </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[34].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis:
-         </span>
-        ): english ?  (
-          <span>
-            Price:
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[34].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[34].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[34].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-        
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press34}>
-     <BackSymbol/>
-     </button>
-        <ShopImage34/>
-       
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[15].format}
       </div>
-    )
-  }
-  else if (click35) {
-    const ShopImage35 = () => {
-      return (
-      <>
-      <div className='translation'>
-      <div className='ge' onClick={pressG}
-      style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
-    backgroundClip: 'text',
-    color: german ? 'blue' : 'transparent'}}>
-        { german ? (
-         <span>
-          Deutsch
-         </span>
-        ): english ? (
-          <span>
-            German
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-      </div>
-      <div className='en' onClick={pressE}
-      style={{backgroundImage: english ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: english ? 'blue 0.3vh solid' : 'none',
-    BackgroundClip: 'text',
-    color: english ? 'blue' : 'transparent'}}>
-  
+      <br/>
+      <div className='pri2'>
       { german ? (
-         <span>
-          Englisch
-         </span>
-        ): english ?  (
-          <span>
-            English
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[15].paintedT}
       </div>
-     </div>
-    
-        <img className='imgSHI' src={ShopImages[35].src}/>
-        <br/>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Preis:
-         </span>
-        ): english ?  (
-          <span>
-            Price:
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[35].price} €
-        </div>
-        <br/>
-        <div className='pri2'>
-          Format:  {ShopImages[35].format}
-        </div>
-        <br/>
-        <div className='pri2'>
-        { german ? (
-         <span>
-          Gemalt mit
-         </span>
-        ): english ?  (
-          <span>
-            Painted with
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )} {ShopImages[35].paintedT}
-        </div>
-        <br/>
-        <button className='btnShop'>
-        { german ? (
-         <span>
-          Kaufen
-         </span>
-        ): english ?  (
-          <span>
-            Buy
-          </span>
-        ): (
-          <span>
-            Error
-          </span>
-        )}
-        </button>
-        
-      </>
-      );
-    };
-    return(
-      <div className='pictureShop'>
-       <button onClick={press35}>
-     <BackSymbol/>
-     </button>
-        <ShopImage35/>
-       
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press15}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage15/>
+     
+    </div>
+  )
+}
+else if (click16) {
+  const ShopImage16 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[16].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[16].price} €
       </div>
-    )
-  }
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[16].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[16].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press16}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage16/>
+     
+    </div>
+  )
+}
+else if (click17) {
+  const ShopImage17 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[17].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[17].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[17].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+         Gemalt mit 
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[17].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press17}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage17/>
+     
+    </div>
+  )
+}
+else if (click18) {
+  
+const ShopImage18 = () => {
+return (
+<>
+  <img className='imgSHI' src={ShopImages[18].src}/>
+  <br/>
+  <br/>
+  <div className='pri2'>
+  { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[18].price} €
+  </div>
+  <br/>
+  <div className='pri2'>
+    Format:  {ShopImages[18].format}
+  </div>
+  <br/>
+  <div className='pri2'>
+  { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[18].paintedT}
+  </div>
+  <br/>
+  <button className='btnShop'>
+  { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+  </button>
+</>
+);
+};
 
-} 
-const BackSymbol = () => {
+  return(
+    <div className='pictureShop'>
+     <button onClick={press18}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage18/>
+     
+    </div>
+  )
+}
+else if (click19) {
+  const ShopImage19 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[19].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[19].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[19].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[19].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  
+  return(
+    <div className='pictureShop'>
+     <button onClick={press19}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage19/>
+     
+    </div>
+  )
+}
+else if (click20) {
+  const ShopImage20 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[20].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[20].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[20].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[20].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press20}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage20/>
+     
+    </div>
+  )
+}
+else if (click21) {
+  const ShopImage21 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[21].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[21].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[21].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[21].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press21}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage21/>
+     
+    </div>
+  )
+}
+else if (click22) {
+  
+const ShopImage22 = () => {
+return (
+<>
+  <img className='imgSHI' src={ShopImages[22].src}/>
+  <br/>
+  <br/>
+  <div className='pri2'>
+  { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[22].price} €
+  </div>
+  <br/>
+  <div className='pri2'>
+    Format:  {ShopImages[22].format}
+  </div>
+  <br/>
+  <div className='pri2'>
+  { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[22].paintedT}
+  </div>
+  <br/>
+  <button className='btnShop'>
+  { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+  </button>
+</>
+);
+};
+  return(
+    <div className='pictureShop'>
+     <button onClick={press22}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage22/>
+     
+    </div>
+  )
+}
+else if (click23) {
+  const ShopImage23 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[23].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[23].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[23].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[23].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+         Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press23}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage23/>
+     
+    </div>
+  )
+}
+else if (click24) {
+  const ShopImage24 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[24].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[24].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[24].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[24].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+        Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
  
+  
+  return(
+    <div className='pictureShop'>
+     <button onClick={press24}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage24/>
+     
+    </div>
+  )
+}
+else if (click25) {
+  const ShopImage25 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[25].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[25].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[25].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[25].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press25}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage25/>
+     
+    </div>
+  )
+}
+else if (click27) {
+  const ShopImage27 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[27].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[27].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[27].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[27].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press27}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage27/>
+     
+    </div>
+  )
+}
+else if (click26) {
+  const ShopImage26 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[26].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[26].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[26].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[26].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press26}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage26/>
+     
+    </div>
+  )
+}
+else if (click29) {
+  const ShopImage29 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[29].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[29].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[29].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[29].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press29}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage29/>
+     
+    </div>
+  )
+}
+else if (click28) {
+  const ShopImage28 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[28].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[28].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[28].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[28].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press28}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage28/>
+     
+    </div>
+  )
+}
+else if (click30) {
+  const ShopImage30 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[30].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[30].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[30].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[30].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press30}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage30/>
+     
+    </div>
+  )
+}
+else if (click31) {
+  const ShopImage31 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[31].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[31].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[31].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[31].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+         Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press31}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage31/>
+     
+    </div>
+  )
+}
+else if (click32) {
+  const ShopImage32 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[32].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis
+       </span>
+      ): english ?  (
+        <span>
+          Price
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}: {ShopImages[32].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[32].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[32].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press32}>
+      <BackSymbol/>    
+   </button>
+      <ShopImage32/>
+     
+    </div>
+  )
+}
+else if (click33) {
+  const ShopImage33 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[33].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[33].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[33].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[33].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+      
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press33}>
+   <BackSymbol/>
+   </button>
+      <ShopImage33/>
+     
+    </div>
+  )
+}
+else if (click34) {
+  const ShopImage34 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[34].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[34].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[34].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[34].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+      
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press34}>
+   <BackSymbol/>
+   </button>
+      <ShopImage34/>
+     
+    </div>
+  )
+}
+else if (click35) {
+  const ShopImage35 = () => {
+    return (
+    <>
+      <img className='imgSHI' src={ShopImages[35].src}/>
+      <br/>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Preis:
+       </span>
+      ): english ?  (
+        <span>
+          Price:
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[35].price} €
+      </div>
+      <br/>
+      <div className='pri2'>
+        Format:  {ShopImages[35].format}
+      </div>
+      <br/>
+      <div className='pri2'>
+      { german ? (
+       <span>
+        Gemalt mit
+       </span>
+      ): english ?  (
+        <span>
+          Painted with
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )} {ShopImages[35].paintedT}
+      </div>
+      <br/>
+      <button className='btnShop'>
+      { german ? (
+       <span>
+        Kaufen
+       </span>
+      ): english ?  (
+        <span>
+          Buy
+        </span>
+      ): (
+        <span>
+          Error
+        </span>
+      )}
+      </button>
+      
+    </>
+    );
+  };
+  return(
+    <div className='pictureShop'>
+     <button onClick={press35}>
+   <BackSymbol/>
+   </button>
+      <ShopImage35/>
+     
+    </div>
+  )
+}
+};
+  const BackSymbol = () => {
   return (
-    
-    <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white',
-    transform:'rotate(180deg)', cursor:'pointer', top:'5%', position:'absolute'
-   }} />
-    
-    
+    <FontAwesomeIcon icon={faArrowRight} size='2x' style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'5%', position:'absolute'}} />
   );
-  }
+}
+
