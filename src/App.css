@@ -1005,6 +1005,17 @@ input:checked {
  border-radius: 6px;
  cursor: pointer;
 }
+.imgSh1 {
+  width: 15vh;
+  height:20vh;
+  border-radius: 6px;
+  margin: 0% 5%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+}
 .imgShA1 {
   max-width: 100vh;
   height: 70vh;
