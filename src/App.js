@@ -1634,7 +1634,7 @@ const PictureShop = () => {
                onChange={(e)=> handleFilter(e.target.value)}/> 
                <span className='euroinfo'>€</span>
                <datalist id='Prices'>
-                 <option value="200"></option>
+                 <option value="2007"></option>
                </datalist>
              </li>
              </ul>
