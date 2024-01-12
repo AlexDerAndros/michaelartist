@@ -909,6 +909,7 @@ p {
 }
 .filterEle {
   margin: 5% -10%;
+ 
 }
 .filter {
   color: rgb(117, 114, 114);
@@ -943,13 +944,17 @@ input:checked {
   height: 20%;
 
 }
+.euroinfo {
+  margin: 0% 35%;
+  position: absolute;
+}
 .inPri {
   background: none;
   border: none;
   color: white;
-  width: 35%;
-  height: 8%;
-  margin: -2% 2%;
+  width: 32%;
+  height: 6%;
+  margin: -1% 2%;
   position: absolute;
   font-size: 2.5vh;
   font-family: "Dancing Script";
@@ -1015,6 +1020,7 @@ input:checked {
  font-size: 2.5vh;
  margin-bottom: 15%;
 }
+
 .shopGR {
   display: flex;
  flex-direction: column row  ;

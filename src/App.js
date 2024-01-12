@@ -1516,7 +1516,7 @@ const PictureShop = () => {
     {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1},
     {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2},
   {id:4, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click3},
-  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click4},
+  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic4", click: click4},
   {id:6, price:english ? "unaffortable" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5},
   {id:7, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click6},
   {price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click7},
@@ -1632,7 +1632,7 @@ const PictureShop = () => {
                placeholder='Write a price'
                value={valuePrices}
                onChange={(e)=> handleFilter(e.target.value)}/> 
-               
+               <span className='euroinfo'>€</span>
                <datalist id='Prices'>
                  <option value="200"></option>
                </datalist>
