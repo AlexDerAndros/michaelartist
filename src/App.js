@@ -1511,7 +1511,7 @@ const PictureShop = () => {
   
   
  
-  const ShopImages =[
+  const [ShopImages,setShopImages] = useState([
     {id:1, price:700, src:'./FrauB2.jpeg', format:'50cmx70cm',paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press0, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click:click0},
     {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1},
     {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2},
@@ -1550,10 +1550,17 @@ const PictureShop = () => {
   {price:600, src:'./FrauSch.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press35, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click35},
   
   
-  ];
+  ]);
   const[valuePrices,setValuePrices] = useState(null);
- 
-
+  let value = valuePrices + "€";
+  const [filteredSearchItems, setFilteredSearchItems] = useState([...ShopImages]);
+  const handleFilter = (filterTerm) => {
+    const filteredItems = ShopImages.filter(item =>
+      (item.term && item.term.toLowerCase().includes(filterTerm.toLowerCase())) ||
+      (item.price && item.price.toString().includes(filterTerm))
+    );
+    setFilteredSearchItems(filteredItems);
+  };
   if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
     !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
      !click12 && !click13 && !click14 && !click15 && !click16 
@@ -1585,8 +1592,8 @@ const PictureShop = () => {
 </div>
   {format ? (
    <>
-      <div className='fil' onClick={()=> setFil(!fil)}>
-           <div className='filter'>
+      {/* <div className='fil' onClick={()=> setFil(!fil)}> */}
+           {/* <div className='filter'>
              FILTER
           </div>
         
@@ -1595,22 +1602,22 @@ const PictureShop = () => {
              <div className='PicHam1' ></div> 
              <div className='PicHam2' ></div> 
           </div> 
-          </div> 
-          { fil && (
+          </div>  */}
+          {/* { fil && (
            <div className='resHam'>
              <div onClick={() =>  setFil(!fil) } className='aw'>
                X
-             </div>
+             </div> */}
              <ul className='filterEle'>
              <li className='filterOn'>
               <span className='infoFil'> 
               { german ? (
              <span>
-             Gewünschter Betrag
+             Gewünschter Preis:
              </span>
             ): english ?  (
               <span>
-                Desired Amount
+                Desired Price:
               </span>
             ): (
               <span>
@@ -1624,20 +1631,17 @@ const PictureShop = () => {
                className='inPri' 
                placeholder='Write a price'
                value={valuePrices}
-               onChange={(e)=> setValuePrices(e.target.value)}/>
+               onChange={(e)=> handleFilter(e.target.value)}/> 
+               
                <datalist id='Prices'>
                  <option value="200"></option>
                </datalist>
              </li>
-         
-            <li>
-             {valuePrices}
-            </li>
-  
              </ul>
-           </div>  
-         )}
-          {ShopImages.map((item) => (
+           {/* </div>  
+         )} */}
+          {filteredSearchItems.map((item) => (
+     <div className='gridCon'>
        <div key={item.id} className="shopGRR">
          <div className={item.classEle} onClick={item.press}>
            <img src={item.src} className='imgSh'/>
@@ -1658,6 +1662,7 @@ const PictureShop = () => {
            </div>
          </div>
        </div>
+       </div>        
      ))}
    
    </>
