@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut, GoogleAuthProvider } from "firebase/auth";
+
 
 // Login: https://firebase.google.com/docs/auth/web/start?hl=de
 

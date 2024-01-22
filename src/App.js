@@ -24,8 +24,8 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { getAuth, signOut , GoogleAuthProvider , signInWithPopup,  getAdditionalUserInfo, signInWithRedirect } from "firebase/auth";
 
 
 
@@ -66,6 +66,11 @@ function HeaderBo() {
       <div className='foto2'>
         <a href='https://www.instagram.com/michael.n.artist/?igshid=YmMyMTA2M2Y%3D'>
          <img className='img2' src='./instagram.jpeg'/>
+        </a>
+      </div>
+      <div className='foto3'>
+        <a href='https://www.youtube.com/@michaelntrikos6696'>
+         <FontAwesomeIcon icon={faYoutube} className='icYou'/>
         </a>
       </div>
     </div>
@@ -1036,7 +1041,30 @@ const SEARCH = () => {
 
 //Login und Sigup
 function Log() {
+  const provider = new GoogleAuthProvider();
+const auth = getAuth();
+auth.languageCode = 'it';
+provider.setCustomParameters({
+  'login_hint': 'user@example.com'
+});
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    setLoggedIn(true);
+     getAdditionalUserInfo(result)
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    setLoggedIn(false);
+  });
   const [loggedIN,setLoggedIn] = useState(false);
+  signInWithRedirect(auth, provider);
+
  return (
    <>
     {
@@ -1516,8 +1544,8 @@ const PictureShop = () => {
     {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1, img:"imgSh"},
     {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2, img:"imgSh"},
   {id:4, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click3, img:"imgSh1"},
-  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic4", click: click4, img:"imgSh"},
-  {id:6, price:english ? "unaffortable" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5, img:"imgSh"},
+  {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click4, img:"imgSh"},
+  {id:6, price:english ? "VB" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5, img:"imgSh"},
   {id:7, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click6, img:"imgSh"},
   {price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click7, img:"imgSh"},
   {price:450, src:'./BlumenFrau21.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press8, classPreis: "pri", classGR: "shopGR2", classEle:"elePic" , click: click8, img:"imgSh"},
@@ -1627,19 +1655,16 @@ const PictureShop = () => {
               </span> 
               <input 
                type='number' 
-               list="Prices"
                className='inPri' 
                placeholder='Write a price'
                value={valuePrices}
                onChange={(e)=> handleFilter(e.target.value)}/> 
                <span className='euroinfo'>€</span>
-               <datalist id='Prices'>
+               {/* <datalist id='Prices'>
                  <option value="2007"></option>
-               </datalist>
+               </datalist> */}
              </li>
              </ul>
-           {/* </div>  
-         )} */}
           {filteredSearchItems.map((item) => (
      <div className='gridCon'>
        <div key={item.id} className="shopGRR">
