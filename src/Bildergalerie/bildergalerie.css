@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+/* .bildgalerie {
+    font-family: 'Dancing Script',
+    cursive, 'Roboto', sans-serif;
+} */
+/**Handy**/
+/* @media only screen and (max-width:700px) { */
+    .bildgalerie {
+        background-color: rgba(0, 0, 0, 0.877);
+        width: 80%;
+          height: 75%;
+          padding: 1vh;
+          border-radius: 4%;
+          z-index: -100;
+          left: 10%;
+          top: 10%;
+          position: fixed;
+          overflow-y: scroll;
+          
+      }
+      .grid {
+       display: grid;
+       top: 10%;
+       padding: 5%;
+      
+      }
+      .imgG {
+         width: 90%;
+         height: 70%;
+         padding:0% 5% ;
+         border-radius: 14%;
+         z-index: -1;
+         max-height: 550px;
+         max-width: 500px;
+        margin-bottom: 45%; 
+       
+      }
+      .icons1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        position: sticky;
+        margin: -32% 0%;
+      }
+      .like1 {
+       position: sticky;
+      }
+      .comment1 {
+        position: sticky;
+      }
+      .likeNumber {
+        color: white;
+        font-size: 4vh;
+        margin: 0% 33%;
+      
+      }
+      
+      
+      .commentOpen {
+        width: 82%;
+        height: 55%;
+        background-color: black;
+        z-index: 100;
+        margin: -84% -54%;
+        position: fixed;
+        overflow-y: scroll;
+       border-radius: 5%;
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-end;
+      }
+      .input1 {
+       background-color: black;
+       color: white;
+       width: 50%;
+       height: 4%;
+       font-size: 150%;
+       position: fixed;
+       margin: 0% 6%;
+       border: rgb(74, 74, 74) 0.2vh solid;
+       border-radius: 5%;
+      }
+      .input1::placeholder {
+        font: 150%;
+      }
+      .send1 {
+        color: white;
+        margin: 1% 18%;
+        position: fixed;
+      }
+      
+      .newCo {
+        padding:87% 0%;
+        margin: 3%;
+        color: white;
+      }
+/*
+}
+
+
+/**Tablet**/
+
+@media only screen and (min-width:701px) {
+
+}
+/*Computer*/
+@media only screen and (min-width:1200px) {
+  /**CSS Bildgalerie**/
+.bildgalerie {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 80%;
+      height: 83%;
+      padding: 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 15%;
+      top: 10%;
+      position: fixed;
+      overflow-y: scroll;
+   
+  }
+  .grid {
+   display: grid;
+   top: 10%;
+   padding: 5%;
+  
+  }
+  .imgG {
+     width: 40%;
+     height: 75%;
+     padding:0% 1% ;
+     border-radius: 14%;
+     z-index: -1;
+     margin: 0% 30%;
+   
+  }
+  .icons1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: sticky;
+    margin:  0%;
+  }
+  .like1 {
+   position: sticky;
+  }
+  .comment1 {
+    position: sticky;
+  }
+  .likeNumber {
+    color: white;
+    font-size: 5vh;
+    margin: 0% ;
+  
+  }
+  .likes {
+    margin-top:-12vh ;
+    margin-bottom: 15vh;
+  }
+  
+  
+  
+  .commentOpen {
+    width: 82%;
+    height: 55%;
+    background-color: black;
+    z-index: 100;
+    margin: -84% -54%;
+    position: fixed;
+    overflow-y: scroll;
+   border-radius: 5%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+  }
+  .input1 {
+   background-color: black;
+   color: white;
+   width: 50%;
+   height: 4%;
+   font-size: 150%;
+   position: fixed;
+   margin: 0% 6%;
+   border: rgb(74, 74, 74) 0.2vh solid;
+   border-radius: 5%;
+  }
+  .input1::placeholder {
+    font: 150%;
+  }
+  .send1 {
+    color: white;
+    margin: 1% 18%;
+    position: fixed;
+  }
+  
+  .newCo {
+    padding:87% 0%;
+    margin: 3%;
+    color: white;
+  }
+}
+
+
+

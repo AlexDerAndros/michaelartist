@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+
+/**Handy**/
+/* @media only screen and (max-width:700px) { */
+    .login {
+        background-color: rgba(0, 0, 0, 0.744);
+        width: 80%;
+        height: 75%;
+        padding: 3vh 1vh;
+         border-radius: 4%;
+         z-index: -100;
+         left: 7%;
+         right: 3%;
+         top: 10%;
+         position: fixed;
+         font-family: 'Dancing Script';
+     }
+     
+     .head {
+       font-weight: bold;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-size: 300%;
+       text-align: center;
+     }
+     #us {
+       margin:10% 0%;
+       background: transparent ;
+       border-bottom: 1% white ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: 70%;
+       height: 5%;
+       font-size:120%;
+       margin: 3% 5%;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+     
+     
+     }
+     #pa {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: 70%;
+       font-size:120%;
+       margin: 3% 5%;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-family: 'Dancing Script';
+      
+     
+     }
+     #us::placeholder {
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+       
+     
+     }
+     #pa::placeholder {
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+       
+     
+       
+     
+     }
+     #us1 {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       font-size:120%;
+     margin:2% 0%;
+     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-family: 'Dancing Script';
+     
+     
+     }
+     #us1::placeholder {
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-family: 'Dancing Script';
+     
+     }
+     #pa1::placeholder {
+      color: white;
+      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-family: 'Dancing Script';
+     
+     }
+     
+     #pa1 {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       font-size:120%;
+        margin:2% 0%;
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+     
+       
+     }
+     .importantI {
+       font-size: 130%;
+       margin: 0% 5%;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     }
+     .sg  {
+     color: rgb(63, 139, 233);
+     cursor: pointer;
+     text-decoration:underline ;
+     
+     
+     }
+     
+     p {
+       background: none;
+       border: 0;
+       box-sizing: border-box;
+       box-shadow:inset 0 0 0 1px #f96767;
+       font-weight: bolder;
+       margin:-7% 4%;
+      width: auto;
+      padding: 3%;
+      height: 7%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5%;
+      background-color: black;
+      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+     
+     
+     }
+     .AniB {
+       overflow: hidden;
+       position: absolute;
+       
+     }
+     .AniB::before, .AniB::after {
+       content: '';
+       box-sizing: border-box;
+       position: absolute;
+       border: 3px solid transparent;
+       width: 0;
+       height: 0;
+     }
+     .AniB::before {
+       top: 0;
+       left: 0;
+       border-top-color: #60daaa;
+       border-right-color: #60daaa;
+       animation: border 2s infinite;
+     }
+     .AniB::after {
+       bottom: 0;
+       right: 0;
+       animation: border 2s 1s infinite, borderColor 2s 1s infinite;
+     }
+     
+     @keyframes border {
+       0% {
+         width: 0;
+         height: 0;
+       }
+       25% {
+         width: 100%;
+         height: 0;
+       }
+       50% {
+         width: 100%;
+         height: 100%;
+       }
+       100% {
+         width: 100%;
+         height: 100%;
+       }
+     }
+     @keyframes borderColor {
+       0% {
+         border-bottom-color: #60daaa;
+         border-left-color: #60daaa;
+       }
+       50% {
+         border-bottom-color: #60daaa;
+         border-left-color: #60daaa;
+       }
+       51% {
+         border-bottom-color: transparent;
+         border-left-color: transparent;
+       }
+       100% {
+         border-bottom-color: transparent;
+         border-left-color: transparent;
+       }
+     }
+     .signUP {
+       color: white;
+     }
+     #email {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       height: 5%;
+       font-size:155%;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      margin:2% 0%;
+      font-family: 'Dancing Script';
+     
+     
+     }
+     #email::placeholder {
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+      font-family: 'Dancing Script';
+     
+     }
+     .REG {
+       display: flex;
+       flex-direction: column;
+       margin: 0% 5%;
+     }
+     .headR {
+       font-weight: bold;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-size: 300%;
+       text-align: center;
+     }
+  
+     
+     
+/* } */
+
+
+/**Tablet**/
+
+@media only screen and (min-width:701px) {
+
+}
+/*Computer*/
+@media only screen and (min-width:1200px) {
+    .login {
+        background-color: rgba(0, 0, 0, 0.744);
+        width: 80%;
+        height: 75%;
+        padding: 3vh 1vh;
+         border-radius: 4%;
+         z-index: -100;
+         left: 15%;
+         right: 3%;
+         top: 15%;
+         position: fixed;
+         font-family: 'Dancing Script';
+     }
+     
+     .head {
+       font-weight: bold;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-size: 300%;
+       text-align: center;
+     }
+     #us {
+       margin:10% 0%;
+       background: transparent ;
+       border-bottom: 1% white ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: 70%;
+       height: 5%;
+       font-size:120%;
+       margin: 3% 5%;
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     
+     }
+     #pa {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: 70%;
+       font-size:120%;
+       margin: 3% 5%;
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     
+     }
+     #us::placeholder {
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     
+     }
+     #pa::placeholder {
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     
+     }
+     #us1 {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       font-size:120%;
+     margin:2% 0%;
+     font-family: 'Dancing Script';
+     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+     color: transparent;
+     background-clip: text;
+     
+     }
+     #us1::placeholder {
+       font-family: 'Dancing Script';
+     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+     color: transparent;
+     background-clip: text;
+     
+     }
+     #pa1::placeholder {
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     }
+     
+     #pa1 {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       font-size:120%;
+        margin:2% 0%;
+        font-family: 'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+     }
+     .importantI {
+       font-size: 130%;
+       margin: 0% 5%;
+       font-family: 'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+     }
+     .sg  {
+     cursor: pointer;
+     text-decoration:underline rgb(96, 251, 181) ;
+     font-family: 'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+     }
+     
+     
+     .child {
+       font-family: 'Dancing Script';
+     }
+     p {
+       background: none;
+       border: 0;
+       box-sizing: border-box;
+       box-shadow:inset 0 0 0 1px #f96767;
+       font-weight: bolder;
+       margin: 0% 4%;
+      width: auto;
+      padding: 2%;
+      height: 7%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5%;
+      background-color: black;
+      font-family: 'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+     }
+     
+     
+     .AniB {
+       overflow: hidden;
+       position: absolute;
+       
+     }
+     .AniB::before, .AniB::after {
+       content: '';
+       box-sizing: border-box;
+       position: absolute;
+       border: 3px solid transparent;
+       width: 0;
+       height: 0;
+     }
+     .AniB::before {
+       top: 0;
+       left: 0;
+       border-top-color: #60daaa;
+       border-right-color: #60daaa;
+       animation: border 2s infinite;
+     }
+     .AniB::after {
+       bottom: 0;
+       right: 0;
+       animation: border 2s 1s infinite, borderColor 2s 1s infinite;
+     }
+     
+     @keyframes border {
+       0% {
+         width: 0;
+         height: 0;
+       }
+       25% {
+         width: 100%;
+         height: 0;
+       }
+       50% {
+         width: 100%;
+         height: 100%;
+       }
+       100% {
+         width: 100%;
+         height: 100%;
+       }
+     }
+     @keyframes borderColor {
+       0% {
+         border-bottom-color: #60daaa;
+         border-left-color: #60daaa;
+       }
+       50% {
+         border-bottom-color: #60daaa;
+         border-left-color: #60daaa;
+       }
+       51% {
+         border-bottom-color: transparent;
+         border-left-color: transparent;
+       }
+       100% {
+         border-bottom-color: transparent;
+         border-left-color: transparent;
+       }
+     }
+     .signUP {
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     }
+     #email {
+       background: transparent ;
+       border-bottom: 1% rgb(255, 255, 255) ;
+       border-top: none;
+       border-right: none;
+       border-left: none;
+       width: auto;
+       height: 5%;
+       font-size:155%;
+      margin:2% 0%;
+      font-family: 'Dancing Script';
+      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+      color: transparent;
+      background-clip: text;
+      
+     }
+     #email::placeholder {
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     }
+     .REG {
+       display: flex;
+       flex-direction: column;
+       margin: 0% 5%;
+       font-family: 'Dancing Script';
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+     }
+     .headR {
+       font-weight: bold;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       color: transparent;
+       background-clip: text;
+       font-size: 300%;
+       text-align: center;
+       
+     }
+}

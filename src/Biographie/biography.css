@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+
+/**Handy**/
+/* @media only screen and (max-width:700px) { */
+   .biographie {
+    background-color: rgba(0, 0, 0, 0.744);
+    width: 80%;
+    height: 76%;
+    padding: 3vh 1vh;
+     border-radius: 4%;
+     z-index: -100;
+     left: 7%;
+     right: 3%;
+     top: 10%;
+     position: fixed;
+     font-family: 'Dancing Script';
+   }
+   .text {
+    color: white;
+    font-size: 2.5vh;
+   }
+   .BioTitle {
+    font-weight: bold;
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    color: transparent;
+    background-clip: text;
+    font-size: 5vh;
+    text-align: center;
+   }
+   .abstand {
+     display: none;
+   }
+/* } */
+
+
+/**Tablet**/
+
+@media only screen and (min-width:701px) {
+
+}
+/*Computer*/
+@media only screen and (min-width:1100px) {
+   .biographie {
+    background-color: rgba(0, 0, 0, 0.744);
+    width: 80%;
+    height: 75%;
+    padding: 3vh 1vh;
+     border-radius: 4%;
+     z-index: -100;
+     left: 15%;
+     right: 3%;
+     top: 15%;
+     position: fixed;
+     font-family: 'Dancing Script';
+   }
+   .text {
+    font-size: 3vh;
+   }
+   .abstand {
+    display: block;
+   }
+}

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+.videogalerie {
+    font-family: 'Dancing Script',
+    cursive, 'Roboto', sans-serif;
+}
+/**Handy**/
+@media only screen and (max-width:700px) {
+      /**Videogalerie**/
+      .videogalerie {
+        background-color: rgba(0, 0, 0, 0.877);
+        width: 80%;
+          height: 75%;
+          padding: 1vh;
+          border-radius: 4%;
+          z-index: -100;
+          left: 7%;
+          right: 3%;
+          top: 10%;
+          position: fixed;
+         
+      }
+      .video {
+        width: 80%;
+        height: 90%;
+        border-radius: 5%;
+        margin:0% 13%;
+      }
+       
+      .likeNumber1 {
+       color: white;
+       font-size: 3vh;
+       margin: 0% 5%;
+      }
+}
+
+
+/**Tablet**/
+
+@media only screen and (min-width:701px) {
+
+}
+/*Computer*/
+@media only screen and (min-width:1200px) {
+
+.videogalerie {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 80%;
+      height: 75%;
+      padding: 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 15%;
+      right: 3%;
+      top: 10%;
+      position: fixed;
+     
+  }
+  .video {
+    width: 80%;
+    height: 90%;
+    border-radius: 5%;
+    margin:0% 13%;
+  }
+   
+  .likeNumber1 {
+   color: white;
+   font-size: 3vh;
+   margin: 0% 5%;
+  }
+  
+  
+  
+}

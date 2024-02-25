@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+/* .pictureShop {
+    font-family: 'Dancing Script',
+   cursive, 'Roboto', sans-serif;
+} */
+/*Handy*/
+/* @media only screen and (max-width:700px) { */
+    .pictureShop {
+        background-color: rgba(0, 0, 0, 0.877);
+        width: 80%;
+          height: 75%;
+          padding: 1vh;
+          border-radius: 4%;
+          z-index: -100;
+          left: 7%;
+          right: 3%;
+          top: 10%;
+          position: fixed;
+          overflow-y: scroll;
+          overflow-x:none;
+          color: white;
+        font-family: 'Dancing Script';
+      }
+      .pictureShop::-webkit-scrollbar { 
+        display: none; 
+        }
+      
+      .fil {
+        display:flex;
+        justify-content: column;
+        width: 3vh;
+        height: 2vh;
+        cursor: pointer;
+        z-index: 100;
+        margin: 0% 0% 5% 0%;
+      }
+      .filterEle {
+        margin: 5% -10%;
+       
+      }
+      .filter {
+        color: rgb(117, 114, 114);
+        font-size: 2.5vh;
+        z-index: 100;
+      }
+      .aw {
+        font-size: 3.5vh;
+        font-weight: 500;
+        position: absolute;
+        top: 5%;
+       left:5%;
+      }
+      input:checked {
+       cursor: pointer;
+       font-size: 10vh;
+       background: none;
+       border: none;
+      }
+      #inputCHE {
+        cursor: pointer;
+        background: none;
+        border: none;
+      
+      }
+      .infoFil {
+        font-family: 'Dancing Script';
+      }
+      .filterOn {
+        margin:0% 0%;
+        width: 25vh;
+        height: 20%;
+      
+      }
+      .euroinfo {
+        margin: 0% 30%;
+        position: absolute;
+      }
+      .inPri {
+        background: none;
+        border: none;
+        color: white;
+        width: 31%;
+        height: 4%;
+        margin: 0%;
+        position: absolute;
+        font-size: 2.5vh;
+        font-family: "Dancing Script";
+      }
+      .inPri::placeholder {
+        font-size: 2.5vh;
+      }
+      .resHam {
+       right: 0%;
+       top:0%;
+       cursor: pointer;
+       position: relative;
+        border-radius:5% ;
+      }
+      .PicHam {
+        background-color: rgb(61, 61, 61);
+        width: 3vh;
+        height:0.5vh;
+        z-index: 100;
+        margin:8% 1%;
+      }
+      .PicHam1 {
+        background-color: rgb(61, 61, 61);
+        width: 2.5vh;
+        height:0.5vh;
+        z-index: 100;
+        margin:8% 1%;
+      }
+      .PicHam2 {
+        background-color: rgb(61, 61, 61);
+        width: 2vh;
+        height:0.5vh;
+        z-index: 100;
+        margin:3% 1%;
+      }
+      .nonePic {
+        color: rgb(117, 114, 114);
+        font-size: 3vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40% 0%;
+        position: sticky;
+      }
+      .imgSh {
+       width: 15vh;
+       height:20vh;
+       border-radius: 6px;
+       cursor: pointer;
+      }
+      .imgSh1 {
+        width: 15vh;
+        height:20vh;
+        border-radius: 6px;
+        margin: 0% 5%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+      }
+      .imgShA1 {
+        max-width: 100vh;
+        height: 70vh;
+        border-radius: 5%;
+        cursor: pointer;
+      }
+      .pri {
+        font-family:'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+        font-weight: bold;
+       font-size: 2.5vh;
+       margin-bottom: 15%;
+      }
+      
+      .shopGR {
+        display: flex;
+       flex-direction: column row  ;
+       margin-top: 5vh;
+      }
+      .shopGR1 {
+        display: flex;
+       flex-direction: column  row;
+      
+      } 
+      .shopGRR {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .format {
+        margin: 0% 70%;
+        position: absolute;
+        width: 25%;
+        font-size: 2.5vh;
+        cursor: pointer;
+        
+      }
+      .sq1 {
+        width: 0.75vh;
+        height: 0.75vh;
+        background-color: white;
+        border-radius: 5%;
+        margin: 0.25vh 0;
+      }
+      
+      .sq2 {
+        width: 0.75vh;
+        height: 0.75vh;
+        background-color: white;
+        border-radius: 5%;
+        margin:0.25vh 0;
+      }
+      
+      .sq3 {
+        width: 0.75vh;
+        height:0.75vh;
+        background-color: white;
+        border-radius: 5%;
+        margin: 0.25vh 0;
+      }
+      
+      .shopGR2 {
+        display: flex;
+       flex-direction: column  row;
+      
+      }
+      .shopGR3 {
+        display: flex;
+        flex-direction: column  row;
+      }
+      .shopGR4 {
+        display: flex;
+        flex-direction: column  row;
+      }
+      .shopGR5 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR6 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR7 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR8 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR9 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR10 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .shopGR11 {
+        display: flex;
+        flex-direction:  row;
+      }
+      .elePic {
+        height: auto;
+        width: auto;
+        margin: 0vh 0.75vh;
+        grid-area: ele;
+      }
+      .imgShA1 {
+        width:65%;
+        height:70.5%;
+        border-radius: 5%;
+      } 
+      .elePic1 {
+        width:25vh ;
+        height: 25vh;
+        margin: 0% 1dvh ;
+      }
+      .imgShA2 {
+        width:90%;
+        height:70%;
+        border-radius: 5%;
+        margin:0% -25%;
+      } 
+      .imgShA3 {
+        width:95%;
+        height:70%;
+        border-radius: 5%;
+        margin:0% -15%;
+      } 
+      .pri3 {
+        
+        margin: 0% -15%;
+        font-family:'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+        font-weight: bold;
+      }
+      .resHam {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        width: 34%;
+        height: 78%;
+        padding: 5% 10%  ;
+        transition: ease 0.5s;
+      
+      }
+      
+      .away {
+        font-size: 4vh;
+      }
+      .imgSHI {
+        width:70%;
+        height:70.5%;
+        max-width: 50vh;
+        border-radius: 5%;
+        margin: 4% 10% 1% 17%;
+      }
+      .pri2 {
+        font-size: 4vh;
+        margin: 0% ;
+        padding:0% 19%;
+        font-family:'Dancing Script';
+        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+        color: transparent;
+        background-clip: text;
+        font-weight: 800;
+      }
+      .btnShop {
+        color:rgb(0, 0, 0);
+        width: auto;
+        min-width: 15%;
+        height: 10%;
+        margin: 0% 19%;
+        font-weight: 1000;
+        font-size: 90%;
+        border-radius: 5%;
+      font-family:'Dancing Script';
+      
+        background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+      }
+      .btnShop:hover {
+        box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      -webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      -moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      color: white;
+      font-family:'Dancing Script';
+      
+      }
+/* } */
+/*Tablet*/
+@media only screen and (min-width:701px) {
+
+}
+/*Computer*/
+@media only screen and (min-width:1200px) {
+   
+
+.pictureShop {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 80%;
+      height: 75%;
+      padding: 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 15%;
+      right: 3%;
+      top: 10%;
+      position: fixed;
+      overflow-y: scroll;
+      color: white;
+  }
+  .translation1  {
+  
+  }
+  .fil {
+    display: flex;
+    justify-content: column;
+    width: 3vh;
+    height: 2vh;
+    cursor: pointer;
+  }
+  .filter {
+    color: rgb(117, 114, 114);
+    font-size: 2.5vh;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 100;
+  }
+  .PicHam {
+    background-color: rgb(61, 61, 61);
+    width: 3vh;
+    height:0.5vh;
+    z-index: 100;
+    margin:8% 1%;
+  }
+  .PicHam1 {
+    background-color: rgb(61, 61, 61);
+    width: 2.5vh;
+    height:0.5vh;
+    z-index: 100;
+    margin:8% 1%;
+  }
+  .PicHam2 {
+    background-color: rgb(61, 61, 61);
+    width: 2vh;
+    height:0.5vh;
+    z-index: 100;
+    margin:3% 1%;
+  }
+  .nonePic {
+    color: rgb(117, 114, 114);
+    font-size: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40% 0%;
+    position: sticky;
+  }
+  .imgSh {
+   width: 50vh;
+   height:65vh;
+   border-radius: 6px;
+   cursor: pointer;
+  }
+  .imgShA1 {
+    max-width: 100vh;
+    height: 70vh;
+    border-radius: 5%;
+    cursor: pointer;
+  }
+  .pri {
+    font-family: 'Dancing Script';
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    color: transparent;
+    background-clip: text;
+    margin-bottom:5% ;
+    font-weight: bold;
+  }
+  .shopGR {
+    display: flex;
+   flex-direction: row;
+   padding: 3vh 0.5vh ;
+  }
+  .shopGR1 {
+    display: flex;
+   flex-direction: column  row;
+   padding:1vh 0.5vh ;
+  
+  
+  } 
+  .shopGR2 {
+    display: flex;
+   flex-direction: column  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR3 {
+    display: flex;
+    flex-direction: column  row;
+    padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR4 {
+    display: flex;
+    flex-direction: column  row;
+    padding: 1vh 0.5vh ;
+    
+  }
+  .shopGR5 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  
+  }
+  .shopGR6 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR7 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR8 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR9 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+   
+  }
+  .shopGR10 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .shopGR11 {
+    display: flex;
+    flex-direction:  row;
+   padding: 1vh 0.5vh ;
+  
+  }
+  .elePic {
+    height: auto;
+    width: auto;
+    margin: 0vh 2vh;
+    grid-area: ele;
+  }
+  .imgShA1 {
+    width:65%;
+    height:70.5%;
+    border-radius: 5%;
+  } 
+  .elePic1 {
+    height: auto;
+    width: auto;
+    margin: 0%;
+  }
+  .imgShA2 {
+    width:90%;
+    height:70%;
+    border-radius: 5%;
+    margin:0% -25%;
+  } 
+  .imgShA3 {
+    width:95%;
+    height:70%;
+    border-radius: 5%;
+    margin:0% -15%;
+  } 
+  .pri3 {
+    font-family: 'Poppins', sans-serif;
+    margin: 0% -15%;
+    font-family: 'Dancing Script';
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    color: transparent;
+    background-clip: text;
+  }
+  .resHam {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    width: 34%;
+    height: 78%;
+    padding: 5% 10%  ;
+    transition: ease 0.5s;
+  
+  }
+  
+  .away {
+    font-size: 4vh;
+  }
+  .imgSHI {
+    width:70%;
+    height:70.5%;
+    max-width: 50vh;
+    border-radius: 5%;
+    margin: 4% 10% 1% 17%;
+  }
+  .pri2 {
+    font-size: 4vh;
+    margin: 0% ;
+    padding:0% 19%;
+    font-family: 'Dancing Script';
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    color: transparent;
+    background-clip: text;
+    font-weight: bold;
+  }
+  .btnShop {
+    color: black;
+    width: auto;
+    min-width: 15%;
+    height: 10%;
+    margin: 0% 19%;
+    font-weight: bolder;
+    font-size: 90%;
+    border-radius: 5%;
+    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  }
+  .btnShop:hover {
+    box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+  -webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+  -moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+  color: white;
+  }
+}
