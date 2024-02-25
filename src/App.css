@@ -16,7 +16,7 @@
   }
   .foto1 {
     position: sticky;
-    margin:0% 20%;
+    margin:0% 25%;
   }
   .foto2 {
     position: sticky;
@@ -48,7 +48,7 @@
    font-weight: bold;
    position: fixed;
    top: 1%;
-   left: 45%;
+   left: 50%;
   
 
   }

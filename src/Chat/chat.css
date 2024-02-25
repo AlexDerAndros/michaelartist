@@ -180,7 +180,7 @@
         margin: 7% 0%;
         gap: -3% 0%;
         }
-        element::-webkit-scrollbar {
+        .list::-webkit-scrollbar {
           display: none;
         }
       .inputCH1 {
