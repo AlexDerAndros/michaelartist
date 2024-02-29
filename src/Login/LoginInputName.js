@@ -1,9 +1,10 @@
 import "./log.css";
-export default function LoginInputName(german,english, click, pa, us ,setPa, setUs) {
-    if (!click) 
-    {
+export default function LoginInputName(german,english, click, pa,
+   us ,setPa, userInput, PasswordInput, logBtn) {
+ 
       let username = 'Username...';
       let password = 'Password...';
+    
       if (german == true) 
       {
          username = 'Benutzername...';
@@ -14,9 +15,10 @@ export default function LoginInputName(german,english, click, pa, us ,setPa, set
         username = 'Username...';
         password = 'Password...';
       }
-      const logBtn = () => {
-        
-      }
+     
+      
+     
+    
       return (
        <> 
         <form>
@@ -24,18 +26,19 @@ export default function LoginInputName(german,english, click, pa, us ,setPa, set
          type="text" 
          placeholder={username}
          value={us}
-         onChange={(e)=> { setUs(e.target.value);}}/>
-        <br/>
+         onChange={userInput}
+        />
+        <br/> 
         <input id='pa'
          type="password"
           placeholder={password} 
           value={pa}
-          onChange={(e)=>{setPa(e.target.value);}} />
+          onChange={PasswordInput} /> 
         <br/>
         <br/>
         <br/>
         <button className='logBtn' onClick={logBtn} >
-        <p className="AniB" style={{fontSize:'2.5vh'}}>
+        <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
           Login  
         </p>
         </button>
@@ -44,4 +47,3 @@ export default function LoginInputName(german,english, click, pa, us ,setPa, set
       );
   
   }
-}

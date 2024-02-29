@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 
-const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', "./copy_3045E7F6-195A-4031-BFDD-AEB4B49D547C.MP4",
+const videos = ['./C30BCC52-6700-4FCF-9B90-167169F37065.mp4', "./export_1709221524705.MP4" 
+,"./copy_3045E7F6-195A-4031-BFDD-AEB4B49D547C.MP4",
 './copy_AA8F9BA2-F28C-4E56-BC28-D177B0ACE41D.MP4'
 , "./8ba2ba26c765447dbaeb8a156f1dd5a0.MP4"
 ,'./export_1702824220526.MP4', './export_1701962505711.MP4'
@@ -45,10 +46,10 @@ function prevImage() {
        </video>
        <div className='imgBtn'>
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 10%'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 5%'}} />
     </button>
     <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -10%'  }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -20%'  }}/>
   </button>
     </div>
     </div>

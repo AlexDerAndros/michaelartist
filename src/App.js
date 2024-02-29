@@ -36,7 +36,31 @@ import Videogalerie1 from './Videogalerie/Videogalerie';
 import AboutUs1 from './Über uns/AboutUs';
 import Chat1 from './Chat/chat';
 import Biographie1 from './Biographie/biographie';
-
+export const images =[
+  './michaelBackground.png',
+  "./FrauFarbverlauf.jpg",
+  "./FlügelF.jpeg.jpg",
+  './IMG_1268.JPEG',
+  './GroßeBrüsteF.JPEG',
+  './IMG_0493.JPEG',
+  './Joker.jpeg',
+  './BootSonne.jpeg',
+  './Lecken.jpeg',
+  './Medusa.jpeg',
+  './MickeyMouse.jpeg', 
+  './FrauSilber.jpeg',
+  './FrauMeer.jpeg',
+  './TraumfrauBlume.jpeg',
+   './Jessia1.jpeg',
+   './Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
+   './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
+  './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
+  './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
+  , './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
+  './LächelF.jpeg', './SchWeiF.jpeg','./BuntMusterFrau.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
+   './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
+  './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
+   './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];     
   export default function App() {
     return (
      <main>
@@ -127,7 +151,7 @@ function HeaderBo() {
   </Link>
   <Link to='/biography'>
    <div>
-   <FontAwesomeIcon icon={faPenSquare } size="2x"  className='ic' style={{color:"white"}}/>
+   <FontAwesomeIcon icon={faPenSquare } size="2x"  className='ic' />
    <span className='he'> My Biography</span>
    
     </div>
@@ -153,30 +177,7 @@ function HeaderBo() {
 }
 
  
-const images =[
-'./michaelBackground.png',
-"./FlügelF.jpeg.jpg",
-'./IMG_1268.JPEG',
-'./GroßeBrüsteF.JPEG',
-'./IMG_0493.JPEG',
-'./Joker.jpeg',
-'./BootSonne.jpeg',
-'./Lecken.jpeg',
-'./Medusa.jpeg',
-'./MickeyMouse.jpeg', 
-'./FrauSilber.jpeg',
-'./FrauMeer.jpeg',
-'./TraumfrauBlume.jpeg',
- './Jessia1.jpeg',
- './Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
- './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
-'./WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
-'./Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
-, './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
-'./LächelF.jpeg', './SchWeiF.jpeg','./BuntMusterFrau.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
- './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
-'./FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
- './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];
+
 function ImageList (){
   const [currentIndex, setCurrentIndex]= useState(0);
   const [isImageExpanded, setIsImageExpanded] = useState(false);
@@ -222,23 +223,49 @@ function ImageList (){
 }
 
 
-function Home() {
+export function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
   const[click,setClick] = useState(false);
+  const [loggedIN, setLoggedIN] = useState(false);
+
+  const logBtn = () => {
+    if (us == adminUS && pa == adminPA) {
+      setLoggedIN(!loggedIN);
+      alert("You are now logged in.");
+    }
+    else {
+      setLoggedIN(!loggedIN);
+      alert("You are not logged in.");
+    }
+  };
   let adminUS = "AdminMichaelNtrikos";
-  let adminPA = "U27sapyycbzf";
+  let adminPA = "parga10062007";
    const[german,setGerman] = useState(false);
   const[english,setEnglish] = useState(true);
   const[pa,setPa] = useState('');
   const[us,setUs] = useState('');
- 
+  const userInput = (e) => {
+    setUs(e.target.value);
+  }
+  const PasswordInput = (e) => {
+    setPa(e.target.value);
+
+  }
 
  return (
   <>
 <div className='Mitte'>
  <div className='info1'> 
-  Welcome to my website
+  Welcome {loggedIN ? (
+    <span>
+      Michael
+    </span>
+  ): (
+    <span>
+      to my website!
+    </span>
+  )}
 </div>
 <div className='info'>
       "If you feel it, you can paint it.
@@ -248,7 +275,17 @@ function Home() {
 <br/>
   </div>
   <div style={{display:"none"}}>
-  <LoginInputName german={german} english={english} click={click} pa={pa} setPa={setPa} us={us} setUs={setUs}/>
+  <LoginInputName 
+  german={german} 
+  english={english} 
+  click={click} 
+  pa={pa} 
+  setPa={setPa} 
+  us={us} 
+  setUs={setUs}
+  userInput={userInput} 
+  PasswordInput={PasswordInput}
+  logBtn={logBtn}/>
   </div>
   </>
  );
@@ -318,6 +355,14 @@ const SEARCH = () => {
     </div>
     );
   };
+  const PBiography = () => {
+    return (
+      <div>
+    <FontAwesomeIcon  onClick={pressBio} icon={faArrowRight} size='2x' className='backIconS'/>
+    <Biographie/>
+      </div>
+    );
+  }
   const [home,setHome]= useState(false);
   const [pictureGallery,setPictureGallery] = useState(false);
   const [chat, setChat] = useState(false);
@@ -325,6 +370,7 @@ const SEARCH = () => {
   const[videogallery,setVideogallery] = useState(false);
   const[pictureShop,setPictureShop] = useState(false);
   const[aboutUs, setAboutUs] = useState(false);
+  const [bio,setBio] = useState(false);
   const pressHome = () => {
     setHome(!home);
   }
@@ -347,6 +393,9 @@ const SEARCH = () => {
   const pressAboutUs = () => {
     setAboutUs(!aboutUs);
   }
+  const pressBio = () => {
+    setBio(!bio);
+  }
   const [searchItems, setSearchItems] = useState([
     { id: 1, term: 'Home', className: 'searchItem', icon:  <FaHome size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressHome},
     { id: 2, term: 'Picture gallery', className: 'searchItem', icon: <FaImages size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressPicturegallery},
@@ -355,7 +404,7 @@ const SEARCH = () => {
     { id: 5, term: 'Video gallery', className: 'searchItem', icon:<FontAwesomeIcon icon={faVideo} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressVideogallery},
     { id: 6, term: 'Picture shop', className: 'searchItem', icon: <FontAwesomeIcon icon={faShoppingCart} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/> , press: pressPictureShop},
     { id: 7, term: 'About Us', className: 'searchItem', icon:  <FontAwesomeIcon icon={faInfoCircle}  style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}} />, press:pressAboutUs},
-    
+    {id: 8, term: 'Biography', className: 'searchItem', icon:  <FontAwesomeIcon icon={faPenSquare}  style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}} />, press:pressBio}
   ]);
 
   const [filteredSearchItems, setFilteredSearchItems] = useState([...searchItems]);
@@ -384,7 +433,9 @@ const SEARCH = () => {
          <PVideoGallery/>
       ) : pictureShop ? (
         <PPictureShop/>
-      ):(
+      ): bio ? (
+        <PBiography/>
+      ): (
         <div className='search'>
           
           <input

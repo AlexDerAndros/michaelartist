@@ -35,6 +35,15 @@
    .biographie::-webkit-scrollbar {
     display: none;
    }
+   .imgBio {
+    width: 80vw;
+    height: 60vh;
+    border-radius: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   }
 /* } */
 
 
@@ -63,5 +72,13 @@
    }
    .abstand {
     display: block;
+   }
+   .imgBio {
+    width: 30vw;
+   
+   }
+   .imgConBio {
+    width: 100vw;
+    
    }
 }
