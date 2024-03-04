@@ -1,6 +1,6 @@
 import './log.css';
 import React, { useState } from 'react';
-import LoginInputName from "./LoginInputName";
+// import LoginInputName from "./LoginInputName";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Log1() {
@@ -8,7 +8,7 @@ export default function Log1() {
   
   return (
     <>
-      {loggedIN ? (<LoggedIN />) : (<Login setLoggedIn={setLoggedIN} />)}
+      {loggedIN ? (<LoggedIN />) : (<Login setLoggedIn={setLoggedIN} loggedIN={loggedIN} />)}
     </>
   );
 }
@@ -21,20 +21,14 @@ function LoggedIN() {
   );
 }
 
-function Login({ setLoggedIn }) {
+function Login({ setLoggedIn, loggedIN }) {
   const [us, setUs] = useState('');
   const [pa, setPa] = useState('');
   const [click, setClick] = useState(false);
   const [english, setEnglish] = useState(true);
   const [german, setGerman] = useState(false);
  
-  const userInput = (e) => {
-    setUs(e.target.value);
-  }
-  const PasswordInput = (e) => {
-    setPa(e.target.value);
-
-  }
+  
   const press = () => {
     setClick(!click);
   };
@@ -49,23 +43,33 @@ function Login({ setLoggedIn }) {
     setGerman(false);
   };
 
-  const handleLogin = () => {
-    // Implement login logic here
-    setLoggedIn(true); // Set logged in state to true after successful login
-  };
+  
   const logBtn = () => {
     if (us == adminUS && pa == adminPA) {
-      setLoggedIn(true);
+      setLoggedIn(!loggedIN);
       alert("You are now logged in.");
     }
     else {
-      setLoggedIn(false);
+      setLoggedIn(!loggedIN);
       alert("You are not logged in.");
     }
   }
   let adminUS = "AdminMichaelNtrikos";
   let adminPA = "parga10062007";
-
+  let username = 'Username...';
+      let password = 'Password...';
+    
+      if (german == true) 
+      {
+         username = 'Benutzername...';
+         password = 'Passwort...';
+      }
+      else 
+      {
+        username = 'Username...';
+        password = 'Password...';
+      }
+     
   return (
     <>
       {!click ? (
@@ -79,18 +83,30 @@ function Login({ setLoggedIn }) {
               <span>Error</span>
             )}
           </div>
-          <LoginInputName
-            german={german}
-            english={english}
-            click={click}
-            pa={pa}
-            setPa={setPa}
-            us={us}
-            setUs={setUs}
-            userInput={userInput}
-            PasswordInput={PasswordInput}
-            logBtn= {logBtn}
-          />
+     
+        <form>
+        <input id='us'
+         type="text" 
+         placeholder={username}
+         value={us}
+         onChange={(e)=> setUs(e.target.value)}
+        />
+       
+        <br/> 
+        <input id='pa'
+         type="password"
+          placeholder={password} 
+          value={pa}
+          onChange={(e)=> setPa(e.target.value)} /> 
+        <br/>
+        <br/>
+        <br/>
+        <button className='logBtn' onClick={logBtn} >
+        <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
+          Login  
+        </p>
+        </button>
+        </form>
           <br />
           <br />
           <br />

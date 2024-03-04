@@ -31,7 +31,7 @@ import { getAuth, signOut , GoogleAuthProvider , signInWithPopup,  getAdditional
 import  PictureShopp from './Bilder Shopping/pictureShop';
 import Bildgalerie1 from './Bildergalerie/Bildergalerie';
 import Log1 from './Login/Login';
-import  LoginInputName  from './Login/LoginInputName';
+// import  LoginInputName  from './Login/LoginInputName';
 import Videogalerie1 from './Videogalerie/Videogalerie';
 import AboutUs1 from './Über uns/AboutUs';
 import Chat1 from './Chat/chat';
@@ -212,10 +212,10 @@ function ImageList (){
     />
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute', margin:"-100% 0%"}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'0% -35%'}}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'-100% -35%'}}/>
   </button>
     </div>
    </div>
@@ -223,49 +223,31 @@ function ImageList (){
 }
 
 
-export function Home() {
+function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
   const[click,setClick] = useState(false);
-  const [loggedIN, setLoggedIN] = useState(false);
-
-  const logBtn = () => {
-    if (us == adminUS && pa == adminPA) {
-      setLoggedIN(!loggedIN);
-      alert("You are now logged in.");
-    }
-    else {
-      setLoggedIN(!loggedIN);
-      alert("You are not logged in.");
-    }
-  };
-  let adminUS = "AdminMichaelNtrikos";
-  let adminPA = "parga10062007";
+  
+ 
    const[german,setGerman] = useState(false);
   const[english,setEnglish] = useState(true);
   const[pa,setPa] = useState('');
   const[us,setUs] = useState('');
-  const userInput = (e) => {
-    setUs(e.target.value);
-  }
-  const PasswordInput = (e) => {
-    setPa(e.target.value);
-
-  }
+ 
 
  return (
   <>
 <div className='Mitte'>
  <div className='info1'> 
-  Welcome {loggedIN ? (
+  {/* Welcome {loggedIN ? (
     <span>
-      Michael
+      Michael!
     </span>
   ): (
     <span>
       to my website!
     </span>
-  )}
+  )} */} Welcome to my website!
 </div>
 <div className='info'>
       "If you feel it, you can paint it.
@@ -274,25 +256,10 @@ export function Home() {
 <ImageList/>
 <br/>
   </div>
-  <div style={{display:"none"}}>
-  <LoginInputName 
-  german={german} 
-  english={english} 
-  click={click} 
-  pa={pa} 
-  setPa={setPa} 
-  us={us} 
-  setUs={setUs}
-  userInput={userInput} 
-  PasswordInput={PasswordInput}
-  logBtn={logBtn}/>
-  </div>
+ 
   </>
  );
 }
-
-//Chat
-
 
 //Search
 

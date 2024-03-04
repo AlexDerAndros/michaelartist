@@ -24,7 +24,7 @@
   .title {
    font-weight: bold;
    position: sticky;
-   font-size: 2.75vh;
+   font-size: 2.5vh;
    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
    background-clip: text;
    color: transparent;
@@ -37,7 +37,7 @@
     display: none;
   }
   .about {
-    font-size: 2.75vh;
+    font-size: 2.5vh;
     width: auto;
     display: flex;
     align-items:center;
