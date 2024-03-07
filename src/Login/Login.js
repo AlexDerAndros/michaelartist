@@ -8,21 +8,22 @@ export default function Log1() {
   const [loggedIN, setLoggedIN] = useState(false);
   const [click , setClick] = useState(false);
 
-  const press = () => {
-      Cookies.set('loggedIn', 'false');
-      setLoggedIN(false);
-  };
+ 
   
   if (loggedIN == true || Cookies.get('loggedIn') === 'true') {
-  return <LoggedIN press ={press} />;
+  return <LoggedIN  setLoggedIN={setLoggedIN} loggedIN={loggedIN}/>;
   }
   else {
     return <Login setLoggedIn={setLoggedIN} loggedIN={loggedIN}  />;
   }
 }
 
-function LoggedIN({press}) {
- 
+function LoggedIN({setLoggedIN,loggedIN}) {
+ const logOut = () =>{
+    setLoggedIN(false);
+    alert("You are logged out!");
+    Cookies.set('loggedIn', 'false', { expires: 1/48 });
+ }
   let user = Cookies.get('username');
   return (
     <div className='login'>
@@ -31,7 +32,7 @@ function LoggedIN({press}) {
       </div>
       <br/>
       <br/>
-      <button className='logBtn' onClick={press} >
+      <button className='logBtn' onClick={logOut} >
         <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
           Logout 
         </p>

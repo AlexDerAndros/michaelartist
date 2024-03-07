@@ -419,14 +419,34 @@ const SEARCH = () => {
     </div>
   );
 };
+function NotLogIn() {
+  return (
+   <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
+     <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+     Sorry you are not logged in! Log in or register to see this page.
+     </div>
+   </div>
+  );
+}
 function Biographie() {
   return <Biographie1/>;
 }
 function Chat() {
-  return <Chat1/>
+  if ( Cookies.get('loggedIn') === 'true') {
+   return <Chat1/>;
+  }
+  else {
+    return <NotLogIn/>;
+  }
 }
 function Bildgalerie() {
-  return <Bildgalerie1/>;
+  if ( Cookies.get('loggedIn') === 'true') {
+    return <Bildgalerie1/>;
+   }
+   else {
+     return <NotLogIn/>;
+   }
+  
 }
 
 function AboutUs() {
@@ -441,5 +461,11 @@ function Videogalerie() {
 }
 
 function PictureShop() {
-  return <PictureShopp/>
+  if ( Cookies.get('loggedIn') === 'true') {
+    return <PictureShopp/>;
+   }
+   else {
+     return <NotLogIn/>;
+   }
+ 
 }
