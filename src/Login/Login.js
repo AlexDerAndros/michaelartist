@@ -3,25 +3,44 @@ import React, { useState } from 'react';
 // import LoginInputName from "./LoginInputName";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Cookies from 'js-cookie';
 export default function Log1() {
   const [loggedIN, setLoggedIN] = useState(false);
+  const [click , setClick] = useState(false);
+
+  const press = () => {
+      Cookies.set('loggedIn', 'false');
+      setLoggedIN(false);
+  };
   
+  if (loggedIN == true || Cookies.get('loggedIn') === 'true') {
+  return <LoggedIN press ={press} />;
+  }
+  else {
+    return <Login setLoggedIn={setLoggedIN} loggedIN={loggedIN}  />;
+  }
+}
+
+function LoggedIN({press}) {
+ 
+  let user = Cookies.get('username');
   return (
-    <>
-      {loggedIN ? (<LoggedIN />) : (<Login setLoggedIn={setLoggedIN} loggedIN={loggedIN} />)}
-    </>
+    <div className='login'>
+      <div className='head'>
+        Welcome {user}!
+      </div>
+      <br/>
+      <br/>
+      <button className='logBtn' onClick={press} >
+        <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
+          Logout 
+        </p>
+      </button>
+    </div>
   );
 }
 
-function LoggedIN() {
-  return (
-    <>
-      Hello
-    </>
-  );
-}
-
-function Login({ setLoggedIn, loggedIN }) {
+function Login({setLoggedIn, loggedIN}) {
   const [us, setUs] = useState('');
   const [pa, setPa] = useState('');
   const [click, setClick] = useState(false);
@@ -42,18 +61,22 @@ function Login({ setLoggedIn, loggedIN }) {
     setEnglish(true);
     setGerman(false);
   };
-
-  
   const logBtn = () => {
     if (us == adminUS && pa == adminPA) {
-      setLoggedIn(!loggedIN);
-      alert("You are now logged in.");
+      setLoggedIn(true);
+      alert("You are logged in.");
+      Cookies.set('loggedIn', true, { expires: 7 });
     }
     else {
-      setLoggedIn(!loggedIN);
+      setLoggedIn(false);
       alert("You are not logged in.");
     }
+    Cookies.set('username', us, { expires: 7 }); 
+    Cookies.set('password', pa, { expires: 7 }); 
+
   }
+  
+ 
   let adminUS = "AdminMichaelNtrikos";
   let adminPA = "parga10062007";
   let username = 'Username...';

@@ -195,9 +195,8 @@
    color: white;
     font-weight: bold;
     font-size: 4.5vh;
-    margin-top: 0% ;
-    width: 10%;
-    height: 10%;
+    width: 20%;
+    height: 20%;
     cursor: pointer;
     position: sticky;
   }
@@ -285,7 +284,11 @@
   border-radius: 4%;
   max-width: 600px;
   max-height: 500px;
- margin: 10% 10% 10% 16%; 
+ margin: 7% 10% 10% 16%; 
+}
+.imgBtn {
+  display: flex;
+  flex-direction: row;
 }
 /* Translation */
 .translation {

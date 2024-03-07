@@ -27,6 +27,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { getAuth, signOut , GoogleAuthProvider , signInWithPopup,  getAdditionalUserInfo, signInWithRedirect } from "firebase/auth";
+import Cookies from 'js-cookie';
 
 import  PictureShopp from './Bilder Shopping/pictureShop';
 import Bildgalerie1 from './Bildergalerie/Bildergalerie';
@@ -212,10 +213,10 @@ function ImageList (){
     />
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:'absolute', margin:"-100% 0%"}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:"absolute", margin:"-30% -10%"}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white',  position:'absolute',  margin:'-100% -35%'}}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white', position:"absolute" , margin:"-30% -10%" }}/>
   </button>
     </div>
    </div>
@@ -226,28 +227,20 @@ function ImageList (){
 function Home() {
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
-  const[click,setClick] = useState(false);
-  
- 
-   const[german,setGerman] = useState(false);
-  const[english,setEnglish] = useState(true);
-  const[pa,setPa] = useState('');
-  const[us,setUs] = useState('');
- 
+  const username = Cookies.get('username');
+  let user;
+  if ( Cookies.get('loggedIn') === 'true') {
+    user = username + "!";
+  }
+  else {
+    user ="to my Website!";
+  }
 
  return (
   <>
 <div className='Mitte'>
  <div className='info1'> 
-  {/* Welcome {loggedIN ? (
-    <span>
-      Michael!
-    </span>
-  ): (
-    <span>
-      to my website!
-    </span>
-  )} */} Welcome to my website!
+  Welcome {user}
 </div>
 <div className='info'>
       "If you feel it, you can paint it.
@@ -256,6 +249,7 @@ function Home() {
 <ImageList/>
 <br/>
   </div>
+  
  
   </>
  );
