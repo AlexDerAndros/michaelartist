@@ -27,7 +27,7 @@ function LoggedIN({setLoggedIN,loggedIN}) {
   let user = Cookies.get('username');
   return (
     <div className='login'>
-      <div className='head'>
+      <div className='WEL'>
         Welcome {user}!
       </div>
       <br/>
@@ -72,7 +72,7 @@ function Login({setLoggedIn, loggedIN}) {
       setLoggedIn(false);
       alert("You are not logged in.");
     }
-    Cookies.set('username', us, { expires: 7 }); 
+    Cookies.set('username', us, { expires: 7 });  
     Cookies.set('password', pa, { expires: 7 }); 
 
   }

@@ -168,6 +168,7 @@
     font-weight:bold ;
     font-size: 4.5vh;
     z-index: -100;
+    text-align: center;
   }
   .img1 {
     width: 5.5vh;
@@ -265,6 +266,38 @@
 }
 .textIF:hover {
   color: yellow;
+}
+.plus {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 4.5vh;
+  position: fixed;
+  top: 6.5vh;
+  background-color: rgb(43, 42, 42);
+  border-radius: 50%;
+  width: 4.5vh;
+  height: 4.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+  cursor: pointer;
+}
+.addThings {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  z-index: 1000;
+  background-color: rgb(43, 42, 42);
+  border-radius: 5px;
+  cursor: pointer;
+  position: fixed;
+  top: 9%;
+  left: 5%;
+  padding: 1vh;
+  transition: ease-in 0.5s;
+}
+.eleT:hover {
+  background-color: rgb(69, 69, 69);
 }
 /*Image List*/
 .imageList {

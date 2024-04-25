@@ -75,10 +75,14 @@ export const images =[
     }
  
 function HeaderBo() {
- 
+  
+  
+  
+
   return (
    <Router>
    <div>
+
    <div className='header'>
    
       <div className='title' > 
@@ -101,11 +105,6 @@ function HeaderBo() {
          <img className='img2' src='./instagram.jpeg'/>
         </a>
       </div>
-      {/* <div className='foto3'>
-        <a href='https://www.youtube.com/@michaelntrikos6696'>
-         <FontAwesomeIcon icon={faYoutube} className='icYou'/>
-        </a>
-      </div> */}
     </div>
   
     <div className='unten'>
@@ -175,6 +174,7 @@ function HeaderBo() {
 </div>
 </Router> 
   );
+ 
 }
 
  
@@ -225,6 +225,106 @@ function ImageList (){
 
 
 function Home() {
+  const [inputValuePO, setInputValuePO] = useState('');
+  const [publicItemsPO, setPublicItemsPO] = useState([]);
+  const [selectedImageV, setSelectedImageV] = useState(null);
+  const [publicItemsV, setPublicItemsV] = useState([]);
+  const [inputValueV, setInputValueV] = useState('');
+  const [selectedImageP, setSelectedImageP] = useState(null);
+  const [publicItemsP, setPublicItemsP] = useState([]);
+  const [inputValueP, setInputValueP] = useState('');
+  const[clickPhoto, setClickPhoto] = useState(false);
+  const[clickVideo, setClickVideo] = useState(false);
+  const[clickPost, setClickPost] = useState(false);
+  const [click, setClick] = useState(false);
+  const press = () => {
+    setClick(!click);
+  }
+  let addVideoPhoto;
+  let display;
+  if (Cookies.get('username') == "AdminMichaelNtrikos" && Cookies.get('password') == "parga10062007" && Cookies.get('loggedIn') == 'true') {
+    addVideoPhoto = <div className='plus' onClick={press} style={{transform: click ? "rotate(45deg)": "rotate(0deg)"}}> + </div>;
+    display = "block";
+  }
+   else {
+    addVideoPhoto = ``;
+    display = "none";
+   }
+  
+  const pressPHOTO = () => {
+    setClickPhoto(!clickPhoto);
+  }
+  const pressVIDEO = () => {
+    setClickVideo(!clickVideo);
+  } 
+  const pressPOST = () => {
+    setClickPost(!clickPost);
+  }
+   //Post
+   const checkPost = (e) => {
+    setInputValuePO(e.target.value);
+   }
+   const SaveINPOST = () => {
+    if (inputValuePO.trim() !== '') {
+        setPublicItemsPO([...publicItemsPO, inputValuePO]);
+        setInputValuePO('');
+    } else {
+        alert('Press something please.');
+    }
+};
+    
+
+    //Image
+    const CheckImage = (e) => {
+        setInputValueP(e.target.value);
+    };
+
+    const PostImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setSelectedImageP(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const SaveImage = () => {
+        if (inputValueP.trim() !== '' || selectedImageP) {
+            setPublicItemsP([...publicItemsP, { text: inputValueP, image: selectedImageP }]);
+            setInputValueP('');
+            setSelectedImageP(null);
+        } else {
+            alert('Choose a picture something, please!');
+        }
+    };
+    //Video
+    const CheckVideo = (e) => {
+      setInputValueV(e.target.value);
+  };
+
+  const PostVideo = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+              setSelectedImageV(reader.result);
+          };
+          reader.readAsDataURL(file);
+      }
+  };
+
+  const SaveVideo = () => {
+      if (inputValueV.trim() !== '' || selectedImageV) {
+          setPublicItemsV([...publicItemsV, { text: inputValueV, image: selectedImageV }]);
+          setInputValueV('');
+          setSelectedImageV(null);
+      } else {
+          alert('Choose a video, please!');
+      }
+  };
+    
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
   const username = Cookies.get('username');
@@ -235,7 +335,12 @@ function Home() {
   else {
     user ="to my Website!";
   }
-
+  const NewThings = [
+    {title:'New Photo', id: 1, press: pressPHOTO, save: SaveImage, check: CheckImage, post: PostImage, click: clickPhoto },
+    {title:'New Video', id: 2, press: pressVIDEO, save: SaveVideo, check: CheckVideo, post: PostVideo, click: clickVideo},
+    {title:'New Post', id: 3,  press: pressPOST, save: SaveINPOST, check: checkPost, click: clickPost}
+  ];
+  if ( !clickPhoto && !clickVideo && !clickPost) {
  return (
   <>
 <div className='Mitte'>
@@ -249,11 +354,93 @@ function Home() {
 <ImageList/>
 <br/>
   </div>
-  
+  {addVideoPhoto}
+  <div className='addThings' style={{height: click ? "auto" : "0vh", width: click ? "auto" : "0vw", fontSize: click ? "3vh": "0vh", zIndex: click ? "1000" : "-100", display: display, background: click ?  "rgb(43, 42, 42)" : "none"  }}>
+     {NewThings.map((item)=> (
+     <div onClick={item.press} className='eleT' key={item.index} style={{display: click ? "block": "none"}}> {item.title} </div>
+     ))}
+  </div>
  
   </>
  );
 }
+else if (clickVideo) {
+  return (
+   <>
+    <PostSiteV/>
+    <FontAwesomeIcon  onClick={pressVIDEO} icon={faArrowRight} size='2x' className='backIconS' />
+
+   </>
+  );
+}
+else if (clickPhoto) {
+ return (
+  <>
+    <PostSiteP/>
+    <FontAwesomeIcon  onClick={pressPHOTO} icon={faArrowRight} size='2x' className='backIconS' />
+
+    
+  </>
+ );
+} else if (clickPost) {
+ return (
+  <>
+    <PostSitePO/>
+    <FontAwesomeIcon  onClick={pressPOST} icon={faArrowRight} size='2x' className='backIconS' />
+
+     
+  </>
+ );
+}
+else {
+  return (
+    <>
+      Error
+    </>
+  );
+}
+
+}
+
+const PostSitePO = () => {
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+              New Post
+           </div>
+        </div>  
+
+    </div>
+  );
+}
+const PostSiteV = () => {
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+             New Video
+           </div>
+        </div>  
+    </div>
+  );
+}
+const PostSiteP = () => {
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+              New Photo
+           </div>
+        </div>  
+
+    </div>
+  );
+}
+
+
+
+
 
 //Search
 

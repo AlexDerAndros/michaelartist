@@ -25,6 +25,14 @@
        font-size: 300%;
        text-align: center;
      }
+     .WEL {
+      font-weight: bold;
+      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+      color: transparent;
+      background-clip: text;
+      font-size: 200%;
+      text-align: center;
+     }
      #us {
        margin:10% 0%;
        background: transparent ;
