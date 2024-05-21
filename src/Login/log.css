@@ -166,7 +166,7 @@
       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
        color: transparent;
        background-clip: text;
-      font-family: 'Dancing Script';
+      font-family: "Dancing Script";
      
      
      }
@@ -247,9 +247,8 @@
        background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
        color: transparent;
        background-clip: text;
-      margin:2% 0%;
-      font-family: 'Dancing Script';
-     
+       margin:2% 0%;
+       font-family: 'Dancing Script';
      
      }
      #email::placeholder {

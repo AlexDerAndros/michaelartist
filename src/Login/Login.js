@@ -1,54 +1,69 @@
-import './log.css';
-import React, { useState } from 'react';
-// import LoginInputName from "./LoginInputName";
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth } from './firebase1';
 import Cookies from 'js-cookie';
+import './log.css';
+
 export default function Log1() {
   const [loggedIN, setLoggedIN] = useState(false);
-  const [click , setClick] = useState(false);
 
- 
-  
-  if (loggedIN == true || Cookies.get('loggedIn') === 'true') {
-  return <LoggedIN  setLoggedIN={setLoggedIN} loggedIN={loggedIN}/>;
-  }
-  else {
-    return <Login setLoggedIn={setLoggedIN} loggedIN={loggedIN}  />;
+  useEffect(() => {
+    if (Cookies.get('loggedIn') === 'true') {
+      setLoggedIN(true);
+    }
+  }, []);
+
+  if (loggedIN) {
+    return <LoggedIN setLoggedIN={setLoggedIN} />;
+  } else {
+    return <Login setLoggedIn={setLoggedIN} />;
   }
 }
 
-function LoggedIN({setLoggedIN,loggedIN}) {
- const logOut = () =>{
+function LoggedIN({ setLoggedIN }) {
+  const logOut = async () => {
+    await signOut(auth);
+    alert("You are now logged out!");
+    Cookies.set('loggedIn', false, { expires: 1 / 48 });
     setLoggedIN(false);
-    alert("You are logged out!");
-    Cookies.set('loggedIn', 'false', { expires: 1/48 });
- }
-  let user = Cookies.get('username');
+  };
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return unsubscribe;
+  }, []);
+
   return (
     <div className='login'>
       <div className='WEL'>
-        Welcome {user}!
+        Welcome {user?.email}!
       </div>
-      <br/>
-      <br/>
-      <button className='logBtn' onClick={logOut} >
-        <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
-          Logout 
+      <br />
+      <br />
+      <button className='logBtn' onClick={logOut}>
+        <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+          Logout
         </p>
       </button>
     </div>
   );
 }
 
-function Login({setLoggedIn, loggedIN}) {
+function Login({ setLoggedIn }) {
+  const [registerUS, setRegisterUS] = useState('');
+  const [registerPA, setRegisterPA] = useState('');
   const [us, setUs] = useState('');
   const [pa, setPa] = useState('');
   const [click, setClick] = useState(false);
   const [english, setEnglish] = useState(true);
   const [german, setGerman] = useState(false);
- 
-  
+
   const press = () => {
     setClick(!click);
   };
@@ -62,38 +77,43 @@ function Login({setLoggedIn, loggedIN}) {
     setEnglish(true);
     setGerman(false);
   };
-  const logBtn = () => {
-    if (us == adminUS && pa == adminPA) {
-      setLoggedIn(true);
-      alert("You are logged in.");
-      Cookies.set('loggedIn', true, { expires: 7 });
-    }
-    else {
-      setLoggedIn(false);
-      alert("You are not logged in.");
-    }
-    Cookies.set('username', us, { expires: 7 });  
-    Cookies.set('password', pa, { expires: 7 }); 
 
-  }
-  
- 
-  let adminUS = "AdminMichaelNtrikos";
-  let adminPA = "parga10062007";
+  const logBtn = async (event) => {
+    event.preventDefault();
+    try {
+      const user = await signInWithEmailAndPassword(auth, us, pa);
+      console.log(user);
+      alert("Login successfully");
+      setLoggedIn(true);
+      Cookies.set("loggedIn", true, { expires: 7 });
+    } catch (error) {
+      console.log(error.message);
+      alert("Failed to login: " + error.message);
+    }
+  };
+
+  const register = async (event) => {
+    event.preventDefault();
+    try {
+      const user = await createUserWithEmailAndPassword(auth, registerUS, registerPA);
+      console.log(user);
+      alert("Registered successfully");
+      setLoggedIn(true);
+      Cookies.set("loggedIn", true, { expires: 7 });
+    } catch (error) {
+      console.log(error.message);
+      alert("Failed to register: " + error.message);
+    }
+  };
+
   let username = 'Username...';
-      let password = 'Password...';
-    
-      if (german == true) 
-      {
-         username = 'Benutzername...';
-         password = 'Passwort...';
-      }
-      else 
-      {
-        username = 'Username...';
-        password = 'Password...';
-      }
-     
+  let password = 'Password...';
+
+  if (german) {
+    username = 'Benutzername...';
+    password = 'Passwort...';
+  }
+
   return (
     <>
       {!click ? (
@@ -107,30 +127,31 @@ function Login({setLoggedIn, loggedIN}) {
               <span>Error</span>
             )}
           </div>
-     
-        <form>
-        <input id='us'
-         type="text" 
-         placeholder={username}
-         value={us}
-         onChange={(e)=> setUs(e.target.value)}
-        />
-       
-        <br/> 
-        <input id='pa'
-         type="password"
-          placeholder={password} 
-          value={pa}
-          onChange={(e)=> setPa(e.target.value)} /> 
-        <br/>
-        <br/>
-        <br/>
-        <button className='logBtn' onClick={logBtn} >
-        <p className="AniB" style={{fontSize:'2.5vh', cursor:"pointer"}}>
-          Login  
-        </p>
-        </button>
-        </form>
+          <form>
+            <input
+              id='us'
+              type='text'
+              placeholder={username}
+              value={us}
+              onChange={(e) => setUs(e.target.value)}
+            />
+            <br />
+            <input
+              id='pa'
+              type='password'
+              placeholder={password}
+              value={pa}
+              onChange={(e) => setPa(e.target.value)}
+            />
+            <br />
+            <br />
+            <br />
+            <button className='logBtn' onClick={logBtn}>
+              <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+                Login
+              </p>
+            </button>
+          </form>
           <br />
           <br />
           <br />
@@ -190,30 +211,22 @@ function Login({setLoggedIn, loggedIN}) {
                   id='email'
                   className='child'
                   type='email'
-                  placeholder={german ? 'Geben Sie eine E-Mail Adresse an...' : 'Enter an email adress...'}
-                />
-                <input
-                  id='us1'
-                  className='child'
-                  type="text"
-                  placeholder={german ? 'Erstelle Sie ein Benutzername...' : 'Create an username...'}
+                  placeholder={german ? 'Geben Sie eine E-Mail Adresse an...' : 'Enter an email address...'}
+                  value={registerUS}
+                  onChange={(e) => setRegisterUS(e.target.value)}
                 />
                 <input
                   id='pa1'
                   className='child'
-                  type="password"
+                  type='password'
                   placeholder={german ? 'Erstellen Sie ein Passwort...' : 'Create a password...'}
-                />
-                <input
-                  id='pa1'
-                  className='child'
-                  type="password"
-                  placeholder={german ? 'Wiederholen Sie ihr Passwort...' : 'Repeat your password...'}
+                  value={registerPA}
+                  onChange={(e) => setRegisterPA(e.target.value)}
                 />
               </div>
               <br />
               <br />
-              <button style={{ fontSize: '1.5vh' }}>
+              <button style={{ fontSize: '1.5vh' }} onClick={register}>
                 <p className="AniB" style={{ fontSize: '2.5vh' }}>
                   {german ? (
                     <span>Regestrieren</span>

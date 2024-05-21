@@ -294,10 +294,119 @@
   top: 9%;
   left: 5%;
   padding: 1vh;
-  transition: ease-in 0.5s;
+  transition: ease-in 1s;
 }
 .eleT:hover {
   background-color: rgb(69, 69, 69);
+}
+.eleT {
+  font-family: 'Dancing Script' ;
+}
+.inPOST {
+  background: none;
+  background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+  font-family: 'Dancing Script';
+  font-size: 2.5vh;
+  font-weight: 700;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 3vh;
+}
+.imgPOST {
+  text-align: center;
+  max-width: 350px;
+  max-height: 350px;
+}
+p {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  box-shadow:inset 0 0 0 1px #f96767;
+  font-weight: bolder;
+  margin:-7% 4%;
+ width: auto;
+ padding: 3%;
+ height: 7%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 5%;
+ background-color: black;
+ background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  color: transparent;
+  background-clip: text;
+ font-family: 'Dancing Script';
+
+
+}
+.AniB {
+  overflow: hidden;
+  position: absolute;
+  cursor: pointer;
+}
+.AniB::before, .AniB::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  border: 3px solid transparent;
+  width: 0;
+  height: 0;
+}
+.AniB::before {
+  top: 0;
+  left: 0;
+  border-top-color: #60daaa;
+  border-right-color: #60daaa;
+  animation: border 2s infinite;
+}
+.AniB::after {
+  bottom: 0;
+  right: 0;
+  animation: border 2s 1s infinite, borderColor 2s 1s infinite;
+}
+
+@keyframes border {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+  }
+  50% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes borderColor {
+  0% {
+    border-bottom-color: #60daaa;
+    border-left-color: #60daaa;
+  }
+  50% {
+    border-bottom-color: #60daaa;
+    border-left-color: #60daaa;
+  }
+  51% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  100% {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+.ChoosePhoto {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh 0%;
 }
 /*Image List*/
 .imageList {

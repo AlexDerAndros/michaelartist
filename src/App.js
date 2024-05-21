@@ -225,14 +225,8 @@ function ImageList (){
 
 
 function Home() {
-  const [inputValuePO, setInputValuePO] = useState('');
-  const [publicItemsPO, setPublicItemsPO] = useState([]);
-  const [selectedImageV, setSelectedImageV] = useState(null);
-  const [publicItemsV, setPublicItemsV] = useState([]);
-  const [inputValueV, setInputValueV] = useState('');
-  const [selectedImageP, setSelectedImageP] = useState(null);
-  const [publicItemsP, setPublicItemsP] = useState([]);
-  const [inputValueP, setInputValueP] = useState('');
+ 
+ 
   const[clickPhoto, setClickPhoto] = useState(false);
   const[clickVideo, setClickVideo] = useState(false);
   const[clickPost, setClickPost] = useState(false);
@@ -260,70 +254,11 @@ function Home() {
   const pressPOST = () => {
     setClickPost(!clickPost);
   }
-   //Post
-   const checkPost = (e) => {
-    setInputValuePO(e.target.value);
-   }
-   const SaveINPOST = () => {
-    if (inputValuePO.trim() !== '') {
-        setPublicItemsPO([...publicItemsPO, inputValuePO]);
-        setInputValuePO('');
-    } else {
-        alert('Press something please.');
-    }
-};
+   
     
 
-    //Image
-    const CheckImage = (e) => {
-        setInputValueP(e.target.value);
-    };
 
-    const PostImage = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectedImageP(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const SaveImage = () => {
-        if (inputValueP.trim() !== '' || selectedImageP) {
-            setPublicItemsP([...publicItemsP, { text: inputValueP, image: selectedImageP }]);
-            setInputValueP('');
-            setSelectedImageP(null);
-        } else {
-            alert('Choose a picture something, please!');
-        }
-    };
-    //Video
-    const CheckVideo = (e) => {
-      setInputValueV(e.target.value);
-  };
-
-  const PostVideo = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-              setSelectedImageV(reader.result);
-          };
-          reader.readAsDataURL(file);
-      }
-  };
-
-  const SaveVideo = () => {
-      if (inputValueV.trim() !== '' || selectedImageV) {
-          setPublicItemsV([...publicItemsV, { text: inputValueV, image: selectedImageV }]);
-          setInputValueV('');
-          setSelectedImageV(null);
-      } else {
-          alert('Choose a video, please!');
-      }
-  };
+    
     
   ReactGA.initialize('YOUR_TRACKING_ID');
   ReactGA.pageview(window.location.pathname);
@@ -336,9 +271,9 @@ function Home() {
     user ="to my Website!";
   }
   const NewThings = [
-    {title:'New Photo', id: 1, press: pressPHOTO, save: SaveImage, check: CheckImage, post: PostImage, click: clickPhoto },
-    {title:'New Video', id: 2, press: pressVIDEO, save: SaveVideo, check: CheckVideo, post: PostVideo, click: clickVideo},
-    {title:'New Post', id: 3,  press: pressPOST, save: SaveINPOST, check: checkPost, click: clickPost}
+    {title:'New Photo', id: 1, press: pressPHOTO, click: clickPhoto },
+    {title:'New Video', id: 2, press: pressVIDEO,  click: clickVideo},
+    {title:'New Post', id: 3,  press: pressPOST, click: clickPost}
   ];
   if ( !clickPhoto && !clickVideo && !clickPost) {
  return (
@@ -403,18 +338,71 @@ else {
 }
 
 const PostSitePO = () => {
+  const [inputValuePO, setInputValuePO] = useState('');
+  const [publicItemsPO, setPublicItemsPO] = useState([]);
+  //Post
+  const checkPost = (e) => {
+    setInputValuePO(e.target.value);
+   }
+   const SaveINPOST = () => {
+    if (inputValuePO.trim() !== '') {
+        setPublicItemsPO([...publicItemsPO, inputValuePO]);
+        setInputValuePO('');
+    } else {
+        alert('Press something please.');
+    }
+}
   return (
     <div className='search'>
         <div>
            <div className='info1'>
               New Post
            </div>
+           <input
+                type="text"
+                value={inputValuePO}
+                onChange={checkPost}
+            />
+            <button onClick={SaveINPOST}>Speichern</button>
+            <div>
+                {publicItemsPO.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+            </div>
         </div>  
 
     </div>
   );
 }
 const PostSiteV = () => {
+  const [selectedImageV, setSelectedImageV] = useState(null);
+  const [publicItemsV, setPublicItemsV] = useState([]);
+  const [inputValueV, setInputValueV] = useState('');
+  //Video
+  const CheckVideo = (e) => {
+    setInputValueV(e.target.value);
+};
+
+const PostVideo = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setSelectedImageV(reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+const SaveVideo = () => {
+    if (inputValueV.trim() !== '' || selectedImageV) {
+        setPublicItemsV([...publicItemsV, { text: inputValueV, image: selectedImageV }]);
+        setInputValueV('');
+        setSelectedImageV(null);
+    } else {
+        alert('Choose a video, please!');
+    }
+};
   return (
     <div className='search'>
         <div>
@@ -422,10 +410,50 @@ const PostSiteV = () => {
              New Video
            </div>
         </div>  
+        <input
+                type="file"
+                accept="image/*"
+                onChange={PostVideo}
+            />
+            {selectedImageV && (
+                <img src={selectedImageV} alt="Selected" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+            )}
+            <button onClick={SaveVideo}>Speichern</button>
+            <div>
+                {publicItemsV.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.text}</p>
+                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                    </div>
+                ))}
+            </div>
     </div>
   );
 }
 const PostSiteP = () => {
+  
+  const [selectedImageP, setSelectedImageP] = useState(null);
+  const [publicItemsP, setPublicItemsP] = useState([]);
+    const PostImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setSelectedImageP(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const SaveImage = () => {
+      
+        if ( selectedImageP) {
+            setPublicItemsP([...publicItemsP, { image: selectedImageP }]);
+            setSelectedImageP(null);
+        } else {
+            alert('Choose a picture something, please!');
+        }
+    };
   return (
     <div className='search'>
         <div>
@@ -433,7 +461,33 @@ const PostSiteP = () => {
               New Photo
            </div>
         </div>  
-
+        <div className='ChoosePhoto'>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={PostImage}
+                className='inPOST'
+            />
+            {selectedImageP && (
+                <img src={selectedImageP} alt="Selected" className='imgPOST' />
+            )}
+           
+            <button onClick={SaveImage} className='SavePost'>
+            <p className="AniB" style={{ fontSize: '2.5vh' }}>
+              Save   
+            </p>
+            </button>
+            <br/>
+            <br/>
+            <div>
+                {publicItemsP.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.text}</p>
+                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                    </div>
+                ))}
+            </div>
+        </div>
     </div>
   );
 }
