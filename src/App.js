@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import { useReducer, useContext , useEffect, useRef, createContext } from 'react';
 import './App.css';
 import ReactGA, { set } from 'react-ga';
