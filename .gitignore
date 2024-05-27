@@ -7,8 +7,8 @@
 
 
 # Ignoriere Anmeldeinformationen
-src/credentials.json
-src/firebase.js
+.credentials.json
+.firebase.js
 
 # testing
 /coverage
