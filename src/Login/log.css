@@ -32,6 +32,7 @@
       background-clip: text;
       font-size: 200%;
       text-align: center;
+      width: auto;
      }
      #us {
        margin:10% 0%;
@@ -271,6 +272,58 @@
        font-size: 300%;
        text-align: center;
      }
+    .plus {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      font-size: 4.5vh;
+      position: fixed;
+      background-color: rgb(43, 42, 42);
+      border-radius: 50%;
+      width: 4.5vh;
+      height: 4.5vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 100;
+      cursor: pointer;
+      inset: 7vh 1vh;
+    }
+    .addThings {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      z-index: 1000;
+      background-color: rgb(43, 42, 42);
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 9%;
+      left: 9%;
+      padding: 1vh;
+      transition: ease-in 1s;
+    }
+    .eleT:hover {
+      background-color: rgb(69, 69, 69);
+    }
+    .eleT {
+      font-family: 'Dancing Script' ;
+    }
+    .inPOST {
+      background: none;
+      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+      color: transparent;
+      background-clip: text;
+      font-family: 'Dancing Script';
+      font-size: 2.5vh;
+      font-weight: 700;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 3vh;
+    }
+    .imgPOST {
+      text-align: center;
+      max-width: 350px;
+      max-height: 350px;
+    }
   
      
      

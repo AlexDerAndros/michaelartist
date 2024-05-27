@@ -2,23 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { auth, db } from '../config/firebase';
+import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
 import Cookies from 'js-cookie';
+import { getDoc, setDoc, collection, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
 import './log.css';
+
+
+
 
 export default function Log1() {
   const [loggedIN, setLoggedIN] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  
 
   useEffect(() => {
     if (Cookies.get('loggedIn') === 'true') {
       setLoggedIN(true);
     }
+    if (Cookies.get('isAdmin') === 'true') {
+      setIsAdmin(true);
+    }
   }, []);
 
   if (loggedIN) {
+    if (isAdmin) {
+      return <AdminDashBoard setLoggedIN={setLoggedIN} />;
+    }
     return <LoggedIN setLoggedIN={setLoggedIN} />;
   } else {
-    return <Login setLoggedIn={setLoggedIN} />;
+    return <Login setLoggedIn={setLoggedIN}/>;
   }
 }
 
@@ -55,7 +69,7 @@ function LoggedIN({ setLoggedIN }) {
   );
 }
 
-function Login({ setLoggedIn }) {
+function Login({ setLoggedIn, }) {
   const [registerUS, setRegisterUS] = useState('');
   const [registerPA, setRegisterPA] = useState('');
   const [us, setUs] = useState('');
@@ -86,6 +100,23 @@ function Login({ setLoggedIn }) {
       alert("Login successfully");
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
+      Cookies.set("user", us, { expires: 7 });
+      if (us == adminAlexUS  && pa == adminAlexPA  || us == adminMichaUS && pa == adminMichaPA) {
+        Cookies.set('isAdmin', true, {expires: 7});
+      }
+      else {
+        Cookies.set('isAdmin', true, {expires: 7});
+
+      }
+      // const docRef = doc(db, "users", us);
+      // const docSnap = await getDoc(docRef);
+      // if (docSnap.exists()) {
+      //   const data = docSnap.data();
+      //   const isAdmin = data.isAdmin || false;
+      //   Cookies.set('isAdmin', isAdmin.toString(), { expires: 7 });
+      //   window.location.reload();
+      // }
+
     } catch (error) {
       console.log(error.message);
       alert("Failed to login: " + error.message);
@@ -100,6 +131,18 @@ function Login({ setLoggedIn }) {
       alert("Registered successfully");
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
+      Cookies.set("user", registerUS, { expires: 7 });
+      window.location.reload();
+      if (us == adminAlexUS  && pa == adminAlexPA  || us == adminMichaUS && pa == adminMichaPA) {
+        Cookies.set('isAdmin', true, {expires: 7});
+      }
+      else {
+        Cookies.set('isAdmin', true, {expires: 7});
+        
+      }
+
+   
+
     } catch (error) {
       console.log(error.message);
       alert("Failed to register: " + error.message);
@@ -243,4 +286,259 @@ function Login({ setLoggedIn }) {
       )}
     </>
   );
+}
+
+function AdminDashBoard({setLoggedIN}) {
+  const logOut = async () => {
+    await signOut(auth);
+    alert("You are now logged out!");
+    Cookies.set('loggedIn', false, { expires: 1 / 48 });
+    setLoggedIN(false);
+  };
+
+  const [user, setUser] = useState({});
+  const[clickPhoto, setClickPhoto] = useState(false);
+  const[clickVideo, setClickVideo] = useState(false);
+  const[clickPost, setClickPost] = useState(false);
+  const [click, setClick] = useState(false);
+  const press = () => {
+    setClick(!click);
+  }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return unsubscribe;
+  }, []);
+
+  const pressPHOTO = () => {
+    setClickPhoto(!clickPhoto);
+  }
+  const pressVIDEO = () => {
+    setClickVideo(!clickVideo);
+  } 
+  const pressPOST = () => {
+    setClickPost(!clickPost);
+  }
+  const NewThings = [
+    {title:'New Photo', id: 1, press: pressPHOTO, click: clickPhoto },
+    {title:'New Video', id: 2, press: pressVIDEO,  click: clickVideo},
+    {title:'New Post', id: 3,  press: pressPOST, click: clickPost}
+  ];
+  if ( !clickPhoto && !clickVideo && !clickPost) {
+  return (
+    <div className='login'>
+      <div className='WEL'>
+        Welcome Admin {user?.email}!
+      </div>
+      <div className='plus' onClick={press} style={{transform: click ? "rotate(45deg)": "rotate(0deg)"}}> 
+       + 
+      </div>
+      <div className='addThings' style={{height: click ? "auto" : "0vh", width: click ? "auto" : "0vw", fontSize: click ? "3vh": "0vh", zIndex: click ? "1000" : "-100",  background: click ?  "rgb(43, 42, 42)" : "none"  }}>
+         {NewThings.map((item)=> (
+         <div onClick={item.press} className='eleT' key={item.index} style={{display: click ? "block": "none"}}> {item.title} </div>
+       ))}
+     </div>
+      <br />
+      <br />
+      <button className='logBtn' onClick={logOut}>
+        <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+          Logout
+        </p>
+      </button>
+    </div>
+  );
+}
+else if (clickVideo) {
+  return (
+   <>
+    <PostSiteV/>
+    <FontAwesomeIcon  onClick={pressVIDEO} icon={faArrowRight} size='2x' className='backIconS' />
+
+   </>
+  );
+}
+else if (clickPhoto) {
+ return (
+  <>
+    <PostSiteP/>
+    <FontAwesomeIcon  onClick={pressPHOTO} icon={faArrowRight} size='2x' className='backIconS' />
+
+    
+  </>
+ );
+} else if (clickPost) {
+ return (
+  <>
+    <PostSitePO/>
+    <FontAwesomeIcon  onClick={pressPOST} icon={faArrowRight} size='2x' className='backIconS' />
+
+     
+  </>
+ );
+}
+else {
+  return (
+    <>
+      Error
+    </>
+  );
+}
+
+}
+
+const PostSitePO = () => {
+  const [inputValuePO, setInputValuePO] = useState('');
+  const [publicItemsPO, setPublicItemsPO] = useState([]);
+  //Post
+  const checkPost = (e) => {
+    setInputValuePO(e.target.value);
+   }
+   const SaveINPOST = () => {
+    if (inputValuePO.trim() !== '') {
+        setPublicItemsPO([...publicItemsPO, inputValuePO]);
+        setInputValuePO('');
+    } else {
+        alert('Press something please.');
+    }
+}
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+              New Post
+           </div>
+           <input
+                type="text"
+                value={inputValuePO}
+                onChange={checkPost}
+            />
+            <button onClick={SaveINPOST}>Speichern</button>
+            <div>
+                {publicItemsPO.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+            </div>
+        </div>  
+
+    </div>
+  );
+}
+const PostSiteV = () => {
+  const [selectedImageV, setSelectedImageV] = useState(null);
+  const [publicItemsV, setPublicItemsV] = useState([]);
+  const [inputValueV, setInputValueV] = useState('');
+  //Video
+  const CheckVideo = (e) => {
+    setInputValueV(e.target.value);
+};
+
+const PostVideo = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setSelectedImageV(reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+const SaveVideo = () => {
+    if (inputValueV.trim() !== '' || selectedImageV) {
+        setPublicItemsV([...publicItemsV, { text: inputValueV, image: selectedImageV }]);
+        setInputValueV('');
+        setSelectedImageV(null);
+    } else {
+        alert('Choose a video, please!');
+    }
+};
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+             New Video
+           </div>
+        </div>  
+        <input
+                type="file"
+                accept="image/*"
+                onChange={PostVideo}
+            />
+            {selectedImageV && (
+                <img src={selectedImageV} alt="Selected" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+            )}
+            <button onClick={SaveVideo}>Speichern</button>
+            <div>
+                {publicItemsV.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.text}</p>
+                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                    </div>
+                ))}
+            </div>
+    </div>
+  );
+}
+const PostSiteP = () => {
+  
+  const [selectedImageP, setSelectedImageP] = useState(null);
+  const [publicItemsP, setPublicItemsP] = useState([]);
+    const PostImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setSelectedImageP(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const SaveImage = () => {
+      
+        if ( selectedImageP) {
+            setPublicItemsP([...publicItemsP, { image: selectedImageP }]);
+            setSelectedImageP(null);
+        } else {
+            alert('Choose a picture something, please!');
+        }
+    };
+  return (
+    <div className='search'>
+        <div>
+           <div className='info1'>
+              New Photo
+           </div>
+        </div>  
+        <div className='ChoosePhoto'>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={PostImage}
+                className='inPOST'
+            />
+            {selectedImageP && (
+                <img src={selectedImageP} alt="Selected" className='imgPOST' />
+            )}
+           
+            <button onClick={SaveImage} className='SavePost'>
+            <p className="AniB" style={{ fontSize: '2.5vh' }}>
+              Save   
+            </p>
+            </button>
+            <br/>
+            <br/>
+            <div>
+                {publicItemsP.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.text}</p>
+                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+  );
+
 }
