@@ -92,7 +92,7 @@ function HeaderBo() {
       </div>
      <Link to="/AboutUs">
       <div className='about'>
-        About Us
+        About Uss
       </div>
       </Link>  
       <div className='foto1'>
