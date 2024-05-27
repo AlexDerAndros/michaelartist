@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "brew": "^0.0.8",
     "firebase": "^10.1.0",
     "firebase-tools": "^13.0.2",
     "js-cookie": "^3.0.5",
