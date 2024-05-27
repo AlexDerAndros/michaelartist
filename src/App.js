@@ -87,7 +87,7 @@ function HeaderBo() {
    
       <div className='title' > 
       <Link to= '/'>
-        Artist Michael Ntrikosi
+        Artist Michael Ntrikos
       </Link>
       </div>
      <Link to="/AboutUs">
