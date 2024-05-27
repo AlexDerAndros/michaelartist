@@ -5,8 +5,11 @@
 /.pnp
 .pnp.js
 
-/src/firebase.js
-/src/credentials.js
+
+# Ignoriere Anmeldeinformationen
+src/credentials.json
+src/firebase.js
+
 # testing
 /coverage
 
