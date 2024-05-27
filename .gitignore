@@ -6,8 +6,6 @@
 .pnp.js
 
 
-# Ignoriere Anmeldeinformationen
-.credentials.json
 .firebase.js
 
 # testing
