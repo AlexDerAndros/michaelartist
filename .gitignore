@@ -6,7 +6,7 @@
 .pnp.js
 
 .firebase.js
-
+.credentials.json
 # testing
 /coverage
 
