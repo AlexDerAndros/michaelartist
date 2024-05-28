@@ -435,159 +435,159 @@ const PostSitePO = () => {
   );
 }
 const PostSiteV = () => {
-  const [selectedImageV, setSelectedImageV] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [publicItemsV, setPublicItemsV] = useState([]);
-const imageListRef = ref(storage, 'videos/');
+  const [selectedFile, setSelectedFile] = useState(null); // Add state to store the file
+  const videoListRef = ref(storage, 'videos/');
+
   const PostVideo = (e) => {
     const file = e.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setSelectedImageV(reader.result);
-        };
-        reader.readAsDataURL(file);
+      setSelectedFile(file); // Store the file
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedVideo(reader.result); // Store the base64 string
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const SaveVideo = () => {
-    if ( selectedImageV == null) {
+    if (selectedFile == null) {
       return 1;
-
+    } else {
+      const videoRef = ref(storage, `videos/${selectedFile.name + v4()}`);
+      uploadBytes(videoRef, selectedFile).then(() => {
+        alert('Video Uploaded');
+      });
     }
-    else { 
-    const imageRef = ref(storage, `videos/${selectedImageV.name + v4()  } `);
-    uploadBytes( imageRef, selectedImageV).then(() => {
-      alert('Image Uploaded');
-    });
-  }
-    
   };
+
+  useEffect(() => {
+    listAll(videoListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setPublicItemsV((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
+  
+
+  return (
+    <div className='search' style={{overflowY:'scroll'}}>
+      <div>
+        <div className='headPO'>
+          New Video
+        </div>
+      </div>
+      <div className='ChoosePhoto'>
+        <input
+          type="file"
+          accept="video/*"
+          onChange={PostVideo}
+          className='inPOST'
+        />
+        {selectedVideo && (
+          <video controls autoPlay className='videoPOST'>
+            <source src={selectedVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+
+        <br />
+        <br />
+        <div>
+          {publicItemsV.map((url, index) => (
+            <div key={index}>
+              <video controls autoPlay className='videoSPO'>
+                <source src={url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          ))}
+        </div>
+        <br />
+        <button onClick={SaveVideo} className='SavePost'>
+          <p className="AniB" style={{ fontSize: '2.5vh' }}>
+            Publish
+          </p>
+        </button>
+      </div>
+    </div>
+  );
+};
+export const PostSiteP = () => {
+  const [publicItemsP, setPublicItemsP] = useState([]);
+  const [selectedImageP, setSelectedImageP] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null); // Add state to store the file
+  const imageListRef = ref(storage, 'images/');
+
+  const PostImage = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file); // Store the file
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImageP(reader.result); // Store the base64 string
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const SaveImage = () => {
+    if (selectedFile == null) {
+      return 1;
+    } else {
+      const imageRef = ref(storage, `images/${selectedFile.name + v4()}`);
+      uploadBytes(imageRef, selectedFile).then(() => {
+        alert('Image Uploaded');
+      });
+    }
+  };
+
   useEffect(() => {
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setPublicItemsV((prev) => [...prev, url]);
-        })
-      })
-    }) ;
-  }, []);
-  return (
-    <div className='search'>
-        <div>
-           <div className='headPO'>
-              New Video
-           </div>
-        </div>  
-        <div className='ChoosePhoto'>
-            <input
-                type="file"
-                accept="video/*"
-                onChange={PostVideo}
-                className='inPOST'
-            />
-            {selectedImageV && (
-                 <video controls autoPlay className='videoPOST'>
-                 <source src={selectedImageV} type="video/mp4"/>
-                 Your browser does not support the video tag.
-                </video>
-            )}
-           
-            <br/>
-            <br/>
-            <div>
-                {publicItemsV.map((item, index) => (
-                   
-                    <div key={index} >
-                        {item.image &&  <video controls autoPlay className='videoSPO'>
-                 <source src={item.image} type="video/mp4"/>
-                 Your browser does not support the video tag.
-                </video>}
-                    </div>
-                ))}
-            </div>
-            <br/>
-            <button onClick={SaveVideo} className='SavePost'>
-            <p className="AniB" style={{ fontSize: '2.5vh' }}>
-              Publish
-            </p>
-            </button>
-        </div>
-    </div>
-  );
-}
-export const PostSiteP = ({ }) => {
-  const [publicItemsP, setPublicItemsP] = useState([]);
-  const [selectedImageP, setSelectedImageP] = useState(null);
-  const imageListRef = ref(storage, 'images/');
-    const PostImage = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-              setSelectedImageP(reader.result);
-          };
-          reader.readAsDataURL(file);
-      }
-    };
-
-    const SaveImage = () => {
-      if ( selectedImageP == null) {
-        return 1;
-
-      }
-      else { 
-      const imageRef = ref(storage, `images/${selectedImageP.name + v4()  } `);
-      uploadBytes( imageRef, selectedImageP).then(() => {
-        alert('Image Uploaded');
+          setPublicItemsP((prev) => [...prev, url]);
+        });
       });
-    }
-      
-    };
-    useEffect(() => {
-      listAll(imageListRef).then((response) => {
-        response.items.forEach((item) => {
-          getDownloadURL(item).then((url) => {
-            setPublicItemsP((prev) => [...prev, url]);
-          })
-        })
-      }) ;
-    }, []);
+    });
+  }, []);
+
   return (
-    <div className='search' style={{overflowY: 'scroll'}}>
+    <div className='search' style={{ overflowY: 'scroll' }}>
+      <div>
+        <div className='headPO'>New Photo</div>
+      </div>
+      <div className='ChoosePhoto'>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={PostImage}
+          className='inPOST'
+        />
+        {selectedImageP && (
+          <img src={selectedImageP} alt="Selected" className='imgPOST' />
+        )}
+
+        <br />
+        <br />
         <div>
-           <div className='headPO'>
-              New Photo
-           </div>
-        </div>  
-        <div className='ChoosePhoto'>
-            <input
-                type="file"
-                accept="image/*"
-                onChange={PostImage}
-                className='inPOST'
-            />
-            {selectedImageP && (
-                <img src={selectedImageP} alt="Selected" className='imgPOST' />
-            )} 
-           
-            <br/>
-            <br/>
-            <div>
-                {publicItemsP.map((url) => (
-                   
-                    <div >
-                        <img src={url}  className='imgSPO' />
-                    </div>
-                ))}
+          {publicItemsP.map((url) => (
+            <div key={url}>
+              <img src={url} className='imgSPO' />
             </div>
-            <br/>
-            <button onClick={SaveImage} className='SavePost'>
-            <p className="AniB" style={{ fontSize: '2.5vh' }}>
-              Publish
-            </p>
-            </button>
+          ))}
         </div>
+        <br />
+        <button onClick={SaveImage} className='SavePost'>
+          <p className="AniB" style={{ fontSize: '2.5vh' }}>
+            Publish
+          </p>
+        </button>
+      </div>
     </div>
   );
-
-}
+};
