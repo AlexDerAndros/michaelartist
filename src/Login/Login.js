@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth, db } from '../config/firebase';
+import { auth, db, storage } from '../config/firebase';
 import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
 import Cookies from 'js-cookie';
 import { getDoc, setDoc, collection, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
 import './log.css';
-
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { v4 } from 'uuid';
 
 
 
@@ -42,6 +43,8 @@ function LoggedIN({ setLoggedIN }) {
     alert("You are now logged out!");
     Cookies.set('loggedIn', false, { expires: 1 / 48 });
     setLoggedIN(false);
+    Cookies.remove('username');
+    Cookies.remove('isAdmin');
   };
 
   const [user, setUser] = useState({});
@@ -100,23 +103,14 @@ function Login({ setLoggedIn, }) {
       alert("Login successfully");
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
-      Cookies.set("user", us, { expires: 7 });
+      Cookies.set("username", us, { expires: 7 });
       if (us == adminAlexUS  && pa == adminAlexPA  || us == adminMichaUS && pa == adminMichaPA) {
         Cookies.set('isAdmin', true, {expires: 7});
       }
       else {
-        Cookies.set('isAdmin', true, {expires: 7});
+        Cookies.set('isAdmin', false, {expires: 7});
 
       }
-      // const docRef = doc(db, "users", us);
-      // const docSnap = await getDoc(docRef);
-      // if (docSnap.exists()) {
-      //   const data = docSnap.data();
-      //   const isAdmin = data.isAdmin || false;
-      //   Cookies.set('isAdmin', isAdmin.toString(), { expires: 7 });
-      //   window.location.reload();
-      // }
-
     } catch (error) {
       console.log(error.message);
       alert("Failed to login: " + error.message);
@@ -131,13 +125,13 @@ function Login({ setLoggedIn, }) {
       alert("Registered successfully");
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
-      Cookies.set("user", registerUS, { expires: 7 });
+      Cookies.set("username", registerUS, { expires: 7 });
       window.location.reload();
-      if (us == adminAlexUS  && pa == adminAlexPA  || us == adminMichaUS && pa == adminMichaPA) {
+      if (registerUS == adminAlexUS  && registerPA == adminAlexPA  || registerUS == adminMichaUS && registerPA == adminMichaPA) {
         Cookies.set('isAdmin', true, {expires: 7});
       }
       else {
-        Cookies.set('isAdmin', true, {expires: 7});
+        Cookies.set('isAdmin', false, {expires: 7});
         
       }
 
@@ -294,6 +288,8 @@ function AdminDashBoard({setLoggedIN}) {
     alert("You are now logged out!");
     Cookies.set('loggedIn', false, { expires: 1 / 48 });
     setLoggedIN(false);
+    Cookies.remove('isAdmin');
+    Cookies.remove('username');
   };
 
   const [user, setUser] = useState({});
@@ -328,13 +324,13 @@ function AdminDashBoard({setLoggedIN}) {
   if ( !clickPhoto && !clickVideo && !clickPost) {
   return (
     <div className='login'>
-      <div className='WEL'>
+      <div className='WEL' style={{zIndex: click ? '-100' : '1', marginTop: click ? '15%' : '0%', transition: '0.2s ease-in'}}>
         Welcome Admin {user?.email}!
       </div>
       <div className='plus' onClick={press} style={{transform: click ? "rotate(45deg)": "rotate(0deg)"}}> 
        + 
       </div>
-      <div className='addThings' style={{height: click ? "auto" : "0vh", width: click ? "auto" : "0vw", fontSize: click ? "3vh": "0vh", zIndex: click ? "1000" : "-100",  background: click ?  "rgb(43, 42, 42)" : "none"  }}>
+      <div className='addThings' style={{height: click ? "auto" : "0vh", width: click ? "auto" : "0vw", fontSize: click ? "3vh": "0vh", zIndex: '-1',  background: click ?  "rgb(43, 42, 42)" : "none"  }}>
          {NewThings.map((item)=> (
          <div onClick={item.press} className='eleT' key={item.index} style={{display: click ? "block": "none"}}> {item.title} </div>
        ))}
@@ -405,20 +401,34 @@ const PostSitePO = () => {
   return (
     <div className='search'>
         <div>
-           <div className='info1'>
+           <div className='headPO'>
               New Post
            </div>
            <input
                 type="text"
                 value={inputValuePO}
                 onChange={checkPost}
+                placeholder='Write a message to your community...'
+                className='inPOST1'
+
             />
-            <button onClick={SaveINPOST}>Speichern</button>
-            <div>
+            <button onClick={SaveINPOST} className='SavePost' >
+            <p className="AniB" style={{ fontSize: '2.5vh', marginTop: '-2.2vh', height:'5.5%' }}>
+              Save   
+            </p>
+            </button>
+            <ul>
                 {publicItemsPO.map((item, index) => (
-                    <p key={index}>{item}</p>
+                    <li key={index} className='messagePOST'>{item}</li>
                 ))}
-            </div>
+            </ul>
+
+            <br/>
+            <button className='SavePost' >
+            <p className="AniB" style={{ fontSize: '2.5vh' }}>
+              Publish
+            </p>
+            </button>
         </div>  
 
     </div>
@@ -427,13 +437,8 @@ const PostSitePO = () => {
 const PostSiteV = () => {
   const [selectedImageV, setSelectedImageV] = useState(null);
   const [publicItemsV, setPublicItemsV] = useState([]);
-  const [inputValueV, setInputValueV] = useState('');
-  //Video
-  const CheckVideo = (e) => {
-    setInputValueV(e.target.value);
-};
-
-const PostVideo = (e) => {
+const imageListRef = ref(storage, 'videos/');
+  const PostVideo = (e) => {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -442,72 +447,115 @@ const PostVideo = (e) => {
         };
         reader.readAsDataURL(file);
     }
-};
+  };
 
-const SaveVideo = () => {
-    if (inputValueV.trim() !== '' || selectedImageV) {
-        setPublicItemsV([...publicItemsV, { text: inputValueV, image: selectedImageV }]);
-        setInputValueV('');
-        setSelectedImageV(null);
-    } else {
-        alert('Choose a video, please!');
+  const SaveVideo = () => {
+    if ( selectedImageV == null) {
+      return 1;
+
     }
-};
+    else { 
+    const imageRef = ref(storage, `videos/${selectedImageV.name + v4()  } `);
+    uploadBytes( imageRef, selectedImageV).then(() => {
+      alert('Image Uploaded');
+    });
+  }
+    
+  };
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setPublicItemsV((prev) => [...prev, url]);
+        })
+      })
+    }) ;
+  }, []);
   return (
     <div className='search'>
         <div>
-           <div className='info1'>
-             New Video
+           <div className='headPO'>
+              New Video
            </div>
         </div>  
-        <input
+        <div className='ChoosePhoto'>
+            <input
                 type="file"
-                accept="image/*"
+                accept="video/*"
                 onChange={PostVideo}
+                className='inPOST'
             />
             {selectedImageV && (
-                <img src={selectedImageV} alt="Selected" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                 <video controls autoPlay className='videoPOST'>
+                 <source src={selectedImageV} type="video/mp4"/>
+                 Your browser does not support the video tag.
+                </video>
             )}
-            <button onClick={SaveVideo}>Speichern</button>
+           
+            <br/>
+            <br/>
             <div>
                 {publicItemsV.map((item, index) => (
-                    <div key={index}>
-                        <p>{item.text}</p>
-                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                   
+                    <div key={index} >
+                        {item.image &&  <video controls autoPlay className='videoSPO'>
+                 <source src={item.image} type="video/mp4"/>
+                 Your browser does not support the video tag.
+                </video>}
                     </div>
                 ))}
             </div>
+            <br/>
+            <button onClick={SaveVideo} className='SavePost'>
+            <p className="AniB" style={{ fontSize: '2.5vh' }}>
+              Publish
+            </p>
+            </button>
+        </div>
     </div>
   );
 }
-const PostSiteP = () => {
-  
-  const [selectedImageP, setSelectedImageP] = useState(null);
+export const PostSiteP = ({ }) => {
   const [publicItemsP, setPublicItemsP] = useState([]);
+  const [selectedImageP, setSelectedImageP] = useState(null);
+  const imageListRef = ref(storage, 'images/');
     const PostImage = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectedImageP(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+      const file = e.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+              setSelectedImageP(reader.result);
+          };
+          reader.readAsDataURL(file);
+      }
     };
 
     const SaveImage = () => {
+      if ( selectedImageP == null) {
+        return 1;
+
+      }
+      else { 
+      const imageRef = ref(storage, `images/${selectedImageP.name + v4()  } `);
+      uploadBytes( imageRef, selectedImageP).then(() => {
+        alert('Image Uploaded');
+      });
+    }
       
-        if ( selectedImageP) {
-            setPublicItemsP([...publicItemsP, { image: selectedImageP }]);
-            setSelectedImageP(null);
-        } else {
-            alert('Choose a picture something, please!');
-        }
     };
+    useEffect(() => {
+      listAll(imageListRef).then((response) => {
+        response.items.forEach((item) => {
+          getDownloadURL(item).then((url) => {
+            setPublicItemsP((prev) => [...prev, url]);
+          })
+        })
+      }) ;
+    }, []);
   return (
-    <div className='search'>
+    <div className='search' style={{overflowY: 'scroll'}}>
         <div>
-           <div className='info1'>
+           <div className='headPO'>
               New Photo
            </div>
         </div>  
@@ -520,23 +568,24 @@ const PostSiteP = () => {
             />
             {selectedImageP && (
                 <img src={selectedImageP} alt="Selected" className='imgPOST' />
-            )}
+            )} 
            
-            <button onClick={SaveImage} className='SavePost'>
-            <p className="AniB" style={{ fontSize: '2.5vh' }}>
-              Save   
-            </p>
-            </button>
             <br/>
             <br/>
             <div>
-                {publicItemsP.map((item, index) => (
-                    <div key={index}>
-                        <p>{item.text}</p>
-                        {item.image && <img src={item.image} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
+                {publicItemsP.map((url) => (
+                   
+                    <div >
+                        <img src={url}  className='imgSPO' />
                     </div>
                 ))}
             </div>
+            <br/>
+            <button onClick={SaveImage} className='SavePost'>
+            <p className="AniB" style={{ fontSize: '2.5vh' }}>
+              Publish
+            </p>
+            </button>
         </div>
     </div>
   );

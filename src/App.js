@@ -28,6 +28,9 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { getAuth, signOut , GoogleAuthProvider , signInWithPopup,  getAdditionalUserInfo, signInWithRedirect } from "firebase/auth";
 import Cookies from 'js-cookie';
+import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
+import { storage } from './config/firebase';
+
 
 import  PictureShopp from './Bilder Shopping/pictureShop';
 import Bildgalerie1 from './Bildergalerie/Bildergalerie';
@@ -37,31 +40,8 @@ import Videogalerie1 from './Videogalerie/Videogalerie';
 import AboutUs1 from './Über uns/AboutUs';
 import Chat1 from './Chat/chat';
 import Biographie1 from './Biographie/biographie';
-export const images =[
-  './michaelBackground.png',
-  "./FrauFarbverlauf.jpg",
-  "./FlügelF.jpeg.jpg",
-  './IMG_1268.JPEG',
-  './GroßeBrüsteF.JPEG',
-  './IMG_0493.JPEG',
-  './Joker.jpeg',
-  './BootSonne.jpeg',
-  './Lecken.jpeg',
-  './Medusa.jpeg',
-  './MickeyMouse.jpeg', 
-  './FrauSilber.jpeg',
-  './FrauMeer.jpeg',
-  './TraumfrauBlume.jpeg',
-   './Jessia1.jpeg',
-   './Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
-   './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
-  './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
-  './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
-  , './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
-  './LächelF.jpeg', './SchWeiF.jpeg','./BuntMusterFrau.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
-   './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
-  './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
-   './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg'];     
+import { PostSiteP } from './Login/Login';
+
   export default function App() {
     return (
      <main>
@@ -180,9 +160,47 @@ function HeaderBo() {
  
 
 function ImageList (){
+  const [publicItemsP, setPublicItemsP] = useState([]);
+  const imageListRef = ref(storage, 'images/');
+
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setPublicItemsP((prev) => [...prev, url]);
+        })
+      })
+    }) ;
+  }, []);
+  const images =[
+    publicItemsP,
+    './michaelBackground.png',
+    "./FrauFarbverlauf.jpg",
+    "./FlügelF.jpeg.jpg",
+    './IMG_1268.JPEG',
+    './GroßeBrüsteF.JPEG',
+    './IMG_0493.JPEG',
+    './Joker.jpeg',
+    './BootSonne.jpeg',
+    './Lecken.jpeg',
+    './Medusa.jpeg',
+    './MickeyMouse.jpeg', 
+    './FrauSilber.jpeg',
+    './FrauMeer.jpeg',
+    './TraumfrauBlume.jpeg',
+     './Jessia1.jpeg',
+     './Motorrad.jpeg','./FrauGarage.jpeg', './mannBlitz2.jpeg', './FrauSchläft.jpeg', './EngelTeufel.jpeg','./Maria2.jpeg', './Teufel2.jpeg', 
+     './Wikinger.jpeg', './BlumenFrau2.jpeg', './Eiffelturm.jpeg', './KettenFrau2.jpeg', './KronenFrau.jpeg', './BaumFrau.jpeg', './Läspisch2.jpeg', './Jessia2.jpeg',
+    './WasserFrau.jpeg', './LampenFrau.jpeg', './GeEngel.jpeg', './SchiffE2.jpeg', './BuntF.jpeg', './HolzSchiff.jpeg',
+    './Eli2.jpeg', './EngFrau2.jpeg', './FrauS.jpeg' , './BetenF.jpeg', './BootFrau.jpeg', './ColleFRau2.jpeg', './Athen.jpeg', './BluSchlafFrau.jpeg'
+    , './Indianer.jpeg', './Cello2.jpeg', './Avatar2.jpeg', './BRFrau.jpeg', './HaarMerer.jpeg', './SpiegelF.jpeg', './SchlafMF.jpeg',
+    './LächelF.jpeg', './SchWeiF.jpeg','./BuntMusterFrau.jpeg', './Tanzen2.jpeg', './Pferd2.jpeg', './CringeF.jpeg', './TanzendeF.jpeg', './AlkoholF2.jpeg',
+     './Löwe.jpeg', './BulleF.jpeg', './FrauSch.jpeg', './BuntF2.jpeg', './KriegerGF.jpeg','./FischF.jpeg', './SchmetterlingF.jpeg', './StockF.jpeg',
+    './FarbenF.jpeg', './Hochzeit.jpeg', './BootE.jpeg', './HausdGe.jpeg', './Brüste.jpeg', './FBJZ.jpeg', './SchiffAE2.jpeg',
+     './Statur.jpeg','./7.jpeg','./GelbeFrau.jpeg', './Ritterin.jpeg', './Boxerin.jpeg', ];     
+  
+
   const [currentIndex, setCurrentIndex]= useState(0);
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(1);
   const[click,setClick] = useState(false);
   
   const BiggerPic= () => {
@@ -203,7 +221,8 @@ function ImageList (){
   return (
    <div className='imageList' style={{
     background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
-    margin: '2% 13%'}}>
+    }}>
+   <div className='picPos'>  
     <img  onClick={BiggerPic} className='imgI' src= {images[currentIndex]} 
        style= {{
           transform: click ? 'scale(1.6)' : 'scale(1)',
@@ -211,6 +230,7 @@ function ImageList (){
           
         }}
     />
+   </div>  
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
       <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:"absolute", margin:"-30% -10%"}} />
@@ -219,6 +239,7 @@ function ImageList (){
     <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white', position:"absolute" , margin:"-30% -10%" }}/>
   </button>
     </div>
+    
    </div>
   );
 }
@@ -232,6 +253,9 @@ function Home() {
   let user;
   if ( Cookies.get('loggedIn') === 'true') {
     user = username + "!";
+  }
+  else if ( Cookies.get('isAdmin') === 'true') {
+    user = 'Admin' + username;
   }
   else {
     user ="to my Website!";
