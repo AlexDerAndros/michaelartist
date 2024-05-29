@@ -7,8 +7,17 @@ import { storage } from '../config/firebase';
 
 export default function Videogalerie1() {
   const [publicItemsV, setPublicItemsV] = useState([]);
-  const imageListRef = ref(storage, 'images/');
-  const videos = [ publicItemsV, './C30BCC52-6700-4FCF-9B90-167169F37065.mp4', "./export_1709221524705.MP4" 
+  const videoListRef = ref(storage, 'videos/');
+  useEffect(() => {
+    listAll(videoListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setPublicItemsV((prev) => [...prev, url]);
+        })
+      })
+    }) ;
+  }, []);
+  const videos = [ './C30BCC52-6700-4FCF-9B90-167169F37065.mp4',  ...publicItemsV, "./export_1709221524705.MP4" 
   ,"./copy_3045E7F6-195A-4031-BFDD-AEB4B49D547C.MP4",
   './copy_AA8F9BA2-F28C-4E56-BC28-D177B0ACE41D.MP4'
   , "./8ba2ba26c765447dbaeb8a156f1dd5a0.MP4"
@@ -32,15 +41,7 @@ export default function Videogalerie1() {
   './4D7DC781-E5F2-40DF-91D5-0F3E6D565275.MP4','./7D4ED2BD-1040-4417-B945-A722F0785752.MP4',
   './10D5946A-3EA9-4332-872E-03C075986C9C.MP4', './C37D618A-F14A-486D-AB9D-6B1B3679208A.MP4',
   ];
-  useEffect(() => {
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setPublicItemsV((prev) => [...prev, url]);
-        })
-      })
-    }) ;
-  }, []);
+ 
  
  const [currentIndex, setCurrentIndex]= useState(0);
  const nextImage = () => {

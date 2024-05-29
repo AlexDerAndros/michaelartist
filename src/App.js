@@ -173,8 +173,8 @@ function ImageList (){
     }) ;
   }, []);
   const images =[
-    publicItemsP,
     './michaelBackground.png',
+    ...publicItemsP, 
     "./FrauFarbverlauf.jpg",
     "./FlügelF.jpeg.jpg",
     './IMG_1268.JPEG',
