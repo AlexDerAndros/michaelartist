@@ -4,25 +4,31 @@
     font-family: 'Dancing Script',
     cursive, 'Roboto', sans-serif;
 }
+.imgBtnV {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 /**Handy**/
 @media only screen and (max-width:700px) {
       /**Videogalerie**/
       .videogalerie {
         background-color: rgba(0, 0, 0, 0.877);
         width: 80%;
-          height: 75%;
-          padding: 1vh;
-          border-radius: 4%;
-          z-index: -100;
-          left: 7%;
-          right: 3%;
-          top: 10%;
-          position: fixed;
+        height: 80%;
+        padding: 1vh;
+        border-radius: 4%;
+        z-index: -100;
+        left: 7%;
+        right: 3%;
+        top: 10%;
+        position: fixed;
          
       }
       .video {
         width: 80%;
-        height: 90%;
+        height: 80%;
         border-radius: 5%;
         margin:0% 13%;
       }
@@ -31,6 +37,9 @@
        color: white;
        font-size: 3vh;
        margin: 0% 5%;
+      }
+      .imgBtnV {
+        margin: 5% -5%;
       }
 }
 
@@ -60,7 +69,7 @@
     width: 80%;
     height: 90%;
     border-radius: 5%;
-    margin:0% 13%;
+    margin:  10%;
   }
    
   .likeNumber1 {
@@ -68,7 +77,7 @@
    font-size: 3vh;
    margin: 0% 5%;
   }
-  
+
   
   
 }

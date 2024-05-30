@@ -26,14 +26,11 @@
       
       }
       .imgG {
-         width: 90%;
-         height: 70%;
-         padding:0% 5% ;
+         width: 85%;
+         height: 85%;
+         padding:0% 7.5% ;
          border-radius: 14%;
          z-index: -1;
-         max-height: 550px;
-         max-width: 500px;
-        margin-bottom: 45%; 
        
       }
       .icons1 {
@@ -41,7 +38,6 @@
         flex-direction: row;
         justify-content: space-around;
         position: sticky;
-        margin: -32% 0%;
       }
       .like1 {
        position: sticky;
@@ -52,10 +48,10 @@
       .likeNumber {
         color: white;
         font-size: 4vh;
-        margin: 0% 33%;
-      
+        margin: 0% 34%;
+         
       }
-      
+    
       
       .commentOpen {
         width: 82%;
@@ -95,6 +91,7 @@
         margin: 3%;
         color: white;
       }
+     
 /*
 }
 

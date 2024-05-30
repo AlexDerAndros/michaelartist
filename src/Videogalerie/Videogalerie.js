@@ -54,11 +54,14 @@ function prevImage() {
 }
   return (
     <div className='videogalerie'>
+        <div className='headAb' >
+           Video gallery
+        </div>
        <video controls autoPlay className='video' key={videos[currentIndex]}>
         <source src={videos[currentIndex]} type="video/mp4"/>
         Your browser does not support the video tag.
        </video>
-       <div className='imgBtn'>
+       <div className='imgBtnV'>
     <button  onClick={prevImage} className='btn1'> 
       <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 5%'}} />
     </button>

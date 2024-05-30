@@ -16,11 +16,7 @@ import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icon
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faCross } from '@fortawesome/free-solid-svg-icons';
-import { Component } from 'react';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -75,14 +71,14 @@ function HeaderBo() {
         About Us
       </div>
       </Link>  
-      <div className='foto1'>
+      <div>
         <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
-          <img className='img1' src='./tiktok.jpeg'/>
+          <FontAwesomeIcon icon={faTiktok} size={40}  className='ttIcon'/>
         </a>
       </div>
       <div className='foto2'>
         <a href='https://www.instagram.com/michael.n.artist/?igshid=YmMyMTA2M2Y%3D'>
-         <img className='img2' src='./instagram.jpeg'/>
+          <FontAwesomeIcon icon={faInstagram}   className='igIcon'/>
         </a>
       </div>
     </div>
@@ -438,6 +434,7 @@ const SEARCH = () => {
             {filteredSearchItems.map((item) => (
               <li key={item.id} className={item.className}  onClick={item.press}>
                 {item.icon}
+                &nbsp;
                 {item.term}
               </li>
             ))}
@@ -457,15 +454,24 @@ function NotLogIn() {
    </div>
   );
 }
+function NotAdmin() {
+  return (
+    <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
+      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+      Sorry you are not an admin! This function is still under development.
+      </div>
+    </div>
+   );
+}
 function Biographie() {
   return <Biographie1/>;
 }
 function Chat() {
-  if ( Cookies.get('loggedIn') === 'true') {
-   return <Chat1/>;
+  if (Cookies.get('isAdmin') === 'true') {
+    return <Chat1/>;
   }
   else {
-    return <NotLogIn/>;
+    return <NotAdmin/>;
   }
 }
 function Bildgalerie() {

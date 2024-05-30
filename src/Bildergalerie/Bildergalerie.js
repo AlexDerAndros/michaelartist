@@ -105,9 +105,12 @@ export default function Bildgalerie1() {
 
   return (
     <div className='bildgalerie'>
+      <div className="headAb">
+         Picture gallery
+      </div>
       <div className='grid'>
         {images.map((item, index) => (
-          <div key={index}>
+          <div key={index} style={{marginBottom: '20%'}}>
             <img src={item} className='imgG' />
             <InfoB imageId={`image-${index}`} />
           </div>
@@ -190,53 +193,68 @@ function Likes({ imageId }) {
   }, []);
 
   useEffect(() => {
-    if (user) {
-      const fetchLikes = async () => {
-        try {
-          const docRef = doc(db, "likes", imageId);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            const data = docSnap.data();
-            setLikeNumber(data.likeNumber || 0);
-            setLike(data.users && data.users[user.uid] ? 'red' : 'white');
+    const fetchLikes = async () => {
+      try {
+        const docRef = doc(db, "likes", imageId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setLikeNumber(data.likeNumber || 0);
+          if (user && data.users && data.users[user.uid]) {
+            setLike('red');
           }
-        } catch (error) {
-          console.error("Error fetching likes:", error);
         }
-      };
-      fetchLikes();
-    }
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+
+    fetchLikes();
   }, [imageId, user]);
 
   const handleClick = async () => {
-    if (!user) return;
-
-    try {
-      const docRef = doc(db, "likes", imageId);
-      const docSnap = await getDoc(docRef);
-      let newCount;
-      let users = {};
-      if (docSnap.exists()) {
-        users = docSnap.data().users || {};
-        if (users[user.uid]) {
-          delete users[user.uid];
-          newCount = likeNumber > 0 ? likeNumber - 1 : 0;  // Ensure likeNumber does not go below 0
-          setLike('white');
+    let newCount;
+    if (user) {
+      try {
+        const docRef = doc(db, "likes", imageId);
+        const docSnap = await getDoc(docRef);
+        let users = {};
+        if (docSnap.exists()) {
+          users = docSnap.data().users || {};
+          if (users[user.uid]) {
+            delete users[user.uid];
+            newCount = likeNumber > 0 ? likeNumber - 1 : 0;
+            setLike('white');
+          } else {
+            users[user.uid] = true;
+            newCount = likeNumber + 1;
+            setLike('red');
+          }
         } else {
           users[user.uid] = true;
-          newCount = likeNumber + 1;
+          newCount = 1;
           setLike('red');
         }
-      } else {
-        users[user.uid] = true;
-        newCount = 1;
-        setLike('red');
+        await setDoc(docRef, { likeNumber: newCount, users }, { merge: true });
+      } catch (error) {
+        console.error("Error updating likes:", error);
       }
-      await setDoc(docRef, { likeNumber: newCount, users }, { merge: true });
-      setLikeNumber(newCount);
-    } catch (error) {
-      console.error("Error updating likes:", error);
+    } else {
+      newCount = likeNumber + 1;
+      setLike('red');
     }
+    if (like === 'red') {
+      setLike('white');
+      newCount = likeNumber - 1;
+      setLikeNumber(newCount);
+      
+    } else {
+      setLike('red');
+      newCount = likeNumber + 1;
+      setLikeNumber(newCount);
+      
+    }
+    setLikeNumber(newCount);
   };
 
   return (
