@@ -163,6 +163,10 @@ export default function PictureShopp() {
    
     const [format, setFormat] = useState(false);
     const[fil,setFil] = useState(false);
+    const [ clickBuy, setClickBuy ] = useState(false);
+    const pressBuy = () => {
+      setClickBuy(!clickBuy);
+    }
   
     const [priceFilters, setPriceFilters] = useState(Array(10).fill(false));
     const toggleFilter = (index) => {
@@ -175,45 +179,45 @@ export default function PictureShopp() {
       setPriceFilters(Array(10).fill(false)); 
     };
     
-    
+  
    
     const [ShopImages,setShopImages] = useState([
-      {id:1, price:700, src:'./FrauB2.jpeg', format:'50cmx70cm',paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press0, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click:click0, img:"imgSh1"},
-      {id:2, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1, img:"imgSh1"},
-      {id:3, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2, img:"imgSh1"},
-    {id:4, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click3, img:"imgSh1"},
-    {id:5 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click4, img:"imgSh1"},
-    {id:6, price:english ? "VB" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5, img:"imgSh1"},
-    {id:7, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click6, img:"imgSh1"},
-    {price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click7, img:"imgSh1"},
-    {price:450, src:'./BlumenFrau21.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press8, classPreis: "pri", classGR: "shopGR2", classEle:"elePic" , click: click8, img:"imgSh1"},
-    {price:450, src:'./KüssFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press9, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click9, img:"imgSh1"},
-    {price:650, src:'./EngMann.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press10, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click10, img:"imgSh1"},
-    {price:350, src:'./EngFrau2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press11, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click11, img:"imgSh1"},
-    {price:150, src:'./Brüste.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press12, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click12, img:"imgSh1"},
-    {price:900, src:'./AlkoholF2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press13, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click13, img:"imgSh1"},
-    {price:750, src:'./Avatar2.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press14, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click14, img:"imgSh1"},
-    {price:700, src:'./Cello2.jpeg', format:'50cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press15, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click15, img:"imgSh1"},
-    {price:650, src:'./Pferd2.jpeg', format:'40cmx50cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press16, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click16, img:"imgSh1"},
-    {price:450, src:'./Läspisch2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press17, classPreis: "pri", classGR: "shopGR5", classEle:"elePic", click: click17, img:"imgSh1"},
-    {price:350, src:'./Tanzen2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press18, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click18, img:"imgSh1"},
-    {price:700, src:'./Maria2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press19, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click19, img:"imgSh1"},
-    {price:850, src:'./Teufel2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error",press20, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click20, img:"imgSh1"},
-    {price:650, src:'./MickeyMouse.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press21, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", img:"imgSh1"},
-    {price:950, src:'./Athen.jpeg', format:'120cmx60cm', paintedT:english ? 'acryl colors and it is sealed.': german ? "mit Acryfarben und es ist versigelt": "Error", press: press22, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click21, img:"imgSh1"},
-    {price:500, src:'./Indianer.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press23, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click22, img:"imgSh1"},
-    {price:150, src:'./GelbeFrau.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press24, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click23, img:"imgSh1"},
-    {price:400, src:'./BootSonne.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press25, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click: click24, img:"imgSh1"},
-    {price:300, src:'./Lecken.jpeg', format:'30cmx40cm',  paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press26, classPreis: "pri", classGR: "shopGR8", classEle:"elePic",click: click25, img:"imgSh1"},
-    {price:700, src:'./FrauMeer.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press27, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click26, img:"imgSh1"},
-    {price:800, src:'./Eiffelturm.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press28, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click27, img:"imgSh1"},
-    {price:600, src:'./EngelTeufel.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press29, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click: click28, img:"imgSh1"},
-    {price:650, src:'./BulleF.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press30, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click29, img:"imgSh1"},
-    {price:400, src:'./BluSchlafFrau.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press31, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click30, img:"imgSh1"},
-    {price:750, src:'./Löwe.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press32, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click31, img:"imgSh1"},
-    {price:650, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press33, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click33, img:"imgSh1"},
-    {price:450, src:'./FrauS.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press34, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click34, img:"imgSh1"},
-    {price:600, src:'./FrauSch.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press35, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click35, img:"imgSh1"},
+      {id:0, price:700, src:'./FrauB2.jpeg', format:'50cmx70cm',paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press0, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click:click0, img:"imgSh1", history:"32", },
+      {id:1, price:1200,  src:'./mannBlitz2.jpeg', format:'70cmx100cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press:press1, classPreis: "pri",classGR:"shopGRR", classEle:"elePic", click:click1, img:"imgSh1",  history:"2"},
+      {id:2, price:800, src:'./KettenFrau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press2, classPreis: "pri", classGR: "shopGRR", classEle:"elePic",click: click2, img:"imgSh1",  history:"3"},
+    {id:3, price:700, src:'./FrauSilber.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press3, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click3, img:"imgSh1" , history:"4"},
+    {id:4 ,price:350, src:'./FBJZ.jpeg', format:'40cmx50cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press4, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click4, img:"imgSh1" , history:"5"},
+    {id:5, price:english ? "VB" : german ? "unbezahlbar": "Error", src:'./Sänger.jpeg', format:'60cmx30cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press5, classPreis: "pri", classGR: "shopGRR", classEle:"elePic", click: click5, img:"imgSh1",  history:""},
+    {id:6, price:900, src:'./ColleFRau2.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press6, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click6, img:"imgSh1" , history:""},
+    {id:7, price:650, src:'./EngFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press7, classPreis: "pri", classGR: "shopGR2", classEle:"elePic", click: click7, img:"imgSh1" , history:""},
+    {id:8,price:450, src:'./BlumenFrau21.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press8, classPreis: "pri", classGR: "shopGR2", classEle:"elePic" , click: click8, img:"imgSh1" , history:""},
+    {id:9,price:450, src:'./KüssFrau.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press9, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click9, img:"imgSh1", history:""},
+    {id:10,price:650, src:'./EngMann.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press10, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click10, img:"imgSh1", history:""},
+    {id:11,price:350, src:'./EngFrau2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press11, classPreis: "pri", classGR: "shopGR3", classEle:"elePic", click: click11, img:"imgSh1", history:""},
+    {id:12,price:150, src:'./Brüste.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press12, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click12, img:"imgSh1", history:""},
+    {id:13,price:900, src:'./AlkoholF2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press13, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click13, img:"imgSh1", history:""},
+    {id:14,price:750, src:'./Avatar2.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press14, classPreis: "pri", classGR: "shopGR4", classEle:"elePic", click: click14, img:"imgSh1", history:""},
+    {id:15,price:700, src:'./Cello2.jpeg', format:'50cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press15, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click15, img:"imgSh1", history:""},
+    {id:16,price:650, src:'./Pferd2.jpeg', format:'40cmx50cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press16, classPreis: "pri", classGR: "shopGR5", classEle:"elePic",click: click16, img:"imgSh1", history:""},
+    {id:17,price:450, src:'./Läspisch2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press17, classPreis: "pri", classGR: "shopGR5", classEle:"elePic", click: click17, img:"imgSh1", history:""},
+    {id:18,price:350, src:'./Tanzen2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press18, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click18, img:"imgSh1", history:""},
+    {id:19,price:700, src:'./Maria2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press19, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click19, img:"imgSh1", history:""},
+    {id:20,price:850, src:'./Teufel2.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error",press20, classPreis: "pri", classGR: "shopGR6", classEle:"elePic", click: click20, img:"imgSh1", history:""},
+    {id:21,price:650, src:'./MickeyMouse.jpeg', format:'50cmx70cm', paintedT: english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press21, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", img:"imgSh1", history:""},
+    {id:22,price:950, src:'./Athen.jpeg', format:'120cmx60cm', paintedT:english ? 'acryl colors and it is sealed.': german ? "mit Acryfarben und es ist versigelt": "Error", press: press22, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click21, img:"imgSh1", history:""},
+    {id:23,price:500, src:'./Indianer.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press23, classPreis: "pri", classGR: "shopGR7", classEle:"elePic", click: click22, img:"imgSh1", history:""},
+    {id:24,price:150, src:'./GelbeFrau.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press24, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click23, img:"imgSh1", history:""},
+    {id:25,price:400, src:'./BootSonne.jpeg', format:'25cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press25, classPreis: "pri", classGR: "shopGR8", classEle:"elePic", click: click24, img:"imgSh1", history:""},
+    {id:26,price:300, src:'./Lecken.jpeg', format:'30cmx40cm',  paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press26, classPreis: "pri", classGR: "shopGR8", classEle:"elePic",click: click25, img:"imgSh1", history:""},
+    {id:27,price:700, src:'./FrauMeer.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press27, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click26, img:"imgSh1", history:""},
+    {id:28,price:800, src:'./Eiffelturm.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press28, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click:click27, img:"imgSh1", history:""},
+    {id:29,price:600, src:'./EngelTeufel.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press29, classPreis: "pri", classGR: "shopGR9", classEle:"elePic", click: click28, img:"imgSh1", history:""},
+    {id:30,price:650, src:'./BulleF.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press30, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click29, img:"imgSh1", history:""},
+    {id:31,price:400, src:'./BluSchlafFrau.jpeg', format:'40cmx60cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press31, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click30, img:"imgSh1", history:""},
+    {id:32,price:750, src:'./Löwe.jpeg', format:'50cmx70cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press32, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click31, img:"imgSh1", history:""},
+    {id:33,price:650, src:'./FrauSchläft.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press33, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click33, img:"imgSh1", history:""},
+    {id:34,price:450, src:'./FrauS.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press34, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click34, img:"imgSh1", history:""},
+    {id:35,price:600, src:'./FrauSch.jpeg', format:'60cmx30cm', paintedT:english ? 'acryl colors,glowing colors and it is sealed.': german ? "mit Acryfarben, Leutfarben und es ist versigelt": "Error", press: press35, classPreis: "pri", classGR: "shopGR10", classEle:"elePic", click: click35, img:"imgSh1", history:""},
     
     
     ]);
@@ -227,13 +231,26 @@ export default function PictureShopp() {
       );
       setFilteredSearchItems(filteredItems);
     };
+
+    let histo;
+    const BuySite = () => {
+      return (
+        <div className="pictureShop">
+
+          <div onClick={pressBuy}>
+            <BackSymbol/>
+          </div>
+          
+        </div>
+      );
+    }
     if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
       !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
        !click12 && !click13 && !click14 && !click15 && !click16 
        && !click17&& !click18&& !click19 && !click20 && !click21 && !click22 && !click23 &&
          !click24 && !click25 && !click26 && 
       !click27 && !click28 && !click29 && !click30 && !click31 && !click32
-      && !click33 && !click34 && !click35) 
+      && !click33 && !click34 && !click35 && !clickBuy) 
       {
      return (
      <>
@@ -1016,7 +1033,8 @@ export default function PictureShopp() {
     </>
      );
    }
-   else if (click0) {
+   else if (click0 && !clickBuy  ) {
+   histo = ShopImages[0].history;
     const ShopImage0 = () => {
       return (
       <>
@@ -1059,8 +1077,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[0].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[0].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1089,7 +1110,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-   else if (click1) {
+   else if (click1 && !clickBuy) {
+   histo = ShopImages[1].history;
+
+
     const ShopImage1 = () => {
       return (
       <>
@@ -1132,8 +1156,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[1].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[1].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1162,7 +1189,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click2) {
+  else if (click2  && !clickBuy) {
+   histo = ShopImages[2].history;
+   
+
     const ShopImage2 = () => {
       return (
       <>
@@ -1207,8 +1237,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[2].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[2].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1236,7 +1269,9 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click3) {
+  else if (click3  && !clickBuy) {
+   
+
     const ShopImage3 = () => {
       return (
       <>
@@ -1278,8 +1313,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[3].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[3].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1307,7 +1345,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click4) {
+  else if (click4  && !clickBuy) {
+   histo = ShopImages[4].history;
+   
+
     const ShopImage4 = () => {
       return (
       <>
@@ -1349,8 +1390,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[4].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[4].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1378,7 +1422,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click5) {
+  else if (click5  && !clickBuy) {
+   histo = ShopImages[5].history;
+   
+
     const ShopImage5 = () => {
       return (
      <>
@@ -1420,8 +1467,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[5].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[5].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
            Kaufen
@@ -1449,7 +1499,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click6) {
+  else if (click6  && !clickBuy) {
+   histo = ShopImages[6].history;
+   
+
     const ShopImage6 = () => {
       return (
       <>
@@ -1491,8 +1544,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[6].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[6].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span> Kaufen
          </span>
@@ -1519,7 +1575,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click7) {
+  else if (click7  && !clickBuy) {
+   histo = ShopImages[7].history;
+   
+
     const ShopImage7 = () => {
       return (
       <>
@@ -1561,8 +1620,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[7].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[7].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1590,7 +1652,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click8) {
+  else if (click8  && !clickBuy) {
+   histo = ShopImages[8].history;
+   
+
     const ShopImage8 = () => {
       return (
       <>
@@ -1633,8 +1698,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[8].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[8].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1663,6 +1731,9 @@ export default function PictureShopp() {
     )
   }
   else if (click9) {
+   histo = ShopImages[9].history;
+   
+
     const ShopImage9 = () => {
       return (
       <>
@@ -1704,8 +1775,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[9].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[9].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1733,7 +1807,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click10) {
+  else if (click10  && !clickBuy) {
+   histo = ShopImages[10].history;
+   
+
     const ShopImage10 = () => {
       return (
       <>
@@ -1775,8 +1852,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[10].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[10].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1804,7 +1884,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click11) {
+  else if (click11  && !clickBuy) {
+   histo = ShopImages[11].history;
+   
+
     const ShopImage11 = () => {
       return (
       <>
@@ -1846,8 +1929,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[11].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[11].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1875,7 +1961,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click12) {
+  else if (click12  && !clickBuy) {
+   histo = ShopImages[12].history;
+   
+
     const ShopImage12 = () => {
       return (
       <>
@@ -1918,8 +2007,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[12].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[12].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -1947,7 +2039,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click13) {
+  else if (click13  && !clickBuy) {
+   histo = ShopImages[13].history;
+   
+  
     const ShopImage13 = () => {
       return (
       <>
@@ -1989,8 +2084,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[13].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[13].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2018,7 +2116,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click14) {
+  else if (click14  && !clickBuy) {
+   histo = ShopImages[14].history;
+   
+
     const ShopImage14 = () => {
       return (
       <>
@@ -2060,8 +2161,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[14].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[14].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2089,7 +2193,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click15) {
+  else if (click15  && !clickBuy) {
+   histo = ShopImages[15].history;
+   
+
     const ShopImage15 = () => {
       return (
       <>
@@ -2131,8 +2238,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[15].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[15].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2160,7 +2270,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click16) {
+  else if (click16  && !clickBuy) {
+   histo = ShopImages[16].history;
+   
+
     const ShopImage16 = () => {
       return (
       <>
@@ -2202,8 +2315,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[16].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[16].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2231,7 +2347,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click17) {
+  else if (click17  && !clickBuy) {
+   histo = ShopImages[17].history;
+   
+
     const ShopImage17 = () => {
       return (
       <>
@@ -2273,8 +2392,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[17].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[17].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2302,7 +2424,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click18) {
+  else if (click18  && !clickBuy) {
+   histo = ShopImages[18].history;
+   
+
     
   const ShopImage18 = () => {
   return (
@@ -2345,8 +2470,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[18].paintedT}
     </div>
+    <div className="pri2">
+          History: {ShopImages[18].history}
+        </div>
     <br/>
-    <button className='btnShop'>
+    <button className='btnShop' onClick={pressBuy}>
     { german ? (
          <span>
           Kaufen
@@ -2375,7 +2503,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click19) {
+  else if (click19  && !clickBuy) {
+   histo = ShopImages[19].history;
+   
+   
     const ShopImage19 = () => {
       return (
       <>
@@ -2417,8 +2548,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[19].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[19].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2447,7 +2581,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click20) {
+  else if (click20  && !clickBuy) {
+   histo = ShopImages[20].history;
+   
+
     const ShopImage20 = () => {
       return (
       <>
@@ -2489,8 +2626,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[20].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[20].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2518,7 +2658,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click21) {
+  else if (click21  && !clickBuy) {
+   histo = ShopImages[21].history;
+   
+
     const ShopImage21 = () => {
       return (
       <>
@@ -2560,8 +2703,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[21].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[21].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2589,7 +2735,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click22) {
+  else if (click22  && !clickBuy) {
+   histo = ShopImages[22].history;
+   
+
     
   const ShopImage22 = () => {
   return (
@@ -2632,8 +2781,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[22].paintedT}
     </div>
+    <div className="pri2">
+          History: {ShopImages[22].history}
+        </div>
     <br/>
-    <button className='btnShop'>
+    <button className='btnShop' onClick={pressBuy}>
     { german ? (
          <span>
           Kaufen
@@ -2661,7 +2813,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click23) {
+  else if (click23  && !clickBuy) {
+   histo = ShopImages[23].history;
+   
+
     const ShopImage23 = () => {
       return (
       <>
@@ -2703,8 +2858,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[23].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[23].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2732,7 +2890,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click24) {
+  else if (click24  && !clickBuy) {
+   histo = ShopImages[24].history;
+   
+
     const ShopImage24 = () => {
       return (
       <>
@@ -2774,8 +2935,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[24].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[24].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2805,7 +2969,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click25) {
+  else if (click25  && !clickBuy) {
+   histo = ShopImages[25].history;
+   
+
     const ShopImage25 = () => {
       return (
       <>
@@ -2847,8 +3014,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[25].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[25].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2876,7 +3046,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click27) {
+  else if (click27  && !clickBuy) {
+   histo = ShopImages[27].history;
+   
+
     const ShopImage27 = () => {
       return (
       <>
@@ -2918,8 +3091,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[27].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[27].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -2947,7 +3123,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click26) {
+  else if (click26  && !clickBuy) {
+   histo = ShopImages[26].history;
+   
+
     const ShopImage26 = () => {
       return (
       <>
@@ -2989,8 +3168,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[26].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[26].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3018,7 +3200,8 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click29) {
+  else if (click29  && !clickBuy) {
+  
     const ShopImage29 = () => {
       return (
       <>
@@ -3060,8 +3243,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[29].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[29].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3089,7 +3275,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click28) {
+  else if (click28  && !clickBuy) {
+   
+  
+
     const ShopImage28 = () => {
       return (
       <>
@@ -3131,8 +3320,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[28].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[28].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3160,7 +3352,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click30) {
+  else if (click30  && !clickBuy) {
+
+   
+
     const ShopImage30 = () => {
       return (
       <>
@@ -3202,8 +3397,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[30].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[30].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3231,7 +3429,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click31) {
+  else if (click31 && !clickBuy) {
+  
+   
+
     const ShopImage31 = () => {
       return (
       <>
@@ -3273,8 +3474,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[31].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[31].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
            Kaufen
@@ -3302,7 +3506,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click32) {
+  else if (click32  && !clickBuy) {
+
+   
+
     const ShopImage32 = () => {
       return (
       <>
@@ -3344,8 +3551,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[32].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[32].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3373,7 +3583,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click33) {
+  else if (click33  && !clickBuy) {
+   
+   
+
     const ShopImage33 = () => {
       return (
       <>
@@ -3415,8 +3628,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[33].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[33].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3445,7 +3661,10 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click34) {
+  else if (click34  && !clickBuy) {
+  
+   
+
     const ShopImage34 = () => {
       return (
       <>
@@ -3487,8 +3706,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[34].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[34].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3517,7 +3739,9 @@ export default function PictureShopp() {
       </div>
     )
   }
-  else if (click35) {
+  else if (click35  && !clickBuy) {
+   
+
     const ShopImage35 = () => {
       return (
       <>
@@ -3559,8 +3783,11 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[35].paintedT}
         </div>
+        <div className="pri2">
+          History: {ShopImages[35].history}
+        </div>
         <br/>
-        <button className='btnShop'>
+        <button className='btnShop' onClick={pressBuy}>
         { german ? (
          <span>
           Kaufen
@@ -3589,11 +3816,19 @@ export default function PictureShopp() {
       </div>
     )
   }
+  else if (clickBuy) {
+   
+    return (
+      <>
+        <BuySite/>
+      </>
+    );
+  }
+  
+  
   };
     const BackSymbol = () => {
     return (
       <FontAwesomeIcon icon={faArrowRight} size='3x' style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'5%', position:'absolute'}} />
     );
   }
-    
-  

@@ -1,9 +1,9 @@
 import "./bildergalerie.css";
 import { useState, useEffect } from "react";
-import { FaHeart, FaPaperPlane, FaComment } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import { ref, listAll, getDownloadURL } from 'firebase/storage';
 import { storage, db, auth } from '../config/firebase';
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Bildgalerie1() {
@@ -15,8 +15,8 @@ export default function Bildgalerie1() {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
           setPublicItemsP((prev) => [...prev, url]);
-        })
-      })
+        });
+      });
     });
   }, []);
 
@@ -126,54 +126,9 @@ function InfoB({ imageId }) {
       <div className='like1'>
         <Likes imageId={imageId} />
       </div>
-      {/* <Comments imageId={imageId} /> */}
     </div>
   );
 }
-
-// function Comments({ imageId }) {
-//   const [click, setClick] = useState(false);
-//   const [com, setCom] = useState('');
-//   const [comList, setComList] = useState([]);
-//   let nextId = 0;
-
-//   const press = () => {
-//     setClick(!click);
-//   };
-
-//   return (
-//     <div className='comments'>
-//       <FaComment className='ani' onClick={press} size={45} style={{ color: 'white' }} />
-
-//       {click && (
-//         <div className='commentOpen'>
-//           <input
-//             type='text'
-//             value={com}
-//             onChange={(e) => setCom(e.target.value)}
-//             placeholder='Write a comment'
-//             className='input1'
-//           />
-//           <button
-//             onClick={() => {
-//               setComList([...comList, { id: nextId++, com }]);
-//               setCom('');
-//             }}
-//           >
-//             <FaPaperPlane size={30} className='send1' />
-//           </button>
-//           <ul>
-//             {comList.map(co => (
-//               <li key={co.id}>
-//                 <div className='newCo'>{co.com}</div>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
 
 function Likes({ imageId }) {
   const [user, setUser] = useState(null);
@@ -182,52 +137,51 @@ function Likes({ imageId }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
+      setUser(user);
     });
 
     return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    const fetchLikes = async () => {
-      try {
-        const docRef = doc(db, "likes", imageId);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setLikeNumber(data.likeNumber || 0);
-          if (user && data.users && data.users[user.uid]) {
-            setLike('red');
+    if (user) {
+      const fetchLikes = async () => {
+        try {
+          const docRef = doc(db, "likes", imageId);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            setLikeNumber(data.likeNumber || 0);
+            if (data.users && data.users[user.uid]) {
+              setLike('red');
+            }
           }
+        } catch (error) {
+          console.error("Error fetching likes:", error);
         }
-      } catch (error) {
-        console.error("Error fetching likes:", error);
-      }
-    };
+      };
 
-    fetchLikes();
+      fetchLikes();
+    }
   }, [imageId, user]);
 
   const handleClick = async () => {
-    let newCount;
     if (user) {
       try {
         const docRef = doc(db, "likes", imageId);
         const docSnap = await getDoc(docRef);
+        let newCount = likeNumber;
         let users = {};
+
         if (docSnap.exists()) {
           users = docSnap.data().users || {};
           if (users[user.uid]) {
             delete users[user.uid];
-            newCount = likeNumber > 0 ? likeNumber - 1 : 0;
+            newCount -= 1;
             setLike('white');
           } else {
             users[user.uid] = true;
-            newCount = likeNumber + 1;
+            newCount += 1;
             setLike('red');
           }
         } else {
@@ -235,26 +189,13 @@ function Likes({ imageId }) {
           newCount = 1;
           setLike('red');
         }
+
         await setDoc(docRef, { likeNumber: newCount, users }, { merge: true });
+        setLikeNumber(newCount);
       } catch (error) {
         console.error("Error updating likes:", error);
       }
-    } else {
-      newCount = likeNumber + 1;
-      setLike('red');
     }
-    if (like === 'red') {
-      setLike('white');
-      newCount = likeNumber - 1;
-      setLikeNumber(newCount);
-      
-    } else {
-      setLike('red');
-      newCount = likeNumber + 1;
-      setLikeNumber(newCount);
-      
-    }
-    setLikeNumber(newCount);
   };
 
   return (

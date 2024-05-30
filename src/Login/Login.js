@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth, db, storage } from '../config/firebase';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, OAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
+import { auth, db, storage, googleprovider,  } from '../config/firebase';
 import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
 import Cookies from 'js-cookie';
 import { getDoc, setDoc, collection, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
@@ -80,7 +80,8 @@ function Login({ setLoggedIn, }) {
   const [click, setClick] = useState(false);
   const [english, setEnglish] = useState(true);
   const [german, setGerman] = useState(false);
-
+  const [googleUs, setGoogleUs] = useState('');
+  const auth1 = getAuth();
   const press = () => {
     setClick(!click);
   };
@@ -142,6 +143,15 @@ function Login({ setLoggedIn, }) {
       alert("Failed to register: " + error.message);
     }
   };
+  const logGoogle = () => {
+    signInWithPopup(auth, googleprovider).then((data) =>{
+      setGoogleUs(data.user.email);
+      localStorage.setItem('email', data.user.email);
+      setLoggedIn(true);
+      Cookies.set("loggedIn", true, { expires: 7 });
+      Cookies.set("username", data.user.email, { expires: 7 });
+    });
+  }
 
   let username = 'Username...';
   let password = 'Password...';
@@ -150,6 +160,7 @@ function Login({ setLoggedIn, }) {
     username = 'Benutzername...';
     password = 'Passwort...';
   }
+
 
   return (
     <>
@@ -191,6 +202,11 @@ function Login({ setLoggedIn, }) {
           </form>
           <br />
           <br />
+          <button className='signInG' onClick={logGoogle}>
+             Signin with Google
+          </button>
+          <br/>
+      
           <br />
           <br />
           <div className='importantI'>
