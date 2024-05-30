@@ -93,18 +93,18 @@
         background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
         color: transparent;
         background-clip: text;
-        font-size: 160%;
+        font-size: 300%;
         text-align: center;
       }
       .imp {
         color: white;
         font-family:'Dancing Script';
-        font-size: 2vh;
+        font-size: 3vh;
       }
       summary {
         cursor: pointer;
         font-weight: bold;
-        font-size: 2.5vh;
+        font-size: 3.5vh;
       
       }
       .theAb {

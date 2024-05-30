@@ -63,10 +63,10 @@ function prevImage() {
        </video>
        <div className='imgBtnV'>
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 5%'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:'white', position:'absolute',transform:'rotate(-180deg)', margin: '0% 5%'}}   onClick={prevImage}/>
     </button>
-    <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -20%'  }}/>
+    <button className='btn1' >
+    <FontAwesomeIcon icon={faArrowRight} style={{color:  'white', position:'absolute', margin:'0% -20%'  }} onClick={nextImage}/>
   </button>
     </div>
     </div>

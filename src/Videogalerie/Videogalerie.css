@@ -66,10 +66,11 @@
      
   }
   .video {
-    width: 80%;
-    height: 90%;
+    width: 60%;
+    height: 70%;
     border-radius: 5%;
-    margin:  10%;
+    margin: 5% 20%;
+    z-index: -1;
   }
    
   .likeNumber1 {
@@ -77,7 +78,13 @@
    font-size: 3vh;
    margin: 0% 5%;
   }
-
+  .imgBtnV {
+    margin: -5%;
+  }
+  .btn1 {
+    z-index: 1000;
+  }
+  
   
   
 }

@@ -73,7 +73,7 @@ function HeaderBo() {
       </Link>  
       <div>
         <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
-          <FontAwesomeIcon icon={faTiktok} size={40}  className='ttIcon'/>
+          <FontAwesomeIcon icon={faTiktok}   className='ttIcon'/>
         </a>
       </div>
       <div className='foto2'>
@@ -87,47 +87,47 @@ function HeaderBo() {
    <div>
    <Link to="/">
      <div className='po'> 
-      <FaHome size={40} className='ic'/> <span className='he'> Home</span>
+      <FaHome className='ic'/> <span className='he'> Home</span>
     </div>
     </Link>
    </div>
    <div>
    <Link to= "/Search">
    <div className='po2'>
-      <FaSearch size={38} className='ic'/> <span className='he'> Search</span>
+      <FaSearch className='ic'/> <span className='he'> Search</span>
     </div>
     </Link>
    </div>
    <Link to="/bildgalerie" className='po3'>
    <div>
-      <FaImages size={40} className='ic' /> <span className='he'> Picture gallery</span>
+      <FaImages className='ic' /> <span className='he'> Picture gallery</span>
     </div>
   </Link>
   <Link to= "/chat">
     <div className='po1'>
-      <FaComment size={35}  className='ic'/> <span className='he'> Chat</span>
+      <FaComment  className='ic'/> <span className='he'> Chat</span>
     </div>
   </Link>
   <Link to= "/login">
     <div className='po4'>
-      <FaSignInAlt size={35}  className='ic'/> <span className='he'> Login and Signup</span>
+      <FaSignInAlt  className='ic'/> <span className='he'> Login and Signup</span>
     </div>
   </Link>
   <Link to='/Videogalerie'>
    <div>
-    <FontAwesomeIcon icon={faVideo}  size='2x' className='ic' />
+    <FontAwesomeIcon icon={faVideo} className='ic' />
     <span className='he'> Video gallery</span>
    </div>
   </Link>
   <Link to='/PictureShop'>
    <div>
-    <FontAwesomeIcon icon={faShoppingCart}  size='2x'  className='ic'/>
+    <FontAwesomeIcon icon={faShoppingCart}   className='ic'/>
     <span className='he'> Picture shop</span>
     </div>
   </Link>
   <Link to='/biography'>
-   <div>
-   <FontAwesomeIcon icon={faPenSquare } size="2x"  className='ic' />
+   <div className='bio'>
+   <FontAwesomeIcon icon={faPenSquare }   className='ic' />
    <span className='he'> My Biography</span>
    
     </div>
@@ -235,7 +235,25 @@ function ImageList (){
     <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white', position:"absolute" , margin:"-30% -10%" }}/>
   </button>
     </div>
-    
+    <div className='biog' >
+    <div className="text" style={{textAlign: 'left', fontSize: click ? '0vh' : '3vh' }}>
+       
+       Hello!
+
+       <br/>
+       I'm glad you like my pictures.
+       <br/>
+       My name is Michael Ntrikos and I was born on 20.11.1980 in Preveza. I then grew up in Germany. 
+      At the age of seven I painted my first large picture, a ship in the ocean, which is 1 m x 1.50 m in size. Since that painting, painting has become one of the most important things in my life and it still is for me today. I did not study art. I taught myself all my painting techniques. I also have thousands of pictures in my head that I could paint every day. In my artistic career, I have been inspired by many artists, which has allowed me to develop my own style over the years.
+      When I was little, I spent every summer in Parga/Paxos and in Venice with my grandparents. That was a time full of inspiration, where I also painted many other pictures, such as a woman on the beach. All the pictures I paint are very colorful as well as my thoughts and always reflect my mood.
+      For this reason, all the pictures I paint are unique. Every picture is a part of me.
+      I am very happy if you like my paintings. 
+       <br/>
+       Best regards 
+       <br/>
+      Your Michael
+      </div>
+    </div>
    </div>
   );
 }
@@ -383,14 +401,14 @@ const SEARCH = () => {
     setBio(!bio);
   }
   const [searchItems, setSearchItems] = useState([
-    { id: 1, term: 'Home', className: 'searchItem', icon:  <FaHome size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressHome},
-    { id: 2, term: 'Picture gallery', className: 'searchItem', icon: <FaImages size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressPicturegallery},
-    { id: 3, term: 'Chat', className: 'searchItem', icon: <FaComment size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressChat},
-    { id: 4, term: 'Login', className: 'searchItem', icon: <FaSignInAlt size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressLogin},
-    { id: 5, term: 'Video gallery', className: 'searchItem', icon:<FontAwesomeIcon icon={faVideo} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/>, press: pressVideogallery},
-    { id: 6, term: 'Picture shop', className: 'searchItem', icon: <FontAwesomeIcon icon={faShoppingCart} size={25} style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}}/> , press: pressPictureShop},
-    { id: 7, term: 'About Us', className: 'searchItem', icon:  <FontAwesomeIcon icon={faInfoCircle}  style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}} />, press:pressAboutUs},
-    {id: 8, term: 'Biography', className: 'searchItem', icon:  <FontAwesomeIcon icon={faPenSquare}  style={{color:"rgb(96, 251, 181)", margin:"-1% 0%"}} />, press:pressBio}
+    { id: 1, term: 'Home', className: 'searchItem', icon:  <FaHome className='icSearch'/>, press: pressHome},
+    { id: 2, term: 'Picture gallery', className: 'searchItem', icon: <FaImages className='icSearch'/>, press: pressPicturegallery},
+    { id: 3, term: 'Chat', className: 'searchItem', icon: <FaComment className='icSearch'/>, press: pressChat},
+    { id: 4, term: 'Login', className: 'searchItem', icon: <FaSignInAlt className='icSearch'/>, press: pressLogin},
+    { id: 5, term: 'Video gallery', className: 'searchItem', icon:<FontAwesomeIcon icon={faVideo}  className='icSearch'/>, press: pressVideogallery},
+    { id: 6, term: 'Picture shop', className: 'searchItem', icon: <FontAwesomeIcon icon={faShoppingCart} className='icSearch'/> , press: pressPictureShop},
+    { id: 7, term: 'About Us', className: 'searchItem', icon:  <FontAwesomeIcon icon={faInfoCircle} className='icSearch' />, press:pressAboutUs},
+    {id: 8, term: 'Biography', className: 'searchItem', icon:  <FontAwesomeIcon icon={faPenSquare}  className='icSearch' />, press:pressBio}
   ]);
 
   const [filteredSearchItems, setFilteredSearchItems] = useState([...searchItems]);
