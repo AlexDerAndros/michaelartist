@@ -47,7 +47,39 @@
 /**Tablet**/
 
 @media only screen and (min-width:701px) {
-
+  .videogalerie {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 75%;
+      height: 80%;
+      padding: 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 20%;
+      right: 3%;
+      top: 10%;
+      position: fixed;
+     
+  }
+  .video {
+    width: 60%;
+    height: 80%;
+    border-radius: 5%;
+    margin: 5% 20%;
+    z-index: -1;
+  }
+   
+  .likeNumber1 {
+   color: white;
+   font-size: 3vh;
+   margin: 0% 5%;
+  }
+  .imgBtnV {
+    margin: -10% -3%;
+  }
+  .btn1 {
+    z-index: 1000;
+  }
+  
 }
 /*Computer*/
 @media only screen and (min-width:1200px) {

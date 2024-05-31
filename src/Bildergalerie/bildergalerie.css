@@ -99,7 +99,94 @@
 /**Tablet**/
 
 @media only screen and (min-width:701px) {
-
+  .bildgalerie {
+    background-color: rgba(0, 0, 0, 0.877);
+    width: 75%;
+      height: 83%;
+      padding: 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 20%;
+      top: 10%;
+      position: fixed;
+      overflow-y: scroll;
+   
+  }
+  .grid {
+   display: grid;
+   top: 10%;
+   padding: 5%;
+  
+  }
+  .imgG {
+     width: 60%;
+     height: 80%;
+     padding:0% 1% ;
+     border-radius: 5%;
+     z-index: -1;
+     margin: 0% 20%;
+   
+  }
+  .icons1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: sticky;
+    margin:  0%;
+  }
+  .like1 {
+   position: sticky;
+  }
+  .comment1 {
+    position: sticky;
+  }
+  .likeNumber {
+    color: white;
+    font-size: 5vh;
+  
+  }
+  
+  
+  
+  
+  .commentOpen {
+    width: 82%;
+    height: 55%;
+    background-color: black;
+    z-index: 100;
+    margin: -84% -54%;
+    position: fixed;
+    overflow-y: scroll;
+   border-radius: 5%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+  }
+  .input1 {
+   background-color: black;
+   color: white;
+   width: 50%;
+   height: 4%;
+   font-size: 150%;
+   position: fixed;
+   margin: 0% 6%;
+   border: rgb(74, 74, 74) 0.2vh solid;
+   border-radius: 5%;
+  }
+  .input1::placeholder {
+    font: 150%;
+  }
+  .send1 {
+    color: white;
+    margin: 1% 18%;
+    position: fixed;
+  }
+  
+  .newCo {
+    padding:87% 0%;
+    margin: 3%;
+    color: white;
+  }
 }
 /*Computer*/
 @media only screen and (min-width:1200px) {

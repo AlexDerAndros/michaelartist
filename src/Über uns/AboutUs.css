@@ -71,7 +71,65 @@
 /**Tablet**/
 
 @media only screen and (min-width:701px) {
-
+  .aboutUs {
+      background-color: rgba(0, 0, 0, 0.877);
+      width: 75%;
+      height: 80%;
+      padding: 2vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 20%;
+      right: 3%;
+      top: 13%;
+      position: fixed;
+      overflow-y: scroll;
+  }
+  .headAb {
+    font-weight: bold;
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    color: transparent;
+    background-clip: text;
+    font-size: 300%;
+    text-align: center;
+  }
+  .imp {
+    color: white;
+    font-family:'Dancing Script';
+    font-size: 2.5vh;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 3vh;
+  
+  }
+  .theAb {
+    text-decoration: underline white;
+  }
+  .igimg2 {
+    width: 1%;
+    height: 1%;
+    cursor: pointer;
+  }
+  .ig {
+    color: transparent;
+    background-image: linear-gradient(to right, rgb(233, 18, 223), rgb(184, 140, 29));
+    -webkit-background-clip: text;
+    cursor: pointer;
+  }
+  .ttimg2 {
+    width: 1.75%;
+    height: 1.75%;
+    cursor: pointer;
+    margin: -0.5% 0%;
+  }
+  .tt {
+    color: transparent;
+    background-image: linear-gradient(to right,  rgb(29, 101, 184), rgb(246, 5, 230));
+    -webkit-background-clip: text;
+    cursor: pointer;
+  
+  }
 }
 /*Computer*/
 @media only screen and (min-width:1200px) {

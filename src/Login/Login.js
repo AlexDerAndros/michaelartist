@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, OAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
 import { auth, db, storage, googleprovider,  } from '../config/firebase';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
 import Cookies from 'js-cookie';
 import { getDoc, setDoc, collection, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
@@ -179,7 +180,7 @@ function Login({ setLoggedIn, }) {
             <input
               id='us'
               type='text'
-              placeholder={username}
+              placeholder="Email..."
               value={us}
               onChange={(e) => setUs(e.target.value)}
             />
@@ -202,8 +203,10 @@ function Login({ setLoggedIn, }) {
           </form>
           <br />
           <br />
-          <button className='signInG' onClick={logGoogle}>
-             Signin with Google
+          <button className='logBtn' onClick={logGoogle} >
+            <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+            <FontAwesomeIcon icon={faGoogle} style={{ color: 'white'}}/> &nbsp;Signin with Google
+              </p>
           </button>
           <br/>
       

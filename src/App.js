@@ -110,7 +110,7 @@ function HeaderBo() {
   </Link>
   <Link to= "/login">
     <div className='po4'>
-      <FaSignInAlt  className='ic'/> <span className='he'> Login and Signup</span>
+      <FaSignInAlt  className='ic'/> <span className='he'> Login </span>
     </div>
   </Link>
   <Link to='/Videogalerie'>
@@ -236,8 +236,8 @@ function ImageList (){
   </button>
     </div>
     <div className='biog' >
-    <div className="text" style={{textAlign: 'left', fontSize: click ? '0vh' : '3vh' }}>
-       
+    <div className="text  " style={{textAlign: 'left', color: click ? "transparent" : "white" }}>
+      <div className=' textTablet'>
        Hello!
 
        <br/>
@@ -252,6 +252,7 @@ function ImageList (){
        Best regards 
        <br/>
       Your Michael
+     </div>
       </div>
     </div>
    </div>

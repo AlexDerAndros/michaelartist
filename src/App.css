@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
-@media screen and (max-width:700px)  {
+@media screen and (max-width:800px)  {
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -447,6 +447,477 @@
 
 
 
+/* Tablet */
+@media screen and (min-width: 801px) {
+  main {
+    background-image: url('./michaelBackground.png');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height:100%;
+   display: flex;
+   justify-content: space-between;
+   position: fixed;
+   font-family: 'Dancing Script',
+   cursive, 'Roboto', sans-serif;
+  }
+  
+  .title {
+   color: rgb(255, 255, 255);
+   font-weight: 500;
+   position: sticky;
+   font-size: 3.5vh;
+   background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
+   background-clip: text;
+   color: transparent;
+   cursor: pointer;
+   width: 80%;
+   display: flex;
+   align-items: center;
+   left: 1%;
+  }
+  .about {
+    font-size: 3.5vh;
+    width: auto;
+    display: flex;
+    align-items:center;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
+   background-clip: text;
+   color: transparent;
+   font-weight: 500;
+   position: fixed;
+   top: 1%;
+   left: 35%;  
+
+  }
+  /* .title:hover {
+    font-size: 4.2vh;
+  } */
+    .header {
+    background-color: black;
+    width: 100%;
+    height: 6%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+  }
+  .igIcon {
+    color: white;
+    font-size: 4vh;
+    position: sticky;
+    margin: 1vh 2vw 0vh 0vw ;
+ }
+ .ttIcon {
+   color: white;
+   font-size: 3.5vh;
+   position: sticky;
+   margin: 1vh 10vw 0vh 0vw;
+ }
+  .shPi {
+    color: white;
+    width:90%;
+    height:75%;
+    position: sticky;
+  }
+  .ham {
+    margin: 0.2vh 0;
+    z-index: 999;
+  }
+  .linie1 {
+    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    width: 6vh;
+    height: 1vh;
+    position: fixed;
+    border-radius: 10%;
+    margin:0.1vh 1vh;
+  }
+  .linie2 {
+    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    width: 4vh;
+    height: 1vh;
+    position: fixed;
+    border-radius: 10%;
+    margin:2.1vh 1vh;
+  }
+  .linie3 {
+    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    width: 3vh;
+    height: 1vh;
+    position: fixed;
+    border-radius: 10%;
+    margin:4.1vh 1vh;
+  }
+  .click {
+    width: 10vh;
+    height: 8vh;
+    position: absolute;
+    }
+    .content {
+    background: black;  
+    position: fixed;
+   width: 40%;
+   height: 40vh;
+   margin: 6vh 0vh ; 
+   border-radius: 0% 0% 5% 0%;
+   cursor: pointer;
+    }
+  .textCo{
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    background-clip: text;
+     color: transparent;
+  }
+  a {
+    text-decoration: none;
+    background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    background-clip: text;
+     color: transparent;
+  }
+  ul { 
+    list-style: none;
+    font-size: 3vh;
+  }
+
+  .unten {
+    width: auto;
+    height:  98%;
+    width: 15%;
+    margin: 3.5% 0%;
+    background: transparent ;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: black;
+  }
+  .Mitte {
+    text-align: center;
+    background: transparent;
+    width: 100%;
+    height: 80%;
+    padding: 1vh;
+    z-index: -100;
+    left: 0%;
+    right: 0%;
+    top: 15%;
+    position: fixed;
+    
+  }
+  .info1 {
+    background: linear-gradient(to right,#d682f8, rgb(96, 251, 181) );
+    background-clip: text;
+    color: transparent;
+    font-weight:bold ;
+    font-size: 4.5vh;
+    z-index: -100;
+    margin:-3% 0%;
+  }
+  .he {
+    position: fixed;
+    font-family: 'Dancing Script';
+    font-size: 3vh;
+    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+    color: transparent;
+    margin-top: 0%;
+  
+  }
+  .bio {
+    display: none;
+  }
+  .ic {
+    font-size: 3.5vh;
+  }
+  .img1 {
+    width: 5vh;
+    height: 5vh;
+    top: 0.5%;
+    margin: 0% 100%; 
+    position: sticky;
+  }
+  .img2 {
+    width: 5vh;
+    height: 5vh;
+    top: 0.5%;
+   position: sticky;
+  }
+ 
+  
+  button {
+   background: transparent;
+   border: none;
+   z-index: -100;
+  }
+  
+  
+  .info {
+    background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
+    background-clip: text;
+    color: transparent;
+   font-weight: bold;
+   margin:3% 0%;
+   text-align: left;
+   font-size: 3vh;
+   padding: 1% 3% ;
+   z-index: -100;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+  .searchImg {
+    width: 7vh;
+    height: 7vh;
+    position: sticky;
+    z-index: -100;
+    }
+.element {
+  background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+  background-clip: text;
+  color: transparent;
+    
+}
+.element:hover {
+  color: white;
+  text-decoration: underline white;
+}
+.po {
+  position: sticky;
+ color: rgb(96, 251, 181);
+  
+}
+.po2{
+  position: sticky;
+}
+.po3{
+  position: sticky;
+}
+.po1 {
+  position: sticky;
+}
+.po4 {
+  position: sticky;
+}
+.shPi {
+  position: sticky;
+  color: white;
+}
+.ic {
+  position: sticky;
+  color: rgb(96, 251, 181);
+  margin:0% 4% ;
+ 
+}
+
+.infoUN {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: white;
+  background-color: black;
+  width: 100%;
+  right: 0%;
+  position: absolute;
+  cursor: pointer;
+}
+.textIF:hover {
+  color: yellow;
+}
+/*Image List*/
+.imageList {
+  width: 70%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4%;
+  position: fixed;
+  top: 25%;
+  left: 20%;
+}
+.imgI {
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  width: 25vw;
+  height: 60vh;
+  border-radius: 4%;
+  max-width: 600px;
+  max-height: 500px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 3% 7%;
+}
+.btn1 {
+  color: white;
+   font-weight: bold;
+   font-size: 4.5vh;
+   width: 10%;
+   height: 10%;
+   cursor: pointer;
+   position: sticky;
+ }
+ .imgBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 0%;
+  z-index: 1000;
+  width: 45%;
+}
+.biog {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 50%;
+}
+.text {
+  font-size: 2.5vh;
+  color: white;
+}
+.textTablet {
+  font-size: 2.3vh;
+}
+/* Translation */
+.translation {
+ background-color:black;
+  width: 100%;
+  height:4vh;
+  position: fixed;
+  top:6%;
+  display: flex;
+  flex-direction: row;
+  z-index: -100;
+}
+.ge {
+  font-family: 'Dancing Script';
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in;
+  background-clip:text ;
+  font-weight: bold;
+  
+}
+.en {
+  font-family: 'Dancing Script';
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in-out;
+  background-clip:text ;
+ font-weight: bold;
+ 
+}
+/* Ausnahme Home */
+.ge1 {
+  font-family: 'Poppins',  sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in;
+ 
+  
+}
+.en1 {
+  font-family: 'Poppins' , sans-serif;
+  margin: 0 10%;
+  cursor: pointer;
+  padding: 0%;
+  transition: 0.5s ease-in-out;
+ 
+
+}
+/* CSS Chat  */
+
+/**CSS Search**/ 
+
+ .search {
+  background-color:rgba(0, 0, 0, 0.877);
+  width: 70%;
+   height: 80%;
+   padding: 3vh 1vh;
+    border-radius: 10px;
+    z-index: -100;
+    left: 20%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+    
+}
+.name {
+  font-size: 6vh;
+  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+  font-weight: bold;
+}
+.input {
+  border: none;
+  background-color: transparent;
+  background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+  width: 90%;
+  height: 3%;
+  font-size: 120%;
+ font-family: 'Dancing Script';
+
+}
+.input::after {
+  content: '';
+  background-color: gray;
+ width: 1000%;
+ height: 500%;
+}
+.input::placeholder {
+ color: white; 
+ font-size: 100%;
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+ background-clip: text;
+ color: transparent;
+
+
+}
+/* th {
+  font-size: 4vh;
+ font-family: 'Dancing Script';
+ background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+} */
+
+ .searchItem {
+  font-weight: bold;
+  font-size: 3.5vh;
+  position: sticky;
+ background-image: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
+   background-clip: text;
+   color: transparent;
+  margin: 2% 0% ;
+  cursor: pointer;
+ }
+ .searchItemT {
+   margin: 3% 0%;
+ }
+ .icSearch {
+   font-size: 4vh;
+   color: rgb(96, 251, 181);
+   margin: -0.5% 0%;
+ }
+ .backIconS {
+  color:white;
+  transform:rotate(180deg);
+  cursor: pointer;
+ inset: 11% 17vw;
+  position:fixed;
+}
+
+}
+
+
 
 
 
@@ -778,8 +1249,11 @@
   width: 50%;
 }
 .text {
-  font-size: 1.5vh;
+  font-size: 3vh;
   color: white;
+}
+.textTablet {
+  font-size: 3vh;
 }
 /* Translation */
 .translation {

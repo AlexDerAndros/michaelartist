@@ -110,7 +110,96 @@
 /**Tablet**/
 
 @media only screen and (min-width:701px) {
-
+  .chat {
+    background-color: rgba(0, 0, 0, 0.744);
+    width: 75%;
+     height: 80%;
+     padding: 3vh 1vh;
+      border-radius: 4%;
+      z-index: -100;
+      left: 20%;
+      right: 3%;
+      top: 10%;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: white;
+  
+  }
+  .send2 {
+    color: white;
+    position: sticky;
+  }
+  .inputCH {
+    border: none;
+    background-color: transparent;
+    width: 70%;
+    height: 60%;
+    font-size: 120%;
+    position: sticky;
+    margin:  0%  ;
+    background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+    background-clip: text;
+    color: transparent;
+    font-family: 'Dancing Script';  
+  }
+  .inputCH::placeholder {
+   font-size: 100%;
+   background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+   background-clip: text;
+   color: transparent;
+   font-family: 'Dancing Script';  
+  
+  }
+  .btnD {
+    color: white;
+   cursor: pointer;
+  }
+  .btnE {
+    color: white;
+   cursor: pointer;
+  
+  }
+  .btnS {
+    color: white;
+   cursor: pointer;
+    
+  
+  }
+  .list {
+    display: flex;
+    flex-direction: column ;
+    justify-content:flex-start;
+    overflow-y: scroll;
+    height: 100%;
+    margin: 7% 0%;
+    gap: -3% 0%;
+    }
+    .list::-webkit-scrollbar {
+      display: none;
+    }
+  .inputCH1 {
+    border: none;
+    background-color: white;
+    color: black;
+    width: 90%;
+    height: auto;
+    font-size: 100%;
+    position: sticky;
+    margin:  0% 0% ;
+    border-radius: 5%;
+  }
+  .message {
+    background-color: rgb(4, 86, 12);
+    padding: 2%;
+    margin:  5% 0%;
+    border-radius: 5px;
+    max-width: 50%;
+  }
+  .away {
+    font-size: 0vh;
+  }
 }
 /*Computer*/
 @media only screen and (min-width:1200px) {
