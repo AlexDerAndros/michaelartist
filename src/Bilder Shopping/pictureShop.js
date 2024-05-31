@@ -3,6 +3,10 @@ import { useState, useHistory, useLocation } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { db } from '../config/firebase';
+import { collection, addDoc, getDoc, updateDoc, doc  } from "firebase/firestore";
+import Cookies from 'js-cookie';
+
 
 export default function PictureShopp() {
  
@@ -237,17 +241,119 @@ export default function PictureShopp() {
     const handleImageClick = (url) => {
       setSelectedImage(url);
     }
-    const BuySite = () => {
+     
+    const BuySite = () => { 
+      const username = Cookies.get('username') || ''; 
+      const [valueE, setValueE] = useState(username);
+      const [valueZIP, setValueZIP] = useState('');
+      const [valueA, setValueA] = useState('');
+      const [valueFN, setValueFN] = useState('');
+      const [valueSN, setValueSN] = useState('');
+      const [valueCI, setValueCI] = useState('');
+      const [valueCO, setValueCO] = useState('');
+      const [paid, setPaid] = useState(false);
+      
+
+      
+      const confirm = async () => {
+        if (valueE.trim() !== '' && valueZIP.trim() !== '' && valueSN.trim() !== '' && valueFN.trim() !== '' && valueA.trim() !== '' && valueCO.trim() !== '' && valueCI.trim() !== '') {
+          try {
+            await addDoc(collection(db, 'ShopInfos'), {
+              email: valueE,
+              firstName: valueFN,
+              surName: valueSN,
+              address: valueA,
+              ZIP: valueZIP,
+              City: valueCI,
+              country: valueCO,
+              paid: paid,
+              timestamp: new Date(),
+              picture: selectedImage
+            });
+            alert('Purchased Successfully! Please pay for the picture!');
+            setValueE('');
+            setValueZIP('');
+            setValueA('');
+            setValueFN('');
+            setValueSN('');
+            setValueCI('');
+            setValueCO('');
+            setPaid(false);
+            Cookies.set("paid", false, { expires: 1000 });
+            Cookies.set("buyC", true, {expires: 14});
+          } catch (error) {
+            console.log("Error:" + error);
+            alert('Failed to purchase: ' + error);
+          }
+        }
+      };
+      const CancelOrder = () => {
+        try {
+         Cookies.set("buyC", false, { expires:1/3600});
+        } catch(error) {
+          console.log("Error:" + error);
+          alert('Failed to cancel order: ' + error);
+        }
+      };
+      if (Cookies.get("buyC") === "true") {
+        return (
+         <div className="pictureShop">
+            <div onClick={pressBuy}>
+            <BackSymbol />
+          </div>
+          <br/>
+          <br/>
+          <br/>
+           <button className="btnShop1" onClick={CancelOrder}>
+              I want to cancel my order!
+            </button>
+         </div>
+        );
+      }  
+      else {  
       return (
         <div className="pictureShop">
-          <img src={selectedImage} className="imgSHI"/>
+          {selectedImage && <img src={selectedImage} alt="Selected" className="imgSHI" />}
           <div onClick={pressBuy}>
-            <BackSymbol/>
+            <BackSymbol />
           </div>
-          
+          <div className="formularShop">
+            <div className="infoF">E-Mail:</div>
+            <input type="text" className="inF" value={valueE} onChange={(e) => setValueE(e.target.value)} />
+            <div className="ExampleF">For example: max.mustermann@gmail.com</div>
+    
+            <div className="infoF">First Name:</div>
+            <input type="text" placeholder="First Name..." className="inF" value={valueFN} onChange={(e) => setValueFN(e.target.value)} />
+            <div className="ExampleF">For example: Max</div>
+    
+            <div className="infoF">Surname:</div>
+            <input type="text" placeholder="Surname..." className="inF" value={valueSN} onChange={(e) => setValueSN(e.target.value)} />
+            <div className="ExampleF">For example: Mustermann</div>
+    
+            <div className="infoF">Address:</div>
+            <input type="text" placeholder="Address..." className="inF" value={valueA} onChange={(e) => setValueA(e.target.value)} />
+            <div className="ExampleF">For example: Musterstraße 3</div>
+    
+            <div className="infoF">ZIP (postal code):</div>
+            <input type="text" placeholder="ZIP..." className="inF" value={valueZIP} onChange={(e) => setValueZIP(e.target.value)} />
+            <div className="ExampleF">For example: 12345</div>
+    
+            <div className="infoF">City:</div>
+            <input type="text" placeholder="City..." className="inF" value={valueCI} onChange={(e) => setValueCI(e.target.value)} />
+            <div className="ExampleF">For example: Berlin</div>
+    
+            <div className="infoF">Country:</div>
+            <input type="text" placeholder="Country..." className="inF" value={valueCO} onChange={(e) => setValueCO(e.target.value)} />
+            <div className="ExampleF">For example: Germany</div>
+    
+            <button className="btnShop1" onClick={confirm}>
+              Confirmation of purchase
+            </button>
+          </div>
         </div>
       );
     }
+    };
     if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
       !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
        !click12 && !click13 && !click14 && !click15 && !click16 

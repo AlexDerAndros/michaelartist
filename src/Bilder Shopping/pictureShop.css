@@ -336,6 +336,55 @@
       font-family:'Dancing Script';
       
       }
+      .btnShop1 {
+        color:rgb(0, 0, 0);
+        width: auto;
+        min-width: 15%;
+        margin-top: 5%;
+        height: 10%;
+        font-weight: 1000;
+        font-size: 120%;
+        border-radius: 5px;
+        font-family:'Dancing Script';
+        padding: 2%;
+       cursor: pointer;
+        background-image: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+      }
+      .btnShop1:hover {
+        box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      -webkit-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      -moz-box-shadow: 10px 10px 73px 17px rgba(96,251,181,0.61);
+      color: white;
+      font-family:'Dancing Script';
+      
+      }
+      .formularShop {
+        margin: 5% 19%;
+      }
+      .infoF {
+        font-size: 3vh;
+        font-weight: 600;
+      }
+      .inF {
+        background: transparent ;
+        border-bottom: 3% rgb(255, 255, 255) ;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        width: auto;
+        height: 5%;
+        font-size: 2.9vh;
+        margin:2% 0%;
+        font-family: 'Dancing Script';
+        color: white;
+        width: 90%;
+      }
+      .ExampleF {
+        margin: 1.5% 0% 6% 0% ;
+        color: rgb(175, 170, 170);
+        font-size: 2.5vh;
+        width: 100vw;
+      }
 /* } */
 /*Tablet*/
 @media only screen and (min-width:701px) {
