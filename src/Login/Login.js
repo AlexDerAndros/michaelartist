@@ -151,6 +151,8 @@ function Login({ setLoggedIn, }) {
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
       Cookies.set("username", data.user.email, { expires: 7 });
+    
+
     });
   }
 

@@ -1,5 +1,5 @@
 import "./pictureShop.css";
-import { useState } from "react";
+import { useState, useHistory, useLocation } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -233,10 +233,14 @@ export default function PictureShopp() {
     };
 
     let histo;
+    const [selectedImage, setSelectedImage] = useState('');
+    const handleImageClick = (url) => {
+      setSelectedImage(url);
+    }
     const BuySite = () => {
       return (
         <div className="pictureShop">
-
+          <img src={selectedImage} className="imgSHI"/>
           <div onClick={pressBuy}>
             <BackSymbol/>
           </div>
@@ -1081,7 +1085,10 @@ export default function PictureShopp() {
           History: {ShopImages[0].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[0].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1160,7 +1167,10 @@ export default function PictureShopp() {
           History: {ShopImages[1].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop' onClick={() => {
+          handleImageClick(ShopImages[1].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1241,7 +1251,10 @@ export default function PictureShopp() {
           History: {ShopImages[2].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[2].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1317,7 +1330,10 @@ export default function PictureShopp() {
           History: {ShopImages[3].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[3].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1394,7 +1410,10 @@ export default function PictureShopp() {
           History: {ShopImages[4].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[4].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1471,7 +1490,10 @@ export default function PictureShopp() {
           History: {ShopImages[5].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[5].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
            Kaufen
@@ -1548,7 +1570,10 @@ export default function PictureShopp() {
           History: {ShopImages[6].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[6].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span> Kaufen
          </span>
@@ -1624,7 +1649,10 @@ export default function PictureShopp() {
           History: {ShopImages[7].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[7].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1702,7 +1730,10 @@ export default function PictureShopp() {
           History: {ShopImages[8].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[8].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1779,7 +1810,10 @@ export default function PictureShopp() {
           History: {ShopImages[9].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[9].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1856,7 +1890,10 @@ export default function PictureShopp() {
           History: {ShopImages[10].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[10].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -1933,7 +1970,10 @@ export default function PictureShopp() {
           History: {ShopImages[11].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[11].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2011,7 +2051,10 @@ export default function PictureShopp() {
           History: {ShopImages[12].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[12].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2088,7 +2131,10 @@ export default function PictureShopp() {
           History: {ShopImages[13].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[13].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2165,7 +2211,10 @@ export default function PictureShopp() {
           History: {ShopImages[14].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[14].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2242,7 +2291,10 @@ export default function PictureShopp() {
           History: {ShopImages[15].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[15].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2319,7 +2371,10 @@ export default function PictureShopp() {
           History: {ShopImages[16].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[16].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2396,7 +2451,10 @@ export default function PictureShopp() {
           History: {ShopImages[17].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[17].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2474,7 +2532,10 @@ export default function PictureShopp() {
           History: {ShopImages[18].history}
         </div>
     <br/>
-    <button className='btnShop' onClick={pressBuy}>
+    <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[18].src);
+          setClickBuy(!clickBuy);
+        }}>
     { german ? (
          <span>
           Kaufen
@@ -2552,7 +2613,10 @@ export default function PictureShopp() {
           History: {ShopImages[19].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[19].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2630,7 +2694,10 @@ export default function PictureShopp() {
           History: {ShopImages[20].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[20].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2707,7 +2774,10 @@ export default function PictureShopp() {
           History: {ShopImages[21].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[21].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2785,7 +2855,10 @@ export default function PictureShopp() {
           History: {ShopImages[22].history}
         </div>
     <br/>
-    <button className='btnShop' onClick={pressBuy}>
+    <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[22].src);
+          setClickBuy(!clickBuy);
+        }}>
     { german ? (
          <span>
           Kaufen
@@ -2862,7 +2935,10 @@ export default function PictureShopp() {
           History: {ShopImages[23].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[23].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -2939,7 +3015,10 @@ export default function PictureShopp() {
           History: {ShopImages[24].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[24].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3018,7 +3097,10 @@ export default function PictureShopp() {
           History: {ShopImages[25].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[25].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3095,7 +3177,10 @@ export default function PictureShopp() {
           History: {ShopImages[27].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[27].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3172,7 +3257,10 @@ export default function PictureShopp() {
           History: {ShopImages[26].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[26].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3247,7 +3335,10 @@ export default function PictureShopp() {
           History: {ShopImages[29].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[29].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3324,7 +3415,10 @@ export default function PictureShopp() {
           History: {ShopImages[28].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[28].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3401,7 +3495,10 @@ export default function PictureShopp() {
           History: {ShopImages[30].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[30].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3478,7 +3575,10 @@ export default function PictureShopp() {
           History: {ShopImages[31].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[31].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
            Kaufen
@@ -3555,7 +3655,10 @@ export default function PictureShopp() {
           History: {ShopImages[32].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[32].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3632,7 +3735,10 @@ export default function PictureShopp() {
           History: {ShopImages[33].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[33].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3710,7 +3816,10 @@ export default function PictureShopp() {
           History: {ShopImages[34].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[34].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
@@ -3787,7 +3896,10 @@ export default function PictureShopp() {
           History: {ShopImages[35].history}
         </div>
         <br/>
-        <button className='btnShop' onClick={pressBuy}>
+        <button className='btnShop'  onClick={() => {
+          handleImageClick(ShopImages[35].src);
+          setClickBuy(!clickBuy);
+        }}>
         { german ? (
          <span>
           Kaufen
