@@ -281,6 +281,24 @@ export default function PictureShopp() {
             setPaid(false);
             Cookies.set("paid", false, { expires: 1000 });
             Cookies.set("buyC", true, {expires: 14});
+            Cookies.set("firstName", valueFN, {expires: 14});
+            Cookies.set("surName", valueSN, {expires: 14});
+            Cookies.set("address", valueA, {expires: 14});
+            Cookies.set("ZIP", valueZIP, {expires: 14});
+            Cookies.set("city", valueCI, {expires: 14});
+            Cookies.set("country", valueCO, {expires: 14});
+            Cookies.set("email", valueE, {expires: 14});
+            Cookies.set("picture", selectedImage, {expires: 14});
+            let email = Cookies.get("email");
+            await addDoc(collection(db, "mail"), {
+              to: [email],
+              message: {
+                subject: "Purchased successfully",
+                text: "Hallo",
+                html: `Dear ${email}, <br/> <br/> Your purchase was successful. <br/> If you have any further questions, please contact us at michaelntrikosartist@gmail.com. <br/> <br/>Best regards <br/> Yours Michael Ntrikos`
+              }
+            });
+            window.location.reload();
           } catch (error) {
             console.log("Error:" + error);
             alert('Failed to purchase: ' + error);

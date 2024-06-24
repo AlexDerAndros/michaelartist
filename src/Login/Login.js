@@ -6,7 +6,7 @@ import { auth, db, storage, googleprovider,  } from '../config/firebase';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
 import Cookies from 'js-cookie';
-import { getDoc, setDoc, collection, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
+import { getDoc, getDocs, doc, addDoc, setDoc, collection } from "firebase/firestore";
 import './log.css';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
@@ -14,28 +14,22 @@ import { v4 } from 'uuid';
 
 
 export default function Log1() {
+  
   const [loggedIN, setLoggedIN] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  
-
-  useEffect(() => {
-    if (Cookies.get('loggedIn') === 'true') {
-      setLoggedIN(true);
-    }
-    if (Cookies.get('isAdmin') === 'true') {
-      setIsAdmin(true);
-    }
-  }, []);
-
-  if (loggedIN) {
-    if (isAdmin) {
-      return <AdminDashBoard setLoggedIN={setLoggedIN} />;
-    }
-    return <LoggedIN setLoggedIN={setLoggedIN} />;
-  } else {
-    return <Login setLoggedIn={setLoggedIN}/>;
+useEffect(() => {
+  if (Cookies.get('loggedIn') === 'true') {
+    setLoggedIN(true);
   }
+  if (Cookies.get('isAdmin') === 'true') {
+    setIsAdmin(true);
+  }
+}, []);
+
+ 
+  return loggedIN ? (isAdmin ? <AdminDashBoard setLoggedIN={setLoggedIN} />  : <LoggedIN setLoggedIN={setLoggedIN} />) : <Login setLoggedIn={setLoggedIN} />;
+ 
 }
 
 function LoggedIN({ setLoggedIN }) {
@@ -106,13 +100,13 @@ function Login({ setLoggedIn, }) {
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
       Cookies.set("username", us, { expires: 7 });
-      if (us == adminAlexUS  && pa == adminAlexPA  || us == adminMichaUS && pa == adminMichaPA) {
-        Cookies.set('isAdmin', true, {expires: 7});
-      }
-      else {
+       if (us == adminAlexUS  || us == adminMichaUS ) {
+         Cookies.set('isAdmin', true, {expires: 7});
+        }
+       else {
         Cookies.set('isAdmin', false, {expires: 7});
-
-      }
+        }
+     
     } catch (error) {
       console.log(error.message);
       alert("Failed to login: " + error.message);
@@ -128,17 +122,24 @@ function Login({ setLoggedIn, }) {
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
       Cookies.set("username", registerUS, { expires: 7 });
-      window.location.reload();
-      if (registerUS == adminAlexUS  && registerPA == adminAlexPA  || registerUS == adminMichaUS && registerPA == adminMichaPA) {
+     if (registerUS == adminAlexUS   || registerUS == adminMichaUS ) {
         Cookies.set('isAdmin', true, {expires: 7});
-      }
-      else {
+       }
+       else {
         Cookies.set('isAdmin', false, {expires: 7});
         
-      }
-
-   
-
+       }
+     
+      await addDoc(collection(db, "mail"), {
+        to: [registerUS],
+        message: {
+          subject: "Registered successfully",
+          text: "Hallo",
+          html: `Dear ${registerUS}, <br/> <br/> Your registration was successful. Now you can log in with your email address ${registerUS} and your password. <br/> If you have any further questions, please contact us at michaelntrikosartist@gmail.com. <br/> <br/>Best regards <br/> Yours Michael Ntrikos`
+        }
+      });
+      window.location.reload();
+      
     } catch (error) {
       console.log(error.message);
       alert("Failed to register: " + error.message);
@@ -148,10 +149,12 @@ function Login({ setLoggedIn, }) {
     signInWithPopup(auth, googleprovider).then((data) =>{
       setGoogleUs(data.user.email);
       localStorage.setItem('email', data.user.email);
+      alert("Login with successfully");
       setLoggedIn(true);
       Cookies.set("loggedIn", true, { expires: 7 });
       Cookies.set("username", data.user.email, { expires: 7 });
-    
+      window.location.reload();
+      
 
     });
   }

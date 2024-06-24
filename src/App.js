@@ -51,37 +51,38 @@ import { PostSiteP } from './Login/Login';
     }
  
 function HeaderBo() {
-  
+  let admin;
+  if (Cookies.get('isAdmin') == "true") {
+    admin = <Link to= "/chat">
+    <div className='po1'>
+      <FaComment  className='ic'/> <span className='he'> Chat</span>
+    </div>
+  </Link>;
+  }  
   
   
 
   return (
    <Router>
-   <div>
-
+   <>
    <div className='header'>
    
       <div className='title' > 
-      <Link to= '/'>
+      <a href='/'>
         Artist Michael Ntrikos
-      </Link>
+      </a>
       </div>
-     <Link to="/AboutUs">
-      <div className='about'>
-        About Us
-      </div>
-      </Link>  
       <div>
         <a href='https://www.tiktok.com/@meineartmichael?_t=8bx04ojY9ME&_r=1'>
           <FontAwesomeIcon icon={faTiktok}   className='ttIcon'/>
         </a>
-      </div>
-      <div className='foto2'>
+      </div> 
+     <div className='foto2'>
         <a href='https://www.instagram.com/michael.n.artist/?igshid=YmMyMTA2M2Y%3D'>
           <FontAwesomeIcon icon={faInstagram}   className='igIcon'/>
         </a>
-      </div>
-    </div>
+      </div>  
+  
   
     <div className='unten'>
    <div>
@@ -103,11 +104,7 @@ function HeaderBo() {
       <FaImages className='ic' /> <span className='he'> Picture gallery</span>
     </div>
   </Link>
-  <Link to= "/chat">
-    <div className='po1'>
-      <FaComment  className='ic'/> <span className='he'> Chat</span>
-    </div>
-  </Link>
+  {admin}
   <Link to= "/login">
     <div className='po4'>
       <FaSignInAlt  className='ic'/> <span className='he'> Login </span>
@@ -125,13 +122,13 @@ function HeaderBo() {
     <span className='he'> Picture shop</span>
     </div>
   </Link>
-  <Link to='/biography'>
-   <div className='bio'>
-   <FontAwesomeIcon icon={faPenSquare }   className='ic' />
-   <span className='he'> My Biography</span>
-   
-    </div>
-  </Link>
+  <Link to="/AboutUs">
+  <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
+      <div className='he'>
+        About Us
+      </div>
+      </Link>  
+  
     <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
@@ -140,14 +137,13 @@ function HeaderBo() {
    <Route path="/login" element={<Log/>}/>
    <Route path='/PictureShop' element={<PictureShop/>}/>
    <Route path='/Videogalerie' element={<Videogalerie/>}/>
-   <Route path='/AboutUs' element={<AboutUs/>}/>
-   <Route path='/biography' element={<Biographie/>}/>
-
+  <Route path='/AboutUs' element={<AboutUs/>}/>
     
    
   </Routes>
  </div>
 </div>
+</>
 </Router> 
   );
  
@@ -197,11 +193,11 @@ function ImageList (){
   
 
   const [currentIndex, setCurrentIndex]= useState(0);
-  const[click,setClick] = useState(false);
+  // const[click,setClick] = useState(false);
   
-  const BiggerPic= () => {
-    setClick(!click);
-  }
+  // const BiggerPic= () => {
+  //   setClick(!click);
+  // }
   const nextImage = () => {
     setCurrentIndex((prevIndex) =>
     prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -216,27 +212,27 @@ function ImageList (){
   
   return (
    <div className='imageList' style={{
-    background:click ? 'none' : 'rgba(0, 0, 0, 0.639)',
+    background:'none' ,
     }}>
    <div className='picPos'>  
-    <img  onClick={BiggerPic} className='imgI' src= {images[currentIndex]} 
+    <img   className='imgI' src= {images[currentIndex]} 
        style= {{
-          transform: click ? 'scale(1.6)' : 'scale(1)',
-          zIndex: click ? '100' : '-1',
+          transform: 'scale(1)',
+          zIndex:  '-1',
           
         }}
     />
    </div>  
     <div className='imgBtn'> 
     <button  onClick={prevImage} className='btn1'> 
-      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color:  click ? 'transparent' : 'white',transform:'rotate(-180deg)', position:"absolute", margin:"-30% -10%"}} />
+      <FontAwesomeIcon icon={faArrowRight} size='1x' style={{color: 'white',transform:'rotate(-180deg)', position:"absolute", margin:"-30% -10%"}} />
     </button>
   <button className='btn1' onClick={nextImage}>
-    <FontAwesomeIcon icon={faArrowRight} style={{color:  click ? 'transparent' : 'white', position:"absolute" , margin:"-30% -10%" }}/>
+    <FontAwesomeIcon icon={faArrowRight} style={{color: 'white', position:"absolute" , margin:"-30% -10%" }}/>
   </button>
     </div>
     <div className='biog' >
-    <div className="text  " style={{textAlign: 'left', color: click ? "transparent" : "white" }}>
+    <div className="text  " style={{textAlign: 'left', color:  "white" }}>
       <div className=' textTablet'>
        Hello!
 
@@ -251,7 +247,7 @@ function ImageList (){
        <br/>
        Best regards 
        <br/>
-      Your Michael
+      Yours Michael
      </div>
       </div>
     </div>
@@ -277,7 +273,7 @@ function Home() {
   }
   
  return (
-  <>
+  < div className='center'>
 <div className='Mitte'>
  <div className='info1'> 
   Welcome {user}
@@ -286,12 +282,15 @@ function Home() {
       "If you feel it, you can paint it.
         When you paint, you feel it."  By Michael Ntrikos 
 </div>
+<div className='info'>
+   Here is a slideshow of all my paintings:
+</div>
 <ImageList/>
 <br/>
   </div>
  
  
-  </>
+  </div>
  );
 }
 
@@ -360,14 +359,7 @@ const SEARCH = () => {
     </div>
     );
   };
-  const PBiography = () => {
-    return (
-      <div>
-    <FontAwesomeIcon  onClick={pressBio} icon={faArrowRight} size='2x' className='backIconS'/>
-    <Biographie/>
-      </div>
-    );
-  }
+ 
   const [home,setHome]= useState(false);
   const [pictureGallery,setPictureGallery] = useState(false);
   const [chat, setChat] = useState(false);
@@ -375,7 +367,6 @@ const SEARCH = () => {
   const[videogallery,setVideogallery] = useState(false);
   const[pictureShop,setPictureShop] = useState(false);
   const[aboutUs, setAboutUs] = useState(false);
-  const [bio,setBio] = useState(false);
   const pressHome = () => {
     setHome(!home);
   }
@@ -398,9 +389,7 @@ const SEARCH = () => {
   const pressAboutUs = () => {
     setAboutUs(!aboutUs);
   }
-  const pressBio = () => {
-    setBio(!bio);
-  }
+ 
   const [searchItems, setSearchItems] = useState([
     { id: 1, term: 'Home', className: 'searchItem', icon:  <FaHome className='icSearch'/>, press: pressHome},
     { id: 2, term: 'Picture gallery', className: 'searchItem', icon: <FaImages className='icSearch'/>, press: pressPicturegallery},
@@ -409,7 +398,6 @@ const SEARCH = () => {
     { id: 5, term: 'Video gallery', className: 'searchItem', icon:<FontAwesomeIcon icon={faVideo}  className='icSearch'/>, press: pressVideogallery},
     { id: 6, term: 'Picture shop', className: 'searchItem', icon: <FontAwesomeIcon icon={faShoppingCart} className='icSearch'/> , press: pressPictureShop},
     { id: 7, term: 'About Us', className: 'searchItem', icon:  <FontAwesomeIcon icon={faInfoCircle} className='icSearch' />, press:pressAboutUs},
-    {id: 8, term: 'Biography', className: 'searchItem', icon:  <FontAwesomeIcon icon={faPenSquare}  className='icSearch' />, press:pressBio}
   ]);
 
   const [filteredSearchItems, setFilteredSearchItems] = useState([...searchItems]);
@@ -438,8 +426,6 @@ const SEARCH = () => {
          <PVideoGallery/>
       ) : pictureShop ? (
         <PPictureShop/>
-      ): bio ? (
-        <PBiography/>
       ): (
         <div className='search'>
           

@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@100;500&family=Roboto&display=swap');
+main {
+  overflow-x: hidden;
+}
+.Mitte::-webkit-scrollbar {
+  display: none;
+}
 @media screen and (max-width:800px)  {
   main {
     background-image: url('./michaelBackground.png');
@@ -25,25 +32,27 @@
      color: white;
      font-size: 4vh;
      position: sticky;
-     margin: 1vh 2vw 0vh 0vw ;
+     margin: 10% 0% ;
+     height: 80%;
   }
   .ttIcon {
     color: white;
-    font-size: 3.5vh;
+    font-size: 3.75vh;
     position: sticky;
-    margin: 1vh 10vw 0vh 0vw;
+    margin: 1.5vh 10vw 0vh 0vw;
   }
   .title {
    font-weight: bold;
-   position: sticky;
-   font-size: 2.6vh;
+   font-size: 5vw;
    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
    background-clip: text;
    color: transparent;
    cursor: pointer;
    width: auto;
-   inset: 1%;
-   position: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
   }
   .he {
     display: none;
@@ -163,16 +172,22 @@
   .Mitte {
     text-align: center;
     background: transparent;
-    width: 100%;
-    height: 80%;
-    padding: 1vh;
+    width: 80%;
+    height: 72%;
+    padding: 4vh;
     z-index: -100;
     left: 0%;
     right: 0%;
     top: 10%;
     position: fixed;
+    background-color: rgba(0, 0, 0, 0.744);
+    margin: 0% 5% ;
+    border-radius: 4%;
+    overflow-x: hidden;
+    overflow-y: scroll;
     
   }
+ 
   .info1 {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
     background-clip: text;
@@ -260,7 +275,13 @@
   position: sticky;
 }
 .biog {
-  display: none;
+  margin-top: 10vh;
+  font-family: "Roboto", sans-serif; 
+}
+.text {
+  font-size: 3vw;
+  color: white;
+  font-size: "Roboto", sans-serif;
 }
 
 .infoUN {
@@ -289,8 +310,8 @@
 .imgI {
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  width: 75%;
-  height: 85%;
+  width: 50vw;
+  height: 48vh;
   border-radius: 4%;
   max-width: 600px;
   max-height: 500px;
@@ -303,7 +324,7 @@
 .imgBtn {
   display: flex;
   flex-direction: row;
-  margin: -2.75vh 0;
+  margin: 0;
   z-index: 1000;
 }
 .btn1 {
