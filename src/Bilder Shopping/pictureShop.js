@@ -233,7 +233,7 @@ export default function PictureShopp() {
         (item.term && item.term.toLowerCase().includes(filterTerm.toLowerCase())) ||
         (item.price && item.price.toString().includes(filterTerm))
       );
-      setFilteredSearchItems(filteredItems);
+      setFilteredSearchItems(filteredItems); 
     };
 
     let histo;
@@ -290,14 +290,7 @@ export default function PictureShopp() {
             Cookies.set("email", valueE, {expires: 14});
             Cookies.set("picture", selectedImage, {expires: 14});
             let email = Cookies.get("email");
-            await addDoc(collection(db, "mail"), {
-              to: [email],
-              message: {
-                subject: "Purchased successfully",
-                text: "Hallo",
-                html: `Dear ${email}, <br/> <br/> Your purchase was successful. <br/> If you have any further questions, please contact us at michaelntrikosartist@gmail.com. <br/> <br/>Best regards <br/> Yours Michael Ntrikos`
-              }
-            });
+           
             window.location.reload();
           } catch (error) {
             console.log("Error:" + error);
@@ -308,6 +301,7 @@ export default function PictureShopp() {
       const CancelOrder = () => {
         try {
          Cookies.set("buyC", false, { expires:1/3600});
+
         } catch(error) {
           console.log("Error:" + error);
           alert('Failed to cancel order: ' + error);

@@ -4,7 +4,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, OAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
 import { auth, db, storage, googleprovider,  } from '../config/firebase';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { adminAlexUS, adminAlexPA, adminMichaUS, adminMichaPA } from '../config/admin';
+import { adminAlexUS, adminMichaUS,  } from '../config/admin';
 import Cookies from 'js-cookie';
 import { getDoc, getDocs, doc, addDoc, setDoc, collection } from "firebase/firestore";
 import './log.css';
@@ -130,14 +130,7 @@ function Login({ setLoggedIn, }) {
         
        }
      
-      await addDoc(collection(db, "mail"), {
-        to: [registerUS],
-        message: {
-          subject: "Registered successfully",
-          text: "Hallo",
-          html: `Dear ${registerUS}, <br/> <br/> Your registration was successful. Now you can log in with your email address ${registerUS} and your password. <br/> If you have any further questions, please contact us at michaelntrikosartist@gmail.com. <br/> <br/>Best regards <br/> Yours Michael Ntrikos`
-        }
-      });
+   
       window.location.reload();
       
     } catch (error) {

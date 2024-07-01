@@ -7,6 +7,9 @@ main {
 .Mitte::-webkit-scrollbar {
   display: none;
 }
+.biog {
+  font-family: "Roboto", sans-serif; 
+}
 @media screen and (max-width:800px)  {
   main {
     background-image: url('./michaelBackground.png');
@@ -276,7 +279,6 @@ main {
 }
 .biog {
   margin-top: 10vh;
-  font-family: "Roboto", sans-serif; 
 }
 .text {
   font-size: 3vw;
