@@ -104,7 +104,7 @@ export default function Bildgalerie1() {
   ];
 
   return (
-    <div className='bildgalerie'>
+    <div className='container'>
       <div className="headAb">
          Picture gallery
       </div>

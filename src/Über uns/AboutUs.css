@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
-.aboutUs {
-    font-family: 'Dancing Script',
-    cursive, 'Roboto', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@100;500&family=Roboto&display=swap');
+ 
 /**Handy**/
 @media only screen and (max-width:700px) {
     .aboutUs {
@@ -157,7 +155,7 @@
       .imp {
         color: white;
         font-family:'Dancing Script';
-        font-size: 3vh;
+        font-size: 2.5vh;
       }
       summary {
         cursor: pointer;
@@ -169,8 +167,8 @@
         text-decoration: underline white;
       }
       .igimg2 {
-        width: 1%;
-        height: 1%;
+        width: 1.5%;
+        height: 1.5%;
         cursor: pointer;
       }
       .ig {
@@ -180,10 +178,10 @@
         cursor: pointer;
       }
       .ttimg2 {
-        width: 1.75%;
-        height: 1.75%;
+        width: 2%;
+        height: 2%;
         cursor: pointer;
-        margin: -0.5% 0%;
+        margin:-0.25% 0%;
       }
       .tt {
         color: transparent;

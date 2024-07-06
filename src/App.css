@@ -10,7 +10,31 @@ main {
 .biog {
   font-family: "Roboto", sans-serif; 
 }
+.container {
+  background-color: rgba(0, 0, 0, 0.744);
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 4%;
+  z-index: -100;
+  
+}
+.text {
+  font-family: "Roboto", sans-serif; 
+
+}
 @media screen and (max-width:800px)  {
+  .container {
+    width: 80%;
+    height: 72%;
+    padding: 4vh;
+    z-index: -100;
+    left: 0%;
+    right: 0%;
+    top: 10%;
+    margin: 0% 5% ;
+
+  }
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -190,7 +214,17 @@ main {
     overflow-y: scroll;
     
   }
- 
+  .infoA {
+    background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
+    background-clip: text;
+    color: transparent;
+   font-weight: bold;
+   margin: 2% 0%;
+   text-align: left;
+   font-size: 2.7vh;
+   padding: 1% 3% ;
+   z-index: -100;
+  }
   .info1 {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
     background-clip: text;
@@ -472,6 +506,14 @@ main {
 
 /* Tablet */
 @media screen and (min-width: 801px) {
+  .container {
+    width: 70%;
+    height: 82%;
+    padding: 3vh 1vh;
+    left: 20%;
+    right: 3%;
+    top: 11%;
+  }
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -604,31 +646,21 @@ main {
     font-size: 3vh;
   }
 
+
   .unten {
     width: auto;
     height:  98%;
     width: 15%;
-    margin: 3.5% 0%;
     background: transparent ;
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     background-color: black;
-  }
-  .Mitte {
-    text-align: center;
-    background: transparent;
-    width: 100%;
-    height: 80%;
-    padding: 1vh;
-    z-index: -100;
     left: 0%;
-    right: 0%;
-    top: 15%;
-    position: fixed;
-    
+    top: 5%;
   }
+  
   .info1 {
     background: linear-gradient(to right,#d682f8, rgb(96, 251, 181) );
     background-clip: text;
@@ -637,9 +669,11 @@ main {
     font-size: 4.5vh;
     z-index: -100;
     margin:-3% 0%;
+    text-align: center;
   }
+  
   .he {
-    position: fixed;
+    position: absolute;
     font-family: 'Dancing Script';
     font-size: 3vh;
     background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8);
@@ -682,8 +716,7 @@ main {
     color: transparent;
    font-weight: bold;
    margin:3% 0%;
-   text-align: left;
-   font-size: 3vh;
+   font-size: 2vw;
    padding: 1% 3% ;
    z-index: -100;
    display: flex;
@@ -791,7 +824,7 @@ main {
 }
 .biog {
   position: absolute;
-  top: 0%;
+  top: 20%;
   left: 50%;
   width: 50%;
 }
@@ -800,7 +833,7 @@ main {
   color: white;
 }
 .textTablet {
-  font-size: 2.3vh;
+  font-size: 2.2vh;
 }
 /* Translation */
 .translation {
@@ -948,6 +981,16 @@ main {
 
 /**PC**/
 @media screen and (min-width:1500px) {
+  .container {
+    width: 80%;
+    height: 83%;
+    padding: 3vh 1vh;
+     border-radius: 10px;
+     z-index: -100;
+     left: 15%;
+     right: 3%;
+     top: 10%;
+  }
   main {
     background-image: url('./michaelBackground.png');
     background-size: cover;
@@ -997,7 +1040,7 @@ main {
     .header {
     background-color: black;
     width: 100%;
-    height: 6%;
+    height: 7%;
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -1084,13 +1127,14 @@ main {
     width: auto;
     height:  98%;
     width: 14%;
-    margin: 2.5% 0%;
     background: transparent ;
     position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     background-color: black;
+    left: 0%;
+    
   }
   .Mitte {
     text-align: center;
@@ -1103,6 +1147,8 @@ main {
     right: 0%;
     top: 15%;
     position: fixed;
+    background-color: rgba(0, 0, 0, 0.877);
+
     
   }
   .info1 {
@@ -1112,7 +1158,7 @@ main {
     font-weight:bold ;
     font-size: 4.5vh;
     z-index: -100;
-    margin:-3% 0%;
+    margin:-2% 0%;
   }
   .he {
     position: fixed;
@@ -1124,6 +1170,7 @@ main {
     margin-top: -0.25%;
   
   }
+ 
   .bio {
     display: none;
   }
@@ -1163,8 +1210,9 @@ main {
    padding: 1% 3% ;
    z-index: -100;
    display: flex;
-   align-items: center;
-   justify-content: center;
+   align-items: left;
+   justify-content: left;
+   width: 60%;
   }
   .searchImg {
     width: 7vh;
@@ -1267,7 +1315,7 @@ main {
 }
 .biog {
   position: absolute;
-  top: 0%;
+  top: 17%;
   left: 50%;
   width: 50%;
 }
@@ -1276,7 +1324,7 @@ main {
   color: white;
 }
 .textTablet {
-  font-size: 3vh;
+  font-size: 1.3vw;
 }
 /* Translation */
 .translation {

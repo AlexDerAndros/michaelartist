@@ -55,7 +55,7 @@ export default function AboutUs1() {
         )}
       </div>
      </div>
-      <div className='aboutUs'>
+      <div className='container'>
         <div className='headAb'>
         { german ? (
        <span>
@@ -73,9 +73,9 @@ export default function AboutUs1() {
         </div>
         <div className='imp'>
          <details>
-           <summary>  Impressum  </summary>
+           <summary className="text">  Impressum  </summary>
             <div> 
-            <span className='theAb'> 
+            <span className='theAb text'> 
              { german ? (
        <span>
       Datenschutzerklärung
@@ -91,15 +91,15 @@ export default function AboutUs1() {
       )}</span>
             <br/>
             { german ? (
-       <span>
+       <span className="text">
        Die Daten werden dafür verwendet, damit die Nutzer unter einem
         Namen ein Account haben, wodurch sie die Videos schon vor Veröffentlichung 
         sehen auf Instagram und TikTok können, es zugeordnet werden kann welcher 
         Nutzer ein Bild kauft und damit der Chat mit Michael Ntrikos auch wirklich 
-       nur unter dem eingelochtem Nutzer und Michael Ntrikos bleiben. 
+       nur unter dem Nutzer und Michael Ntrikos bleibt. 
        </span>
       ): english ? (
-        <span>
+        <span className="text">
         The data is used so that the users have an account under one name, so that they can see the videos on Instagram and TikTok before they are
            published, it can be assigned
           which user buys a picture and so that the chat
@@ -113,7 +113,7 @@ export default function AboutUs1() {
       )}
              <br/>
              <br/>
-          <span className='theAb'>
+          <span className='theAb  text'>
           { german ? (
        <span>
        Widerrufsrecht 
@@ -128,7 +128,7 @@ export default function AboutUs1() {
         </span>
       )} </span>
       { german ? (
-       <span>
+       <span className="text">
        <br/>
        Bürgerliches Gesetzbuch kurz BGB  § 312g Widerrufsrecht
   <br/>
@@ -159,7 +159,7 @@ export default function AboutUs1() {
      <br/>
        </span>
       ): english ? (
-        <span>
+        <span className="text">
         <br/>
           
           German Civil Code (BGB) § 312g Right of revocation
@@ -200,7 +200,7 @@ export default function AboutUs1() {
           </details>
           <br/>
           <details>
-            <summary>
+            <summary className="text">
             { german ? (
        <span>
         Verkauf der Bilder
@@ -217,16 +217,16 @@ export default function AboutUs1() {
             </summary>
             <div>
             { german ? (
-       <span>
+       <span className="text">
             Sobald der Nutzer ein Bild ausgewählt und es bezahlt hat, 
             wird er nähere Informationen darüber erhalten und anschließend wird
              es ihm zugesendet. Ab dem Zeitpunkt, wo es angekommen ist, 
-             ohne Beschädigungen vom Versandt, haften wir nicht mehr für
+             ohne Beschädigungen vom Versand, haften wir nicht mehr für
               die Beschädigung am Bild. Der Nutzer wird das Bild in einem
                Zeitraum von 3-5 Werktagen erhalten.
        </span>
       ): english ? (
-        <span>
+        <span className="text">
         Once the user has selected an image and paid for it, they will receive further information about it
          and it will then be sent to them.
         Once it has arrived without any damage from shipping, we are no longer liable for any damage to the image.
@@ -244,7 +244,7 @@ export default function AboutUs1() {
           </details>
           <br/>
           <details>
-            <summary>
+            <summary className="text">
             { german ? (
        <span>
        Kontaktinformationen
@@ -259,16 +259,16 @@ export default function AboutUs1() {
         </span>
       )}
             </summary>
-            <div>
+            <div className="text">
             { german ? (
        <span>
        Die Nutzer der Website können uns über E-Mail beispielsweise kontaktieren unter 
-            michaelntrikosartist@gmail.com  oder auch über bald kommende Chat-Funktion 
+            michaelntrikosartist@gmail.com  oder auch über die bald kommende Chat-Funktion 
             auf der Website, wo man uns direkt kontaktieren kann.
             
        </span>
       ): english ? (
-        <span>
+        <span className="text">
         Users of the website can contact us via email,
              for example at michaelntrikosartist@gmail.com,
               or via the upcoming chat function on the website, 
@@ -284,14 +284,14 @@ export default function AboutUs1() {
           <br/>
           <br/>
           { german ? (
-       <span>
+       <span className="text">
        Die Website wurde von Alexandros Ntrikos erstellt.
        Sie können mich auf <span className='ig'> Instagram  <img src='./instagram.jpeg' className='igimg2'/> </span>
       <br/> oder auf <a href='https://www.tiktok.com/@alexandros20092'> <span className='tt'>TikTok <img src='./tiktok.jpeg' className='ttimg2'/></span></a>
        kontaktieren.
        </span>
       ): english ? (
-        <span>
+        <span className="text">
       The website was created by Alexandros Ntrikos.
       You can contact me on  <a href='https://www.instagram.com/alexandros_ntrikos/'><span className='ig'> Instagram  <img src='./instagram.jpeg' className='igimg2'/></span></a>
       <br/> or on <a href='https://www.tiktok.com/@alexandros20092'> <span className='tt'>TikTok <img src='./tiktok.jpeg' className='ttimg2'/></span></a>.

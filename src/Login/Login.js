@@ -52,7 +52,7 @@ function LoggedIN({ setLoggedIN }) {
   }, []);
 
   return (
-    <div className='login'>
+    <div className='container'>
       <div className='WEL'>
         Welcome {user?.email}!
       </div>
@@ -164,7 +164,7 @@ function Login({ setLoggedIn, }) {
   return (
     <>
       {!click ? (
-        <div className='login'>
+        <div className='container'>
           <div className='head'>
             {german ? (
               <span>Anmeldung</span>
@@ -235,7 +235,7 @@ function Login({ setLoggedIn, }) {
         </div>
       ) : (
         <div>
-          <div className='login'>
+          <div className='container'>
             <button onClick={press}>
               <FontAwesomeIcon
                 icon={faArrowRight}
@@ -340,7 +340,7 @@ function AdminDashBoard({setLoggedIN}) {
   ];
   if ( !clickPhoto && !clickVideo && !clickPost) {
   return (
-    <div className='login'>
+    <div className='container'>
       <div className='WEL' style={{zIndex: click ? '-100' : '1', marginTop: click ? '15%' : '0%', transition: '0.2s ease-in'}}>
         Welcome Admin {user?.email}!
       </div>
@@ -492,7 +492,7 @@ const PostSiteV = () => {
   
 
   return (
-    <div className='search' style={{overflowY:'scroll'}}>
+    <div className='container' style={{overflowY:'scroll'}}>
       <div>
         <div className='headPO'>
           New Video
@@ -574,7 +574,7 @@ export const PostSiteP = () => {
   }, []);
 
   return (
-    <div className='search' style={{ overflowY: 'scroll' }}>
+    <div className='container' style={{ overflowY: 'scroll' }}>
       <div>
         <div className='headPO'>New Photo</div>
       </div>
