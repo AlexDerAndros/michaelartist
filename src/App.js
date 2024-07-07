@@ -61,6 +61,7 @@ function HeaderBo() {
   }  
   
   
+  
 
   return (
    <Router>
@@ -83,51 +84,51 @@ function HeaderBo() {
         </a>
       </div>  
   
-  
-    <div className='unten'>
-   <div>
-   <Link to="/">
-     <div className='po'> 
-      <FaHome className='ic'/> <span className='he'> Home</span>
-    </div>
-    </Link>
-   </div>
-   <div>
-   <Link to= "/Search">
-   <div className='po2'>
-      <FaSearch className='ic'/> <span className='he'> Search</span>
-    </div>
-    </Link>
-   </div>
-   <Link to="/bildgalerie" className='po3'>
-   <div>
-      <FaImages className='ic' /> <span className='he'> Picture gallery</span>
-    </div>
-  </Link>
-  {admin}
-  <Link to= "/login">
-    <div className='po4'>
-      <FaSignInAlt  className='ic'/> <span className='he'> Login </span>
-    </div>
-  </Link>
-  <Link to='/Videogalerie'>
-   <div>
-    <FontAwesomeIcon icon={faVideo} className='ic' />
-    <span className='he'> Video gallery</span>
-   </div>
-  </Link>
-  <Link to='/PictureShop'>
-   <div>
-    <FontAwesomeIcon icon={faShoppingCart}   className='ic'/>
-    <span className='he'> Picture shop</span>
-    </div>
-  </Link>
-  <Link to="/AboutUs" >
-  <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
-  <span className='he'>About Us</span>
-      </Link>  
-  
-    <Routes>
+      { Cookies.get('loggedIn') == 'true' ? (
+         <div className='unten'>
+         <div>
+         
+         <Link to="/">
+           <div className='po'> 
+            <FaHome className='ic'/> <span className='he  '> Home</span>
+          </div>
+          </Link>
+         </div>
+         <div>
+         <Link to= "/Search">
+         <div className='po2'>
+            <FaSearch className='ic'/> <span className='he '> Search</span>
+          </div>
+          </Link>
+         </div>
+         <Link to="/bildgalerie" className='po3'>
+         <div>
+            <FaImages className='ic' /> <span className='he'> Picture gallery</span>
+          </div>
+        </Link>
+        {admin}
+        <Link to= "/login">
+          <div className='po4'>
+            <FaSignInAlt  className='ic'/> <span className='he '> Login </span>
+          </div>
+        </Link>
+        <Link to='/Videogalerie'>
+         <div>
+          <FontAwesomeIcon icon={faVideo} className='ic ' />
+          <span className='he'> Video gallery</span>
+         </div>
+        </Link>
+        <Link to='/PictureShop'>
+         <div>
+          <FontAwesomeIcon icon={faShoppingCart}   className='ic'/>
+          <span className='he'> Picture shop</span>
+          </div>
+        </Link>
+        <Link to="/AboutUs" >
+        <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
+        <span className='he'>About Us</span>
+            </Link>  
+            <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
    <Route path="/Search" element={<SEARCH/>}/>
@@ -139,8 +140,64 @@ function HeaderBo() {
     
    
   </Routes>
+         </div>   
+    ): (
+      <div className='unten'>
+      <div>
+      
+      <Link to="/">
+        <div style={{position:'sticky'}} className='menu1'> 
+         <FaHome className='ic'/>
+          <span className='he  heNL'> Home</span>
+       </div>
+       </Link>
+      </div>
+      <div>
+      <Link to= "/Search">
+      <div style={{position:'sticky'}} className='menu1'>
+         <FaSearch className='ic'/> 
+         <span className='he  heNL'> Search</span>
+       </div>
+       </Link>
+      </div>
+      
+     <Link to= "/login">
+       <div style={{position:'sticky'}} className='menu1'>
+         <FaSignInAlt  className='ic'/> 
+         <span className='he   heNL'> Login </span>
+       </div>
+     </Link>
+     <Link to='/Videogalerie'>
+      <div style={{position:'sticky'}} className='menu1'>
+       <FontAwesomeIcon icon={faVideo} className='ic' />
+       <span className='he  heNL'> Video gallery</span>
+      </div>
+     </Link>
+   
+     <Link to="/AboutUs" >
+     <div style={{position:'sticky'}} className='menu1'>
+       <FontAwesomeIcon icon={faInfoCircle}   className='ic  heNL' />
+         <span className='he  heNL'>About Us</span>
+     </div>
+         </Link>
+         <Routes>
+    <Route path="/" element={<Home/>}/>
+   <Route path="/bildgalerie" element={<Bildgalerie/>}/>
+   <Route path="/Search" element={<SEARCH/>}/>
+   <Route path="/chat" element={<Chat/>}/>
+   <Route path="/login" element={<Log/>}/>
+   <Route path='/PictureShop' element={<PictureShop/>}/>
+   <Route path='/Videogalerie' element={<Videogalerie/>}/>
+  <Route path='/AboutUs' element={<AboutUs/>}/>
+    
+   
+  </Routes>
+       </div>    
+    )}
+   
+  
+   
  </div>
-</div>
 </>
 </Router> 
   );

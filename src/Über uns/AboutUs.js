@@ -16,7 +16,7 @@ export default function AboutUs1() {
    
     return(
       <>
-      <div className='translation'>
+      <div className='translation' style={{display:'none'}}>
       <div className='ge' onClick={pressG}
       style={{backgroundImage: german ? 'none' : 'linear-gradient(to right, rgb(96, 251, 181), #a31cd8)',  borderTop: german ? 'blue 0.3vh solid' : 'none',
     backgroundClip: 'text',

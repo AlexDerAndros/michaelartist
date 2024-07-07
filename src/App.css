@@ -81,9 +81,8 @@ main {
    align-items: center;
    width: 100vw;
   }
-  .he {
-    display: none;
-  }
+ 
+  
   .about {
     font-size: 2.6vh;
     width: auto;
@@ -180,6 +179,10 @@ main {
     list-style: none;
     font-size: 3vh;
   }
+  .heNL {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
   .imgBtn {
     display: flex;
     flex-direction: row;
@@ -188,13 +191,19 @@ main {
   }
   .unten {
     width: 100%;
-    height:  7%;
+    height:  8.5%;
     background: transparent ;
-    position: fixed ;
+    position: fixed;
     bottom: 0%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: black;
+    align-items: center ;
+  }
+  .menu1 {
+    display: flex;
+    flex-direction: column;
   }
   .Mitte {
     text-align: center;
