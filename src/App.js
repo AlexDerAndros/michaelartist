@@ -59,10 +59,51 @@ function HeaderBo() {
     </div>
   </Link>;
   }  
+  const[home, setHome] = useState(false);
+  const[search, setSearch] = useState(false);
+  const[login, setLogin] = useState(false);
+  const[videos, setVideos] = useState(false);
+  const[aboutUs, setAboutUs] = useState(false);
   
+  const pressHome = () => {
+    setHome(true);
+    setSearch(false);
+    setLogin(false);
+    setVideos(false);
+    setAboutUs(false);
+  };
+  const pressSearch = () => {
+    setHome(false);
+    setSearch(true);
+    setLogin(false);
+    setVideos(false);
+    setAboutUs(false);
+  };
+  const pressLogin = () => {
+    setHome(false);
+    setSearch(false);
+    setLogin(true);
+    setVideos(false);
+    setAboutUs(false);
+  }; 
+  const pressVideos = () => {
+    setHome(false);
+    setSearch(false);
+    setLogin(false);
+    setVideos(true);
+    setAboutUs(false);
+  }; 
+  const pressAboutUs = () => {
+    setHome(false);
+    setSearch(false);
+    setLogin(false);
+    setVideos(false);
+    setAboutUs(true);
+  };
   
-  
-
+  useEffect(() => {
+    setHome(true);
+  }, []);
   return (
    <Router>
    <>
@@ -128,25 +169,11 @@ function HeaderBo() {
         <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
         <span className='he'>About Us</span>
             </Link>  
-            <Routes>
-    <Route path="/" element={<Home/>}/>
-   <Route path="/bildgalerie" element={<Bildgalerie/>}/>
-   <Route path="/Search" element={<SEARCH/>}/>
-   <Route path="/chat" element={<Chat/>}/>
-   <Route path="/login" element={<Log/>}/>
-   <Route path='/PictureShop' element={<PictureShop/>}/>
-   <Route path='/Videogalerie' element={<Videogalerie/>}/>
-  <Route path='/AboutUs' element={<AboutUs/>}/>
-    
-   
-  </Routes>
-         </div>   
-    ): (
-      <div className='unten'>
+            <div className='unten'>
       <div>
       
       <Link to="/">
-        <div style={{position:'sticky'}} className='menu1'> 
+        <div className='menu1'> 
          <FaHome className='ic'/>
           <span className='he  heNL'> Home</span>
        </div>
@@ -154,7 +181,7 @@ function HeaderBo() {
       </div>
       <div>
       <Link to= "/Search">
-      <div style={{position:'sticky'}} className='menu1'>
+      <div  className='menu1'>
          <FaSearch className='ic'/> 
          <span className='he  heNL'> Search</span>
        </div>
@@ -162,24 +189,120 @@ function HeaderBo() {
       </div>
       
      <Link to= "/login">
-       <div style={{position:'sticky'}} className='menu1'>
+       <div className='menu1'>
          <FaSignInAlt  className='ic'/> 
          <span className='he   heNL'> Login </span>
        </div>
      </Link>
      <Link to='/Videogalerie'>
-      <div style={{position:'sticky'}} className='menu1'>
+      <div  className='menu1'>
        <FontAwesomeIcon icon={faVideo} className='ic' />
-       <span className='he  heNL'> Video gallery</span>
+       <span className='he  heNL'> Videos</span>
       </div>
      </Link>
    
      <Link to="/AboutUs" >
-     <div style={{position:'sticky'}} className='menu1'>
+     <div className='menu1'>
        <FontAwesomeIcon icon={faInfoCircle}   className='ic  heNL' />
          <span className='he  heNL'>About Us</span>
      </div>
          </Link>
+        
+       </div>    
+       <div className='untenH'>
+        <div className='posMenuH'>
+      <div>
+      
+      <Link to="/">
+        <div  className='menu1' onClick={pressHome} style={{ color: home ? 'rgb(96, 251, 181)' : 'white'}}> 
+         <FaHome className='ic'/>
+          <span className='he  heNL  '  style={{ color: home ? 'rgb(96, 251, 181)' : 'white'}}> Home</span>
+       </div>
+       </Link>
+      </div>
+      <div>
+      <Link to= "/Search">
+      <div className='menu1'  onClick={pressSearch} style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}>
+         <FaSearch className='ic'/> 
+         <span className='he  heNL' style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}> Search</span>
+       </div>
+       </Link>
+      </div>
+      
+     <Link to= "/login">
+       <div  className='menu1'  onClick={pressLogin} style={{ color: login ? 'rgb(96, 251, 181)' : 'white'}}>
+         <FaSignInAlt  className='ic'/> 
+         <span className='he   heNL'  style={{ color: login ? 'rgb(96, 251, 181)' : 'white'}}> Login </span>
+       </div>
+     </Link>
+     <Link to='/Videogalerie'>
+      <div  className='menu1'  onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}>
+       <FontAwesomeIcon icon={faVideo} className='ic'  />
+       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
+      </div>
+     </Link>
+   
+     <Link to="/AboutUs" >
+     <div className='menu1'  onClick={pressAboutUs} style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>
+       <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
+         <span className='he  heNL' style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>About Us</span>
+     </div>
+         </Link>
+      </div>   
+      </div>
+            <Routes>
+               <Route path="/" element={<Home/>}/>
+               <Route path="/bildgalerie" element={<Bildgalerie/>}/>
+               <Route path="/Search" element={<SEARCH/>}/>
+               <Route path="/chat" element={<Chat/>}/>
+               <Route path="/login" element={<Log/>}/>
+               <Route path='/PictureShop' element={<PictureShop/>}/>
+               <Route path='/Videogalerie' element={<Videogalerie/>}/>
+               <Route path='/AboutUs' element={<AboutUs/>}/>
+             </Routes>
+         </div>   
+    ): (
+      <>
+      <div className='untenH'>
+        <div className='posMenuH'>
+      <div>
+      
+      <Link to="/">
+        <div  className='menu1' onClick={pressHome} style={{ color: home ? 'rgb(96, 251, 181)' : 'white'}}> 
+         <FaHome className='ic'/>
+          <span className='he  heNL  '  style={{ color: home ? 'rgb(96, 251, 181)' : 'white'}}> Home</span>
+       </div>
+       </Link>
+      </div>
+      <div>
+      <Link to= "/Search">
+      <div className='menu1'  onClick={pressSearch} style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}>
+         <FaSearch className='ic'/> 
+         <span className='he  heNL' style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}> Search</span>
+       </div>
+       </Link>
+      </div>
+      
+     <Link to= "/login">
+       <div  className='menu1'  onClick={pressLogin} style={{ color: login ? 'rgb(96, 251, 181)' : 'white'}}>
+         <FaSignInAlt  className='ic'/> 
+         <span className='he   heNL'  style={{ color: login ? 'rgb(96, 251, 181)' : 'white'}}> Login </span>
+       </div>
+     </Link>
+     <Link to='/Videogalerie'>
+      <div  className='menu1'  onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}>
+       <FontAwesomeIcon icon={faVideo} className='ic'  />
+       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
+      </div>
+     </Link>
+   
+     <Link to="/AboutUs" >
+     <div className='menu1'  onClick={pressAboutUs} style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>
+       <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
+         <span className='he  heNL' style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>About Us</span>
+     </div>
+         </Link>
+      </div>   
          <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
@@ -193,6 +316,7 @@ function HeaderBo() {
    
   </Routes>
        </div>    
+       </>
     )}
    
   

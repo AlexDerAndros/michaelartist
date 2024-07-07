@@ -149,8 +149,9 @@
         background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
         color: transparent;
         background-clip: text;
-        font-size: 300%;
+        font-size: 350%;
         text-align: center;
+        margin-bottom: 2%;
       }
       .imp {
         color: white;
@@ -160,7 +161,7 @@
       summary {
         cursor: pointer;
         font-weight: bold;
-        font-size: 3.5vh;
+        font-size: 3vh;
       
       }
       .theAb {
