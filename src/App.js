@@ -126,6 +126,7 @@ function HeaderBo() {
       </div>  
   
       { Cookies.get('loggedIn') == 'true' ? (
+        <>
          <div className='unten'>
          <div>
          
@@ -207,9 +208,11 @@ function HeaderBo() {
          <span className='he  heNL'>About Us</span>
      </div>
          </Link>
+         </div>   
+
         
        </div>    
-       <div className='untenH'>
+       <div className='untenNL'>
         <div className='posMenuH'>
       <div>
       
@@ -238,7 +241,7 @@ function HeaderBo() {
      <Link to='/Videogalerie'>
       <div  className='menu1'  onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}>
        <FontAwesomeIcon icon={faVideo} className='ic'  />
-       <span className='he  heNL' style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
+       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
       </div>
      </Link>
    
@@ -250,6 +253,8 @@ function HeaderBo() {
          </Link>
       </div>   
       </div>
+       
+      
             <Routes>
                <Route path="/" element={<Home/>}/>
                <Route path="/bildgalerie" element={<Bildgalerie/>}/>
@@ -260,10 +265,10 @@ function HeaderBo() {
                <Route path='/Videogalerie' element={<Videogalerie/>}/>
                <Route path='/AboutUs' element={<AboutUs/>}/>
              </Routes>
-         </div>   
+         </>
     ): (
       <>
-      <div className='untenH'>
+      <div className='untenNL'>
         <div className='posMenuH'>
       <div>
       
@@ -433,7 +438,6 @@ function Home() {
   }
   
  return (
-  < div className='center'>
 <div className='container'>
  <div className='info1'> 
   Welcome {user}
@@ -470,7 +474,6 @@ function Home() {
   </div>
  
  
-  </div>
  );
 }
 
@@ -607,7 +610,7 @@ const SEARCH = () => {
       ) : pictureShop ? (
         <PPictureShop/>
       ): (
-        <div className='search'>
+        <div className='container'>
           
           <input
             type="text"
