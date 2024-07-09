@@ -238,7 +238,7 @@ function HeaderBo() {
      <Link to='/Videogalerie'>
       <div  className='menu1'  onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}>
        <FontAwesomeIcon icon={faVideo} className='ic'  />
-       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
+       <span className='he  heNL' style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
       </div>
      </Link>
    
