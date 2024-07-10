@@ -55,7 +55,7 @@ export default function AboutUs1() {
         )}
       </div>
      </div>
-      <div className='container'>
+      <div className='aboutUs'>
         <div className='headAb'>
         { german ? (
        <span>

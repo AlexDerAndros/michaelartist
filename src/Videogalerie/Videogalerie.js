@@ -53,7 +53,7 @@ function prevImage() {
   );
 }
   return (
-    <div className='container'>
+    <div className='login'>
         <div className='headAb' >
            Video gallery
         </div>

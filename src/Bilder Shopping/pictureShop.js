@@ -4059,6 +4059,6 @@ export default function PictureShopp() {
   };
     const BackSymbol = () => {
     return (
-      <FontAwesomeIcon icon={faArrowRight} size='3x' style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'5%', position:'absolute'}} />
+      <FontAwesomeIcon icon={faArrowRight} size='3x' style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'7%', position:'absolute'}} />
     );
   }

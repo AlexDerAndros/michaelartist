@@ -17,7 +17,7 @@ main {
   z-index: -100;
   
 }
-.container::-webkit-scrollbar {
+.Mitte::-webkit-scrollbar {
   display: none;
 }
 .text {
@@ -81,25 +81,31 @@ main {
   }
  
   
-  .about {
-    font-size: 2.6vh;
-    width: auto;
-    display: flex;
-    align-items:center;
-    cursor: pointer;
-    background: linear-gradient(to right, rgb(96, 251, 181),#a31cd8, #a31cd8);
-   background-clip: text;
-   color: transparent;
-   font-weight: bold;
-   position: fixed;
-   top: 1%;
-   left: 50%;
-  
 
+  .hamburger-menu {
+    font-size: 6.5vw;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 17vw;
+    height: 100%;
   }
-  /* .title:hover {
-    font-size: 4.2vh;
-  } */
+  .contentHamburgerMenu {
+    z-index: 1000;
+    width: 100vw;
+    color: white;
+    background-color: black;
+    position: fixed;
+    top: 6.5vh;
+    transition: ease 0.3s;
+    height: 0vh;
+  }
+  .listMenu {
+    color: white;
+    
+  }
     .header {
     background-color: black;
     width: 100%;
@@ -218,7 +224,7 @@ main {
   .unten {
     display: none;
   }
-  .hamburger-menu
+  
   .Mitte {
     text-align: center;
     background: transparent;
@@ -581,6 +587,14 @@ main {
    left: 35%;  
 
   }
+
+  .hamburger-menu {
+    display: none;
+  }
+  .contentHamburgerMenu {
+    display: none;
+  }
+  
   /* .title:hover {
     font-size: 4.2vh;
   } */
@@ -1061,6 +1075,12 @@ main {
    left: 30%;  
 
   }
+  .contentHamburgerMenu {
+    display: none;
+  }
+  .hamburger-menu {
+    display: none;
+  }
   /* .title:hover {
     font-size: 4.2vh;
   } */
@@ -1166,15 +1186,17 @@ main {
   .Mitte {
     text-align: center;
     background: transparent;
-    width: 100%;
-    height: 80%;
-    padding: 1vh;
-    z-index: -100;
-    left: 0%;
-    right: 0%;
-    top: 15%;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.877);
+    width: 80%;
+    height: 83%;
+    padding: 3vh 1vh;
+     border-radius: 10px;
+     z-index: -100;
+     left: 15%;
+     right: 3%;
+     top: 10%;
+     border-radius: 4%;
 
     
   }
@@ -1197,12 +1219,18 @@ main {
     margin-top: -0.25%;
   
   }
+  .heNL {
+    font-size: 3.6vh;
+    color: white;
+    font-family: "Roboto", sans-serif;
+  }
  
   .bio {
     display: none;
   }
   .ic {
-    font-size: 4vh;
+    font-size: 3.8vh;
+    margin-top: 0.75% ;
   }
   .img1 {
     width: 5vh;

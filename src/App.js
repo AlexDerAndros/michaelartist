@@ -12,14 +12,13 @@ import { FaHeart } from 'react-icons/fa';
 import { FaPaperPlane } from "react-icons/fa";
 import { FaSignInAlt } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faGripVertical, faShoppingCart, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { counter, text } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { getAuth, signOut , GoogleAuthProvider , signInWithPopup,  getAdditionalUserInfo, signInWithRedirect } from "firebase/auth";
@@ -64,7 +63,20 @@ function HeaderBo() {
   const[login, setLogin] = useState(false);
   const[videos, setVideos] = useState(false);
   const[aboutUs, setAboutUs] = useState(false);
-  
+  const[clickHamburger, setClickHamburger] = useState(false);
+  const[lHome, setLHome] = useState(false);
+  const[lSearch, setLSearch] = useState(false);
+  const[lPG, setLPG] = useState(false);
+  const[lLogin, setLLogin] = useState(false);
+  const[lV, setLV] = useState(false);
+  const[lPS, setLPS] = useState(false);
+  const[lAU, setLAU] = useState(false);
+
+
+
+  const pressHamburger = () => {
+    setClickHamburger(!clickHamburger);
+  }
   const pressHome = () => {
     setHome(true);
     setSearch(false);
@@ -104,11 +116,94 @@ function HeaderBo() {
   useEffect(() => {
     setHome(true);
   }, []);
+
+  const LHome = () => {
+    setLHome(true);
+    setLSearch(false);
+    setLPG(false);
+    setLLogin(false);
+    setLV(false);
+    setLPS(false);
+    setLAU(false);
+  }
+  const LSearch = () => {
+    setLHome(false);
+    setLSearch(true);
+    setLPG(false);
+    setLLogin(false);
+    setLV(false);
+    setLPS(false);
+    setLAU(false);
+  }
+  const LPG = () => {
+    setLHome(false);
+    setLSearch(false);
+    setLPG(true);
+    setLLogin(false);
+    setLV(false);
+    setLPS(false);
+    setLAU(false);
+  }
+  const LLogin = () => {
+    setLHome(false);
+    setLSearch(false);
+    setLPG(false);
+    setLLogin(true);
+    setLV(false);
+    setLPS(false);
+    setLAU(false);
+  }
+  const LV = () => {
+    setLHome(false);
+    setLSearch(false);
+    setLPG(false);
+    setLLogin(false);
+    setLV(true);
+    setLPS(false);
+    setLAU(false);
+  }
+  const LPS = () => {
+    setLHome(false);
+    setLSearch(false);
+    setLPG(false);
+    setLLogin(false);
+    setLV(false);
+    setLPS(true);
+    setLAU(false);
+  }
+  const LAU = () => {
+    setLHome(false);
+    setLSearch(false);
+    setLPG(false);
+    setLLogin(false);
+    setLV(false);
+    setLPS(false);
+    setLAU(true);
+  }
+
   return (
    <Router>
    <>
    <div className='header'>
-   
+      <div>
+         {Cookies.get("loggedIn") == "true" ? (
+          <>
+            {clickHamburger ? (
+              <div className='hamburger-menu'>
+               <FontAwesomeIcon icon={faX} onClick={pressHamburger}/>
+              </div>
+            ): (
+              <div className='hamburger-menu'>
+               <FontAwesomeIcon icon={faBars} onClick={pressHamburger} />
+              </div>
+            )}
+          </>
+         ): (
+          <>
+              
+          </>
+         )}
+      </div>
       <div className='title' > 
       <a href='/'>
         Artist Michael Ntrikos
@@ -119,100 +214,128 @@ function HeaderBo() {
           <FontAwesomeIcon icon={faTiktok}   className='ttIcon'/>
         </a>
       </div> 
-     <div className='foto2'>
+     <div>
         <a href='https://www.instagram.com/michael.n.artist/?igshid=YmMyMTA2M2Y%3D'>
           <FontAwesomeIcon icon={faInstagram}   className='igIcon'/>
         </a>
       </div>  
   
-      { Cookies.get('loggedIn') == 'true' ? (
+      {Cookies.get('loggedIn') === 'true' ? (
         <>
-         <div className='unten'>
-         <div>
-         
-         <Link to="/">
-           <div className='po'> 
-            <FaHome className='ic'/> <span className='he  '> Home</span>
+          <div
+            className='contentHamburgerMenu'
+            style={{ height: clickHamburger ? '35vh' : '0vh',}}
+          >
+            <ul style={{display:clickHamburger ? "block" : "none"}}>
+              <li>
+                <Link to="/" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FaHome className='ic1' />
+                    <span className='listMenu text' onClick={LHome} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lHome ? "rgb(96, 251, 181)" : "white"}}>Home</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/Search" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FaSearch className='ic1' />
+                    <span className='listMenu text' onClick={LSearch} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lSearch ? "rgb(96, 251, 181)" : "white"}}>Search</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/bildgalerie" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FaImages className='ic1' />
+                    <span className='listMenu text' onClick={LPG} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lPG ? "rgb(96, 251, 181)" : "white"}}>Picture gallery</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FaSignInAlt className='ic1' />
+                    <span className='listMenu text' onClick={LLogin} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lLogin ? "rgb(96, 251, 181)" : "white"}}>Login</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/Videogalerie" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FontAwesomeIcon icon={faVideo} className='ic1' />
+                    <span className='listMenu text' onClick={LV} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lV ? "rgb(96, 251, 181)" : "white"}}>Videos</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/PictureShop" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FontAwesomeIcon icon={faShoppingCart} className='ic1' />
+                    <span className='listMenu text' onClick={LPS} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lPS ? "rgb(96, 251, 181)" : "white"}}>Picture shop</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/AboutUs" style={{ pointerEvents: clickHamburger ? 'auto' : 'none' }}>
+                  <div>
+                    <FontAwesomeIcon icon={faInfoCircle} className='ic1' />
+                    <span className='listMenu text' onClick={LAU} style={{ fontSize: clickHamburger ? '4.4vw' : '0vw', color: lAU ? "rgb(96, 251, 181)" : "white"}}>About Us</span>
+                  </div>
+                </Link>
+              </li>
+            </ul>
           </div>
-          </Link>
-         </div>
-         <div>
-         <Link to= "/Search">
-         <div className='po2'>
-            <FaSearch className='ic'/> <span className='he '> Search</span>
-          </div>
-          </Link>
-         </div>
-         <Link to="/bildgalerie" className='po3'>
-         <div>
-            <FaImages className='ic' /> <span className='he'> Picture gallery</span>
-          </div>
-        </Link>
-        {admin}
-        <Link to= "/login">
-          <div className='po4'>
-            <FaSignInAlt  className='ic'/> <span className='he '> Login </span>
-          </div>
-        </Link>
-        <Link to='/Videogalerie'>
-         <div>
-          <FontAwesomeIcon icon={faVideo} className='ic ' />
-          <span className='he'> Video gallery</span>
-         </div>
-        </Link>
-        <Link to='/PictureShop'>
-         <div>
-          <FontAwesomeIcon icon={faShoppingCart}   className='ic'/>
-          <span className='he'> Picture shop</span>
-          </div>
-        </Link>
-        <Link to="/AboutUs" >
-        <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
-        <span className='he'>About Us</span>
-            </Link>  
-            <div className='unten'>
-      <div>
-      
-      <Link to="/">
-        <div className='menu1'> 
-         <FaHome className='ic'/>
-          <span className='he  heNL'> Home</span>
-       </div>
-       </Link>
-      </div>
-      <div>
-      <Link to= "/Search">
-      <div  className='menu1'>
-         <FaSearch className='ic'/> 
-         <span className='he  heNL'> Search</span>
-       </div>
-       </Link>
-      </div>
-      
-     <Link to= "/login">
-       <div className='menu1'>
-         <FaSignInAlt  className='ic'/> 
-         <span className='he   heNL'> Login </span>
-       </div>
-     </Link>
-     <Link to='/Videogalerie'>
-      <div  className='menu1'>
-       <FontAwesomeIcon icon={faVideo} className='ic' />
-       <span className='he  heNL'> Videos</span>
-      </div>
-     </Link>
-   
-     <Link to="/AboutUs" >
-     <div className='menu1'>
-       <FontAwesomeIcon icon={faInfoCircle}   className='ic  heNL' />
-         <span className='he  heNL'>About Us</span>
-     </div>
-         </Link>
-         </div>   
 
-        
-       </div>    
-       <div className='untenNL'>
+          
+          <div className='unten'>
+
+<Link to="/">
+    <div className='menu1'> 
+    <span className= 'heNL'> 
+      <FaHome   style={{color: "white",}}/>
+     Home
+    </span>
+   </div>
+</Link>
+
+ <Link to= "/Search">
+    <div  className='menu1'>
+      <span className='heNL'><FaSearch style={{color: "white",}} />
+      Search
+     </span>
+    </div>
+ </Link>
+ 
+<Link to= "/login">
+  <div className='menu1'>
+    <span className='heNL'>
+    <FaSignInAlt style={{color: "white"}}   />
+   Login
+   </span>
+  </div>
+</Link>
+
+<Link to='/Videogalerie'>
+  <div  className='menu1'>
+   <span className='heNL'>
+    <FontAwesomeIcon icon={faVideo} style={{color: "white"}}   />
+   Videos
+   </span>
+ </div>
+</Link>
+
+<Link to="/AboutUs" >
+  <div className='menu1'>
+  <span className='heNL'>
+    <FontAwesomeIcon icon={faInfoCircle} style={{color: "white"}}   />
+   About Us
+   </span>
+  </div>
+</Link>
+</div>   
+
+
+   <div className='untenNL'>
         <div className='posMenuH'>
       <div>
       
@@ -225,7 +348,7 @@ function HeaderBo() {
       </div>
       <div>
       <Link to= "/Search">
-      <div className='menu1'  onClick={pressSearch} style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}>
+      <div className='menu1'  onClick={pressSearch} style={{ color: search ? 'rgb(96, 251, 181)' : 'white', }}>
          <FaSearch className='ic'/> 
          <span className='he  heNL' style={{ color: search ? 'rgb(96, 251, 181)' : 'white'}}> Search</span>
        </div>
@@ -238,21 +361,85 @@ function HeaderBo() {
          <span className='he   heNL'  style={{ color: login ? 'rgb(96, 251, 181)' : 'white'}}> Login </span>
        </div>
      </Link>
-     <Link to='/Videogalerie'>
+     <Link to='/bildgalerie'>
       <div  className='menu1'  onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}>
-       <FontAwesomeIcon icon={faVideo} className='ic'  />
-       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white'}}> Videos</span>
+       <FaImages className='ic'  />
+       <span className='he  heNL' onClick={pressVideos} style={{ color: videos ? 'rgb(96, 251, 181)' : 'white', textAlign:"center"}}>Pictures</span>
       </div>
      </Link>
    
-     <Link to="/AboutUs" >
+     <Link to="/PictureShop" >
      <div className='menu1'  onClick={pressAboutUs} style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>
-       <FontAwesomeIcon icon={faInfoCircle}   className='ic' />
-         <span className='he  heNL' style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>About Us</span>
+       <FontAwesomeIcon icon={faShoppingCart}   className='ic' />
+         <span className='he  heNL' style={{ color: aboutUs ? 'rgb(96, 251, 181)' : 'white'}}>Shop</span>
      </div>
          </Link>
       </div>   
       </div>
+
+      <div className='unten'>
+
+     <Link to="/" >
+         <div className='menu1' onClick={LHome}> 
+         <span className= 'heNL' style={{color: lHome ? "rgb(96, 251, 181)" : "white",}}> 
+           <FaHome/>
+          Home
+         </span>
+        </div>
+     </Link>
+     
+      <Link to= "/Search">
+         <div  className='menu1' onClick={LSearch}>
+           <span className='heNL'  style={{color: lSearch ? "rgb(96, 251, 181)" : "white",}}>
+            <FaSearch />
+           Search
+          </span>
+         </div>
+      </Link>
+      
+     <Link to= "/login">
+       <div className='menu1' onClick={LLogin}>
+         <span className='heNL' style={{color: lLogin ? "rgb(96, 251, 181)" : "white",}}>
+         <FaSignInAlt    />
+        Login
+        </span>
+       </div>
+     </Link>
+
+     <Link to='/Videogalerie'>
+       <div  className='menu1' onClick={LV}>
+        <span className='heNL' style={{color: lV ? "rgb(96, 251, 181)" : "white",}}>
+         <FontAwesomeIcon icon={faVideo}/>
+        Videos
+        </span>
+      </div>
+     </Link>
+   
+    <Link to="/AboutUs" >
+       <div className='menu1' onClick={LAU}>
+       <span className='heNL' style={{color: lAU ? "rgb(96, 251, 181)" : "white",}}>
+         <FontAwesomeIcon icon={faInfoCircle} />
+        About Us
+        </span>
+       </div>
+    </Link>
+    <Link to="/PictureShop" >
+       <div className='menu1' onClick={LPS}>
+       <span className='heNL' style={{color: lPS ? "rgb(96, 251, 181)" : "white",}}>
+         <FontAwesomeIcon icon={faShoppingCart} />
+         Shop
+        </span>
+       </div>
+    </Link>
+    <Link to="/Bildgalerie" >
+       <div className='menu1' onClick={LPG}>
+       <span className='heNL' style={{color: lPG ? "rgb(96, 251, 181)" : "white",}}>
+         <FaImages/>
+         Pictures
+        </span>
+       </div>
+    </Link>
+  </div>   
        
       
             <Routes>
@@ -308,6 +495,56 @@ function HeaderBo() {
      </div>
          </Link>
       </div>   
+
+
+      <div className='unten'>
+
+     <Link to="/" >
+         <div className='menu1' onClick={pressHome}> 
+         <span className= 'heNL' style={{color: home ? "rgb(96, 251, 181)" : "white",}}> 
+           <FaHome   style={{color: home ? "rgb(96, 251, 181)" : "white",}}/>
+          Home
+         </span>
+        </div>
+     </Link>
+     
+      <Link to= "/Search">
+         <div  className='menu1' onClick={pressSearch}>
+           <span className='heNL'  style={{color: search ? "rgb(96, 251, 181)" : "white",}}>
+            <FaSearch  style={{color: search ? "rgb(96, 251, 181)" : "white",}} />
+           Search
+          </span>
+         </div>
+      </Link>
+      
+     <Link to= "/login">
+       <div className='menu1' onClick={pressLogin}>
+         <span className='heNL' style={{color: login ? "rgb(96, 251, 181)" : "white",}}>
+         <FaSignInAlt    />
+        Login
+        </span>
+       </div>
+     </Link>
+
+     <Link to='/Videogalerie'>
+       <div  className='menu1' onClick={pressVideos}>
+        <span className='heNL' style={{color: videos ? "rgb(96, 251, 181)" : "white",}}>
+         <FontAwesomeIcon icon={faVideo} style={{color: videos ? "rgb(96, 251, 181)" : "white",}} />
+        Videos
+        </span>
+      </div>
+     </Link>
+   
+    <Link to="/AboutUs" >
+       <div className='menu1' onClick={pressAboutUs}>
+       <span className='heNL' style={{color: aboutUs ? "rgb(96, 251, 181)" : "white",}}>
+         <FontAwesomeIcon icon={faInfoCircle} style={{color: aboutUs ? "rgb(96, 251, 181)" : "white",}}  />
+        About Us
+        </span>
+       </div>
+    </Link>
+  </div>   
+
          <Routes>
     <Route path="/" element={<Home/>}/>
    <Route path="/bildgalerie" element={<Bildgalerie/>}/>
@@ -438,7 +675,7 @@ function Home() {
   }
   
  return (
-<div className='container'>
+<div className='Mitte' >
  <div className='info1'> 
   Welcome {user}
 </div>
@@ -485,6 +722,65 @@ function Home() {
 
 
 
+
+function NotLogIn() {
+  return (
+   <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
+     <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+     Sorry you are not logged in! Log in or register to see this page.
+     </div>
+   </div>
+  );
+}
+function NotAdmin() {
+  return (
+    <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
+      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+      Sorry you are not an admin! This function is still under development.
+      </div>
+    </div>
+   );
+}
+
+
+function Chat() {
+  if (Cookies.get('isAdmin') === 'true') {
+    return <Chat1/>;
+  }
+  else {
+    return <NotAdmin/>;
+  }
+}
+function Bildgalerie() {
+  if ( Cookies.get('loggedIn') === 'true') {
+    return <Bildgalerie1/>;
+   }
+   else {
+     return <NotLogIn/>;
+   }
+  
+}
+
+function AboutUs() {
+  return <AboutUs1/>;
+}
+function Log() {
+  return <Log1/>;
+}
+
+function Videogalerie() {
+  return <Videogalerie1/>;
+}
+
+function PictureShop() {
+  if ( Cookies.get('loggedIn') === 'true') {
+    return <PictureShopp/>;
+   }
+   else {
+     return <NotLogIn/>;
+   }
+ 
+}
 const SEARCH = () => {
   const PHome = () => {
     return (
@@ -610,7 +906,7 @@ const SEARCH = () => {
       ) : pictureShop ? (
         <PPictureShop/>
       ): (
-        <div className='container'>
+        <div className='search'>
           
           <input
             type="text"
@@ -633,62 +929,3 @@ const SEARCH = () => {
     </div>
   );
 };
-function NotLogIn() {
-  return (
-   <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
-     <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-     Sorry you are not logged in! Log in or register to see this page.
-     </div>
-   </div>
-  );
-}
-function NotAdmin() {
-  return (
-    <div style={{color: "white", background: "none", fontSize:"7.5vh"}} className='search'>
-      <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-      Sorry you are not an admin! This function is still under development.
-      </div>
-    </div>
-   );
-}
-function Biographie() {
-  return <Biographie1/>;
-}
-function Chat() {
-  if (Cookies.get('isAdmin') === 'true') {
-    return <Chat1/>;
-  }
-  else {
-    return <NotAdmin/>;
-  }
-}
-function Bildgalerie() {
-  if ( Cookies.get('loggedIn') === 'true') {
-    return <Bildgalerie1/>;
-   }
-   else {
-     return <NotLogIn/>;
-   }
-  
-}
-
-function AboutUs() {
-  return <AboutUs1/>;
-}
-function Log() {
-  return <Log1/>;
-}
-
-function Videogalerie() {
-  return <Videogalerie1/>;
-}
-
-function PictureShop() {
-  if ( Cookies.get('loggedIn') === 'true') {
-    return <PictureShopp/>;
-   }
-   else {
-     return <NotLogIn/>;
-   }
- 
-}
