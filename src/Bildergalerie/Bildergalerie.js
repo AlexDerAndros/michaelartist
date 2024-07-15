@@ -187,20 +187,16 @@ function Likes({ imageId }) {
       const docSnap = await getDoc(docRef);
 
       let users = docSnap.data().users || {};
-      if (users[user.uid] && state === true && stateP === false) {
         delete users[user.uid];
-        if (newLikeCount < 0 ) {
-          newLikeCount -= 1;
-        }
+          newLikeCount = newLikeCount - 1;
        
         
-      }
     });
             setLike('white');
             setState(false);
             setStateP(true);
   } 
-           else if ( stateP == true ) {
+           else if ( stateP == true  && state == false ) {
             // User has not liked yet
             users[user.uid] = true;
             newLikeCount += 1;

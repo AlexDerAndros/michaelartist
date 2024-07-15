@@ -14,7 +14,7 @@
          right: 3%;
          top: 10%;
          position: fixed;
-         font-family: 'Dancing Script';
+         font-family: "Roboto";
      }
      
      .head {
@@ -24,6 +24,7 @@
        background-clip: text;
        font-size: 300%;
        text-align: center;
+       font-family: "Dancing Script";
      }
      .WEL {
       font-weight: bold;
@@ -36,55 +37,35 @@
      }
      #us {
        margin:10% 0%;
-       background: transparent ;
-       border-bottom: 1% white ;
-       border-top: none;
-       border-right: none;
-       border-left: none;
+       background: black;
        width: 70%;
        height: 5%;
        font-size:120%;
        margin: 3% 5%;
-       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-      font-family: 'Dancing Script';
-     
+       border: none;
+       color: white;
      
      }
      #pa {
        background: transparent ;
-       border-bottom: 1% rgb(255, 255, 255) ;
-       border-top: none;
-       border-right: none;
-       border-left: none;
+       border: none;
        width: 70%;
        font-size:120%;
        margin: 3% 5%;
-       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-       font-family: 'Dancing Script';
-      
+       color: white;
+       background-color: black;
      
      }
      #us::placeholder {
-       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-      font-family: 'Dancing Script';
-       
-     
+      font-family: "Roboto";
+      color: rgb(215, 211, 211);
+      padding: 3%;
      }
      #pa::placeholder {
-       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-      font-family: 'Dancing Script';
-       
-     
-       
-     
+      font-family: "Roboto";
+      padding: 3%;
+      color: rgb(215, 211, 211);
+
      }
      #us1 {
        background: transparent ;
@@ -94,8 +75,8 @@
        border-left: none;
        width: auto;
        font-size:120%;
-     margin:2% 0%;
-     background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
+       margin:2% 0%;
+       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
        color: transparent;
        background-clip: text;
        font-family: 'Dancing Script';
@@ -110,11 +91,8 @@
      
      }
      #pa1::placeholder {
+      font-family: "Roboto";
       color: white;
-      background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-       font-family: 'Dancing Script';
      
      }
      
@@ -253,11 +231,8 @@
      
      }
      #email::placeholder {
-       background: linear-gradient(to right, rgb(96, 251, 181), #a31cd8);
-       color: transparent;
-       background-clip: text;
-      font-family: 'Dancing Script';
-     
+       font-family: "Roboto";
+       color: white;
      }
      .REG {
        display: flex;
