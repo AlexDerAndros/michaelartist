@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { FaHeart } from 'react-icons/fa';
 import { ref, listAll, getDownloadURL } from 'firebase/storage';
 import { storage, db, auth } from '../config/firebase';
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, getDocs, query, collection, where } from "firebase/firestore";
 import { onAuthStateChanged } from 'firebase/auth';
+import { set } from "react-ga";
 
 export default function Bildgalerie1() {
   const [publicItemsP, setPublicItemsP] = useState([]);
@@ -104,7 +105,7 @@ export default function Bildgalerie1() {
   ];
 
   return (
-    <div className='bildgalerie'>
+    <div className='bildgalerie' >
       <div className="headAb">
          Picture gallery
       </div>
@@ -134,6 +135,9 @@ function Likes({ imageId }) {
   const [user, setUser] = useState(null);
   const [like, setLike] = useState('white');
   const [likeNumber, setLikeNumber] = useState(0);
+  const [state, setState] = useState(false);
+  const [stateO, setStateO] =  useState(true);
+  const [stateP, setStateP] =  useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -170,28 +174,51 @@ function Likes({ imageId }) {
       try {
         const docRef = doc(db, "likes", imageId);
         const docSnap = await getDoc(docRef);
-        let newCount = likeNumber;
+        let newLikeCount = likeNumber;
         let users = {};
+        const q = query(collection(db, "likes"), where('docRef', '==', imageId));
+        const querySnapshot  = await getDocs(q);
+        
+       
+        if (docSnap.exists() && state == true && stateP == false ) {
+  
+         querySnapshot.forEach(async (docSnapshot) => {
+      const docRef = doc(db, "userEvents", docSnapshot.likeNumber);
+      const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-          users = docSnap.data().users || {};
-          if (users[user.uid]) {
-            delete users[user.uid];
-            newCount -= 1;
+      let users = docSnap.data().users || {};
+      if (users[user.uid] && state === true && stateP === false) {
+        delete users[user.uid];
+        if (newLikeCount < 0 ) {
+          newLikeCount -= 1;
+        }
+       
+        
+      }
+    });
             setLike('white');
-          } else {
+            setState(false);
+            setStateP(true);
+  } 
+           else if ( stateP == true ) {
+            // User has not liked yet
             users[user.uid] = true;
-            newCount += 1;
+            newLikeCount += 1;
             setLike('red');
+            setState(true);
+            setStateP(false);
           }
-        } else {
+          
+      
+         else {
+          // First like for this image
           users[user.uid] = true;
-          newCount = 1;
+          newLikeCount = 1;
           setLike('red');
         }
-
-        await setDoc(docRef, { likeNumber: newCount, users }, { merge: true });
-        setLikeNumber(newCount);
+      
+        await setDoc(docRef, { likeNumber: newLikeCount, users, state: state, stateP: stateP, docRef: docRef }, { merge: true });
+        setLikeNumber(newLikeCount);
       } catch (error) {
         console.error("Error updating likes:", error);
       }
@@ -203,7 +230,7 @@ function Likes({ imageId }) {
       <button onClick={handleClick}>
         <FaHeart className='ani' size={50} style={{ color: like }} />
       </button>
-      <div className='likeNumber'>
+      <div className='likeNumber' style={{fontFamily:"Arial"}}>
         {likeNumber}
       </div>
     </div>

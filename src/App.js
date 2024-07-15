@@ -380,11 +380,9 @@ function HeaderBo() {
       <div className='unten'>
 
      <Link to="/" >
-         <div className='menu1' onClick={LHome}> 
+         <div className='menu1H' onClick={LHome}> 
          <span className= 'heNL' style={{color: lHome ? "rgb(96, 251, 181)" : "white",}}> 
-           <FaHome/>
-          Home
-         </span>
+           <FaHome/>Home</span>
         </div>
      </Link>
      

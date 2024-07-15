@@ -85,15 +85,14 @@
 @media only screen and (min-width:1200px) {
 
 .videogalerie {
-    background-color: rgba(0, 0, 0, 0.877);
-    width: 80%;
-      height: 75%;
+      background-color: rgba(0, 0, 0, 0.877);
       padding: 1vh;
       border-radius: 10px;
+      width: 80%;
+      height: 83%;
       left: 15%;
       right: 3%;
       top: 10%;
-     
   }
   .video {
     width: 60%;

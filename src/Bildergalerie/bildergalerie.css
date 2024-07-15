@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@500&family=Roboto&display=swap');
+
 /* .bildgalerie {
     font-family: 'Dancing Script',
     cursive, 'Roboto', sans-serif;
@@ -7,17 +6,24 @@
 /**Handy**/
 /* @media only screen and (max-width:700px) { */
     .bildgalerie {
-        background-color: rgba(0, 0, 0, 0.877);
-        width: 80%;
+          background-color: rgba(0, 0, 0, 0.877);
+          width: 80%;
           height: 75%;
           padding: 1vh;
-          border-radius: 4%;
+          border-radius: 10px;
           z-index: -100;
           left: 10%;
-          top: 10%;
+          width: 80% !important;
+          height: 72% !important;
+          top: 10% !important;
           position: fixed;
           overflow-y: scroll;
+        font-size: 'Roboto' !important;
+
           
+      }
+      .bildgalerie::-webkit-scrollbar {
+        display: none;
       }
       .grid {
        display: grid;
@@ -48,7 +54,11 @@
       .likeNumber {
         color: white;
         font-size: 4vh;
-        margin: 0% 34%;
+        font-size: 'Roboto' !important;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
          
       }
     
@@ -110,6 +120,8 @@
       top: 10%;
       position: fixed;
       overflow-y: scroll;
+      font-size: 'Roboto', sans-serif !important;
+
    
   }
   .grid {
@@ -143,7 +155,8 @@
   .likeNumber {
     color: white;
     font-size: 5vh;
-  
+    font-size: 'Roboto' !important;
+    
   }
   
   
@@ -192,17 +205,19 @@
 @media only screen and (min-width:1200px) {
   /**CSS Bildgalerie**/
 .bildgalerie {
-    background-color: rgba(0, 0, 0, 0.877);
-    width: 80%;
-      height: 83%;
+      background-color: rgba(0, 0, 0, 0.877);
       padding: 1vh;
-      border-radius: 4%;
+      border-radius: 10px;
       z-index: -100;
-      left: 15%;
-      top: 10%;
       position: fixed;
       overflow-y: scroll;
-   
+      width: 80% !important;
+      height: 83% !important;
+      left: 15% !important;
+      right: 3% !important;
+      top: 10% !important;
+      font-size: 'Roboto' !important;
+
   }
   .grid {
    display: grid;

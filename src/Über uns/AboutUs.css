@@ -132,17 +132,17 @@
 /*Computer*/
 @media only screen and (min-width:1200px) {
     .aboutUs {
-        background-color: rgba(0, 0, 0, 0.877);
-        width: 80%;
-          height: 75%;
+         background-color: rgba(0, 0, 0, 0.877);
           padding: 2vh;
-          border-radius: 4%;
+          border-radius: 10px;
           z-index: -100;
-          left: 15%;
-          right: 3%;
-          top: 15%;
           position: fixed;
           overflow-y: scroll;
+          width: 80%;
+          height: 83%;
+          left: 15%;
+          right: 3%;
+          top: 10%;
       }
       .headAb {
         font-weight: bold;

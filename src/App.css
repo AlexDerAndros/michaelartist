@@ -24,13 +24,12 @@ main {
   font-family: "Roboto", sans-serif; 
 
 }
+
 @media screen and (max-width:800px)  {
   .container {
     width: 82%;
     height: 72%;
-    z-index: -100;
     top: 10%;
-    padding: 6% 2%;
     margin: 0% 7%;
   }
   main {
@@ -228,17 +227,17 @@ main {
   .Mitte {
     text-align: center;
     background: transparent;
-    width: 80%;
-    height: 72%;
-    padding: 4vh;
+    width: 80% !important;
+    height: 72% !important;
+    top: 10% !important;
+    margin: 0% 5% ;
+    left: 0% ;
+    right: 0% ;
+    padding: 5%;
     z-index: -100;
-    left: 0%;
-    right: 0%;
-    top: 10%;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.744);
-    margin: 0% 5% ;
-    border-radius: 4%;
+    border-radius: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
     
@@ -461,16 +460,17 @@ main {
 /**CSS Search**/ 
 
  .search {
-  background-color: rgba(0, 0, 0, 0.744);
-  width: 80%;
-   height: 72%;
-   padding: 3vh 1vh;
-    border-radius: 4%;
+    background-color: rgba(0, 0, 0, 0.744);
+    padding: 3vh 2%;
+    border-radius: 10px;
     z-index: -100;
-    left: 7%;
-    right: 3%;
+    left: 8%;
+    right: 8%;
     top: 10%;
     position: fixed;
+    width: 80% !important;
+    height: 72% !important;
+    top: 10% !important;
 }
  .name {
   font-size: 6vh;
@@ -1025,12 +1025,12 @@ main {
   .container {
     width: 80%;
     height: 83%;
+    left: 15%;
+    right: 3%;
+    top: 10%;
     padding: 3vh 1vh;
      border-radius: 10px;
      z-index: -100;
-     left: 15%;
-     right: 3%;
-     top: 10%;
   }
   main {
     background-image: url('./michaelBackground.png');
@@ -1188,18 +1188,18 @@ main {
     background: transparent;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.877);
-    width: 80%;
-    height: 83%;
     padding: 3vh 1vh;
      border-radius: 10px;
      z-index: -100;
+     width: 80%;
+     height: 83%;
      left: 15%;
      right: 3%;
      top: 10%;
-     border-radius: 4%;
-
     
   }
+  
+ 
   .info1 {
     background: linear-gradient(to right,#d682f8, rgb(96, 251, 181) );
     background-clip: text;
@@ -1436,16 +1436,17 @@ main {
 /**CSS Search**/ 
 
  .search {
+
   background-color:rgba(0, 0, 0, 0.877);
-  width: 80%;
-   height: 83%;
    padding: 3vh 1vh;
     border-radius: 10px;
     z-index: -100;
+    position: fixed;
+    width: 80%;
+    height: 83%;
     left: 15%;
     right: 3%;
     top: 10%;
-    position: fixed;
     
 }
 .name {
