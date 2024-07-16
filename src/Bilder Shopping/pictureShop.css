@@ -15,7 +15,7 @@
           padding: 1vh;
           border-radius: 4%;
           z-index: -100;
-          left: 7%;
+          left: 9.75%;
           right: 3%;
           top: 10%;
           position: fixed;
@@ -440,6 +440,11 @@
       position: fixed;
       overflow-y: scroll;
       color: white;
+      width: 80% !important;
+      height: 83% !important;
+      left: 17% !important;
+      right: 3% !important;
+      top: 20% !important;
   }
  
   .fil {

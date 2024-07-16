@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInWithPopup, OAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
 import { auth, db, storage, googleprovider,  } from '../config/firebase';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -58,10 +58,8 @@ function LoggedIN({ setLoggedIN }) {
       </div>
       <br />
       <br />
-      <button className='logBtn' onClick={logOut}>
-        <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+      <button className='logB' onClick={logOut}>
           Logout
-        </p>
       </button>
     </div>
   );
@@ -76,7 +74,12 @@ function Login({ setLoggedIn, }) {
   const [english, setEnglish] = useState(true);
   const [german, setGerman] = useState(false);
   const [googleUs, setGoogleUs] = useState('');
-  const auth1 = getAuth();
+  const [clickEye, setClickEye] = useState(false);
+
+  const pressEye = () => {
+    setClickEye(!clickEye);
+  }
+
   const press = () => {
     setClick(!click);
   };
@@ -159,7 +162,19 @@ function Login({ setLoggedIn, }) {
     username = 'Benutzername...';
     password = 'Passwort...';
   }
+  let type;
+  let icon;
+  
+  if (clickEye == true) {
+    type = 'text';
+    icon = <FontAwesomeIcon className='icEye' icon={faEye} style={{color:'white'}} onClick={pressEye}/>
+   
+  }
+  else {
+    type = 'password';
+    icon = <FontAwesomeIcon className='icEye' icon={faEyeSlash} style={{color:'white'}} onClick={pressEye}/>
 
+  }
 
   return (
     <>
@@ -175,6 +190,9 @@ function Login({ setLoggedIn, }) {
             )}
           </div>
           <form>
+            <div className='text  labelFor'>
+              Email:
+            </div>
             <input
               id='us'
               type='text'
@@ -182,29 +200,28 @@ function Login({ setLoggedIn, }) {
               value={us}
               onChange={(e) => setUs(e.target.value)}
             />
-            <br />
+             <div className='text  labelFor'>
+              Password:
+            </div>
             <input
               id='pa'
-              type='password'
+              type={type}
               placeholder={password}
               value={pa}
               onChange={(e) => setPa(e.target.value)}
             />
+            {icon}
             <br />
             <br />
             <br />
-            <button className='logBtn' onClick={logBtn}>
-              <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+            <button className='logB' onClick={logBtn}>
                 Login
-              </p>
             </button>
           </form>
           <br />
           <br />
-          <button className='logBtn' onClick={logGoogle} >
-            <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
-            <FontAwesomeIcon icon={faGoogle} style={{ color: 'white'}}/> &nbsp;Signin with Google
-              </p>
+          <button className='logB' onClick={logGoogle} >
+            <FontAwesomeIcon icon={faGoogle} style={{ color: 'black'}}/> &nbsp;Sign In with Google
           </button>
           <br/>
       
@@ -260,36 +277,34 @@ function Login({ setLoggedIn, }) {
               </div>
               <br />
               <div className='REG'>
+              <div className='text  labelFor'>
+                 Enter an email address:
+               </div>
                 <input
-                  style={{ fontSize: '120%' }}
-                  id='email'
-                  className='child'
+                  id='us1'
                   type='email'
                   placeholder={german ? 'Geben Sie eine E-Mail Adresse an...' : 'Enter an email address...'}
                   value={registerUS}
                   onChange={(e) => setRegisterUS(e.target.value)}
                 />
+                <div className='text  labelFor'>
+                 Create a password:
+               </div>
+               <div >
                 <input
                   id='pa1'
-                  className='child'
-                  type='password'
+                  type={type}
                   placeholder={german ? 'Erstellen Sie ein Passwort...' : 'Create a password...'}
                   value={registerPA}
                   onChange={(e) => setRegisterPA(e.target.value)}
                 />
+                 <span>{icon}</span>
+                </div>
               </div>
               <br />
               <br />
-              <button style={{ fontSize: '1.5vh' }} onClick={register}>
-                <p className="AniB" style={{ fontSize: '2.5vh' }}>
-                  {german ? (
-                    <span>Regestrieren</span>
-                  ) : english ? (
-                    <span>Register</span>
-                  ) : (
-                    <span>Error</span>
-                  )}
-                </p>
+              <button className='logB' onClick={register}>
+                   Register
               </button>
             </div>
           </div>
@@ -354,10 +369,8 @@ function AdminDashBoard({setLoggedIN}) {
      </div>
       <br />
       <br />
-      <button className='logBtn' onClick={logOut}>
-        <p className="AniB" style={{ fontSize: '2.5vh', cursor: "pointer" }}>
+      <button className='logB' onClick={logOut}>
           Logout
-        </p>
       </button>
     </div>
   );

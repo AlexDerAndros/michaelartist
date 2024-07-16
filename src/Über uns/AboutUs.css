@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@100;500&family=Roboto&display=swap');
  
 /**Handy**/
-@media only screen and (max-width:700px) {
+.aboutUs::-webkit-scrollbar {
+  display: none;
+}
     .aboutUs {
         background-color: rgba(0, 0, 0, 0.877);
         width: 80%;
@@ -24,6 +26,8 @@
         background-clip: text;
         font-size: 300%;
         text-align: center;
+        font-family:'Dancing Script' ;
+
       }
       .imp {
        color: white;
@@ -63,24 +67,23 @@
         cursor: pointer;
       
       }
-}
 
 
 /**Tablet**/
 
-@media only screen and (min-width:701px) {
+@media only screen and (min-width:801px) {
   .aboutUs {
       background-color: rgba(0, 0, 0, 0.877);
-      width: 75%;
-      height: 80%;
       padding: 2vh;
       border-radius: 4%;
       z-index: -100;
-      left: 20%;
-      right: 3%;
-      top: 13%;
       position: fixed;
       overflow-y: scroll;
+      width: 80%;
+      height: 83%;
+      left: 17%;
+      right: 3%;
+      top: 10%;
   }
   .headAb {
     font-weight: bold;
@@ -92,7 +95,6 @@
   }
   .imp {
     color: white;
-    font-family:'Dancing Script';
     font-size: 2.5vh;
   }
   summary {
@@ -152,10 +154,10 @@
         font-size: 350%;
         text-align: center;
         margin-bottom: 2%;
+        font-family: 'Dancing Script';
       }
       .imp {
         color: white;
-        font-family:'Dancing Script';
         font-size: 2.5vh;
       }
       summary {

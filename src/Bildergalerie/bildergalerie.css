@@ -108,19 +108,20 @@
 
 /**Tablet**/
 
-@media only screen and (min-width:701px) {
+@media only screen and (min-width:801px) {
   .bildgalerie {
-    background-color: rgba(0, 0, 0, 0.877);
-    width: 75%;
-      height: 83%;
+      background-color: rgba(0, 0, 0, 0.877);
       padding: 1vh;
       border-radius: 4%;
       z-index: -100;
-      left: 20%;
-      top: 10%;
       position: fixed;
       overflow-y: scroll;
       font-size: 'Roboto', sans-serif !important;
+      width: 80%;
+      height: 83% !important;
+      left: 17%;
+      right: 3%;
+      top: 20%;
 
    
   }

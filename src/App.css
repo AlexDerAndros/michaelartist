@@ -683,7 +683,21 @@ main {
     list-style: none;
     font-size: 3vh;
   }
-
+  .Mitte {
+    text-align: center;
+    background: transparent;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.877);
+    padding: 3vh 1vh;
+    border-radius: 10px;
+    z-index: -100;
+    width: 80%;
+    height: 83%;
+    left: 17%;
+    right: 3%;
+    top: 10%;
+    
+  }
 
   .unten {
     width: auto;
@@ -746,7 +760,11 @@ main {
    border: none;
    z-index: -100;
   }
-  
+  .heNL {
+    font-size: 3vh;
+    color: white;
+    font-family: "Roboto", sans-serif;
+  }
   
   .info {
     background: linear-gradient(to right,#d682f8,rgb(137, 137, 253), rgb(96, 251, 181) );
@@ -932,15 +950,15 @@ main {
 
  .search {
   background-color:rgba(0, 0, 0, 0.877);
-  width: 70%;
-   height: 80%;
    padding: 3vh 1vh;
     border-radius: 10px;
     z-index: -100;
-    left: 20%;
+    position: fixed;
+    width: 80%;
+    height: 83%;
+    left: 17%;
     right: 3%;
     top: 10%;
-    position: fixed;
     
 }
 .name {
@@ -1447,6 +1465,7 @@ main {
     left: 15%;
     right: 3%;
     top: 10%;
+    
     
 }
 .name {

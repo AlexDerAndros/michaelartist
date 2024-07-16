@@ -11,7 +11,7 @@
     align-items: flex-end;
 }
 /**Handy**/
-@media only screen and (max-width:700px) {
+@media only screen and (max-width:800px) {
       /**Videogalerie**/
       .videogalerie {
         background-color: rgba(0, 0, 0, 0.877);
@@ -39,25 +39,25 @@
        margin: 0% 5%;
       }
       .imgBtnV {
-        margin: 3% -3%;
+        margin: 3% 5%;
       }
 }
 
 
 /**Tablet**/
 
-@media only screen and (min-width:701px) {
+@media only screen and (min-width:801px) {
   .videogalerie {
     background-color: rgba(0, 0, 0, 0.877);
-    width: 75%;
-      height: 80%;
       padding: 1vh;
-      border-radius: 4%;
+      border-radius: 10px;
       z-index: -100;
-      left: 20%;
+      position: fixed;
+      width: 80%;
+      height: 83%;
+      left: 17%;
       right: 3%;
       top: 10%;
-      position: fixed;
      
   }
   .video {
