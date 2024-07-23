@@ -15,6 +15,10 @@
          top: 10%;
          position: fixed;
          font-family: "Roboto";
+         overflow-y: scroll;
+     }
+     .login::-webkit-scrollbar {
+      display: none;
      }
      
      .head {
@@ -46,7 +50,7 @@
        height: 7%;
        font-size: 2.2vh;
        padding: 3%;
-       border-radius: 10px;
+       border-radius: 3px;
 
      }
      #pa {
@@ -59,7 +63,7 @@
        padding: 3%;
        color: black;
        background-color: white;
-       border-radius: 10px;
+       border-radius: 3px;
      
      }
      #us::placeholder {
@@ -84,7 +88,7 @@
       height: 7%;
       font-size: 2.2vh;
       padding: 3%;
-      border-radius: 5px;
+      border-radius: 3px;
      
      
      }
@@ -109,7 +113,7 @@
       padding: 3%;
       color: black;
       background-color: white;
-      border-radius: 5px;
+      border-radius: 3px;
      
        
      }
@@ -123,12 +127,12 @@
       background-color: white;
       text-align: center;
       margin: -1% 5%;
-      font-weight: bold;
       font-size: 2.3vh;
       height: 5vh;
       width: 90%;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
      }
 
      .importantI {
@@ -485,7 +489,7 @@
   font-family: 'Roboto';
  }
  .importantI {
-   font-size: 2.4vw;
+   font-size: 3vh;
    color: white;
    margin: 0% 5%;
    font-family: 'Roboto';
@@ -784,7 +788,7 @@
       height: 5%;
       font-size: 2.2vh;
       padding: 1.2%;
-      border-radius: 10px;
+      border-radius: 3px;
       font-family: 'Roboto';
 
      
@@ -798,7 +802,7 @@
       height: 5%;
       font-size: 2.2vh;
       padding: 1.2%;
-      border-radius: 10px;
+      border-radius: 3px;
       font-family: 'Roboto';
      
      }
@@ -821,7 +825,7 @@
       height: 5%;
       font-size: 2.2vh;
       padding: 1.2%;
-      border-radius: 10px;
+      border-radius: 3px;
       font-family: 'Roboto';
      
      }
@@ -844,13 +848,14 @@
       height: 5%;
       font-size: 2.2vh;
       padding: 1.2%;
-      border-radius: 10px;
+      border-radius: 3px;
       font-family: 'Roboto';
      }
      .importantI {
        margin: 0% 5%;
        color: white;
        font-family: 'Roboto';
+       font-size: 3vh;
      }
      .sg  {
        cursor: pointer;

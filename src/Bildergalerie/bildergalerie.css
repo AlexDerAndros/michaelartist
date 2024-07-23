@@ -19,6 +19,7 @@
           position: fixed;
           overflow-y: scroll;
         font-size: 'Roboto' !important;
+        overflow-x: hidden;
 
           
       }
@@ -32,10 +33,10 @@
       
       }
       .imgG {
-         width: 85%;
-         height: 85%;
-         padding:0% 7.5% ;
-         border-radius: 14%;
+         width: 80%;
+         height: 95%;
+         padding:0% 10% ;
+         border-radius: 12%;
          z-index: -1;
        
       }
@@ -117,11 +118,11 @@
       position: fixed;
       overflow-y: scroll;
       font-size: 'Roboto', sans-serif !important;
-      width: 80%;
+      width: 80% !important;
       height: 83% !important;
-      left: 17%;
-      right: 3%;
-      top: 20%;
+      left: 17% !important;
+      right: 3% !important;
+      top: 20% !important;
 
    
   }
@@ -133,7 +134,7 @@
   }
   .imgG {
      width: 60%;
-     height: 80%;
+     height: 90%;
      padding:0% 1% ;
      border-radius: 5%;
      z-index: -1;
@@ -228,7 +229,7 @@
   }
   .imgG {
      width: 40%;
-     height: 75%;
+     height: 90%;
      padding:0% 1% ;
      border-radius: 14%;
      z-index: -1;

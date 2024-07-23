@@ -113,7 +113,7 @@ export default function Bildgalerie1() {
         {images.map((item, index) => (
           <div key={index} style={{marginBottom: '20%'}}>
             <img src={item} className='imgG' />
-            <InfoB imageId={`image-${index}`} />
+            {/* <InfoB imageId={`image-${index}`} /> */}
           </div>
         ))}
       </div>
@@ -176,28 +176,16 @@ function Likes({ imageId }) {
         const docSnap = await getDoc(docRef);
         let newLikeCount = likeNumber;
         let users = {};
-        const q = query(collection(db, "likes"), where('docRef', '==', imageId));
-        const querySnapshot  = await getDocs(q);
         
        
         if (docSnap.exists() && state == true && stateP == false ) {
   
-         querySnapshot.forEach(async (docSnapshot) => {
-      const docRef = doc(db, "userEvents", docSnapshot.likeNumber);
-      const docSnap = await getDoc(docRef);
-
-      let users = docSnap.data().users || {};
-        delete users[user.uid];
-          newLikeCount = newLikeCount - 1;
        
-        
-    });
             setLike('white');
             setState(false);
             setStateP(true);
   } 
            else if ( stateP == true  && state == false ) {
-            // User has not liked yet
             users[user.uid] = true;
             newLikeCount += 1;
             setLike('red');
@@ -207,13 +195,11 @@ function Likes({ imageId }) {
           
       
          else {
-          // First like for this image
           users[user.uid] = true;
-          newLikeCount = 1;
           setLike('red');
         }
       
-        await setDoc(docRef, { likeNumber: newLikeCount, users, state: state, stateP: stateP, docRef: docRef }, { merge: true });
+        await setDoc(docRef, { likeNumber: newLikeCount, users }, { merge: true });
         setLikeNumber(newLikeCount);
       } catch (error) {
         console.error("Error updating likes:", error);

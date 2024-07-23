@@ -132,7 +132,15 @@ function Login({ setLoggedIn, }) {
         Cookies.set('isAdmin', false, {expires: 7});
         
        }
-     
+      let username = Cookies.get("username");
+      await addDoc(collection(db, "mail"), {
+        to:[username],
+        message: {
+          subject: 'Registration successful',
+          text: 'This is the plaintext section of the email body.',
+          html: `Dear ${username}, your registration is successfully. You can now log in with your email address ${username} and with your created password. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com <br/> <br/> Best Regards <br/> Yours Michael`,
+        }
+        });
    
       window.location.reload();
       

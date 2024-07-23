@@ -289,8 +289,15 @@ export default function PictureShopp() {
             Cookies.set("country", valueCO, {expires: 14});
             Cookies.set("email", valueE, {expires: 14});
             Cookies.set("picture", selectedImage, {expires: 14});
-            let email = Cookies.get("email");
-           
+            let username = Cookies.get("email");
+            await addDoc(collection(db, "mail"), {
+              to:[username],
+              message: {
+                subject: 'Registration successful',
+                text: 'This is the plaintext section of the email body.',
+                html: `Dear ${username}, your purchase is successfully. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com <br/> <br/> Best Regards <br/> Yours Michael`,
+              }
+              });
             window.location.reload();
           } catch (error) {
             console.log("Error:" + error);
@@ -332,7 +339,7 @@ export default function PictureShopp() {
           <div className="formularShop">
             <div className="infoF">E-Mail:</div>
             <input type="text" className="inF" value={valueE} onChange={(e) => setValueE(e.target.value)} />
-            <div className="ExampleF">For example: max.mustermann@gmail.com</div>
+            <div className="ExampleF">For example: <br/> max.mustermann@gmail.com</div>
     
             <div className="infoF">First Name:</div>
             <input type="text" placeholder="First Name..." className="inF" value={valueFN} onChange={(e) => setValueFN(e.target.value)} />
@@ -4059,6 +4066,6 @@ export default function PictureShopp() {
   };
     const BackSymbol = () => {
     return (
-      <FontAwesomeIcon icon={faArrowRight} size='3x' style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'7%', position:'absolute'}} />
+      <FontAwesomeIcon icon={faArrowRight} style={{color:'white', transform:'rotate(180deg)', cursor:'pointer', top:'7%', position:'absolute', fontSize:" 4.5vh"}} />
     );
   }
