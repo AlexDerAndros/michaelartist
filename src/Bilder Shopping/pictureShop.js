@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../config/firebase';
-import { collection, addDoc, getDoc, updateDoc, doc  } from "firebase/firestore";
+import { collection, addDoc, getDoc, updateDoc, doc, getDocs, query, where, deleteDoc  } from "firebase/firestore";
 import Cookies from 'js-cookie';
 
 
@@ -241,8 +241,20 @@ export default function PictureShopp() {
     const handleImageClick = (url) => {
       setSelectedImage(url);
     }
-     
-    const BuySite = () => { 
+    const [selectedPrice, setSelectedPrice] = useState('');
+    const [selectedFormat, setSelectedFormat] = useState('');
+    const [selectedPaintedT, setSelectedPaintedT] = useState('');
+    const handlePriceClick = (price) => {
+      setSelectedPrice(price);
+    }
+    const handleFormatClick = (format) => {
+      setSelectedFormat(format);
+    }
+    const handlePaintedT = (paintedT) => {
+      setSelectedPaintedT(paintedT);
+    }
+    
+    const BuySite = () => {  
       const username = Cookies.get('username') || ''; 
       const [valueE, setValueE] = useState(username);
       const [valueZIP, setValueZIP] = useState('');
@@ -293,7 +305,7 @@ export default function PictureShopp() {
             await addDoc(collection(db, "mail"), {
               to:[username],
               message: {
-                subject: 'Registration successful',
+                subject: 'Purchase successful',
                 text: 'This is the plaintext section of the email body.',
                 html: `Dear ${username}, your purchase is successfully. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com <br/> <br/> Best Regards <br/> Yours Michael`,
               }
@@ -305,9 +317,25 @@ export default function PictureShopp() {
           }
         }
       };
-      const CancelOrder = () => {
+      const CancelOrder = async() => {
         try {
+         let userEmail = Cookies.get('email');
          Cookies.set("buyC", false, { expires:1/3600});
+         const q = query(
+          collection(db, "ShopInfos"),
+          where('email', '==', userEmail),
+          where('picture', '==', selectedImage)
+        );
+        
+         const querySnapshot = await getDocs(q);
+   
+         querySnapshot.forEach(async (docSnapshot) => {
+           const docRef = doc(db, "ShopInfos", docSnapshot.id);
+           await deleteDoc(docRef);
+         });
+         
+   
+         alert('Your order is canceled!')
 
         } catch(error) {
           console.log("Error:" + error);
@@ -323,9 +351,30 @@ export default function PictureShopp() {
           <br/>
           <br/>
           <br/>
-           <button className="btnShop1" onClick={CancelOrder}>
+           <button className="btnShop" onClick={CancelOrder}>
               I want to cancel my order!
             </button>
+           <br/> 
+           <br/>
+           <div className="infoF">
+              Picture:
+           </div>
+          {selectedImage && <img src={selectedImage} alt="Selected" className="imgSHI" />}
+          <br/>
+          <br/>
+          <div className="infoF">
+              Price: {selectedPrice}€
+           </div>
+           <div className="infoF">
+              Format: {selectedFormat}
+           </div>
+           <div className="infoF">
+              Painted with {selectedPaintedT}
+           </div>
+           <br/> 
+           <div className="infoF">
+             Your Informations
+           </div>
          </div>
         );
       }  
@@ -379,7 +428,7 @@ export default function PictureShopp() {
        && !click17&& !click18&& !click19 && !click20 && !click21 && !click22 && !click23 &&
          !click24 && !click25 && !click26 && 
       !click27 && !click28 && !click29 && !click30 && !click31 && !click32
-      && !click33 && !click34 && !click35 && !clickBuy) 
+      && !click33 && !click34 && !click35 && clickBuy == false ) 
       {
      return (
      <>
@@ -1213,6 +1262,12 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[0].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[0].price);
+          handlePaintedT(ShopImages[0].paintedT);
+          handleFormatClick(ShopImages[0].format); 
+          Cookies.set("clickBuy", clickBuy, {expires: 7});
+
+
         }}>
         { german ? (
          <span>
