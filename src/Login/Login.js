@@ -331,6 +331,16 @@ function AdminDashBoard({setLoggedIN}) {
     Cookies.remove('isAdmin');
     Cookies.remove('username');
   };
+  const [infoList, setInfoList] = useState([]);
+  useEffect(() => {
+   const fetchShopInfos = async() => {
+     const infosCol = collection(db, 'ShopInfos');
+     const infosSnapshot = await getDocs(infosCol);
+     const infosList = infosSnapshot.docs.map(doc => ({ id:doc.id, ...doc.data() }));
+     setInfoList(infosList);
+   }
+   fetchShopInfos();
+  }, []);
 
   const [user, setUser] = useState({});
   const[clickPhoto, setClickPhoto] = useState(false);
@@ -380,6 +390,21 @@ function AdminDashBoard({setLoggedIN}) {
       <button className='logB' onClick={logOut}>
           Logout
       </button>
+      <br/> 
+      <br/>
+      <br/>
+       <div className='infoF' style={{color:'white'}}>
+         Shop Infos:
+         {infoList.map((info) => {
+          <div>
+            Email: {info.email}
+            <br/>
+            First Name: {info.firstName}
+            <br/> 
+
+          </div>
+         })}
+       </div>
     </div>
   );
 }

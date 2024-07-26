@@ -1,5 +1,5 @@
 import "./pictureShop.css";
-import { useState, useHistory, useLocation } from "react";
+import { useState, useHistory, useLocation, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGripVertical, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -264,25 +264,35 @@ export default function PictureShopp() {
       const [valueCI, setValueCI] = useState('');
       const [valueCO, setValueCO] = useState('');
       const [paid, setPaid] = useState(false);
-      
+    
 
       
       const confirm = async () => {
-        if (valueE.trim() !== '' && valueZIP.trim() !== '' && valueSN.trim() !== '' && valueFN.trim() !== '' && valueA.trim() !== '' && valueCO.trim() !== '' && valueCI.trim() !== '') {
+        if (
+          valueE.trim() !== '' &&
+          valueZIP.trim() !== '' &&
+          valueSN.trim() !== '' &&
+          valueFN.trim() !== '' &&
+          valueA.trim() !== '' &&
+          valueCO.trim() !== '' &&
+          valueCI.trim() !== ''
+        ) {
           try {
             await addDoc(collection(db, 'ShopInfos'), {
-              email: valueE,
-              firstName: valueFN,
-              surName: valueSN,
-              address: valueA,
-              ZIP: valueZIP,
-              City: valueCI,
-              country: valueCO,
-              paid: paid,
-              timestamp: new Date(),
-              picture: selectedImage
+              email: valueE || null,
+              firstName: valueFN || null,
+              surName: valueSN || null,
+              address: valueA || null,
+              ZIP: valueZIP || null,
+              City: valueCI || null,
+              country: valueCO || null,
+              paid: false, // Remove the || null
+              timestamp: new Date(), // Remove the || null
+              picture: selectedImage || null,
             });
-            alert('Purchased Successfully! Please pay for the picture!');
+            Cookies.set('buyC', 'true', { expires: 14 });
+      
+            alert('Purchase successful! Please pay for the picture.');
             setValueE('');
             setValueZIP('');
             setValueA('');
@@ -291,32 +301,24 @@ export default function PictureShopp() {
             setValueCI('');
             setValueCO('');
             setPaid(false);
-            Cookies.set("paid", false, { expires: 1000 });
-            Cookies.set("buyC", true, {expires: 14});
-            Cookies.set("firstName", valueFN, {expires: 14});
-            Cookies.set("surName", valueSN, {expires: 14});
-            Cookies.set("address", valueA, {expires: 14});
-            Cookies.set("ZIP", valueZIP, {expires: 14});
-            Cookies.set("city", valueCI, {expires: 14});
-            Cookies.set("country", valueCO, {expires: 14});
-            Cookies.set("email", valueE, {expires: 14});
-            Cookies.set("picture", selectedImage, {expires: 14});
-            let username = Cookies.get("email");
-            await addDoc(collection(db, "mail"), {
-              to:[username],
+            Cookies.set('picture', selectedImage, { expires: 14 });
+            let username = Cookies.get('email');
+            await addDoc(collection(db, 'mail'), {
+              to: [username],
               message: {
                 subject: 'Purchase successful',
                 text: 'This is the plaintext section of the email body.',
-                html: `Dear ${username}, your purchase is successfully. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com <br/> <br/> Best Regards <br/> Yours Michael`,
-              }
-              });
+                html: `Dear ${username}, your purchase was successful. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
+              },
+            });
             window.location.reload();
           } catch (error) {
-            console.log("Error:" + error);
+            console.log('Error: ' + error);
             alert('Failed to purchase: ' + error);
           }
         }
       };
+      
       const CancelOrder = async() => {
         try {
          let userEmail = Cookies.get('email');
@@ -342,6 +344,59 @@ export default function PictureShopp() {
           alert('Failed to cancel order: ' + error);
         }
       };
+      
+      
+     const [paidY, setPaidY] = useState('');
+     const [emailYI, setEmailYI] = useState('');
+     const [firstNameYI, setFirstNameYI] = useState('');
+     const [surNameYI, setSurNameYI] = useState('');
+     const [addressYI, setAddressYI] = useState('');
+     const [cityYI, setCityYI] = useState('');
+     const [ZIPYI, setZIPYI] = useState('');
+     const [countryYI, setCountryYI] = useState('');
+
+     useEffect(() => {
+      const checkPurchase = async () => {
+        const userEmail = Cookies.get('email');
+    
+        if (userEmail && selectedImage) {
+          try {
+            const q = query(
+              collection(db, "ShopInfos"),
+              where('email', '==', userEmail),
+              where('picture', '==', selectedImage)
+            );
+    
+            const querySnapshot = await getDocs(q);
+    
+            querySnapshot.forEach(async (docSnapshot) => {
+              const data = docSnapshot.data();
+              const paidC = data.paid;
+              setPaidY(paidC ? 'Your purchase is accepted!' : "Your purchase is in progress! If you haven't paid yet, please pay.");
+              setEmailYI(data.email);
+              setFirstNameYI(data.firstName);
+              setSurNameYI(data.surName);
+              setAddressYI(data.address);
+              setCityYI(data.City);
+              setZIPYI(data.ZIP);
+              setCountryYI(data.country);
+            });
+          } catch (error) {
+            console.error("Error during purchase check:", error);
+          }
+        } else {
+          console.error("Cannot execute query. One or more parameters are undefined.");
+        }
+      };
+    
+      checkPurchase();
+    }, []);
+
+     
+
+
+
+      
       if (Cookies.get("buyC") === "true") {
         return (
          <div className="pictureShop">
@@ -373,7 +428,23 @@ export default function PictureShopp() {
            </div>
            <br/> 
            <div className="infoF">
-             Your Informations
+             Your Informations:
+             <br/>
+             Email: {emailYI}
+             <br/>
+             First Name: {firstNameYI}
+             <br/>
+             Surname: {surNameYI}
+             <br/>
+             Address: {addressYI}
+             <br/>
+             City: {cityYI}
+             <br/>
+             ZIP (postal code): {ZIPYI}
+             <br/>
+             Country: {countryYI}
+             <br/> 
+             {paidY}
            </div>
          </div>
         );
@@ -421,6 +492,7 @@ export default function PictureShopp() {
         </div>
       );
     }
+   
     };
     if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
       !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
@@ -431,7 +503,9 @@ export default function PictureShopp() {
       && !click33 && !click34 && !click35 && clickBuy == false ) 
       {
      return (
+  
      <>
+     
     
       <div className='pictureShop'>
       <div className='head'>Picture shop</div>
