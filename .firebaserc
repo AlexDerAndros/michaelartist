@@ -5,9 +5,7 @@
   "targets": {},
   "etags": {
     "michael--artist": {
-      "extensionInstances": {
-        "firestore-send-email": "599def0e11070d9cfd672cd41faa653c024ed90bab89a3d5313bd4cad9cd5f9a"
-      }
+      "extensionInstances": {}
     }
   },
   "dataconnectEmulatorConfig": {}

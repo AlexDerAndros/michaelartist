@@ -225,6 +225,7 @@ export default function PictureShopp() {
     
     
     ]);
+    let histo;
     const[valuePrices,setValuePrices] = useState(null);
     let value = valuePrices + "€";
     const [filteredSearchItems, setFilteredSearchItems] = useState([...ShopImages]);
@@ -236,7 +237,6 @@ export default function PictureShopp() {
       setFilteredSearchItems(filteredItems); 
     };
 
-    let histo;
     const [selectedImage, setSelectedImage] = useState('');
     const handleImageClick = (url) => {
       setSelectedImage(url);
@@ -302,6 +302,7 @@ export default function PictureShopp() {
             setValueCO('');
             setPaid(false);
             Cookies.set('picture', selectedImage, { expires: 14 });
+            Cookies.set('email', valueE, { expires: 14 });
             let username = Cookies.get('email');
             await addDoc(collection(db, 'mail'), {
               to: [username],
@@ -372,7 +373,7 @@ export default function PictureShopp() {
             querySnapshot.forEach(async (docSnapshot) => {
               const data = docSnapshot.data();
               const paidC = data.paid;
-              setPaidY(paidC ? 'Your purchase is accepted!' : "Your purchase is in progress! If you haven't paid yet, please pay.");
+              setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
               setEmailYI(data.email);
               setFirstNameYI(data.firstName);
               setSurNameYI(data.surName);
@@ -1339,7 +1340,6 @@ export default function PictureShopp() {
           handlePriceClick(ShopImages[0].price);
           handlePaintedT(ShopImages[0].paintedT);
           handleFormatClick(ShopImages[0].format); 
-          Cookies.set("clickBuy", clickBuy, {expires: 7});
 
 
         }}>
@@ -1424,6 +1424,9 @@ export default function PictureShopp() {
         <button className='btnShop' onClick={() => {
           handleImageClick(ShopImages[1].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[1].price);
+          handlePaintedT(ShopImages[1].paintedT);
+          handleFormatClick(ShopImages[1].format); 
         }}>
         { german ? (
          <span>
@@ -1508,6 +1511,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[2].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[2].price);
+          handlePaintedT(ShopImages[2].paintedT);
+          handleFormatClick(ShopImages[2].format); 
         }}>
         { german ? (
          <span>
@@ -1587,6 +1593,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[3].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[3].price);
+          handlePaintedT(ShopImages[3].paintedT);
+          handleFormatClick(ShopImages[3].format); 
         }}>
         { german ? (
          <span>
@@ -1667,6 +1676,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[4].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[4].price);
+          handlePaintedT(ShopImages[4].paintedT);
+          handleFormatClick(ShopImages[4].format); 
         }}>
         { german ? (
          <span>
@@ -1747,6 +1759,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[5].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[5].price);
+          handlePaintedT(ShopImages[5].paintedT);
+          handleFormatClick(ShopImages[5].format); 
         }}>
         { german ? (
          <span>
@@ -1827,6 +1842,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[6].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[6].price);
+          handlePaintedT(ShopImages[6].paintedT);
+          handleFormatClick(ShopImages[6].format); 
         }}>
         { german ? (
          <span> Kaufen
@@ -1906,6 +1924,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[7].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[7].price);
+          handlePaintedT(ShopImages[7].paintedT);
+          handleFormatClick(ShopImages[7].format); 
         }}>
         { german ? (
          <span>
@@ -1987,6 +2008,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[8].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[8].price);
+          handlePaintedT(ShopImages[8].paintedT);
+          handleFormatClick(ShopImages[8].format); 
         }}>
         { german ? (
          <span>
@@ -2067,6 +2091,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[9].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[9].price);
+          handlePaintedT(ShopImages[9].paintedT);
+          handleFormatClick(ShopImages[9].format); 
         }}>
         { german ? (
          <span>
@@ -2147,6 +2174,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[10].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[10].price);
+          handlePaintedT(ShopImages[10].paintedT);
+          handleFormatClick(ShopImages[10].format); 
         }}>
         { german ? (
          <span>
@@ -2227,6 +2257,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[11].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[11].price);
+          handlePaintedT(ShopImages[11].paintedT);
+          handleFormatClick(ShopImages[11].format); 
         }}>
         { german ? (
          <span>
@@ -2308,6 +2341,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[12].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[12].price);
+          handlePaintedT(ShopImages[12].paintedT);
+          handleFormatClick(ShopImages[12].format); 
         }}>
         { german ? (
          <span>
@@ -2388,6 +2424,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[13].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[13].price);
+          handlePaintedT(ShopImages[13].paintedT);
+          handleFormatClick(ShopImages[13].format); 
         }}>
         { german ? (
          <span>
@@ -2468,6 +2507,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[14].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[14].price);
+          handlePaintedT(ShopImages[14].paintedT);
+          handleFormatClick(ShopImages[14].format); 
         }}>
         { german ? (
          <span>
@@ -2548,6 +2590,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[15].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[15].price);
+          handlePaintedT(ShopImages[15].paintedT);
+          handleFormatClick(ShopImages[15].format); 
         }}>
         { german ? (
          <span>
@@ -2628,6 +2673,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[16].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[16].price);
+          handlePaintedT(ShopImages[16].paintedT);
+          handleFormatClick(ShopImages[16].format); 
         }}>
         { german ? (
          <span>
@@ -2708,6 +2756,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[17].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[17].price);
+          handlePaintedT(ShopImages[17].paintedT);
+          handleFormatClick(ShopImages[17].format); 
         }}>
         { german ? (
          <span>
@@ -2789,6 +2840,9 @@ export default function PictureShopp() {
     <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[18].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[18].price);
+          handlePaintedT(ShopImages[18].paintedT);
+          handleFormatClick(ShopImages[18].format); 
         }}>
     { german ? (
          <span>
@@ -2870,6 +2924,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[19].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[19].price);
+          handlePaintedT(ShopImages[19].paintedT);
+          handleFormatClick(ShopImages[19].format); 
         }}>
         { german ? (
          <span>
@@ -2951,6 +3008,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[20].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[20].price);
+          handlePaintedT(ShopImages[20].paintedT);
+          handleFormatClick(ShopImages[20].format); 
         }}>
         { german ? (
          <span>
@@ -3031,6 +3091,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[21].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[21].price);
+          handlePaintedT(ShopImages[21].paintedT);
+          handleFormatClick(ShopImages[21].format); 
         }}>
         { german ? (
          <span>
@@ -3112,6 +3175,9 @@ export default function PictureShopp() {
     <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[22].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[22].price);
+          handlePaintedT(ShopImages[22].paintedT);
+          handleFormatClick(ShopImages[22].format); 
         }}>
     { german ? (
          <span>
@@ -3192,6 +3258,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[23].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[23].price);
+          handlePaintedT(ShopImages[23].paintedT);
+          handleFormatClick(ShopImages[23].format); 
         }}>
         { german ? (
          <span>
@@ -3272,6 +3341,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[24].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[24].price);
+          handlePaintedT(ShopImages[24].paintedT);
+          handleFormatClick(ShopImages[24].format); 
         }}>
         { german ? (
          <span>
@@ -3354,6 +3426,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[25].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[25].price);
+          handlePaintedT(ShopImages[25].paintedT);
+          handleFormatClick(ShopImages[25].format); 
         }}>
         { german ? (
          <span>
@@ -3434,6 +3509,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[27].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[27].price);
+          handlePaintedT(ShopImages[27].paintedT);
+          handleFormatClick(ShopImages[27].format); 
         }}>
         { german ? (
          <span>
@@ -3514,6 +3592,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[26].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[26].price);
+          handlePaintedT(ShopImages[26].paintedT);
+          handleFormatClick(ShopImages[26].format); 
         }}>
         { german ? (
          <span>
@@ -3592,6 +3673,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[29].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[29].price);
+          handlePaintedT(ShopImages[29].paintedT);
+          handleFormatClick(ShopImages[29].format); 
         }}>
         { german ? (
          <span>
@@ -3672,6 +3756,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[28].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[28].price);
+          handlePaintedT(ShopImages[28].paintedT);
+          handleFormatClick(ShopImages[28].format); 
         }}>
         { german ? (
          <span>
@@ -3752,6 +3839,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[30].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[30].price);
+          handlePaintedT(ShopImages[30].paintedT);
+          handleFormatClick(ShopImages[30].format); 
         }}>
         { german ? (
          <span>
@@ -3832,6 +3922,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[31].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[31].price);
+          handlePaintedT(ShopImages[31].paintedT);
+          handleFormatClick(ShopImages[31].format); 
         }}>
         { german ? (
          <span>
@@ -3912,6 +4005,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[32].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[32].price);
+          handlePaintedT(ShopImages[32].paintedT);
+          handleFormatClick(ShopImages[32].format); 
         }}>
         { german ? (
          <span>
@@ -3992,6 +4088,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[33].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[33].price);
+          handlePaintedT(ShopImages[33].paintedT);
+          handleFormatClick(ShopImages[33].format); 
         }}>
         { german ? (
          <span>
@@ -4073,6 +4172,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[34].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[34].price);
+          handlePaintedT(ShopImages[34].paintedT);
+          handleFormatClick(ShopImages[34].format); 
         }}>
         { german ? (
          <span>
@@ -4153,6 +4255,9 @@ export default function PictureShopp() {
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[35].src);
           setClickBuy(!clickBuy);
+          handlePriceClick(ShopImages[35].price);
+          handlePaintedT(ShopImages[35].paintedT);
+          handleFormatClick(ShopImages[35].format); 
         }}>
         { german ? (
          <span>

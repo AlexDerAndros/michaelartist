@@ -332,15 +332,31 @@ function AdminDashBoard({setLoggedIN}) {
     Cookies.remove('username');
   };
   const [infoList, setInfoList] = useState([]);
+
+  const fetchShopInfos = async () => {
+    try {
+      const shopInfosCol = collection(db, 'ShopInfos');
+      const shopInfosSnapshot = await getDocs(shopInfosCol);
+      const shopInfosList = shopInfosSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setInfoList(shopInfosList);
+    } catch (error) {
+      console.error('Error fetching shop infos:', error);
+    }
+  };
+  const formatTimestamp = (timestamp) => {
+    if (!timestamp || typeof timestamp.toDate !== 'function') {
+      return '';
+    }
+    // Convert Firestore Timestamp to a JavaScript Date object
+    const date = timestamp.toDate();
+    // Format the date to a human-readable string (e.g., "July 26, 2024, 3:45 PM")
+    return date.toLocaleString();
+  };
+
   useEffect(() => {
-   const fetchShopInfos = async() => {
-     const infosCol = collection(db, 'ShopInfos');
-     const infosSnapshot = await getDocs(infosCol);
-     const infosList = infosSnapshot.docs.map(doc => ({ id:doc.id, ...doc.data() }));
-     setInfoList(infosList);
-   }
-   fetchShopInfos();
+    fetchShopInfos();
   }, []);
+
 
   const [user, setUser] = useState({});
   const[clickPhoto, setClickPhoto] = useState(false);
@@ -393,18 +409,34 @@ function AdminDashBoard({setLoggedIN}) {
       <br/> 
       <br/>
       <br/>
-       <div className='infoF' style={{color:'white'}}>
-         Shop Infos:
-         {infoList.map((info) => {
-          <div>
-            Email: {info.email}
-            <br/>
-            First Name: {info.firstName}
-            <br/> 
-
-          </div>
-         })}
-       </div>
+      <div className='infoF' style={{ color: 'white' }}>
+      Shop Infos:
+      {infoList.map((item) => (
+        <div key={item.id} style={{marginBottom:"10%"}}>  
+          Email: {item.email}
+          <br />
+          First Name: {item.firstName}
+          <br />
+          Surname: {item.surname}
+          <br />
+          Address: {item.address}
+          <br />
+          City: {item.city}  
+          <br />
+          ZIP (Postal Code): {item.ZIP}
+          <br />
+          Country: {item.country}
+          <br />
+          Paid: {item.paid ? 'Yes' : 'No'}  
+          <br />
+          Time: {formatTimestamp(item.timestamp)} 
+          <br />
+          <img src={item.picture} className='imgSHI' alt="Shop Item" />
+          <br />
+          
+        </div>
+      ))}
+    </div>
     </div>
   );
 }
