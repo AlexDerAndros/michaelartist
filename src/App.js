@@ -186,7 +186,6 @@ function HeaderBo() {
     Cookies.set('cookies', 'true', {expires: 7})
     Cookies.set('activeCookies', 'true', {expires: 7})
   }
-  const 
   useEffect(() => {
    const checkCookies = () => {
      if (Cookies.get('cookies') == 'true') {
