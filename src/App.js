@@ -180,10 +180,25 @@ function HeaderBo() {
     setLPS(false);
     setLAU(true);
   }
-  const[cookies, setCookies] = useState(true);
+  const[cookies, setCookies] = useState(false);
   const CookiesAccept = () => {
-    setCookies(false);
+    setCookies(true);
+    Cookies.set('cookies', 'true', {expires: 7})
+    Cookies.set('activeCookies', 'true', {expires: 7})
   }
+  const 
+  useEffect(() => {
+   const checkCookies = () => {
+     if (Cookies.get('cookies') == 'true') {
+      setCookies(true);
+     }
+     else {
+      setCookies(false);
+     }
+
+   }
+   checkCookies();
+  }, []);
   return (
    <Router>
    <>
@@ -562,8 +577,22 @@ function HeaderBo() {
        </>
     )}
    
-   <CookieBanner cookies={cookies} CookiesAccept={CookiesAccept}/>
-  
+   <div className='cookie-banner' style={{height: cookies ? "0%" : "40%"}}>
+     <div className='posCookies-banner'>
+       <div className='headCookies'>
+         Cookies Notice
+       </div>
+       We use cookies to enhance your experience on our website.
+        Cookies are small text files that are stored on your device to help us improve our website and your interactions with it.
+        They allow us to remember your preferences.
+       <div className='acceptCookies' onClick={CookiesAccept}>
+         Accept all cookies
+       </div>
+       <div className='opposeCookies' onClick={CookiesAccept}>
+         Reject all cookies
+       </div>
+     </div>
+   </div>
    
  </div>
 </>
@@ -572,19 +601,7 @@ function HeaderBo() {
  
 }
 
-function CookieBanner(cookies, CookiesAccept) {
 
-  return (
-   <div className='cookie-banner' style={{height: cookies ? "20%" : "0%"}}>
-     <div className='posCookies-banner'>
-       Hallo
-       <div className='acceptCookies' onClick={CookiesAccept()}>
-        Accept
-       </div>
-     </div>
-   </div>
-  );
-}
  
 
 function ImageList (){
