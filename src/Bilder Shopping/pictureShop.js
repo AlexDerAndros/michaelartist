@@ -286,9 +286,10 @@ export default function PictureShopp() {
               ZIP: valueZIP || null,
               City: valueCI || null,
               country: valueCO || null,
-              paid: false, // Remove the || null
-              timestamp: new Date(), // Remove the || null
+              paid: false,
+              timestamp: new Date(), 
               picture: selectedImage || null,
+              
             });
             Cookies.set('buyC', 'true', { expires: 14 });
       
@@ -1330,9 +1331,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[0].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[0].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[0].src);
@@ -1417,9 +1416,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[1].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[1].history}
-        </div>
+        
         <br/>
         <button className='btnShop' onClick={() => {
           handleImageClick(ShopImages[1].src);
@@ -1504,9 +1501,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[2].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[2].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[2].src);
@@ -1586,9 +1581,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[3].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[3].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[3].src);
@@ -1669,9 +1662,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[4].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[4].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[4].src);
@@ -1752,9 +1743,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[5].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[5].history}
-        </div>
+      
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[5].src);
@@ -1835,9 +1824,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[6].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[6].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[6].src);
@@ -1917,9 +1904,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[7].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[7].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[7].src);
@@ -2001,9 +1986,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[8].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[8].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[8].src);
@@ -2084,9 +2067,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[9].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[9].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[9].src);
@@ -2167,9 +2148,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[10].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[10].history}
-        </div>
+      
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[10].src);
@@ -2250,9 +2229,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[11].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[11].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[11].src);
@@ -2334,9 +2311,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[12].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[12].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[12].src);
@@ -2416,9 +2391,6 @@ export default function PictureShopp() {
             Error
           </span>
         )} {ShopImages[13].paintedT}
-        </div>
-        <div className="pri2">
-          History: {ShopImages[13].history}
         </div>
         <br/>
         <button className='btnShop'  onClick={() => {
@@ -2500,9 +2472,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[14].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[14].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[14].src);
@@ -2583,9 +2553,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[15].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[15].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[15].src);
@@ -2666,9 +2634,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[16].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[16].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[16].src);
@@ -2749,9 +2715,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[17].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[17].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[17].src);
@@ -2833,9 +2797,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[18].paintedT}
     </div>
-    <div className="pri2">
-          History: {ShopImages[18].history}
-        </div>
+   
     <br/>
     <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[18].src);
@@ -2917,9 +2879,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[19].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[19].history}
-        </div>
+      
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[19].src);
@@ -3001,9 +2961,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[20].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[20].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[20].src);
@@ -3084,9 +3042,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[21].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[21].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[21].src);
@@ -3168,9 +3124,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[22].paintedT}
     </div>
-    <div className="pri2">
-          History: {ShopImages[22].history}
-        </div>
+   
     <br/>
     <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[22].src);
@@ -3251,9 +3205,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[23].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[23].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[23].src);
@@ -3334,9 +3286,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[24].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[24].history}
-        </div>
+      
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[24].src);
@@ -3419,9 +3369,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[25].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[25].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[25].src);
@@ -3502,9 +3450,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[27].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[27].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[27].src);
@@ -3585,9 +3531,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[26].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[26].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[26].src);
@@ -3666,9 +3610,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[29].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[29].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[29].src);
@@ -3749,9 +3691,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[28].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[28].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[28].src);
@@ -3832,9 +3772,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[30].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[30].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[30].src);
@@ -3915,9 +3853,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[31].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[31].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[31].src);
@@ -3998,9 +3934,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[32].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[32].history}
-        </div>
+        
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[32].src);
@@ -4081,9 +4015,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[33].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[33].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[33].src);
@@ -4165,9 +4097,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[34].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[34].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[34].src);
@@ -4248,9 +4178,7 @@ export default function PictureShopp() {
           </span>
         )} {ShopImages[35].paintedT}
         </div>
-        <div className="pri2">
-          History: {ShopImages[35].history}
-        </div>
+       
         <br/>
         <button className='btnShop'  onClick={() => {
           handleImageClick(ShopImages[35].src);

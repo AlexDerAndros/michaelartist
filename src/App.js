@@ -180,7 +180,10 @@ function HeaderBo() {
     setLPS(false);
     setLAU(true);
   }
-
+  const[cookies, setCookies] = useState(true);
+  const CookiesAccept = () => {
+    setCookies(false);
+  }
   return (
    <Router>
    <>
@@ -518,7 +521,7 @@ function HeaderBo() {
      <Link to= "/login">
        <div className='menu1' onClick={pressLogin}>
          <span className='heNL' style={{color: login ? "rgb(96, 251, 181)" : "white",}}>
-         <FaSignInAlt    />
+         <FaSignInAlt    /> 
         Login
         </span>
        </div>
@@ -559,6 +562,7 @@ function HeaderBo() {
        </>
     )}
    
+   <CookieBanner cookies={cookies} CookiesAccept={CookiesAccept}/>
   
    
  </div>
@@ -568,6 +572,19 @@ function HeaderBo() {
  
 }
 
+function CookieBanner(cookies, CookiesAccept) {
+
+  return (
+   <div className='cookie-banner' style={{height: cookies ? "20%" : "0%"}}>
+     <div className='posCookies-banner'>
+       Hallo
+       <div className='acceptCookies' onClick={CookiesAccept()}>
+        Accept
+       </div>
+     </div>
+   </div>
+  );
+}
  
 
 function ImageList (){
@@ -654,6 +671,7 @@ function ImageList (){
    </div>
   );
 }
+
 
 
 function Home() {
