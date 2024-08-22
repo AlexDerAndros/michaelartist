@@ -292,6 +292,7 @@ export default function PictureShopp() {
               
 
             });
+            Cookies.set('buyC', 'true', { expires: 14 });
       
             alert('Purchase successful! Please pay for the picture.');
             setValueE('');
@@ -302,15 +303,11 @@ export default function PictureShopp() {
             setValueCI('');
             setValueCO('');
             setPaid(false);
-            if (Cookies.get('activeCookies') == 'true')  {
-              Cookies.set('picture', selectedImage, { expires: 14 });
-              Cookies.set('buyC', 'true', { expires: 14 });
+            if (Cookies.get('activeCookies') == 'true') 
+            {
 
             }
-            else {
-             Cookies.set('activeCookies', 'false', {expires: 7})
-
-            }
+            Cookies.set('picture', selectedImage, { expires: 14 });
             Cookies.set('email', valueE, { expires: 14 });
             let username = Cookies.get('email');
             await addDoc(collection(db, 'mail'), {
@@ -332,13 +329,7 @@ export default function PictureShopp() {
       const CancelOrder = async() => {
         try {
          let userEmail = Cookies.get('email');
-         if (Cookies.get('activeCookies') == 'true') {
-          Cookies.set("buyC", false, { expires:1/3600});
-         }
-         else {
-          Cookies.set('activeCookies', 'false', {expires: 7});
-           
-         }
+         Cookies.set("buyC", false, { expires:1/3600});
          const q = query(
           collection(db, "ShopInfos"),
           where('email', '==', userEmail),
