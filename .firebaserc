@@ -1,12 +1,5 @@
 {
   "projects": {
     "default": "michael--artist"
-  },
-  "targets": {},
-  "etags": {
-    "michael--artist": {
-      "extensionInstances": {}
-    }
-  },
-  "dataconnectEmulatorConfig": {}
+  }
 }

@@ -1,4 +1,8 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "hosting": {
     "public": "build",
     "ignore": [
@@ -13,63 +17,8 @@
       }
     ]
   },
-  "emulators": {
-    "hosting": {
-      "host": "HOST",
-      "port": "5000"
-    },
-    "ui": {
-      "enabled": true
-    },
-    "singleProjectMode": true
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "storage": {
     "rules": "storage.rules"
   },
-  "extensions": {},
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
-    },
-    {
-      "source": "michaelntri2",
-      "codebase": "michaelntri2",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
-    },
-    {
-      "source": "michaelntr2",
-      "codebase": "michaelntr2",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
-    }
-  ]
+  "extensions": {}
 }
