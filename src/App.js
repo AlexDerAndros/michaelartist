@@ -186,6 +186,13 @@ function HeaderBo() {
     Cookies.set('cookies', 'true', {expires: 7})
     Cookies.set('activeCookies', 'true', {expires: 7})
   }
+  const CookiesReject = () => {
+    setCookies(true);
+    Cookies.set('cookies', 'true', {expires: 7})
+    Cookies.set('activeCookies', 'false', {expires: 1})
+
+    
+  }
   useEffect(() => {
    const checkCookies = () => {
      if (Cookies.get('cookies') == 'true') {
@@ -585,10 +592,10 @@ function HeaderBo() {
         Cookies are small text files that are stored on your device to help us improve our website and your interactions with it.
         They allow us to remember your preferences.
        <div className='acceptCookies' onClick={CookiesAccept}>
-         Accept all cookies
+         Accept
        </div>
-       <div className='opposeCookies' onClick={CookiesAccept}>
-         Reject all cookies
+       <div className='opposeCookies' onClick={CookiesReject}>
+         Reject 
        </div>
      </div>
    </div>
