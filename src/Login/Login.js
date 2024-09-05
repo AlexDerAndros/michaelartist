@@ -6,7 +6,7 @@ import { auth, db, storage, googleprovider,  } from '../config/firebase';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { adminAlexUS, adminMichaUS,  } from '../config/admin';
 import Cookies from 'js-cookie';
-import { getDoc, getDocs, doc, addDoc, setDoc, collection } from "firebase/firestore";
+import { getDoc, getDocs, doc, addDoc, setDoc, collection, updateDoc } from "firebase/firestore";
 import './log.css';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
@@ -141,6 +141,11 @@ function Login({ setLoggedIn, }) {
           html: `Dear ${username}, your registration is successfully. You can now log in with your email address ${username} and with your created password. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com <br/> <br/> Best Regards <br/> Yours Michael`,
         }
         });
+      await addDoc(collection(db, 'users'), {
+        username: registerUS,
+        isAdmin: false, 
+        buyPictures: false
+      });
    
       window.location.reload();
       

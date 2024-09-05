@@ -289,6 +289,9 @@ export default function PictureShopp() {
               paid: false,
               timestamp: new Date(), 
               picture: selectedImage || null,
+              selectedFormat: selectedFormat || null, 
+              selectedPrice: selectedPrice || null,
+              selectedPaintedT: selectedPaintedT || null
               
 
             });
@@ -352,7 +355,6 @@ export default function PictureShopp() {
         }
       };
       
-      
      const [paidY, setPaidY] = useState('');
      const [emailYI, setEmailYI] = useState('');
      const [firstNameYI, setFirstNameYI] = useState('');
@@ -361,6 +363,9 @@ export default function PictureShopp() {
      const [cityYI, setCityYI] = useState('');
      const [ZIPYI, setZIPYI] = useState('');
      const [countryYI, setCountryYI] = useState('');
+     const [boughtPictures, setBoughtPictures] = useState('');
+     const [buyPic, setBuyPic] = useState(false);
+
 
      useEffect(() => {
       const checkPurchase = async () => {
@@ -395,9 +400,49 @@ export default function PictureShopp() {
           console.error("Cannot execute query. One or more parameters are undefined.");
         }
       };
+      const checkBoughtPictures = () => {
+
+      }
     
       checkPurchase();
+    //  acceptedPurchase();
+
     }, []);
+
+    // const acceptedPurchase = () => {
+    //  const userEmail = Cookies.get('email');
+
+    //   if (userEmail && selectedImage) {
+    //     try {
+    //       const q = query(
+    //         collection(db, "ShopInfos"),
+    //         where('email', '==', userEmail),
+    //         where('picture', '==', selectedImage)
+    //       );
+  
+    //       const querySnapshot =  getDocs(q);
+  
+    //       querySnapshot.forEach(async (docSnapshot) => {
+    //         const data = docSnapshot.data();
+    //         const paidC = data.paid;
+    //         if (paidC == true) {
+    //           await addDoc(collection(db, 'mail'), {
+    //             to: [username],
+    //             message: {
+    //               subject: 'Purchase accepted',
+    //               text: 'This is the plaintext section of the email body.',
+    //               html: `Dear ${username}, <br/> Your purchase is accepted! Your picture will arrive in 5-7 business days! If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
+    //             },
+    //           });
+    //         }
+    //       });
+    //     } catch (error) {
+    //       console.error("Error during purchase check:", error);
+    //     }
+    //   } else {
+    //     console.error("Cannot execute query. One or more parameters are undefined.");
+    //   }
+    // }
 
      
 
@@ -608,6 +653,7 @@ export default function PictureShopp() {
      </>
     ): (
       <>
+      {boughtPictures}
        <div className='shopGR'>
         <div className='elePic' onClick={press0}>
          <img className='imgSh' src={ShopImages[0].src} />
