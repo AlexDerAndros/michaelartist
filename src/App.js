@@ -32,7 +32,7 @@ import Bildgalerie1 from './Bildergalerie/Bildergalerie';
 import Log1 from './Login/Login';
 // import  LoginInputName  from './Login/LoginInputName';
 import Videogalerie1 from './Videogalerie/Videogalerie';
-import AboutUs1 from './Über uns/AboutUs';
+import AboutUs1 from './AboutUs/AboutUs';
 import Chat1 from './Chat/chat';
 import Biographie1 from './Biographie/biographie';
 import { PostSiteP } from './Login/Login';

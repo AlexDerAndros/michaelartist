@@ -394,18 +394,25 @@ function AdminDashBoard({setLoggedIN}) {
   ];
   if ( !clickPhoto && !clickVideo && !clickPost) {
   return (
-    <div className='login'>
-      <div className='WEL' style={{zIndex: click ? '-100' : '1', marginTop: click ? '15%' : '0%', transition: '0.2s ease-in'}}>
-        Welcome Admin {user?.email}!
-      </div>
-      <div className='plus' onClick={press} style={{transform: click ? "rotate(45deg)": "rotate(0deg)"}}> 
+    <>
+    <div className='plus' onClick={press} style={{transform: click ? "rotate(45deg)": "rotate(0deg)"}}> 
        + 
       </div>
-      <div className='addThings' style={{height: click ? "auto" : "0vh", width: click ? "auto" : "0vw", fontSize: click ? "3vh": "0vh", zIndex: '-1',  background: click ?  "rgb(43, 42, 42)" : "none"  }}>
+      <div className='addThings' 
+           style={{   height: click ? "auto" : "0vh", 
+                      width: click ? "auto" : "0vw", 
+                      fontSize: click ? "3vh": "0vh", 
+                      zIndex: '-1',  background: click ?  "rgb(43, 42, 42)" : "none"  }}>
          {NewThings.map((item)=> (
          <div onClick={item.press} className='eleT' key={item.index} style={{display: click ? "block": "none"}}> {item.title} </div>
        ))}
      </div>
+    <div className='login'>
+      <div className='WEL' style={{zIndex: click ? '-100' : '1', marginTop: click ? '20%' : '0%', transition: '0.2s ease-in'}}>
+        Welcome Admin {user?.email}!
+      </div>
+      
+      
       <br />
       <br />
       <button className='logB' onClick={logOut}>
@@ -443,6 +450,7 @@ function AdminDashBoard({setLoggedIN}) {
       ))}
     </div>
     </div>
+    </>
   );
 }
 else if (clickVideo) {

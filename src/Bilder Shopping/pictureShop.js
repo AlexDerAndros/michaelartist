@@ -6,6 +6,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { db } from '../config/firebase';
 import { collection, addDoc, getDoc, updateDoc, doc, getDocs, query, where, deleteDoc  } from "firebase/firestore";
 import Cookies from 'js-cookie';
+import { list } from "firebase/storage";
 
 
 export default function PictureShopp() {
@@ -267,7 +268,8 @@ export default function PictureShopp() {
     
 
       
-      const confirm = async () => {
+      const confirm = async (e) => {
+        e.preventDefault();
         if (
           valueE.trim() !== '' &&
           valueZIP.trim() !== '' &&
@@ -277,6 +279,7 @@ export default function PictureShopp() {
           valueCO.trim() !== '' &&
           valueCI.trim() !== ''
         ) {
+
           try {
             await addDoc(collection(db, 'ShopInfos'), {
               email: valueE || null,
@@ -363,8 +366,7 @@ export default function PictureShopp() {
      const [cityYI, setCityYI] = useState('');
      const [ZIPYI, setZIPYI] = useState('');
      const [countryYI, setCountryYI] = useState('');
-     const [boughtPictures, setBoughtPictures] = useState('');
-     const [buyPic, setBuyPic] = useState(false);
+    
 
 
      useEffect(() => {
@@ -400,51 +402,12 @@ export default function PictureShopp() {
           console.error("Cannot execute query. One or more parameters are undefined.");
         }
       };
-      const checkBoughtPictures = () => {
-
-      }
+      
     
       checkPurchase();
-    //  acceptedPurchase();
 
     }, []);
 
-    // const acceptedPurchase = () => {
-    //  const userEmail = Cookies.get('email');
-
-    //   if (userEmail && selectedImage) {
-    //     try {
-    //       const q = query(
-    //         collection(db, "ShopInfos"),
-    //         where('email', '==', userEmail),
-    //         where('picture', '==', selectedImage)
-    //       );
-  
-    //       const querySnapshot =  getDocs(q);
-  
-    //       querySnapshot.forEach(async (docSnapshot) => {
-    //         const data = docSnapshot.data();
-    //         const paidC = data.paid;
-    //         if (paidC == true) {
-    //           await addDoc(collection(db, 'mail'), {
-    //             to: [username],
-    //             message: {
-    //               subject: 'Purchase accepted',
-    //               text: 'This is the plaintext section of the email body.',
-    //               html: `Dear ${username}, <br/> Your purchase is accepted! Your picture will arrive in 5-7 business days! If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
-    //             },
-    //           });
-    //         }
-    //       });
-    //     } catch (error) {
-    //       console.error("Error during purchase check:", error);
-    //     }
-    //   } else {
-    //     console.error("Cannot execute query. One or more parameters are undefined.");
-    //   }
-    // }
-
-     
 
 
 
@@ -544,8 +507,58 @@ export default function PictureShopp() {
         </div>
       );
     }
+
    
     };
+
+    const BPic = () => {
+      const [listPic, setListPic] = useState([]);
+    
+      const checkBoughtPictures = async () => {
+        const userEmail = Cookies.get('username');
+    
+        try {
+          const q = query(
+            collection(db, "ShopInfos"),
+            where('email', '==', userEmail),
+          );
+    
+          const querySnapshot = await getDocs(q);
+          
+          const pictures = [];
+          querySnapshot.forEach((docSnapshot) => {
+            const data = docSnapshot.data();
+            pictures.push(data);
+          });
+    
+          setListPic(pictures);
+
+          
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      useEffect(() => {
+        checkBoughtPictures();
+      }, []);
+    
+      return (
+        <>
+          {listPic.length >= 1 ? (
+            <>
+             Bought
+            </>
+          ) : (
+            <>
+
+            </>
+          )}
+        </>
+      );
+    };
+    
+   
     if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
       !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
        !click12 && !click13 && !click14 && !click15 && !click16 
@@ -554,15 +567,14 @@ export default function PictureShopp() {
       !click27 && !click28 && !click29 && !click30 && !click31 && !click32
       && !click33 && !click34 && !click35 && clickBuy == false ) 
       {
+      
+      
      return (
-  
-     <>
-     
-    
-      <div className='pictureShop'>
-      <div className='head'>Picture shop</div>
+<>
+ <div className='pictureShop'>
+ <div className='head'>Picture shop</div>
        <br/>
-  <div className='format' onClick={() => { setFormat(!format); }}>
+    <div className='format' onClick={() => { setFormat(!format); }}>
     FORMAT: {format ? (
       <span>
         {german ? (
@@ -653,7 +665,7 @@ export default function PictureShopp() {
      </>
     ): (
       <>
-      {boughtPictures}
+      <BPic/>
        <div className='shopGR'>
         <div className='elePic' onClick={press0}>
          <img className='imgSh' src={ShopImages[0].src} />
