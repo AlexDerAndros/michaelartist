@@ -411,27 +411,44 @@
         width: 100vw;
         font-family: "Roboto" !important;
       }
+      .bPic {
+        font-family: 'Roboto' !important;
+        width: 96%;
+        height: 5vw !important;
+        font-size: 3.7vw !important;
+        display: flex;
+        gap: 3px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5%;
+        background-color: rgba(66, 65, 65, 0.855);
+        padding: 2%;
+        border-radius: 5px;
+      }
+      .bPicIc {
+        height: 4vw !important;
+      }
 /* } */
 /*Tablet*/
 @media only screen and (min-width:701px) {
   .pictureShop {
     background-color: rgba(0, 0, 0, 0.877);
     width: 75%;
-      height: 85%;
-      padding: 1vh;
-      border-radius: 4%;
-      z-index: -100;
-      left: 20%;
-      right: 3%;
-      top: 10%;
-      position: fixed;
-      overflow-y: scroll;
-      color: white;
-      width: 80% !important;
-      height: 83% !important;
-      left: 17% !important;
-      right: 3% !important;
-      top: 10% !important;
+    height: 85%;
+    padding: 1vh;
+    border-radius: 4%;
+    z-index: -100;
+    left: 20%;
+    right: 3%;
+    top: 10%;
+    position: fixed;
+    overflow-y: scroll;
+    color: white;
+    width: 80% !important;
+    height: 83% !important;
+    left: 17% !important;
+    right: 3% !important;
+    top: 10% !important;
   }
  
   .fil {

@@ -7,6 +7,7 @@ import { db } from '../config/firebase';
 import { collection, addDoc, getDoc, updateDoc, doc, getDocs, query, where, deleteDoc  } from "firebase/firestore";
 import Cookies from 'js-cookie';
 import { list } from "firebase/storage";
+import { FaImages } from "react-icons/fa";
 
 
 export default function PictureShopp() {
@@ -254,6 +255,45 @@ export default function PictureShopp() {
     const handlePaintedT = (paintedT) => {
       setSelectedPaintedT(paintedT);
     }
+    const [clickBPic, setClickBPic] = useState(false);
+    const [listPic, setListPic] = useState([]);
+    const[infos, setInfos] = useState(false);
+ 
+    const pressInfo = () => {
+      setInfos(!infos);
+    };
+      
+      const pressBPic = () => {
+        setClickBPic(!clickBPic);
+      }
+      const checkBoughtPictures = async () => {
+        const userEmail = Cookies.get('username');
+    
+        try {
+          const q = query(
+            collection(db, "ShopInfos"),
+            where('email', '==', userEmail),
+          );
+    
+          const querySnapshot = await getDocs(q);
+          
+          const pictures = [];
+          querySnapshot.forEach((docSnapshot) => {
+            const data = docSnapshot.data();
+            pictures.push(data);
+          });
+    
+          setListPic(pictures);
+
+          
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
+      useEffect(() => {
+        checkBoughtPictures();
+      }, []);
     
     const BuySite = () => {  
       const username = Cookies.get('username') || ''; 
@@ -512,60 +552,122 @@ export default function PictureShopp() {
     };
 
     const BPic = () => {
-      const [listPic, setListPic] = useState([]);
+     
     
-      const checkBoughtPictures = async () => {
-        const userEmail = Cookies.get('username');
-    
-        try {
-          const q = query(
-            collection(db, "ShopInfos"),
-            where('email', '==', userEmail),
-          );
-    
-          const querySnapshot = await getDocs(q);
-          
-          const pictures = [];
-          querySnapshot.forEach((docSnapshot) => {
-            const data = docSnapshot.data();
-            pictures.push(data);
-          });
-    
-          setListPic(pictures);
-
-          
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    
-      useEffect(() => {
-        checkBoughtPictures();
-      }, []);
-    
-      return (
-        <>
+     return (
+       <>
           {listPic.length >= 1 ? (
-            <>
-             Bought
-            </>
+            <div className="bPic" onClick={pressBPic}>
+              You have bought {listPic.length}
+              {listPic.length == 1 ? (<span> picture  </span>) : (<span> pictures</span>)}
+              <FaImages size={20} className="bPicIc"/> See more →	
+            </div>
           ) : (
             <>
 
             </>
           )}
-        </>
-      );
+      </>    
+     );
     };
+    const BPicSite = () => {
+      const [paidY, setPaidY] = useState('');
+      const [emailYI, setEmailYI] = useState('');
+      const [firstNameYI, setFirstNameYI] = useState('');
+      const [surNameYI, setSurNameYI] = useState('');
+      const [addressYI, setAddressYI] = useState('');
+      const [cityYI, setCityYI] = useState('');
+      const [ZIPYI, setZIPYI] = useState('');
+      const [countryYI, setCountryYI] = useState('');
+      const[pictureBList, setPictureBList] = useState([]);
+      const[infoList, setInfoList] = useState([]);
+
+      const infos = () => {
+        pressInfo();
+
+      }
+      const checkPurchase = async () => {
+        const userEmail = Cookies.get('email');
     
-   
+          try {
+            const q = query(
+              collection(db, "ShopInfos"),
+              where('email', '==', userEmail),
+              where('picture', '==', selectedImage)
+            );
+    
+            const querySnapshot = await getDocs(q);
+            const infosL = [];
+            querySnapshot.forEach(async (docSnapshot) => {
+              const data = docSnapshot.data();
+              infoList.push(data);
+              const paidC = data.paid;
+              setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
+              setEmailYI(data.email);
+              setFirstNameYI(data.firstName);
+              setSurNameYI(data.surName);
+              setAddressYI(data.address);
+              setCityYI(data.City);
+              setZIPYI(data.ZIP);
+              setCountryYI(data.country);
+            });
+            setInfoList(infosL);
+          } catch (error) {
+            console.error("Error during purchase check:", error);
+          }
+        }
+
+      const checkPictures = async() => {
+        const userEmail = Cookies.get('email');
+    
+          try {
+            const q = query(
+              collection(db, "ShopInfos"),
+              where('email', '==', userEmail),
+            );
+    
+            const querySnapshot = await getDocs(q);
+            const pic = [];
+            querySnapshot.forEach(async (docSnapshot) => {
+              const data = docSnapshot.data();
+              pic.push(data);
+            });
+            setPictureBList(pic);
+          } catch (error) {
+            console.error("Error during purchase check:", error);
+          }
+      };
+      useEffect(() => {
+       checkPictures();
+         
+      }, []);
+      return (
+        <div className="pictureShop">
+           <FontAwesomeIcon icon={faArrowRight} 
+                            style={{color:'white', 
+                                    transform:'rotate(180deg)', 
+                                    cursor:'pointer', 
+                                    top:'7%', 
+                                    position:'absolute', 
+                                    fontSize:" 4.5vh"}} onClick={pressBPic} />
+                                    
+
+          {pictureBList.map((item) => (
+            <div onClick={infos}>
+               <img src={item.picture} className="imgSHI"/>
+            </div>
+          ))}
+        </div>
+      );
+}
+
     if (!click0 && !click1 && !click2 && !click3 && !click4 && !click5 && 
       !click6 && !click7 && !click8 && !click9 && !click10 && !click11 &&
        !click12 && !click13 && !click14 && !click15 && !click16 
        && !click17&& !click18&& !click19 && !click20 && !click21 && !click22 && !click23 &&
          !click24 && !click25 && !click26 && 
       !click27 && !click28 && !click29 && !click30 && !click31 && !click32
-      && !click33 && !click34 && !click35 && clickBuy == false ) 
+      && !click33 && !click34 && !click35 && clickBuy == false && !clickBPic ) 
       {
       
       
@@ -608,6 +710,8 @@ export default function PictureShopp() {
                <div onClick={() =>  setFil(!fil) } className='aw'>
                  X
                </div> */}
+               <BPic/>
+
                <ul className='filterEle'>
                <li className='filterOn'>
                 <span className='infoFil'> 
@@ -4286,7 +4390,13 @@ export default function PictureShopp() {
       </>
     );
   }
-  
+  else if (clickBPic) {
+    return (
+     <>
+      <BPicSite/>
+     </>
+    );
+  }
   
   };
     const BackSymbol = () => {

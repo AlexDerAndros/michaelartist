@@ -32,7 +32,7 @@ import Bildgalerie1 from './Bildergalerie/Bildergalerie';
 import Log1 from './Login/Login';
 // import  LoginInputName  from './Login/LoginInputName';
 import Videogalerie1 from './Videogalerie/Videogalerie';
-import AboutUs1 from './AboutUs/AboutUs';
+import AboutUs1 from './About/AboutUs';
 import Chat1 from './Chat/chat';
 import Biographie1 from './Biographie/biographie';
 import { PostSiteP } from './Login/Login';
@@ -183,12 +183,12 @@ function HeaderBo() {
   const[cookies, setCookies] = useState(false);
   const CookiesAccept = () => {
     setCookies(true);
-    Cookies.set('cookies', 'true', {expires: 7})
+    Cookies.set('cookies', 'true', {expires: 7});
     Cookies.set('activeCookies', 'true', {expires: 7})
   }
   const CookiesReject = () => {
     setCookies(true);
-    Cookies.set('cookies', 'true', {expires: 7})
+    Cookies.set('cookies', 'true', {expires: 1})
     Cookies.set('activeCookies', 'false', {expires: 1})
 
     
@@ -197,6 +197,7 @@ function HeaderBo() {
    const checkCookies = () => {
      if (Cookies.get('cookies') == 'true') {
       setCookies(true);
+      Cookies.set('cookiesStay', 'true', {expires: 7})
      }
      else {
       setCookies(false);
@@ -583,7 +584,7 @@ function HeaderBo() {
        </>
     )}
    
-   <div className='cookie-banner' style={{height: cookies ? "0%" : "40%"}}>
+   <div className='cookie-banner' style={{height: cookies ? "0%" : "40%", display: Cookies.get('cookiesStay') == 'true' ? 'none' : 'flex' }}>
      <div className='posCookies-banner'>
        <div className='headCookies'>
          Cookies Notice
