@@ -582,18 +582,20 @@ export default function PictureShopp() {
       const[pictureBList, setPictureBList] = useState([]);
       const[infoList, setInfoList] = useState([]);
 
+      const userEmail = Cookies.get('email');
+
+
       const infosPress = () => {
         pressInfo();
-
+       
       }
       const checkPurchase = async () => {
-        const userEmail = Cookies.get('email');
     
           try {
             const q = query(
               collection(db, "ShopInfos"),
               where('email', '==', userEmail),
-              where('picture', '==', selectedImage)
+              where('picture', '==', 'picture')
             );
     
             const querySnapshot = await getDocs(q);
@@ -639,45 +641,67 @@ export default function PictureShopp() {
       };
       useEffect(() => {
        checkPictures();
-       checkPurchase();
       }, []);
       return (
         <div className="pictureShop">
-          {infos ? (
-            <>
-               <FontAwesomeIcon icon={faArrowRight} 
-                            style={{color:'white', 
-                                    transform:'rotate(180deg)', 
-                                    cursor:'pointer', 
-                                    top:'7%', 
-                                    position:'absolute', 
-                                    fontSize:" 4.5vh"}} onClick={pressInfo} />
-            </>
-
-          ) : clickBPic ? (
-             <>
-          
            <FontAwesomeIcon icon={faArrowRight} 
                             style={{color:'white', 
                                     transform:'rotate(180deg)', 
                                     cursor:'pointer', 
-                                    top:'7%', 
+                                    top:'6%', 
                                     position:'absolute', 
-                                    fontSize:" 4.5vh"}} onClick={pressBPic} />
+                                    fontSize:" 4.5vh", 
+                                    marginBottom:"4%"}} onClick={pressBPic} />
                                     
           <br/> <br/> <br/>
           {pictureBList.map((item) => (
-            <div onClick={infosPress} className="bPic1">
-               <img src={item.picture} className="imgBPic"/> &nbsp; Price: {item.selectedPrice}€
-              {item.paid ? (<span>  Arrive in 5-7 days </span>) : <span>  In progress </span>}  See more →	
+            <div className="bPic1">
+               <img src={item.picture} className="imgBPic"/>  
+               <ul className="PosIF">
+                <li>Price: {item.selectedPrice}€ </li>
+                <li>Format: {item.selectedFormat}</li>
+                <li>Painted with {item.selectedPaintedT}</li>
+                <li>Your informations:</li>
+                <li>Email: {item.email}</li>
+                <li>Name: {item.firstName +' ' + item.surName}</li>
+                <li>Address: {item.address}</li>
+                <li>ZIP(postal code): {item.ZIP}</li>
+                <li>City: {item.City}</li>
+                <li>Country: {item.country}</li>
+                {item.paid ? (<li>Your purchase is accepted! Your picture will arrive in 5-7 business days!</li>) : <li>Your purchase is in progress! If you haven't paid yet, please pay.</li>}  	
+                <button className="btnBP" onClick={async() => {
+                   try {
+                    let userEmail = Cookies.get('email');
+                    Cookies.set("buyC", false, { expires:1/3600});
+                    const q = query(
+                     collection(db, "ShopInfos"),
+                     where('email', '==', userEmail),
+                     where('picture', '==', item.picture)
+                   );
+                   
+                    const querySnapshot = await getDocs(q);
+              
+                    querySnapshot.forEach(async (docSnapshot) => {
+                      const docRef = doc(db, "ShopInfos", docSnapshot.id);
+                      await deleteDoc(docRef);
+                    });
+                    
+              
+                    alert('Your order is canceled!')
+           
+                   } catch(error) {
+                     console.log("Error:" + error);
+                     alert('Failed to cancel order: ' + error);
+                   }
+                }}>
+                  I want to cancel my order!
+               </button>
+               </ul>
+               
             </div>
+            
           ))}
-          </>
-          ): (
-            <>
-             Error
-            </>
-          )}
+          
         </div>
       );
 }

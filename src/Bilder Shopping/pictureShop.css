@@ -424,14 +424,15 @@
         background-color: rgba(66, 65, 65, 0.855);
         padding: 2%;
         border-radius: 5px;
+        cursor: pointer;
       }
       .bPicIc {
         height: 4vw !important;
       }
       .bPic1 {
         font-family: 'Roboto' !important;
-        width: 96%;
-        height: 8vw !important;
+        width: 92%;
+        height: auto !important;
         font-size: 3.7vw !important;
         display: flex;
         gap: 3px;
@@ -439,12 +440,34 @@
         align-items: center;
         margin-top: 5%;
         background-color: rgba(66, 65, 65, 0.855);
-        padding: 2%;
+        padding: 4%;
         border-radius: 5px;
+        cursor: pointer;
+        
       }
       .imgBPic {
-        height: 11vw !important;
-        width: 8vw !important;
+        height: 40vw !important;
+        width: 26vw !important;
+        border-radius: 5px;
+      }
+      .PosIF {
+        width: 80vw !important;
+        font-size: 3vw !important;
+        text-align: left;
+        margin-left: -5vw;
+      }
+      .btnBP {
+        color:rgb(0, 0, 0);
+        width: 100% !important;
+        height: 10%;
+        margin-top: 5% ;
+        font-weight: 1000;
+        padding: 5%;
+        font-size: 90%;
+        border-radius: 5px;
+        font-family:'Roboto';
+        cursor: pointer;
+        background-color: white;
       }
 /* } */
 
