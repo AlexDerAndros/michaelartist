@@ -582,7 +582,7 @@ export default function PictureShopp() {
       const[pictureBList, setPictureBList] = useState([]);
       const[infoList, setInfoList] = useState([]);
 
-      const infos = () => {
+      const infosPress = () => {
         pressInfo();
 
       }
@@ -639,10 +639,24 @@ export default function PictureShopp() {
       };
       useEffect(() => {
        checkPictures();
-         
+       checkPurchase();
       }, []);
       return (
         <div className="pictureShop">
+          {infos ? (
+            <>
+               <FontAwesomeIcon icon={faArrowRight} 
+                            style={{color:'white', 
+                                    transform:'rotate(180deg)', 
+                                    cursor:'pointer', 
+                                    top:'7%', 
+                                    position:'absolute', 
+                                    fontSize:" 4.5vh"}} onClick={pressInfo} />
+            </>
+
+          ) : clickBPic ? (
+             <>
+          
            <FontAwesomeIcon icon={faArrowRight} 
                             style={{color:'white', 
                                     transform:'rotate(180deg)', 
@@ -651,12 +665,19 @@ export default function PictureShopp() {
                                     position:'absolute', 
                                     fontSize:" 4.5vh"}} onClick={pressBPic} />
                                     
-
+          <br/> <br/> <br/>
           {pictureBList.map((item) => (
-            <div onClick={infos}>
-               <img src={item.picture} className="imgSHI"/>
+            <div onClick={infosPress} className="bPic1">
+               <img src={item.picture} className="imgBPic"/> &nbsp; Price: {item.selectedPrice}€
+              {item.paid ? (<span>  Arrive in 5-7 days </span>) : <span>  In progress </span>}  See more →	
             </div>
           ))}
+          </>
+          ): (
+            <>
+             Error
+            </>
+          )}
         </div>
       );
 }

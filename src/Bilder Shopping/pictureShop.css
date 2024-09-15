@@ -428,7 +428,26 @@
       .bPicIc {
         height: 4vw !important;
       }
+      .bPic1 {
+        font-family: 'Roboto' !important;
+        width: 96%;
+        height: 8vw !important;
+        font-size: 3.7vw !important;
+        display: flex;
+        gap: 3px;
+        justify-content: left;
+        align-items: center;
+        margin-top: 5%;
+        background-color: rgba(66, 65, 65, 0.855);
+        padding: 2%;
+        border-radius: 5px;
+      }
+      .imgBPic {
+        height: 11vw !important;
+        width: 8vw !important;
+      }
 /* } */
+
 /*Tablet*/
 @media only screen and (min-width:701px) {
   .pictureShop {
