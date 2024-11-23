@@ -109,6 +109,7 @@ function Login({ setLoggedIn, }) {
        else {
         Cookies.set('isAdmin', false, {expires: 7});
         }
+      window.location.reload();  
      
     } catch (error) {
       console.log(error.message);
@@ -335,6 +336,8 @@ function AdminDashBoard({setLoggedIN}) {
     setLoggedIN(false);
     Cookies.remove('isAdmin');
     Cookies.remove('username');
+    window.location.reload();  
+
   };
   const [infoList, setInfoList] = useState([]);
 

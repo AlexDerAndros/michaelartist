@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "michael--artist"
+  },
+  "targets": {},
+  "etags": {
+    "michael--artist": {
+      "extensionInstances": {
+        "firestore-send-email": "9e9c8e25e3509fe5dacfdaa189dede4f599aa47a78e146774ebe4f125516ebaa"
+      }
+    }
   }
 }
