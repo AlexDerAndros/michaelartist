@@ -418,8 +418,8 @@
         font-size: 3.7vw !important;
         display: flex;
         gap: 3px;
-        justify-content: center;
-        align-items: center;
+        justify-content: center !important;
+        align-items: center !important;
         margin-top: 5%;
         background-color: rgba(66, 65, 65, 0.855);
         padding: 2%;
@@ -436,19 +436,28 @@
         font-size: 3.7vw !important;
         display: flex;
         gap: 3px;
+        flex-direction: column;
         justify-content: left;
         align-items: center;
         margin-top: 5%;
         background-color: rgba(66, 65, 65, 0.855);
-        padding: 4%;
+        padding: 4% !important;
         border-radius: 5px;
         cursor: pointer;
         
       }
       .imgBPic {
-        height: 40vw !important;
-        width: 26vw !important;
+        height: 85vw !important;
+        width: 79vw !important;
         border-radius: 5px;
+        display: flex;
+        align-items: top !important;
+      }
+      .ImgBPicPos {
+        display: flex !important;
+        align-items: top !important;
+        justify-content: center;
+        width: 100vw !important;
       }
       .PosIF {
         width: 80vw !important;
@@ -458,7 +467,7 @@
       }
       .btnBP {
         color:rgb(0, 0, 0);
-        width: 100% !important;
+        width: 98% !important;
         height: 10%;
         margin-top: 5% ;
         font-weight: 1000;
@@ -469,6 +478,7 @@
         cursor: pointer;
         background-color: white;
       }
+      
 /* } */
 
 /*Tablet*/

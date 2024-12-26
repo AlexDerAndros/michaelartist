@@ -656,20 +656,31 @@ export default function PictureShopp() {
           <br/> <br/> <br/>
           {pictureBList.map((item) => (
             <div className="bPic1">
-               <img src={item.picture} className="imgBPic"/>  
+                 <img src={item.picture} className="imgBPic"/> 
                <ul className="PosIF">
-                <li>Price: {item.selectedPrice}€ </li>
+                <li>Price:       {item.selectedPrice}€ </li>
+                <br/>
                 <li>Format: {item.selectedFormat}</li>
+                <br/>
                 <li>Painted with {item.selectedPaintedT}</li>
+                <br/>
                 <li>Your informations:</li>
+                <br/>
                 <li>Email: {item.email}</li>
+                <br/>
                 <li>Name: {item.firstName +' ' + item.surName}</li>
+                <br/>
                 <li>Address: {item.address}</li>
+                <br/>
                 <li>ZIP(postal code): {item.ZIP}</li>
+                <br/>
                 <li>City: {item.City}</li>
+                <br/>
                 <li>Country: {item.country}</li>
+                <br/>
                 {item.paid ? (<li>Your purchase is accepted! Your picture will arrive in 5-7 business days!</li>) : <li>Your purchase is in progress! If you haven't paid yet, please pay.</li>}  	
-                <button className="btnBP" onClick={async() => {
+                <span className="centerbtnBP">
+                <button className="btnBP"  onClick={async() => {
                    try {
                     let userEmail = Cookies.get('email');
                     Cookies.set("buyC", false, { expires:1/3600});
@@ -696,6 +707,7 @@ export default function PictureShopp() {
                 }}>
                   I want to cancel my order!
                </button>
+               </span>
                </ul>
                
             </div>
