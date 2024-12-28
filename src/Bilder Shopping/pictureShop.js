@@ -295,109 +295,18 @@ export default function PictureShopp() {
         checkBoughtPictures();
       }, []);
     
-    const BuySite = () => {  
-      const username = Cookies.get('username') || ''; 
-      const [valueE, setValueE] = useState(username);
-      const [valueZIP, setValueZIP] = useState('');
-      const [valueA, setValueA] = useState('');
-      const [valueFN, setValueFN] = useState('');
-      const [valueSN, setValueSN] = useState('');
-      const [valueCI, setValueCI] = useState('');
-      const [valueCO, setValueCO] = useState('');
-      const [paid, setPaid] = useState(false);
-    
-
-      
-      const confirm = async (e) => {
-        e.preventDefault();
-        if (
-          valueE.trim() !== '' &&
-          valueZIP.trim() !== '' &&
-          valueSN.trim() !== '' &&
-          valueFN.trim() !== '' &&
-          valueA.trim() !== '' &&
-          valueCO.trim() !== '' &&
-          valueCI.trim() !== ''
-        ) {
-
-          try {
-            await addDoc(collection(db, 'ShopInfos'), {
-              email: valueE || null,
-              firstName: valueFN || null,
-              surName: valueSN || null,
-              address: valueA || null,
-              ZIP: valueZIP || null,
-              City: valueCI || null,
-              country: valueCO || null,
-              paid: false,
-              timestamp: new Date(), 
-              picture: selectedImage || null,
-              selectedFormat: selectedFormat || null, 
-              selectedPrice: selectedPrice || null,
-              selectedPaintedT: selectedPaintedT || null
+      const BuySite = () => {  
+        const username = Cookies.get('username') || ''; 
+        const [valueE, setValueE] = useState(username);
+        const [valueZIP, setValueZIP] = useState('');
+        const [valueA, setValueA] = useState('');
+        const [valueFN, setValueFN] = useState('');
+        const [valueSN, setValueSN] = useState('');
+        const [valueCI, setValueCI] = useState('');
+        const [valueCO, setValueCO] = useState('');
+        const [paid, setPaid] = useState(false);
+        const [listCheck, setListCheck] = useState([]);
               
-
-            });
-            Cookies.set('buyC', 'true', { expires: 14 });
-      
-            alert('Purchase successful! Please pay for the picture.');
-            setValueE('');
-            setValueZIP('');
-            setValueA('');
-            setValueFN('');
-            setValueSN('');
-            setValueCI('');
-            setValueCO('');
-            setPaid(false);
-            if (Cookies.get('activeCookies') == 'true') 
-            {
-
-            }
-            Cookies.set('picture', selectedImage, { expires: 14 });
-            Cookies.set('email', valueE, { expires: 14 });
-            let username = Cookies.get('email');
-            await addDoc(collection(db, 'mail'), {
-              to: [username],
-              message: {
-                subject: 'Purchase successful',
-                text: 'This is the plaintext section of the email body.',
-                html: `Dear ${username}, your purchase was successful. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
-              },
-            });
-            window.location.reload();
-          } catch (error) {
-            console.log('Error: ' + error);
-            alert('Failed to purchase: ' + error);
-          }
-        }
-      };
-      
-      const CancelOrder = async() => {
-        try {
-         let userEmail = Cookies.get('email');
-         Cookies.set("buyC", false, { expires:1/3600});
-         const q = query(
-          collection(db, "ShopInfos"),
-          where('email', '==', userEmail),
-          where('picture', '==', selectedImage)
-        );
-        
-         const querySnapshot = await getDocs(q);
-   
-         querySnapshot.forEach(async (docSnapshot) => {
-           const docRef = doc(db, "ShopInfos", docSnapshot.id);
-           await deleteDoc(docRef);
-         });
-         
-   
-         alert('Your order is canceled!')
-
-        } catch(error) {
-          console.log("Error:" + error);
-          alert('Failed to cancel order: ' + error);
-        }
-      };
-      
      const [paidY, setPaidY] = useState('');
      const [emailYI, setEmailYI] = useState('');
      const [firstNameYI, setFirstNameYI] = useState('');
@@ -406,48 +315,174 @@ export default function PictureShopp() {
      const [cityYI, setCityYI] = useState('');
      const [ZIPYI, setZIPYI] = useState('');
      const [countryYI, setCountryYI] = useState('');
-    
-
-
-     useEffect(() => {
-      const checkPurchase = async () => {
-        const userEmail = Cookies.get('email');
-    
-        if (userEmail && selectedImage) {
-          try {
-            const q = query(
-              collection(db, "ShopInfos"),
-              where('email', '==', userEmail),
-              where('picture', '==', selectedImage)
-            );
-    
-            const querySnapshot = await getDocs(q);
-    
-            querySnapshot.forEach(async (docSnapshot) => {
-              const data = docSnapshot.data();
-              const paidC = data.paid;
-              setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
-              setEmailYI(data.email);
-              setFirstNameYI(data.firstName);
-              setSurNameYI(data.surName);
-              setAddressYI(data.address);
-              setCityYI(data.City);
-              setZIPYI(data.ZIP);
-              setCountryYI(data.country);
-            });
-          } catch (error) {
-            console.error("Error during purchase check:", error);
-          }
-        } else {
-          console.error("Cannot execute query. One or more parameters are undefined.");
-        }
-      };
       
+     
+        const confirm = async (e) => {
+          e.preventDefault();
+      
+          if (
+            valueE.trim() !== '' &&
+            valueZIP.trim() !== '' &&
+            valueSN.trim() !== '' &&
+            valueFN.trim() !== '' &&
+            valueA.trim() !== '' &&
+            valueCO.trim() !== '' &&
+            valueCI.trim() !== '' &&
+            Cookies.get('blockPurchase') === 'false'
+          ) {
+            try {
+              // Überprüfung, ob bereits ein Eintrag existiert
+              const q = query(
+                collection(db, 'ShopInfos'),
+                where('email', '==', valueE),
+                where('picture', '==', selectedImage)
+              );
+      
+              const querySnapshot = await getDocs(q);
+      
+              if (!querySnapshot.empty) {
+                alert('You have already submitted a purchase for this picture!');
+                return;
+              }
+      
+              // Falls kein Eintrag existiert, wird ein neuer erstellt
+              await addDoc(collection(db, 'ShopInfos'), {
+                email: valueE || null,
+                firstName: valueFN || null,
+                surName: valueSN || null,
+                address: valueA || null,
+                ZIP: valueZIP || null,
+                City: valueCI || null,
+                country: valueCO || null,
+                paid: false,
+                timestamp: new Date(),
+                picture: selectedImage || null,
+                selectedFormat: selectedFormat || null,
+                selectedPrice: selectedPrice || null,
+                selectedPaintedT: selectedPaintedT || null,
+              });
+      
+              Cookies.set('buyC', 'true', { expires: 14 });
+              Cookies.set('picture', selectedImage, { expires: 14 });
+      
+              // E-Mail Benachrichtigung
+              await addDoc(collection(db, 'mail'), {
+                to: [valueE],
+                message: {
+                  subject: 'Purchase successful',
+                  text: 'This is the plaintext section of the email body.',
+                  html: `Dear ${valueE}, your purchase was successful. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
+                },
+              });
+      
+              alert('Purchase successful! Please pay for the picture.');
+              setValueE('');
+              setValueZIP('');
+              setValueA('');
+              setValueFN('');
+              setValueSN('');
+              setValueCI('');
+              setValueCO('');
+              setPaid(false);
+              window.location.reload();
+            } catch (error) {
+              console.error('Error: ', error);
+              alert('Failed to purchase: ' + error);
+            }
+          } else {
+            alert('Please fill out all required fields.');
+          }
+        };
+      
+        useEffect(() => {
+          const checkCanPurchase = async () => {
+            const userEmail = Cookies.get('email');
+      
+            if (userEmail && selectedImage) {
+              try {
+                const q = query(
+                  collection(db, 'ShopInfos'),
+                  where('email', '==', userEmail),
+                  where('picture', '==', selectedImage)
+                );
+      
+                const querySnapshot = await getDocs(q);
+                const list = [];
+      
+                querySnapshot.forEach((docSnapshot) => {
+                  list.push(docSnapshot.data());
+                });
+      
+                setListCheck(list);
+      
+                Cookies.set('blockPurchase', list.length > 0 ? 'true' : 'false', { expires: 7 });
+              } catch (error) {
+                console.error('Error during purchase check:', error);
+              }
+            }
+          };
+          const checkPurchase = async () => {
+            const userEmail = Cookies.get('email');
+        
+            if (userEmail && selectedImage) {
+              try {
+                const q = query(
+                  collection(db, "ShopInfos"),
+                  where('email', '==', userEmail),
+                  where('picture', '==', selectedImage)
+                );
+        
+                const querySnapshot = await getDocs(q);
+        
+                querySnapshot.forEach(async (docSnapshot) => {
+                  const data = docSnapshot.data();
+                  const paidC = data.paid;
+                  setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
+                  setEmailYI(data.email);
+                  setFirstNameYI(data.firstName);
+                  setSurNameYI(data.surName);
+                  setAddressYI(data.address);
+                  setCityYI(data.City);
+                  setZIPYI(data.ZIP);
+                  setCountryYI(data.country);
     
-      checkPurchase();
-
-    }, []);
-
+                });
+              } catch (error) {
+                console.error("Error during purchase check:", error);
+              }
+            } else {
+              console.error("Cannot execute query. One or more parameters are undefined.");
+            }
+          };
+          checkPurchase();    
+          checkCanPurchase();
+        }, []);
+      
+        const CancelOrder = async() => {
+          try {
+           let userEmail = Cookies.get('email');
+           Cookies.set("buyC", false, { expires:1/3600});
+           const q = query(
+            collection(db, "ShopInfos"),
+            where('email', '==', userEmail),
+            where('picture', '==', selectedImage)
+          );
+          
+           const querySnapshot = await getDocs(q);
+     
+           querySnapshot.forEach(async (docSnapshot) => {
+             const docRef = doc(db, "ShopInfos", docSnapshot.id);
+             await deleteDoc(docRef);
+           });
+           
+     
+           alert('Your order is canceled!')
+  
+          } catch(error) {
+            console.log("Error:" + error);
+            alert('Failed to cancel order: ' + error);
+          }
+        };
 
 
 
@@ -678,7 +713,7 @@ export default function PictureShopp() {
                 <br/>
                 <li>Country: {item.country}</li>
                 <br/>
-                {item.paid ? (<li>Your purchase is accepted! Your picture will arrive in 5-7 business days!</li>) : <li>Your purchase is in progress! If you haven't paid yet, please pay.</li>}  	
+                {item.paid ? (<li>Your purchase is accepted! Your picture will arrive in 5-7 business days!</li>) : <li>Your purchase is in progress! If you haven't paid yet, <br/> please pay.</li>}  	
                 <span className="centerbtnBP">
                 <button className="btnBP"  onClick={async() => {
                    try {

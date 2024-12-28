@@ -154,9 +154,9 @@
         cursor: pointer;
       }
       .pri {
-        font-family:'Roboto';
-        color: white;
-       font-size: 2.3vh;
+       font-family:'Roboto';
+       color: white;
+       font-size: 2vh;
        margin-bottom: 15%;
       }
       
@@ -467,7 +467,7 @@
       }
       .btnBP {
         color:rgb(0, 0, 0);
-        width: 98% !important;
+        width: 95% !important;
         height: 10%;
         margin-top: 5% ;
         font-weight: 1000;
