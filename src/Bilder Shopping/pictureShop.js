@@ -620,42 +620,42 @@ export default function PictureShopp() {
       const userEmail = Cookies.get('email');
 
 
-      const infosPress = () => {
-        pressInfo();
+      // const infosPress = () => {
+      //   pressInfo();
        
-      }
-      const checkPurchase = async () => {
+      // }
+      // const checkPurchase = async () => {
     
-          try {
-            const q = query(
-              collection(db, "ShopInfos"),
-              where('email', '==', userEmail),
-              where('picture', '==', 'picture')
-            );
+      //     try {
+      //       const q = query(
+      //         collection(db, "ShopInfos"),
+      //         where('email', '==', userEmail),
+      //         where('picture', '==', 'picture')
+      //       );
     
-            const querySnapshot = await getDocs(q);
-            const infosL = [];
-            querySnapshot.forEach(async (docSnapshot) => {
-              const data = docSnapshot.data();
-              infoList.push(data);
-              const paidC = data.paid;
-              setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
-              setEmailYI(data.email);
-              setFirstNameYI(data.firstName);
-              setSurNameYI(data.surName);
-              setAddressYI(data.address);
-              setCityYI(data.City);
-              setZIPYI(data.ZIP);
-              setCountryYI(data.country);
-            });
-            setInfoList(infosL);
-          } catch (error) {
-            console.error("Error during purchase check:", error);
-          }
-        }
+      //       const querySnapshot = await getDocs(q);
+      //       const infosL = [];
+      //       querySnapshot.forEach(async (docSnapshot) => {
+      //         const data = docSnapshot.data();
+      //         infoList.push(data);
+      //         const paidC = data.paid;
+      //         setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
+      //         setEmailYI(data.email);
+      //         setFirstNameYI(data.firstName);
+      //         setSurNameYI(data.surName);
+      //         setAddressYI(data.address);
+      //         setCityYI(data.City);
+      //         setZIPYI(data.ZIP);
+      //         setCountryYI(data.country);
+      //       });
+      //       setInfoList(infosL);
+      //     } catch (error) {
+      //       console.error("Error during purchase check:", error);
+      //     }
+      //   }
 
       const checkPictures = async() => {
-        const userEmail = Cookies.get('email');
+        const userEmail = Cookies.get('username');
     
           try {
             const q = query(
@@ -684,11 +684,11 @@ export default function PictureShopp() {
                                     transform:'rotate(180deg)', 
                                     cursor:'pointer', 
                                     top:'6%', 
-                                    position:'absolute', 
                                     fontSize:" 4.5vh", 
                                     marginBottom:"4%"}} onClick={pressBPic} />
                                     
           <br/> <br/> <br/>
+          
           {pictureBList.map((item) => (
             <div className="bPic1">
                  <img src={item.picture} className="imgBPic"/> 
