@@ -327,8 +327,8 @@ export default function PictureShopp() {
             valueFN.trim() !== '' &&
             valueA.trim() !== '' &&
             valueCO.trim() !== '' &&
-            valueCI.trim() !== '' &&
-            Cookies.get('blockPurchase') === 'false'
+            valueCI.trim() !== '' 
+            // Cookies.get('blockPurchase') === 'false'
           ) {
             try {
               // Überprüfung, ob bereits ein Eintrag existiert
