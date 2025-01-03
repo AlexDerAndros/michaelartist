@@ -427,7 +427,7 @@
         cursor: pointer;
       }
       .bPicIc {
-        height: 4vw !important;
+        font-size: 3.7vw !important;
       }
       .bPic1 {
         font-family: 'Roboto' !important;
@@ -802,7 +802,7 @@
     position: sticky;
   }
   .imgSh {
-   width: 50vh;
+   width: 45vh;
    height:65vh;
    border-radius: 6px;
    cursor: pointer;
@@ -1003,4 +1003,32 @@
   .btnShop1 {
     height: 5vh;
   }
+  .bPic {
+    font-size: 2.3vw !important;
+    height: 6% !important;
+  }
+  .bPicIc {
+    font-size: 2.3vw !important;
+  }
+  
+  .imgBPic {
+    height: 50vw !important;
+    width: 40vw !important;
+  }
+
+  .PosIF {
+    width: 80vw !important;
+    font-size: 1.5vw !important;
+    margin-left: 0vw !important;
+  }
+  .btnBP {
+    width: 100% !important;
+    height: 5vw !important;
+    padding: 0;
+  }
+  .bPic1 {
+    display: flex;
+    flex-direction: row;
+  }
+  
 }

@@ -594,8 +594,8 @@ export default function PictureShopp() {
           {listPic.length >= 1 ? (
             <div className="bPic" onClick={pressBPic}>
               You have bought {listPic.length}
-              {listPic.length == 1 ? (<span> picture  </span>) : (<span> pictures</span>)}
-              <FaImages size={20} className="bPicIc"/> See more →	
+              {listPic.length == 1 ? (<span> picture  </span>) : (<span>&nbsp;pictures </span>)}
+              <FaImages  className="bPicIc"/> See more →	
             </div>
           ) : (
             <>
