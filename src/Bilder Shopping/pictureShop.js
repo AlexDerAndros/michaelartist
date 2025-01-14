@@ -685,7 +685,8 @@ export default function PictureShopp() {
                                     cursor:'pointer', 
                                     top:'6%', 
                                     fontSize:" 4.5vh", 
-                                    marginBottom:"4%"}} onClick={pressBPic} />
+                                    marginBottom:"4%", 
+                                    position:'absolute'}} onClick={pressBPic} />
                                     
           <br/> <br/> <br/>
           

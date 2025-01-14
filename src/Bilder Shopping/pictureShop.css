@@ -738,6 +738,34 @@
   .btnShop1 {
     height: 5vh;
   }
+  /**Anzeige von gekauften Bildern Tablet-Version**/
+  .bPic {
+    font-size: 2.3vw !important;
+    height: 6% !important;
+  }
+  .bPicIc {
+    font-size: 2.3vw !important;
+  }
+  
+  .imgBPic {
+    height: 50vw !important;
+    width: 40vw !important;
+  }
+
+  .PosIF {
+    width: 80vw !important;
+    font-size: 1.5vw !important;
+    margin-left: 0vw !important;
+  }
+  .btnBP {
+    width: 100% !important;
+    height: 5vw !important;
+    padding: 0;
+  }
+  .bPic1 {
+    display: flex;
+    flex-direction: row;
+  }
 }
 /*Computer*/
 @media only screen and (min-width:1200px) {
