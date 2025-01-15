@@ -257,11 +257,8 @@ export default function PictureShopp() {
     }
     const [clickBPic, setClickBPic] = useState(false);
     const [listPic, setListPic] = useState([]);
-    const[infos, setInfos] = useState(false);
- 
-    const pressInfo = () => {
-      setInfos(!infos);
-    };
+    const [availableList, setAvailableList] = useState([]);
+    
       
       const pressBPic = () => {
         setClickBPic(!clickBPic);
@@ -290,7 +287,9 @@ export default function PictureShopp() {
           console.log(error);
         }
       };
-    
+
+      
+      
       useEffect(() => {
         checkBoughtPictures();
       }, []);
@@ -317,64 +316,63 @@ export default function PictureShopp() {
      const [countryYI, setCountryYI] = useState('');
       
      
-        const confirm = async (e) => {
-          e.preventDefault();
-      
+     const confirm = async (e) => {
+      e.preventDefault();
+  
+      try {
+          // Überprüfung, ob das Bild bereits gekauft wurde
+          const q = query(
+              collection(db, 'ShopInfos'),
+              where('picture', '==', selectedImage)
+          );
+          const querySnapshot = await getDocs(q);
+  
+          if (!querySnapshot.empty) {
+              alert('Sorry, this image has already been purchased.');
+              return; // Abbruch, falls das Bild bereits gekauft wurde
+          }
+  
+          // Überprüfung, ob alle erforderlichen Felder ausgefüllt sind
           if (
-            valueE.trim() !== '' &&
-            valueZIP.trim() !== '' &&
-            valueSN.trim() !== '' &&
-            valueFN.trim() !== '' &&
-            valueA.trim() !== '' &&
-            valueCO.trim() !== '' &&
-            valueCI.trim() !== '' 
-            // Cookies.get('blockPurchase') === 'false'
+              valueE.trim() !== '' &&
+              valueZIP.trim() !== '' &&
+              valueSN.trim() !== '' &&
+              valueFN.trim() !== '' &&
+              valueA.trim() !== '' &&
+              valueCO.trim() !== '' &&
+              valueCI.trim() !== ''
           ) {
-            try {
-              // Überprüfung, ob bereits ein Eintrag existiert
-              const q = query(
-                collection(db, 'ShopInfos'),
-                where('email', '==', valueE),
-                where('picture', '==', selectedImage)
-              );
-      
-              const querySnapshot = await getDocs(q);
-      
-              if (!querySnapshot.empty) {
-                alert('You have already submitted a purchase for this picture!');
-                return;
-              }
-      
-              // Falls kein Eintrag existiert, wird ein neuer erstellt
+              // Hinzufügen des neuen Eintrags
               await addDoc(collection(db, 'ShopInfos'), {
-                email: valueE || null,
-                firstName: valueFN || null,
-                surName: valueSN || null,
-                address: valueA || null,
-                ZIP: valueZIP || null,
-                City: valueCI || null,
-                country: valueCO || null,
-                paid: false,
-                timestamp: new Date(),
-                picture: selectedImage || null,
-                selectedFormat: selectedFormat || null,
-                selectedPrice: selectedPrice || null,
-                selectedPaintedT: selectedPaintedT || null,
+                  email: valueE || null,
+                  firstName: valueFN || null,
+                  surName: valueSN || null,
+                  address: valueA || null,
+                  ZIP: valueZIP || null,
+                  City: valueCI || null,
+                  country: valueCO || null,
+                  paid: false,
+                  timestamp: new Date(),
+                  picture: selectedImage || null,
+                  selectedFormat: selectedFormat || null,
+                  selectedPrice: selectedPrice || null,
+                  selectedPaintedT: selectedPaintedT || null,
               });
-      
+  
+              // Cookies für Benutzer speichern
               Cookies.set('buyC', 'true', { expires: 14 });
               Cookies.set('picture', selectedImage, { expires: 14 });
-      
-              // E-Mail Benachrichtigung
+  
+              // E-Mail-Benachrichtigung senden
               await addDoc(collection(db, 'mail'), {
-                to: [valueE],
-                message: {
-                  subject: 'Purchase successful',
-                  text: 'This is the plaintext section of the email body.',
-                  html: `Dear ${valueE}, your purchase was successful. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
-                },
+                  to: [valueE],
+                  message: {
+                      subject: 'Purchase successful',
+                      text: 'This is the plaintext section of the email body.',
+                      html: `Dear ${valueE}, your purchase was successful. If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com. <br/> <br/> Best regards, <br/> Michael`,
+                  },
               });
-      
+  
               alert('Purchase successful! Please pay for the picture.');
               setValueE('');
               setValueZIP('');
@@ -385,14 +383,15 @@ export default function PictureShopp() {
               setValueCO('');
               setPaid(false);
               window.location.reload();
-            } catch (error) {
-              console.error('Error: ', error);
-              alert('Failed to purchase: ' + error);
-            }
           } else {
-            alert('Please fill out all required fields.');
+              alert('Please fill out all required fields.');
           }
-        };
+      } catch (error) {
+          console.error('Error: ', error);
+          alert('Failed to purchase: ' + error);
+      }
+  };
+  
       
         useEffect(() => {
           const checkCanPurchase = async () => {
