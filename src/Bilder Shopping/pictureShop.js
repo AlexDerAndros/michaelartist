@@ -520,6 +520,8 @@ export default function PictureShopp() {
                     <br />
                     Country: {info.country}
                     <br />
+                    {info.paid ? (<span>Your purchase is accepted! If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com! </span>) : <span>Your purchase is in progress! If you haven't paid yet, <br/> please pay.</span>}  	
+
                   </div>
                 ))}
                 <br />
@@ -704,7 +706,7 @@ export default function PictureShopp() {
                 <br/>
                 <li>Country: {item.country}</li>
                 <br/>
-                {item.paid ? (<li>Your purchase is accepted! Your picture will arrive in 5-7 business days!</li>) : <li>Your purchase is in progress! If you haven't paid yet, <br/> please pay.</li>}  	
+                {item.paid ? (<li>Your purchase is accepted! If you have any further questions, please contact us at the email address michaelntrikosartist@gmail.com! </li>) : <li>Your purchase is in progress! If you haven't paid yet, <br/> please pay.</li>}  	
                 <span className="centerbtnBP">
                 <button className="btnBP"  onClick={async() => {
                    try {
