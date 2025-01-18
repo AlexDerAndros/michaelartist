@@ -314,7 +314,8 @@ export default function PictureShopp() {
      const [cityYI, setCityYI] = useState('');
      const [ZIPYI, setZIPYI] = useState('');
      const [countryYI, setCountryYI] = useState('');
-      
+    
+     const [checkList, setCheckList] = useState([]);
      
      const confirm = async (e) => {
       e.preventDefault();
@@ -362,7 +363,7 @@ export default function PictureShopp() {
               // Cookies für Benutzer speichern
               Cookies.set('buyC', 'true', { expires: 14 });
               Cookies.set('picture', selectedImage, { expires: 14 });
-  
+              Cookies.set('email',valueE, {expires:7});
               // E-Mail-Benachrichtigung senden
               await addDoc(collection(db, 'mail'), {
                   to: [valueE],
@@ -392,70 +393,60 @@ export default function PictureShopp() {
       }
   };
   
-      
-        useEffect(() => {
-          const checkCanPurchase = async () => {
-            const userEmail = Cookies.get('email');
-      
-            if (userEmail && selectedImage) {
-              try {
-                const q = query(
-                  collection(db, 'ShopInfos'),
-                  where('email', '==', userEmail),
-                  where('picture', '==', selectedImage)
-                );
-      
-                const querySnapshot = await getDocs(q);
-                const list = [];
-      
-                querySnapshot.forEach((docSnapshot) => {
-                  list.push(docSnapshot.data());
-                });
-      
-                setListCheck(list);
-      
-                Cookies.set('blockPurchase', list.length > 0 ? 'true' : 'false', { expires: 7 });
-              } catch (error) {
-                console.error('Error during purchase check:', error);
-              }
-            }
-          };
-          const checkPurchase = async () => {
-            const userEmail = Cookies.get('email');
+  const checkCanPurchase = async () => {
+    const userEmail = Cookies.get('email');
+
+    if (userEmail && selectedImage) {
+      try {
+        const q = query(
+          collection(db, 'ShopInfos'),
+          where('email', '==', userEmail),
+          where('picture', '==', selectedImage)
+        );
+
+        const querySnapshot = await getDocs(q);
+        const list = [];
+
+        querySnapshot.forEach((docSnapshot) => {
+          list.push(docSnapshot.data());
+        });
+
+        setListCheck(list);
+
+        Cookies.set('blockPurchase', list.length > 0 ? 'true' : 'false', { expires: 7 });
+      } catch (error) {
+        console.error('Error during purchase check:', error);
+      }
+    }
+  };
+  const checkPurchase = async () => {
+    const userEmail = Cookies.get("username");
+  
+    if (userEmail && selectedImage) {
+      try {
+        const q = query(
+          collection(db, "ShopInfos"),
+          where("email", "==", userEmail),
+          where("picture", "==", selectedImage)
+        );
+  
+        const querySnapshot = await getDocs(q);
+        const listInfos = querySnapshot.docs.map((doc) => doc.data());
         
-            if (userEmail && selectedImage) {
-              try {
-                const q = query(
-                  collection(db, "ShopInfos"),
-                  where('email', '==', userEmail),
-                  where('picture', '==', selectedImage)
-                );
-        
-                const querySnapshot = await getDocs(q);
-        
-                querySnapshot.forEach(async (docSnapshot) => {
-                  const data = docSnapshot.data();
-                  const paidC = data.paid;
-                  setPaidY(paidC ? "Your purchase is accepted! Your picture will arrive in 5-7 business days!" : "Your purchase is in progress! If you haven't paid yet, please pay.");
-                  setEmailYI(data.email);
-                  setFirstNameYI(data.firstName);
-                  setSurNameYI(data.surName);
-                  setAddressYI(data.address);
-                  setCityYI(data.City);
-                  setZIPYI(data.ZIP);
-                  setCountryYI(data.country);
-    
-                });
-              } catch (error) {
-                console.error("Error during purchase check:", error);
-              }
-            } else {
-              console.error("Cannot execute query. One or more parameters are undefined.");
-            }
-          };
-          checkPurchase();    
-          checkCanPurchase();
-        }, []);
+        // Zustand mit der gesamten Liste aktualisieren
+        setCheckList(listInfos);
+      } catch (error) {
+        console.error("Error during purchase check:", error);
+      }
+    } else {
+      console.error("Cannot execute query. One or more parameters are undefined.");
+    }
+  };
+  
+  useEffect(() => {
+    checkPurchase();
+  }, []);
+  
       
         const CancelOrder = async() => {
           try {
@@ -486,58 +477,58 @@ export default function PictureShopp() {
 
 
       
-      if (Cookies.get("buyC") === "true") {
-        return (
-         <div className="pictureShop">
-            <div onClick={pressBuy}>
-            <BackSymbol />
-          </div>
-          <br/>
-          <br/>
-          <br/>
-           <button className="btnShop" onClick={CancelOrder}>
-              I want to cancel my order!
-            </button>
-           <br/> 
-           <br/>
-           <div className="infoF">
-              Picture:
-           </div>
-          {selectedImage && <img src={selectedImage} alt="Selected" className="imgSHI" />}
-          <br/>
-          <br/>
-          <div className="infoF">
-              Price: {selectedPrice}€
-           </div>
-           <div className="infoF">
-              Format: {selectedFormat}
-           </div>
-           <div className="infoF">
-              Painted with {selectedPaintedT}
-           </div>
-           <br/> 
-           <div className="infoF">
-             Your Informations:
-             <br/>
-             Email: {emailYI}
-             <br/>
-             First Name: {firstNameYI}
-             <br/>
-             Surname: {surNameYI}
-             <br/>
-             Address: {addressYI}
-             <br/>
-             City: {cityYI}
-             <br/>
-             ZIP (postal code): {ZIPYI}
-             <br/>
-             Country: {countryYI}
-             <br/> 
-             {paidY}
-           </div>
-         </div>
-        );
-      }  
+        if (Cookies.get("buyC") === "true") {
+          return (
+            <div className="pictureShop">
+              <div onClick={pressBuy}>
+                <BackSymbol />
+              </div>
+              <br />
+              <br />
+              <br />
+              <button className="btnShop" onClick={CancelOrder}>
+                I want to cancel my order!
+              </button>
+              <br />
+              <br />
+              <div className="infoF">Picture:</div>
+              {selectedImage && (
+                <img src={selectedImage} alt="Selected" className="imgSHI" />
+              )}
+              <br />
+              <br />
+              <div className="infoF">Price: {selectedPrice}€</div>
+              <div className="infoF">Format: {selectedFormat}</div>
+              <div className="infoF">Painted with {selectedPaintedT}</div>
+              <br />
+              <div className="infoF">
+                Your Information:
+                <br />
+                {checkList.map((info, index) => (
+                  <div key={index}>
+                    Email: {info.email}
+                    <br />
+                    First Name: {info.firstName}
+                    <br />
+                    Surname: {info.surName}
+                    <br />
+                    Address: {info.address}
+                    <br />
+                    City: {info.City}
+                    <br />
+                    ZIP (postal code): {info.ZIP}
+                    <br />
+                    Country: {info.country}
+                    <br />
+                  </div>
+                ))}
+                <br />
+                {paidY}
+              </div>
+            </div>
+          );
+        }
+        
       else {  
       return (
         <div className="pictureShop">
@@ -654,7 +645,7 @@ export default function PictureShopp() {
       //   }
 
       const checkPictures = async() => {
-        const userEmail = Cookies.get('username');
+        const userEmail = Cookies.get('email');
     
           try {
             const q = query(

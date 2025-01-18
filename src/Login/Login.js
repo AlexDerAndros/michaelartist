@@ -432,11 +432,11 @@ function AdminDashBoard({setLoggedIN}) {
           <br />
           First Name: {item.firstName}
           <br />
-          Surname: {item.surname}
+          Surname: {item.surName}
           <br />
           Address: {item.address}
           <br />
-          City: {item.city}  
+          City: {item.City}  
           <br />
           ZIP (Postal Code): {item.ZIP}
           <br />
@@ -609,14 +609,7 @@ const PostSiteV = () => {
         <br />
         <br />
         <div>
-          {publicItemsV.map((url, index) => (
-            <div key={index}>
-              <video controls autoPlay className='videoSPO'>
-                <source src={url} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          ))}
+        
         </div>
         <br />
         <button onClick={SaveVideo} className='SavePost'>
