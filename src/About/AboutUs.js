@@ -222,15 +222,13 @@ export default function AboutUs1() {
             wird er nähere Informationen darüber erhalten und anschließend wird
              es ihm zugesendet. Ab dem Zeitpunkt, wo es angekommen ist, 
              ohne Beschädigungen vom Versand, haften wir nicht mehr für
-              die Beschädigung am Bild. Der Nutzer wird das Bild in einem
-               Zeitraum von 3-5 Werktagen erhalten.
+              die Beschädigung am Bild.
        </span>
       ): english ? (
         <span className="text">
         Once the user has selected an image and paid for it, they will receive further information about it
          and it will then be sent to them.
         Once it has arrived without any damage from shipping, we are no longer liable for any damage to the image.
-        The user will receive the image in a period of 3-5 working days.
         </span>
       ): (
         <span>
